@@ -35,7 +35,9 @@ O **Archimedes V2** é a evolução arquitetural do ecossistema de T.I. do Bruno
 archimedes-v2/
 ├── .agents/                        <-- Agentes e skills modulares
 │   ├── agents/                     <-- Subagentes (estudante, resumidor, executor)
-│   └── skills/                     <-- Skills atômicas (notas-atomicas, script-linux, consultar-rag)
+│   └── skills/                     <-- Skills atômicas (planning-with-files, notas-atomicas, etc.)
+├── .opencode/                      <-- Configurações e comandos do OpenCode CLI
+│   └── commands/                   <-- Slash commands (/pwf, /pwf-status)
 ├── config/                         <-- Configurações centralizadas (MCP, hooks, linters)
 ├── docker/                         <-- Stack de IA local em container (Ollama + Open-WebUI)
 ├── docs/                           <-- Documentação técnica de arquitetura, perfis e runbooks

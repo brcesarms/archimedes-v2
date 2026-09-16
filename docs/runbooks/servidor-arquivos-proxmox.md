@@ -4,7 +4,7 @@
 
 ## 🎯 Resumo
 
-Servidor de arquivos dedicado criado como **container LXC (privileged) no Proxmox GEEKOM** (`10.0.0.3`) para servir **Samba (SMB) + NFS + SFTP** na rede local. É o **destino central dos backups robocopy do archimedes-operator**.
+Servidor de arquivos dedicado criado como **container LXC (privileged) no Proxmox GEEKOM** (`10.0.0.3`) para servir **Samba (SMB) + NFS + SFTP** na rede local de Ariquemes. É o **destino central dos backups robocopy do archimedes-operator**.
 
 ---
 
@@ -59,7 +59,7 @@ Servidor de arquivos dedicado criado como **container LXC (privileged) no Proxmo
 
 O `backup-robocopy.ps1` usa o parâmetro `--destino` (storage central UNC). Apontar para:
 
-```
+```text
 --destino \\10.0.0.4\backup
 ```
 
@@ -98,3 +98,4 @@ testparm -s                             # validar smb.conf
 - [Debian 13 (Trixie)](https://www.debian.org/releases/trixie/)
 - [Samba Documentation](https://www.samba.org/samba/docs/)
 - [NFS HOWTO](https://tldp.org/HOWTO/NFS-HOWTO/)
+- [AGENTS.md](../../AGENTS.md)
