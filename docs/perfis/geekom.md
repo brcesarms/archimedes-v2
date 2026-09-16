@@ -1,9 +1,9 @@
 # 🧠 GEEKOM A7 MAX — Perfil de Máquina
 
 > **Máquina:** GEEKOM A7 MAX (Ryzen 9 7940HS / 64GB RAM)  
-> **Uso principal:** **IA Local Principal** (Archimedes V2 — Ollama + OpenCode)  
+> **Uso principal:** **IA Local Principal** (Archimedes V2 — Ollama em LXC + OpenCode)  
 > **Responsável:** Bruno César Medeiros Siqueira  
-> **Data:** 2026-09-08  
+> **Data:** 2026-09-16  
 > **Referência:** [`my-setup.md`](./my-setup.md)
 
 ---
@@ -16,9 +16,24 @@
 | **GPU** | AMD Radeon 780M (integrated) |
 | **RAM** | 64GB DDR5 (perfeito para modelos de IA complexos) |
 | **Armazenamento** | 1TB SSD (Samsung 9100 PRO) |
-| **Sistema** | **Proxmox VE 9.2** (hypervisor) — VMs/CTs de serviço |
+| **Sistema** | **Proxmox VE 9.2.2** (hypervisor) — VMs/CTs de serviço |
 
-> 💡 **Destaque para a IA:** É nesta máquina que a IA local (Ollama + OpenCode) roda de forma nativa.
+> 💡 **Destaque para a IA:** A IA local roda no **LXC 104 (Ollama)** — VM/CT isolada com GPU passada (ROCm).
+
+---
+
+## 🧠 Servidor Ollama — LXC 104
+
+| Configuração | Valor |
+|--------------|-------|
+| **IP** | `10.0.0.4/24` (estático, gateway `10.0.0.1`, DNS `10.0.0.1`) |
+| **Endpoint** | `http://10.0.0.4:11434` (API) · `http://10.0.0.4:11434/v1` (OpenAI-compatível) |
+| **Recursos** | 8 vCPU · 12 GB RAM · 132 GB disco (LVM-thin) |
+| **Tipo** | Privilegiado · GPU passthrough AMD (ROCm 7.2) · SSH com senha |
+| **SO** | Ubuntu 24.04 LTS · Ollama **v0.34.1** |
+| **Acesso host** | `pct exec 104 -- bash` (no Proxmox) · SSH: `ssh pve-ollama` |
+
+> 💡 **Conexão com o claude-mem:** o observer local usa um proxy TCP `127.0.0.1:37777 → 10.0.0.4:11434` (mini-proxy Python; substituir por socat quando houver sudo disponível).
 
 ---
 
@@ -27,8 +42,8 @@
 | Modelo | Tamanho | Uso | Prioridade |
 |--------|---------|-----|------------|
 | `qwen3-coder:30b` | ~18GB | Principal (coding, infra) — roda em CPU/iGPU com offload | 🔴 Alta |
-| `gpt-oss:20b` | ~12GB | Leve (sumarização, revisão) | 🟠 Média |
 | `qwen2.5-coder:7b` | ~4.5GB | Testes rápidos e fallback | 🟢 Baixa |
+| `qwen3:4b` | ~2.6GB | Já baixado; observer do claude-mem (compressão) | 🟢 Baixa |
 
 > 💡 **Nota:** Sem GPU dedicada, modelos >14B dependem de **offload CPU/RAM** (64GB tornam isso viável).
 
@@ -41,7 +56,7 @@
 | **CPU** | >85% por 5 min | `htop` |
 | **RAM** | >80% | `free -h` |
 | **Disco** | >85% | `df -h` |
-| **Ollama** | Down | `systemctl --user status ollama` |
+| **Ollama** | Down | `curl -s http://10.0.0.4:11434/api/ps` (ou `pct exec 104 -- systemctl status ollama`) |
 | **OpenCode** | Down | `pgrep -f opencode` |
 
 ---
@@ -95,8 +110,10 @@
 
 | Problema | Solução |
 |----------|---------|
-| **Ollama não responde** | `systemctl --user restart ollama` |
-| **Modelo não carrega** | `ollama pull qwen3-coder:30b` |
+| **Ollama não responde** | `pct exec 104 -- systemctl restart ollama` (host Proxmox) |
+| **Modelo não carrega** | `curl -X POST http://10.0.0.4:11434/api/pull -d '{"name":"qwen3-coder:30b"}'` |
+| **LXC 104 parado** | `pct start 104` (host Proxmox) |
+| **SSH ao LXC negado** | A chave pública ainda não foi instalada — `ssh-copy-id root@10.0.0.4` com a senha definida na criação |
 | **OpenCode falha** | `opencode login` (reautenticar) |
 | **Runbook falha** | Verificar `.planning/` e `findings.md` do plano ativo |
 

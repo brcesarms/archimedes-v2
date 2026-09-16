@@ -34,8 +34,10 @@ Host pve-win11
     IdentityFile ~/.ssh/id_ed25519
     IdentitiesOnly yes
 
-Host pve-ct
+# 🧠 Ollama — LXC 104 (Proxmox GEEKOM)
+# SSH com senha ainda (chave pública não instalada na criação do LXC)
+Host pve-ollama
     HostName 10.0.0.4
-    User brn
+    User root
     IdentityFile ~/.ssh/id_ed25519
     IdentitiesOnly yes

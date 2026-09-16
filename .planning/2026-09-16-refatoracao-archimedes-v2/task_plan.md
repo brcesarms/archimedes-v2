@@ -53,6 +53,14 @@ Commit e push da refatoração completa.
 - [x] Rodar lychee (102 OK / 0 errors)
 - [x] Commit e push (ef5f79c → main)
 
+### Phase 7: Memória Longa (claude-mem)
+**Status:** complete
+- [x] Instalar claude-mem (npx 13.25.1, plugin OpenCode)
+- [x] Configurar SQLite + Chroma (~/.claude-mem)
+- [x] Integrar ao opencode (plugin registrado)
+- [x] Validar memória persistente (worker ativo, observer via Ollama local)
+- [x] Criar servidor Ollama no Proxmox (LXC 104, 10.0.0.4, qwen3:4b)
+
 ## Decisions Made
 | Decision | Rationale |
 |----------|-----------|
