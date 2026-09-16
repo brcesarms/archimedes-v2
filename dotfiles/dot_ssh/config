@@ -1,0 +1,22 @@
+# 🔌 SSH Config — Gerenciado via Chezmoi (Archimedes V2)
+# =========================================================
+# Template de rede sem segredos. Chaves privadas em ~/.ssh/id_ed25519
+# =========================================================
+
+Host laptop-brn
+    HostName 10.0.0.5
+    User bruno
+    IdentityFile ~/.ssh/id_ed25519
+    IdentitiesOnly yes
+
+Host geekom
+    HostName 10.0.0.3
+    User brn
+    IdentityFile ~/.ssh/id_ed25519
+    IdentitiesOnly yes
+
+Host alienware
+    HostName 10.0.0.2
+    User brn
+    IdentityFile ~/.ssh/id_ed25519
+    IdentitiesOnly yes

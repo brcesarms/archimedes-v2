@@ -14,7 +14,8 @@
 | **Orquestração Remota** | `paramiko` e sockets SSH puros | **`pyinfra`** declarativo em Python puro | ✅ Concluído |
 | **Detecção de Segredos** | Grep manual em bash (`verificar-seguranca.sh`) | **`gitleaks`** com análise de entropia | ✅ Concluído |
 | **Linters de Shell** | Script manual checando headers | **`shellcheck`** (-S warning) | ✅ Concluído |
-| **Formatação de Bash** | Edição manual linha a linha | **`shfmt`** (-i 4) | ✅ Concluído |
+| **Pós-Formatação / Pacotes** | Script artesanal de 260 linhas (`bootstrap.sh`) | **`Brewfile` (Homebrew Bundle)** declarativo | ✅ Concluído |
+| **Dotfiles & SSH Config** | Cópia manual de arquivos soltos com `cp`/`sed` | **`chezmoi`** com templates e diff | ✅ Concluído |
 | **Contexto de IA** | Fatiamento manual de arquivos | **`repomix`** & **`ast-grep`** | 🔄 Em planejamento |
 | **Sincronização P2P** | Scripts de `rsync` disparados na mão | **`syncthing`** contínuo pela LAN | 🔄 Em planejamento |
 

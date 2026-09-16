@@ -1,0 +1,27 @@
+# 🏛️ Aliases Oficiais — Archimedes V2
+# ==============================================================================
+
+# 🏛️ Archimedes V2
+alias v2='cd /home/brn/archimedes-v2'
+alias v2-lint='/home/brn/archimedes-v2/scripts/lint.sh'
+alias v2-backup='/home/brn/archimedes-v2/scripts/backup.sh'
+
+# 📁 Navegação rápida
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ll='ls -lah'
+alias la='ls -A'
+alias l='ls -CF'
+
+# 🐧 Comandos úteis Linux
+alias ports='ss -tulnp'
+alias myip='curl -s ifconfig.me'
+alias localip='hostname -I | awk "{print \$1}"'
+alias dfh='df -h'
+alias freeh='free -h'
+
+# 🔍 Ferramentas V2
+alias ly='lychee --offline .'
+alias gl='gitleaks detect --source . --no-banner'
+alias sc='shellcheck -S warning'
+alias sf='shfmt -i 4 -w'
