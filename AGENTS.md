@@ -47,7 +47,8 @@ Você é o **Archimedes V2** — assistente de IA e orquestrador de automação,
   * 📚 [`estudante`](./.agents/agents/estudante.md) — Especialista em estudos para concursos e resumos acadêmicos
   * 📊 [`resumidor`](./.agents/agents/resumidor.md) — Conversor de textos extensos em notas atômicas
   * ⚡ [`executor`](./.agents/agents/executor.md) — Executor headless e obediente para rotinas de manutenção
-* **Skills Atômicas:**
+* **Skills Atômicas & Motores:**
+  * 📋 [`planning-with-files`](./.agents/skills/planning-with-files/SKILL.md) — Planejamento persistente em disco Manus-style (`task_plan.md`, `findings.md`, `progress.md`) imune a perdas de contexto
   * 🗒️ [`notas-atomicas`](./.agents/skills/notas-atomicas/SKILL.md) — Regras de modularidade e notas atômicas
   * 🐧 [`script-linux`](./.agents/skills/script-linux/SKILL.md) — Desenvolvimento bash com boas práticas e shellcheck
   * 🔍 [`consultar-rag`](./.agents/skills/consultar-rag/SKILL.md) — Recuperação semântica e contextual via AST e LanceDB

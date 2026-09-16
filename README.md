@@ -24,6 +24,7 @@ O **Archimedes V2** é a evolução arquitetural do ecossistema de T.I. do Bruno
 | 🌐 **Orquestração Remota** | **`pyinfra`** | [pyinfra-dev/pyinfra](https://github.com/pyinfra-dev/pyinfra) | Automação declarativa em Python puro sem agentes para Linux e Windows |
 | 🛡️ **Detecção de Segredos** | **`gitleaks`** | [gitleaks/gitleaks](https://github.com/gitleaks/gitleaks) | Scanner matemático de entropia para blindar repositórios Git |
 | 🐧 **Qualidade Shell** | **`shellcheck` & `shfmt`** | [shellcheck](https://github.com/koalaman/shellcheck) · [shfmt](https://github.com/mvdan/sh) | Auditoria estática de bugs e formatação automática de Bash |
+| 📋 **Planejamento em Disco** | **`planning-with-files`** | [othmanadi/planning-with-files](https://github.com/othmanadi/planning-with-files) | Plano persistente em 3 arquivos (`task_plan.md`, `findings.md`, `progress.md`) imune a `/clear` |
 | 📦 **Contexto de IA** | **`repomix` & `ast-grep`** | [repomix](https://github.com/yamadashy/repomix) · [ast-grep](https://github.com/ast-grep/ast-grep) | Fatiamento e busca estrutural de código-fonte via AST |
 
 ---
