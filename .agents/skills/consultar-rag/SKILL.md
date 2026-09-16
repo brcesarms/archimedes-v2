@@ -36,7 +36,7 @@ O Archimedes V2 utiliza o [`archimedes-rag`](https://github.com/brcesarms/archim
 
 3. **Reindexar Manualmente um Projeto:**
    ```bash
-   rag index --project-dir /home/brn/archimedes-v2
+   rag index /home/brn/archimedes-v2
    ```
 
 4. **Verificar Status e Chunks do Projeto Atual:**
