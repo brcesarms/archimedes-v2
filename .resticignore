@@ -1,0 +1,7 @@
+# Arquivos ignorados pelo restic no Archimedes V2
+.git
+.venv
+node_modules
+.claude-mem
+__pycache__
+*.pyc

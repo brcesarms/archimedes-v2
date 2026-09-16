@@ -1,0 +1,21 @@
+# ==============================================================================
+# 🏛️ Archimedes V2 — Configuração do Lychee (Link Checker em Rust)
+# ==============================================================================
+
+timeout = 5
+max_retries = 2
+max_concurrency = 8
+
+exclude_path = [
+  ".git",
+  ".venv",
+  "node_modules",
+  ".claude-mem"
+]
+
+exclude = [
+  '^https://opencode\.ai/config\.schema\.json',
+  '^https://json-schema\.org',
+  '^conversation://',
+  '^file://'
+]

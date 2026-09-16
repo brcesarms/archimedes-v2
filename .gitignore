@@ -1,0 +1,46 @@
+# ==============================================================================
+# 🏛️ Archimedes V2 — .gitignore Oficial
+# ==============================================================================
+
+# Ambientes virtuais e dependências
+.venv/
+venv/
+env/
+node_modules/
+.npm/
+.bun/
+
+# Caches de interpretadores e compiladores
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Banco de dados e caches de IA locais
+.claude-mem/
+.cache/
+*.db-shm
+*.db-wal
+
+# Arquivos de segredos e credenciais (NUNCA commitados)
+.env
+.env.*
+*.key
+*.pem
+*.pfx
+*.pkcs12
+id_rsa*
+id_ed25519*
+*token*
+password*
+
+# Temporários e logs
+*.log
+*.bak
+*.tmp
+*.swp
+*~
+.DS_Store
+Thumbs.db

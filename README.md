@@ -1,0 +1,73 @@
+# 🏛️ Archimedes V2 — Ecossistema de Automação & Infraestrutura de T.I.
+
+> *"Dê-me uma alavanca e um ponto de apoio, e moverei o mundo."* — Arquimedes de Siracusa
+
+O **Archimedes V2** é a evolução arquitetural do ecossistema de T.I. do Bruno César Medeiros Siqueira. Ele marca a transição definitiva da fase *artesanal* (onde tudo era programado na mão em scripts caseiros) para a **Alavancagem Técnica** — orquestrando as soluções open-source mais consolidadas, maduras e bem avaliadas do mundo (+100.000 ⭐ somadas).
+
+---
+
+## ⚡ A Filosofia V2: "Build vs. Adopt" (Orquestrar o Melhor)
+
+1. **Domínio Exclusivo (O que construímos):**
+   * Ferramentas de pós-instalação leves e sem dependências: [`linux-toolbox-tui`](https://github.com/brcesarms/linux-toolbox-tui) e [`win-toolbox-tui`](https://github.com/brcesarms/win-toolbox-tui) (Layout BIOS Setup Utility 120x30).
+   * Perfis e inventários de hardware sob medida: Alienware Aurora 16", GEEKOM A7 MAX e Acer da Paula.
+   * Runbooks e fluxos de atendimento de bancada para T.I. em Ariquemes-RO.
+
+2. **Motores de Ponta da Indústria (O que adotamos):**
+   * Em vez de inventar bancos de dados ou scripts frágeis de cópia, plugamos ferramentas padrão da indústria:
+
+| Pilar | Ferramenta Adotada | Repositório Oficial | Papel no Ecossistema |
+| :--- | :--- | :--- | :--- |
+| 🧠 **Memória & Sessões** | **`claude-mem`** | [thedotmack/claude-mem](https://github.com/thedotmack/claude-mem) | Persistência episódica via SQLite FTS5 + Chroma; fim do cold-start |
+| 🔗 **Links & Markdown** | **`lychee`** | [lycheeverse/lychee](https://github.com/lycheeverse/lychee) | Validação assíncrona de links em Rust (260+ links em <15ms) |
+| 💾 **Backups & Snapshots** | **`restic`** | [restic/restic](https://github.com/restic/restic) | Snapshots deduplicados, versionados e criptografados em 0.2s |
+| 🌐 **Orquestração Remota** | **`pyinfra`** | [pyinfra-dev/pyinfra](https://github.com/pyinfra-dev/pyinfra) | Automação declarativa em Python puro sem agentes para Linux e Windows |
+| 🛡️ **Detecção de Segredos** | **`gitleaks`** | [gitleaks/gitleaks](https://github.com/gitleaks/gitleaks) | Scanner matemático de entropia para blindar repositórios Git |
+| 🐧 **Qualidade Shell** | **`shellcheck` & `shfmt`** | [shellcheck](https://github.com/koalaman/shellcheck) · [shfmt](https://github.com/mvdan/sh) | Auditoria estática de bugs e formatação automática de Bash |
+| 📦 **Contexto de IA** | **`repomix` & `ast-grep`** | [repomix](https://github.com/yamadashy/repomix) · [ast-grep](https://github.com/ast-grep/ast-grep) | Fatiamento e busca estrutural de código-fonte via AST |
+
+---
+
+## 📁 Estrutura do Repositório (`archimedes-v2`)
+
+```text
+archimedes-v2/
+├── .agents/                        <-- Skills e configurações dos agentes de IA
+│   └── skills/                     <-- Skills modulares V2 baseadas nas novas ferramentas
+├── config/                         <-- Configurações centralizadas (MCP, hooks, linters)
+├── docs/                           <-- Documentação de arquitetura, perfis e runbooks
+│   ├── arquitetura/                <-- Decisões de design (ADRs) e matrizes de substituição
+│   ├── perfis/                     <-- Perfis de hardware do ecossistema
+│   └── runbooks/                   <-- Procedimentos operacionais padrão (SOP)
+├── scripts/                        <-- Wrappers limpos e auditados com shellcheck
+│   ├── backup.sh                   <-- Wrapper operacional para restic
+│   ├── lint.sh                     <-- Validação completa (lychee + shellcheck + gitleaks)
+│   └── deploy-bancada.py           <-- Automações declarativas com pyinfra
+├── .editorconfig                   <-- Padrão de charset e indentação
+├── .gitignore                      <-- Bloqueio rigoroso de credenciais e caches
+├── .lychee.toml                    <-- Configuração oficial do link checker em Rust
+├── .resticignore                   <-- Diretórios excluídos dos snapshots atômicos
+├── AGENTS.md                       <-- Diretrizes de governança e persona do Archimedes
+└── README.md                       <-- Este documento
+```
+
+---
+
+## 🚀 Comandos Rápidos de Validação
+
+```bash
+# 1. Validar todos os links do repositório em Rust:
+lychee --offline .
+
+# 2. Auditar repositório contra vazamento de credenciais:
+gitleaks detect --source . --verbose --no-banner
+
+# 3. Criar snapshot instantâneo com deduplicação:
+restic backup . --repo ~/backups/restic-vault --password-file ~/.config/restic/password
+```
+
+---
+
+## 👤 Autor & Manutenção
+* 👨‍💻 **Bruno César Medeiros Siqueira** — Analista de T.I. Pleno, Ariquemes–RO
+* 🏛️ **Archimedes** — Assistente de IA e Orquestrador Técnico
