@@ -47,11 +47,11 @@ Commit e push da refatoração completa.
 - [x] Verificar .editorconfig ([*.sh] = 2), .gitignore (dist/coverage), .lychee.toml (include_mail=false), .resticignore (alinhado)
 
 ### Phase 6: Validação Final
-**Status:** in_progress
+**Status:** complete
 - [x] Rodar lint.sh completo (163 links / 102 OK / 0 erros, shellcheck, shfmt, gitleaks)
 - [x] Rodar gitleaks (no leaks found)
 - [x] Rodar lychee (102 OK / 0 errors)
-- [ ] Commit e push
+- [x] Commit e push (ef5f79c → main)
 
 ## Decisions Made
 | Decision | Rationale |
