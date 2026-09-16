@@ -1,7 +1,25 @@
 # Arquivos ignorados pelo restic no Archimedes V2
 .git
 .venv
-node_modules
+node_modules/
+.npm/
+.bun/
 .claude-mem
-__pycache__
+__pycache__/
 *.pyc
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.log
+*.bak
+*.tmp
+*.swp
+*~
+Thumbs.db
+.DS_Store
+*.db-shm
+*.db-wal
+.cache/
+dist/
+build/
+.coverage

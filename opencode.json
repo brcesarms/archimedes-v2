@@ -1,6 +1,6 @@
 {
   "$schema": "https://opencode.ai/config.schema.json",
-  "version": "2.0.0 (2026-09-16)",
+  "version": "2.0.0",
   "project": "archimedes-v2",
   "description": "Sistema Archimedes V2 — Automação, Infraestrutura e Conhecimento com Padrões de Indústria",
   "author": "Bruno César Medeiros Siqueira",
@@ -52,6 +52,10 @@
           "chezmoi *": "allow",
           "pyinfra *": "allow",
           "rag *": "allow",
+          "docker *": "allow",
+          "git status *": "allow",
+          "git diff *": "allow",
+          "git log *": "allow",
           "./scripts/*": "allow",
           "rm *": "ask"
         },
@@ -78,12 +82,34 @@
       "context_window": 16384,
       "max_tokens": 4096
     },
-    "auditor": {
-      "description": "Especialista em auditoria e conformidade técnica do cofre Archimedes V2. Valida links, linters, segurança e integridade de backups.",
+    "executor": {
+      "description": "Executor mecânico do sistema Archimedes V2. Executa rotinas determinísticas de manutenção, linting e backup de forma headless e obediente. Use quando for rodar rotinas automatizadas do cofre.",
       "mode": "subagent",
-      "temperature": 0.2,
+      "temperature": 0,
       "context_window": 16384,
-      "max_tokens": 2048
+      "max_tokens": 4096,
+      "permission": {
+        "read": "allow",
+        "glob": "allow",
+        "grep": "allow",
+        "list": "allow",
+        "edit": "ask",
+        "bash": {
+          "*": "ask",
+          "git push*": "deny",
+          "git commit*": "deny",
+          "git reset*": "deny",
+          "git checkout*": "deny",
+          "rm -rf *": "deny",
+          "./scripts/*": "allow",
+          "scripts/*": "allow",
+          "lychee *": "allow",
+          "shellcheck *": "allow",
+          "shfmt *": "allow",
+          "gitleaks *": "allow"
+        },
+        "task": "allow"
+      }
     }
   },
   "options": {

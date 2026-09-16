@@ -1,4 +1,4 @@
-# 📈 Histórico de Benchmarks — J.A.R.V.I.S.
+# 📈 Histórico de Benchmarks — Archimedes V2
 
 > Registro permanente das execuções de benchmark para comparação ao longo do tempo.
 > O `BENCHMARKS.md` (snapshot atual) é sobrescrito pelo script — este arquivo preserva o histórico.

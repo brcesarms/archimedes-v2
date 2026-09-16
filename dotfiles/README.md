@@ -13,10 +13,10 @@ Os dotfiles do Archimedes V2 são gerenciados pelo [**`chezmoi`**](https://githu
 
 2. **Aplicar os dotfiles do repositório:**
    ```bash
-   chezmoi apply --source /home/brn/archimedes-v2/dotfiles
+   chezmoi apply --source "$HOME/archimedes-v2/dotfiles"
    ```
 
 3. **Verificar diferenças antes de aplicar (dry-run):**
    ```bash
-   chezmoi diff --source /home/brn/archimedes-v2/dotfiles
+   chezmoi diff --source "$HOME/archimedes-v2/dotfiles"
    ```

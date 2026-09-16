@@ -1,10 +1,10 @@
 # 🧠 GEEKOM A7 MAX — Perfil de Máquina
 
 > **Máquina:** GEEKOM A7 MAX (Ryzen 9 7940HS / 64GB RAM)  
-> **Uso principal:** **IA Local Principal** (J.A.R.V.I.S. Executor)  
+> **Uso principal:** **IA Local Principal** (Archimedes V2 — Ollama + OpenCode)  
 > **Responsável:** Bruno César Medeiros Siqueira  
 > **Data:** 2026-09-08  
-> **Referência:** `guia-ia-local/MY-SETUP.md`
+> **Referência:** [`my-setup.md`](./my-setup.md)
 
 ---
 
@@ -16,7 +16,7 @@
 | **GPU** | AMD Radeon 780M (integrated) |
 | **RAM** | 64GB DDR5 (perfeito para modelos de IA complexos) |
 | **Armazenamento** | 1TB SSD (Samsung 9100 PRO) |
-| **Sistema** | Linux (Fedora Atomic Silverblue) |
+| **Sistema** | **Proxmox VE 9.2** (hypervisor) — VMs/CTs de serviço |
 
 > 💡 **Destaque para a IA:** É nesta máquina que a IA local (Ollama + OpenCode) roda de forma nativa.
 
@@ -26,10 +26,11 @@
 
 | Modelo | Tamanho | Uso | Prioridade |
 |--------|---------|-----|------------|
-| `qwen3-coder:30b` | 18GB | Principal (coding, infra) | 🔴 Alta |
-| `gpt-oss:20b` | 12GB | Leve (sumarização, revisão) | 🟠 Média |
-| `qwen3:14b` | 8GB | Análise complexa | 🟡 Média |
-| `qwen3.6:27b` | 16GB | Backup | 🟢 Baixa |
+| `qwen3-coder:30b` | ~18GB | Principal (coding, infra) — roda em CPU/iGPU com offload | 🔴 Alta |
+| `gpt-oss:20b` | ~12GB | Leve (sumarização, revisão) | 🟠 Média |
+| `qwen2.5-coder:7b` | ~4.5GB | Testes rápidos e fallback | 🟢 Baixa |
+
+> 💡 **Nota:** Sem GPU dedicada, modelos >14B dependem de **offload CPU/RAM** (64GB tornam isso viável).
 
 ---
 
@@ -50,9 +51,9 @@
 | Configuração | Valor |
 |--------------|-------|
 | **Frequência** | Diário (22:00) |
-| **Retenção** | 7 dias |
-| **Destino** | `$HOME/backups/archimedes-vault/` |
-| **Push para GitHub** | Automático |
+| **Retenção** | 7 dias (política restic) |
+| **Destino** | `$HOME/backups/restic-vault` (repo restic deduplicado) |
+| **Push para GitHub** | Automático (git sync) |
 
 ---
 
@@ -60,10 +61,10 @@
 
 | Uso | Comando |
 |-----|---------|
-| **Executar todos os runbooks** | `opencode run --auto` |
-| **Validar saúde do sistema** | `./saude-sistema-executor.sh` |
-| **Sincronizar com GitHub** | `./sync-cofre.sh` |
-| **Verificar scripts** | `./verificar-scripts.sh` |
+| **Backup restic** | `./scripts/backup.sh` |
+| **Esteira de qualidade** | `./scripts/lint.sh` |
+| **Setup do ambiente** | `./scripts/setup.sh` |
+| **Validar links** | `lychee --offline .` |
 
 ---
 
@@ -82,11 +83,11 @@
 
 | Tarefa | Comando |
 |--------|---------|
-| Atualizar sistema | `sudo rpm-ostree update` |
+| Atualizar sistema | `apt update && apt upgrade` (Proxmox) |
 | Validar Ollama | `ollama ps` |
-| Validar OpenCode | `opencode version` + `opencode run --auto` |
-| Limpar logs antigos | `./logs-rotator.sh` |
-| Validar backup | `tar -tzf $HOME/backups/archimedes-vault/archimedes-vault_*.tar.gz > /dev/null && echo "✅ Integro"` |
+| Validar OpenCode | `opencode version` |
+| Limpar logs antigos | `journalctl --vacuum-time=7d` |
+| Validar backup | `restic snapshots --repo "$HOME/backups/restic-vault" --latest 1` |
 
 ---
 
@@ -97,14 +98,14 @@
 | **Ollama não responde** | `systemctl --user restart ollama` |
 | **Modelo não carrega** | `ollama pull qwen3-coder:30b` |
 | **OpenCode falha** | `opencode login` (reautenticar) |
-| **Runbook falha** | Verificar `cerebrum/logs/estado-falhas.md` |
+| **Runbook falha** | Verificar `.planning/` e `findings.md` do plano ativo |
 
 ---
 
 ## 🔗 Fontes
 
 - 📖 [Modelos Ollama](https://ollama.com/library)
-- 📖 [Fedora Atomic Docs](https://docs.fedoraproject.org/en-US/fedora-silverblue/)
+- 🖥️ [Proxmox VE Docs](https://pve.proxmox.com/wiki/Main_Page)
 
 ---
 

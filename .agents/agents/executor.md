@@ -1,6 +1,7 @@
 ---
+name: executor
 description: Executor mecânico do sistema Archimedes V2. Executa rotinas determinísticas de manutenção, linting e backup de forma headless e obediente. Use quando for rodar rotinas automatizadas do cofre.
-mode: primary
+mode: subagent
 temperature: 0
 permission:
   read: allow

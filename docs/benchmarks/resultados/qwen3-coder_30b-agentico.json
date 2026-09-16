@@ -1,6 +1,6 @@
 {
   "model": "qwen3-coder:30b",
-  "benchmark": "agenico-opencode-validacao-final",
+  "benchmark": "agentico-opencode-validacao-final",
   "data": "2026-09-09",
   "context": 24576,
   "capabilities": ["completion", "tools"],

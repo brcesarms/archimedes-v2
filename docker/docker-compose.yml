@@ -49,7 +49,8 @@ services:
       - open-webui-data:/app/backend/data
     environment:
       - OLLAMA_BASE_URL=http://ollama:11434
-      - WEBUI_SECRET_KEY=***REMOVED***
+      # 🔒 Segredo NUNCA versionado — defina no arquivo local .env (ver .env.example)
+      - WEBUI_SECRET_KEY=${WEBUI_SECRET_KEY:?Defina WEBUI_SECRET_KEY no arquivo .env}
     depends_on:
       ollama:
         condition: service_healthy

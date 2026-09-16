@@ -2,8 +2,8 @@
 title: "Runbook — Saúde do Sistema (RAM, disco, IA)"
 tipo: saude-sistema
 frequencia: semanal
-script: guia-ia-local/scripts/linux/saude-sistema-executor.sh
-logs: guia-ia-local/cerebrum/logs/
+script: scripts/lint.sh
+logs: .planning/logs/
 tags:
   - runbook
   - executor
@@ -13,6 +13,9 @@ status: pronto
 ---
 
 # 🩺 Runbook — Saúde do Sistema (RAM, disco, IA)
+
+> [!CAUTION]
+> **⚠️ LEGADO V1** — Este runbook contém procedimentos do Archimedes V1 (`archimedes-vault`) que foram substituídos no V2. Scripts referenciados podem não existir. Consulte `scripts/backup.sh`, `scripts/lint.sh` e `scripts/setup.sh` para os procedimentos atualizados.
 
 > 🚨 **PARA O EXECUTOR — siga APENAS os passos abaixo. Não invente. Não pule. Não edite scripts.**
 
@@ -25,7 +28,7 @@ Rotina semanal que coleta métricas de saúde do GEEKOM: **memória, disco, proc
 1. Execute **exatamente**:
 
    ```bash
-   ~/archimedes-vault/guia-ia-local/scripts/linux/saude-sistema-executor.sh
+   ./scripts/lint.sh
    ```
 
 2. **LEIA a saída.** A coleta termina com:
@@ -40,7 +43,7 @@ Rotina semanal que coleta métricas de saúde do GEEKOM: **memória, disco, proc
 ## ✅ Checklist de Validação
 
 - [ ] Saída termina com `🎯 Saúde do sistema coletada`
-- [ ] Log criado em `guia-ia-local/cerebrum/logs/`
+- [ ] Log criado em `.planning/logs/`
 - [ ] Se aparecer `⚠️  Disco acima de 90%` ou `⚠️ Ollama NÃO está rodando` → **anotar no log para revisão** (não é falha)
 
 ## 🆘 Tratamento de Erros
@@ -56,5 +59,5 @@ Rotina semanal que coleta métricas de saúde do GEEKOM: **memória, disco, proc
 
 ## 🔗 Fontes
 
-- 🐚 Script: [`saude-sistema-executor.sh`](./runbook-saude-sistema.md)
-- 📝 Template: [`template-runbook.md`](./README.md)
+- 🩺 Validação: [`lint.sh`](../../scripts/lint.sh) (lychee + shellcheck + shfmt + gitleaks)
+- 📝 Template: [`README.md`](./README.md)

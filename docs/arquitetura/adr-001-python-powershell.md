@@ -58,7 +58,7 @@ Análise de arquitetura concluída com foco em confiabilidade e boas práticas.
 ## 🎯 Como aumentar a robustez (sem trocar linguagem)
 
 1. 🩺 **Validação de saída rígida** nos `.ps1` — JSON estruturado + exit codes.
-2. 📦 **Versionamento e testes** dos scripts com ShellCheck e linters dedicados.
+2. 📦 **Versionamento e testes** dos scripts com linters dedicados por linguagem: **ShellCheck/shfmt** para `.sh` e **PSScriptAnalyzer** para `.ps1`.
 3. 🔒 **Python restrito ao orquestrador** — como está padronizado no V2 via `pyinfra` e `archimedes-operator`.
 
 ---

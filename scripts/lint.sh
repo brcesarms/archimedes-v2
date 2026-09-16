@@ -1,30 +1,52 @@
-#!/usr/bin/env bash
+#!/bin/bash
 # ==============================================================================
 # 🩺 lint.sh — Esteira de Qualidade e Segurança do Archimedes V2
 # ==============================================================================
 # Executa:
 #   1. lychee (validação de links markdown em Rust)
 #   2. shellcheck (linter estático de scripts bash)
-#   3. gitleaks (auditoria de credenciais e segredos em Git)
+#   3. shfmt (formatador oficial de shell)
+#   4. gitleaks (auditoria de credenciais e segredos em Git)
+#
+# Uso:
+#   ./scripts/lint.sh        # Esteira completa
 # ==============================================================================
 set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-cd "$ROOT_DIR"
+cd "$ROOT_DIR" || exit 1
 
-echo "🔍 1/3: Validando links Markdown com Lychee (Rust)..."
+# 🧪 0/4: Ferramentas obrigatórias
+check_tool() {
+  local tool=$1
+  if ! command -v "$tool" &>/dev/null; then
+    echo "❌ Ferramenta '$tool' não encontrada. Execute: brew install $tool" >&2
+    exit 1
+  fi
+}
+check_tool lychee
+check_tool shellcheck
+check_tool shfmt
+check_tool gitleaks
+
+echo "🔍 1/4: Validando links Markdown com Lychee (Rust)..."
 lychee --offline .
-echo "✔ Links 100% íntegros!"
+echo "==> ✅ [1/4] Links 100% íntegros!"
 
 echo ""
-echo "🐧 2/3: Auditando scripts Bash com ShellCheck..."
-find scripts -type f -name "*.sh" -exec shellcheck -S warning {} +
-echo "✔ Shell scripts 100% em conformidade!"
+echo "🐧 2/4: Auditando scripts Bash com ShellCheck..."
+find "${ROOT_DIR}/scripts" -type f -name "*.sh" -exec shellcheck -S warning {} +
+echo "==> ✅ [2/4] Shell scripts 100% em conformidade!"
 
 echo ""
-echo "🛡️ 3/3: Verificando segredos e credenciais com Gitleaks..."
+echo "🎨 3/4: Formatando shell scripts com shfmt (padrão do cofre)..."
+find "${ROOT_DIR}/scripts" -type f -name "*.sh" -exec shfmt -i 2 -ci -bn -w {} +
+echo "==> ✅ [3/4] Shell scripts formatados conforme shfmt!"
+
+echo ""
+echo "🛡️ 4/4: Verificando segredos e credenciais com Gitleaks..."
 gitleaks detect --source . --no-banner
-echo "✔ Repositório 100% blindado!"
+echo "==> ✅ [4/4] Repositório 100% blindado!"
 
 echo ""
 echo "✨ Todos os testes da esteira Archimedes V2 passaram com sucesso!"

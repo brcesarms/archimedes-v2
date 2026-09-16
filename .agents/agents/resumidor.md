@@ -1,4 +1,5 @@
 ---
+name: resumidor
 description: Especialista em transformar conteúdo longo em notas atômicas resumidas. Lê textos extensos (notas, artigos, documentação) e gera notas concisas no estilo do cofre. Use para "resumir essa nota", "transformar em nota atômica", "encurtar", "resumir artigo". Nunca altera o original.
 mode: subagent
 temperature: 0.3

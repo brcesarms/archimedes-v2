@@ -16,3 +16,7 @@ trim_trailing_whitespace = false
 
 [*.{json,yaml,yml,toml}]
 indent_size = 2
+
+# shfmt do cofre usa -i 2 (ver scripts/lint.sh) — não conflitar com [*] = 4
+[*.sh]
+indent_size = 2

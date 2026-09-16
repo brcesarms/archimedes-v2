@@ -20,7 +20,11 @@ brew "ripgrep"
 brew "shellcheck"
 # Autoformat shell script source code
 brew "shfmt"
-# OCR (Optical Character Recognition) engine
+# OCR (Optical Character Recognition) engine — uso: extração de texto de imagens/PDFs nas notas
 brew "tesseract"
-# Enables extra languages support for Tesseract
+# Enables extra languages support for Tesseract (por enquanto sem uso crítico; mantido por conveniência)
 brew "tesseract-lang"
+
+# ⚠️ pyinfra (orquestração remota V2) NÃO está no Homebrew — instalar via pipx:
+#   pipx install pyinfra
+# (Vem com a dependência default: pipx já instalado acima)

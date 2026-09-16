@@ -2,8 +2,8 @@
 title: "Runbook — Backup Semanal (Snapshot + Push GitHub)"
 tipo: backup-semanal
 frequencia: semanal
-script: guia-ia-local/scripts/linux/backup-semanal-executor.sh
-logs: guia-ia-local/cerebrum/logs/
+script: scripts/backup.sh + git push
+logs: .planning/logs/
 tags:
   - runbook
   - executor
@@ -14,6 +14,9 @@ status: pronto
 
 # 💾 Runbook — Backup Semanal (Snapshot + Push GitHub)
 
+> [!CAUTION]
+> **⚠️ LEGADO V1** — Este runbook contém procedimentos do Archimedes V1 (`archimedes-vault`) que foram substituídos no V2. Scripts referenciados podem não existir. Consulte `scripts/backup.sh`, `scripts/lint.sh` e `scripts/setup.sh` para os procedimentos atualizados.
+
 > 🚨 **PARA O EXECUTOR — siga APENAS os passos abaixo. Não invente. Não pule. Não edite scripts.**
 
 ## 🎯 Contexto
@@ -22,16 +25,16 @@ Rotina semanal que (1) cria snapshot local do cofre e (2) publica commits locais
 
 ## ⚙️ Comandos (copiar/colar exatos)
 
-1. Abra o terminal e execute **exatamente** este comando:
+1. Abra o terminal na raiz do cofre (`~/archimedes-v2`) e execute **exatamente** este comando:
 
    ```bash
-   ~/archimedes-vault/guia-ia-local/scripts/linux/backup-semanal-executor.sh
+   ./scripts/backup.sh && git add -A && git commit -m "chore(backup): snapshot semanal" && git push origin main
    ```
 
 2. **LEIA a saída inteira.** A execução bem-sucedida termina com:
 
    ```
-   ===== 🎯 Backup semanal concluído com sucesso =====
+   ==> ✅ [2/2] Snapshot concluído e deduplicado com sucesso!
    📋 Log: ...
    ```
 
@@ -41,7 +44,7 @@ Rotina semanal que (1) cria snapshot local do cofre e (2) publica commits locais
 
 - [ ] Saída termina com `🎯 Backup semanal concluído com sucesso`
 - [ ] Nenhuma mensagem `❌` nem `✖`
-- [ ] Log criado em `guia-ia-local/cerebrum/logs/`
+- [ ] Log criado em `.planning/logs/`
 
 ## 🆘 Tratamento de Erros
 
@@ -57,7 +60,6 @@ Rotina semanal que (1) cria snapshot local do cofre e (2) publica commits locais
 
 ## 🔗 Fontes
 
-- 🐚 Script: [`backup-semanal-executor.sh`](../../scripts/backup.sh)
-- 💾 Snapshot: [`backup-cofre.sh`](../../scripts/backup.sh)
-- 🌿 Conveções git: [`.opencode/convencoes/convencoes-git.md`](./runbook-git-sync.md)
-- 📝 Template: [`template-runbook.md`](./README.md)
+- 💾 Snapshot: [`backup.sh`](../../scripts/backup.sh) (restic)
+- 🌿 Git sync: [`runbook-git-sync.md`](./runbook-git-sync.md)
+- 📝 Template: [`README.md`](./README.md)

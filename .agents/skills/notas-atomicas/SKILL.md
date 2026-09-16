@@ -39,7 +39,7 @@ Cada nota deve tratar de **um único assunto, conceito ou procedimento operacion
 - ✅ **Obrigatório**: Links Markdown padrão com caminhos relativos navegáveis:
   - Mesmo diretório: `[Nome da Nota](./nome-da-nota.md)`
   - Diretório pai ou irmão: `[Perfil Alienware](../perfis/alienware.md)`
-  - Raiz do cofre: `[Manual AGENTS](../../AGENTS.md)`
+  - Raiz do cofre: `[Manual AGENTS](../../../AGENTS.md)`
 
 ## 🎨 Uso de Emojis Contextuais
 
@@ -55,8 +55,8 @@ Toda nota técnica deve ser finalizada com uma seção `## 🔗 Fontes`:
 ---
 
 ## 🔗 Fontes
-- [Documentação Oficial](https://link-valido.org)
-- [AGENTS.md](../../AGENTS.md)
+- [Documentação Oficial](https://docs.github.com/en/get-started/writing-on-github)
+- [AGENTS.md](../../../AGENTS.md)
 ```
 
 ## ✅ Checklist antes de salvar

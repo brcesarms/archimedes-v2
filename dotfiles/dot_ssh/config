@@ -20,3 +20,22 @@ Host alienware
     User brn
     IdentityFile ~/.ssh/id_ed25519
     IdentitiesOnly yes
+
+# 🖥️ Proxmox VE (GEEKOM 10.0.0.3) — VMs e Containers
+Host pve-vm
+    HostName 10.0.0.10
+    User brn
+    IdentityFile ~/.ssh/id_ed25519
+    IdentitiesOnly yes
+
+Host pve-win11
+    HostName 10.0.0.217
+    User bruno
+    IdentityFile ~/.ssh/id_ed25519
+    IdentitiesOnly yes
+
+Host pve-ct
+    HostName 10.0.0.4
+    User brn
+    IdentityFile ~/.ssh/id_ed25519
+    IdentitiesOnly yes

@@ -2,8 +2,8 @@
 title: "Runbook — Backup e Limpeza de Temporários"
 tipo: manutencao-diaria
 frequencia: diaria
-script: guia-ia-local/scripts/linux/manutencao-diaria-executor.sh
-logs: guia-ia-local/cerebrum/logs/
+script: scripts/backup.sh
+logs: .planning/logs/
 tags:
   - runbook
   - executor
@@ -14,6 +14,9 @@ status: pronto
 
 # 🧹 Runbook — Backup e Limpeza de Arquivos Temporários
 
+> [!CAUTION]
+> **⚠️ LEGADO V1** — Este runbook contém procedimentos do Archimedes V1 (`archimedes-vault`) que foram substituídos no V2. Scripts referenciados podem não existir. Consulte `scripts/backup.sh`, `scripts/lint.sh` e `scripts/setup.sh` para os procedimentos atualizados.
+
 > 🚨 **PARA O EXECUTOR — siga APENAS os passos abaixo. Não invente. Não pule. Não edite scripts.**
 
 ## 🎯 Contexto
@@ -22,17 +25,17 @@ Rotina diária que (1) faz backup offline do cofre e (2) remove temporários reg
 
 ## ⚙️ Comandos (copiar/colar exatos)
 
-1. Abra o terminal e execute **exatamente** este comando:
+1. Abra o terminal na raiz do cofre (`~/archimedes-v2`) e execute **exatamente** este comando:
 
    ```bash
-   ~/archimedes-vault/guia-ia-local/scripts/linux/manutencao-diaria-executor.sh
+   ./scripts/backup.sh
    ```
 
 2. **LEIA a saída inteira.** A execução bem-sucedida termina com:
 
    ```
    ===== 🎯 Manutenção diária concluída com sucesso =====
-   📋 Log: guia-ia-local/cerebrum/logs/manutencao-<data>.log
+   📋 Log: .planning/logs/manutencao-<data>.log
    ```
 
 3. Se a saída estiver conforme → **✅ tarefa concluída.** Não faça mais nada.
@@ -41,7 +44,7 @@ Rotina diária que (1) faz backup offline do cofre e (2) remove temporários reg
 
 - [ ] Script executou sem mensagens `❌` nem `✖`
 - [ ] Saída termina com `concluída com sucesso`
-- [ ] Log criado em `guia-ia-local/cerebrum/logs/`
+- [ ] Log criado em `.planning/logs/`
 
 ## 🆘 Tratamento de Erros
 
@@ -56,6 +59,6 @@ Rotina diária que (1) faz backup offline do cofre e (2) remove temporários reg
 
 ## 🔗 Fontes
 
-- 🐚 Script: [`manutencao-diaria-executor.sh`](./runbook-saude-sistema.md)
-- 💾 Backup: [`backup-cofre.sh`](../../scripts/backup.sh)
-- 📝 Template: [`template-runbook.md`](./README.md)
+- 💾 Backup: [`backup.sh`](../../scripts/backup.sh) (restic)
+- 🩺 Lint: [`lint.sh`](../../scripts/lint.sh)
+- 📝 Template: [`README.md`](./README.md)

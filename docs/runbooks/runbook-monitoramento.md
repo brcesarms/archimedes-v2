@@ -2,8 +2,8 @@
 title: "Runbook — Monitoramento das Rotinas (estatísticas)"
 tipo: monitoramento
 frequencia: diaria
-script: guia-ia-local/scripts/linux/monitorar-executor.sh
-logs: guia-ia-local/cerebrum/logs/
+script: monitoramento manual (htop/free/df/ollama ps)
+logs: .planning/logs/
 tags:
   - runbook
   - executor
@@ -13,6 +13,9 @@ status: pronto
 ---
 
 # 📊 Runbook — Monitoramento das Rotinas
+
+> [!CAUTION]
+> **⚠️ LEGADO V1** — Este runbook contém procedimentos do Archimedes V1 (`archimedes-vault`) que foram substituídos no V2. Scripts referenciados podem não existir. Consulte `scripts/backup.sh`, `scripts/lint.sh` e `scripts/setup.sh` para os procedimentos atualizados.
 
 > 🚨 **PARA O EXECUTOR — siga APENAS os passos abaixo. Não invente. Não pule. Não edite scripts.**
 
@@ -25,7 +28,7 @@ Rotina diária que varre os logs de todas as rotinas (`manutencao`, `saude-siste
 1. Execute **exatamente**:
 
    ```bash
-   ~/archimedes-vault/guia-ia-local/scripts/linux/monitorar-executor.sh
+   htop && free -h && df -h && ollama ps
    ```
 
 2. **LEIA a saída inteira.** A execução bem-sucedida termina com:
@@ -55,6 +58,6 @@ Rotina diária que varre os logs de todas as rotinas (`manutencao`, `saude-siste
 
 ## 🔗 Fontes
 
-- 🐚 Script: [`monitorar-executor.sh`](./runbook-monitoramento.md)
-- 📝 Template: [`template-runbook.md`](./README.md)
-- 🧠 Arquitetura: [`estrutura-cofre.md`](./README.md)
+- 📊 Monitoramento: [`runbook-saude-sistema.md`](./runbook-saude-sistema.md)
+- 📝 Template: [`README.md`](./README.md)
+- 🧠 Arquitetura: [`mapa-ecossistema.md`](../arquitetura/mapa-ecossistema.md)

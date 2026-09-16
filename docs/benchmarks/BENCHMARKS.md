@@ -1,4 +1,4 @@
-# 🧪 Benchmarks de Modelos — J.A.R.V.I.S.
+# 🧪 Benchmarks de Modelos — Archimedes V2
 
 > Principais métricas dos modelos disponíveis na GEEKOM.
 > Executado em: 06/09/2026 09:26:10 · Ollama 0.33.3
@@ -50,6 +50,8 @@
 > Veja análise completa em [HISTORICO.md](./HISTORICO.md).
 
 ## 🎯 Decisão Final (06/09/2026 — tarde)
+
+> ⚠️ **DECISÃO SUPERADA em 09/09/2026** — após validação agêntica real, o `qwen3-coder:30b` tornou-se OFICIAL (ver decisão atualizada abaixo). Mantida apenas como registro histórico.
 
 > **Regra de boas práticas:** iGPU de **16GB com sobra mínima de 5GB** → orçamento de ~11GB para o modelo. Não trabalhar no limite do hardware evita trashing, offload e alucinações.
 

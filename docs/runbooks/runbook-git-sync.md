@@ -2,8 +2,8 @@
 title: "Runbook — Sincronização Git (ACER ⇄ GEEKOM)"
 tipo: git-sync
 frequencia: diaria
-script: guia-ia-local/scripts/linux/sync-cofre.sh
-logs: guia-ia-local/cerebrum/logs/
+script: scripts/backup.sh + git pull/push
+logs: .planning/logs/
 tags:
   - runbook
   - executor
@@ -14,6 +14,9 @@ status: pronto
 
 # 🔄 Runbook — Sincronização Git (ACER ⇄ GEEKOM)
 
+> [!CAUTION]
+> **⚠️ LEGADO V1** — Este runbook contém procedimentos do Archimedes V1 (`archimedes-vault`) que foram substituídos no V2. Scripts referenciados podem não existir. Consulte `scripts/backup.sh`, `scripts/lint.sh` e `scripts/setup.sh` para os procedimentos atualizados.
+
 > 🚨 **PARA O EXECUTOR — siga APENAS os passos abaixo. Não invente. Não pule. Não edite scripts.**
 
 ## 🎯 Contexto
@@ -22,16 +25,17 @@ Mantém a ACER (máquina local) sincronizada com o GEEKOM (cofre principal). Exe
 
 ## ⚙️ Comandos (copiar/colar exatos)
 
-1. Abra o terminal e execute **exatamente** este comando:
+1. Abra o terminal na raiz do cofre (`~/archimedes-v2`) e execute **exatamente** estes comandos:
 
    ```bash
-   ~/archimedes-vault/guia-ia-local/scripts/linux/sync-cofre.sh
+   git pull --rebase origin main
+   git push origin main
    ```
 
 2. **LEIA a saída inteira.** A execução bem-sucedida termina com:
 
    ```
-   🎯 Sincronização pull concluída com sucesso! ✅
+   🎯 Sincronização concluída com sucesso! ✅
    ```
 
 3. Se a saída estiver conforme → **✅ tarefa concluída.** Não faça mais nada.
@@ -54,6 +58,6 @@ Mantém a ACER (máquina local) sincronizada com o GEEKOM (cofre principal). Exe
 
 ## 🔗 Fontes
 
-- 🐚 Script: [`sync-cofre.sh`](./runbook-git-sync.md)
-- 🔌 Conveções SSH: [`.opencode/convencoes/convencoes-ssh.md`](./bancada-instrucoes.md)
-- 📝 Template: [`template-runbook.md`](./README.md)
+- 💾 Snapshot: [`backup.sh`](../../scripts/backup.sh) (restic)
+- 🔌 SSH: [`bancada-instrucoes.md`](./bancada-instrucoes.md)
+- 📝 Template: [`README.md`](./README.md)

@@ -4,7 +4,7 @@
 > **Uso principal:** Desenvolvimento local, emulação de redes, alto desempenho  
 > **Responsável:** Bruno César Medeiros Siqueira  
 > **Data:** 2026-09-08  
-> **Referência:** `guia-ia-local/MY-SETUP.md`
+> **Referência:** [`my-setup.md`](./my-setup.md)
 
 ---
 
@@ -24,12 +24,12 @@
 
 | Modelo | Tamanho | Uso | Prioridade |
 |--------|---------|-----|------------|
-| `qwen3-coder:30b` | 18GB | Principal (coding, infra) | 🔴 Alta |
-| `gpt-oss:20b` | 12GB | Leve (sumarização, revisão) | 🟠 Média |
-| `qwen2.5-coder:7b` | 4.5GB | Testes rápidos | 🟢 Baixa |
-| `mistral-large:24b` | 14GB | Análise complexa | 🟡 Média |
+| `qwen3-coder:30b` | ~18GB | Principal (coding, infra) | 🔴 Alta |
+| `gpt-oss:20b` | ~12GB | Leve (sumarização, revisão) | 🟠 Média |
+| `qwen2.5-coder:7b` | ~4.5GB | Testes rápidos (GPU pura) | 🟢 Baixa |
+| `mistral-large:24b` | ~14GB | Análise complexa | 🟡 Média |
 
-> 💡 **Nota:** Este é o **notebook principal** do Bruno, usado para desenvolvimento local, emulação de sistemas de rede e alto desempenho de computação.
+> 💡 **Nota VRAM:** A RTX 5060 tem **8GB VRAM**. O `qwen3-coder:30b` (~18GB) **não cabe na VRAM**: o Ollama faz **offload automático** — camadas na VRAM e o restante na RAM de 32GB. Para máxima velocidade use modelos ≤7B (GPU pura, sem offload).
 
 ---
 
@@ -68,9 +68,9 @@
 | Configuração | Valor |
 |--------------|-------|
 | **Frequência** | Diário (23:00) |
-| **Retenção** | 7 dias |
-| **Destino** | `$HOME/backups/archimedes-vault/` |
-| **Push para GitHub** | Automático (via cron) |
+| **Retenção** | 7 dias (política restic) |
+| **Destino** | `$HOME/backups/restic-vault` (repo restic deduplicado) |
+| **Push para GitHub** | Automático (git sync) |
 
 ---
 
@@ -78,7 +78,7 @@
 
 | Uso | Comando |
 |-----|---------|
-| **Testar modelo novo** | `ollama run qwen3-coder:30b` |
+| **Testar modelo novo** | `ollama run qwen3-coder:30b` (usa offload VRAM→RAM) |
 | **Executar Docker pesado** | `docker-compose -f docker-compose.yml up -d` |
 | **Monitorar GPU** | `watch -n 1 nvidia-smi` |
 | **Validar sistema** | `opencode run --auto` |
@@ -125,9 +125,9 @@ export OLLAMA_NUM_GPUS=1
 | Tarefa | Comando |
 |--------|---------|
 | Atualizar drivers NVIDIA | `sudo dnf update nvidia-driver*` |
-| Validar Docker | `docker-compose -f docker-compose.yml config` |
-| Limpar logs antigos | `./logs-rotator.sh` |
-| Validar backup | `tar -tzf $HOME/backups/archimedes-vault/archimedes-vault_*.tar.gz > /dev/null && echo "✅ Integro"` |
+| Validar Docker | `docker compose -f docker/docker-compose.yml config` |
+| Backup restic | `./scripts/backup.sh` |
+| Validar backup | `restic snapshots --repo "$HOME/backups/restic-vault" --latest 1` |
 
 ---
 
@@ -135,7 +135,7 @@ export OLLAMA_NUM_GPUS=1
 
 | Problema | Solução |
 |----------|---------|
-| **CUDA out of memory** | Reduzir batch size ou usar modelo menor |
+| **CUDA out of memory** | Reduzir `OLLAMA_NUM_PARALLEL` ou usar modelo ≤7B (GPU pura) |
 | **Docker falha ao iniciar** | `sudo systemctl restart docker` |
 | **Ollama não responde** | `systemctl --user restart ollama` |
 | **Temperatura alta** | Limpar ventiladores, aumentar velocidade do ventilador |
@@ -152,4 +152,4 @@ export OLLAMA_NUM_GPUS=1
 ---
 
 *Perfil mantido por 🏛️ Archimedes*  
-*Versão: 2.0.0 — Alienware Aurora 16" (archimedes-vault)*
+*Versão: 2.0.0 — Alienware Aurora 16" (archimedes-v2)*

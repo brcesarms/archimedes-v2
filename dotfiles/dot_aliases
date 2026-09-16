@@ -1,10 +1,12 @@
 # 🏛️ Aliases Oficiais — Archimedes V2
 # ==============================================================================
+# Usa $HOME em vez de caminhos hardcoded (portabilidade entre máquinas)
 
 # 🏛️ Archimedes V2
-alias v2='cd /home/brn/archimedes-v2'
-alias v2-lint='/home/brn/archimedes-v2/scripts/lint.sh'
-alias v2-backup='/home/brn/archimedes-v2/scripts/backup.sh'
+alias v2='cd "$HOME/archimedes-v2"'
+alias v2-lint='"$HOME/archimedes-v2/scripts/lint.sh"'
+alias v2-backup='"$HOME/archimedes-v2/scripts/backup.sh"'
+alias v2-setup='"$HOME/archimedes-v2/scripts/setup.sh"'
 
 # 📁 Navegação rápida
 alias ..='cd ..'
@@ -24,4 +26,4 @@ alias freeh='free -h'
 alias ly='lychee --offline .'
 alias gl='gitleaks detect --source . --no-banner'
 alias sc='shellcheck -S warning'
-alias sf='shfmt -i 4 -w'
+alias sf='shfmt -i 2 -ci -bn -w'

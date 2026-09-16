@@ -2,6 +2,11 @@
 # 🏛️ Archimedes V2 — .gitignore Oficial
 # ==============================================================================
 
+# IDEs
+.vscode/
+.idea/
+*.code-workspace
+
 # Ambientes virtuais e dependências
 .venv/
 venv/
@@ -27,6 +32,7 @@ __pycache__/
 # Arquivos de segredos e credenciais (NUNCA commitados)
 .env
 .env.*
+docker/.env
 *.key
 *.pem
 *.pfx
@@ -44,3 +50,10 @@ password*
 *~
 .DS_Store
 Thumbs.db
+docker/.env
+
+# Builds e cobertura
+dist/
+build/
+.coverage
+htmlcov/

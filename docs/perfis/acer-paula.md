@@ -4,7 +4,7 @@
 > **Uso principal:** Leve (modelos leves, backup, revisão)  
 > **Responsável:** Bruno César Medeiros Siqueira  
 > **Data:** 2026-09-08  
-> **Referência:** `guia-ia-local/MY-SETUP.md`
+> **Referência:** [`my-setup.md`](./my-setup.md)
 
 ---
 
@@ -26,10 +26,10 @@
 
 | Modelo | Tamanho | Uso | Prioridade |
 |--------|---------|-----|------------|
-| `gpt-oss:20b` | 12GB | Leve (sumarização, revisão) | 🔴 Alta |
-| `qwen2.5-coder:7b` | 4.5GB | Testes rápidos | 🟠 Média |
+| `qwen2.5-coder:7b` | ~4.5GB | Principal (sumarização, revisão) | 🟠 Média |
+| `qwen3:4b` | ~2.6GB | Testes rápidos e chat leve | 🟢 Baixa |
 
-> ⚠️ **Importante:** Esta máquina **não roda IA pesada** (sem GPU). Modelos >7B causam OOM.
+> ⚠️ **Importante:** Esta máquina **não roda IA pesada** (sem GPU e com 12GB RAM total). Modelos >7B causam **OOM garantido** — o `gpt-oss:20b` foi **descartado** por isso.
 
 ---
 
@@ -48,9 +48,9 @@
 | Configuração | Valor |
 |--------------|-------|
 | **Frequência** | Semanal (Domingo 03:00) |
-| **Retenção** | 4 semanas |
-| **Destino** | `$HOME/backups/archimedes-vault/` |
-| **Push para GitHub** | Manual (via `sync-cofre.sh`) |
+| **Retenção** | 4 semanas (política restic) |
+| **Destino** | `$HOME/backups/restic-vault` (repo restic deduplicado) |
+| **Sincronização** | Manual (via `./scripts/backup.sh`) |
 
 > 💡 O backup do ACER é **manual e semanal** (não é máquina principal).
 
@@ -60,10 +60,10 @@
 
 | Uso | Comando |
 |-----|---------|
-| **Revisar nota longa** | `ollama run gpt-oss:20b` |
-| **Sumarizar artigo** | `ollama run gpt-oss:20b` |
-| **Validar backup** | `tar -tzf $HOME/backups/archimedes-vault/archimedes-vault_*.tar.gz` |
-| **Sincronizar com GEEKOM** | `./sync-cofre.sh` |
+| **Revisar nota longa** | `ollama run qwen2.5-coder:7b` |
+| **Sumarizar artigo** | `ollama run qwen2.5-coder:7b` |
+| **Validar backup** | `restic snapshots --repo "$HOME/backups/restic-vault" --latest 1` |
+| **Backup manual** | `./scripts/backup.sh` |
 
 ---
 
@@ -71,9 +71,9 @@
 
 | Tarefa | Comando |
 |--------|---------|
-| Sincronizar com GEEKOM | `./sync-cofre.sh` |
-| Validar backup | `tar -tzf $HOME/backups/archimedes-vault/archimedes-vault_*.tar.gz > /dev/null && echo "✅ Integro"` |
-| Limpar logs antigos | `./logs-rotator.sh` |
+| Backup restic | `./scripts/backup.sh` |
+| Validar backup | `restic snapshots --repo "$HOME/backups/restic-vault" --latest 1` |
+| Limpar logs antigos | `journalctl --vacuum-time=7d` |
 
 ---
 
@@ -81,8 +81,8 @@
 
 | Problema | Solução |
 |----------|---------|
-| **Out of memory (OOM)** | Usar modelo `qwen2.5-coder:7b` (4.5GB) |
-| **Modelo não carrega** | `ollama pull gpt-oss:20b` (12GB) |
+| **Out of memory (OOM)** | Usar modelo `qwen3:4b` (~2.6GB) |
+| **Modelo não carrega** | `ollama pull qwen2.5-coder:7b` (~4.5GB) |
 | **Lentidão** | Fechar outros aplicativos |
 
 ---

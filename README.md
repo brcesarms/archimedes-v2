@@ -25,7 +25,7 @@ O **Archimedes V2** é a evolução arquitetural do ecossistema de T.I. do Bruno
 | 🛡️ **Detecção de Segredos** | **`gitleaks`** | [gitleaks/gitleaks](https://github.com/gitleaks/gitleaks) | Scanner matemático de entropia para blindar repositórios Git |
 | 🐧 **Qualidade Shell** | **`shellcheck` & `shfmt`** | [shellcheck](https://github.com/koalaman/shellcheck) · [shfmt](https://github.com/mvdan/sh) | Auditoria estática de bugs e formatação automática de Bash |
 | 📋 **Planejamento em Disco** | **`planning-with-files`** | [othmanadi/planning-with-files](https://github.com/othmanadi/planning-with-files) | Plano persistente em 3 arquivos (`task_plan.md`, `findings.md`, `progress.md`) imune a `/clear` |
-| 📦 **Contexto de IA** | **`repomix` & `ast-grep`** | [repomix](https://github.com/yamadashy/repomix) · [ast-grep](https://github.com/ast-grep/ast-grep) | Fatiamento e busca estrutural de código-fonte via AST |
+| 📦 **Contexto de IA** | **`repomix` & `ast-grep`** ⏳ *em planejamento* | [repomix](https://github.com/yamadashy/repomix) · [ast-grep](https://github.com/ast-grep/ast-grep) | Fatiamento e busca estrutural de código-fonte via AST |
 
 ---
 
@@ -38,7 +38,8 @@ archimedes-v2/
 │   └── skills/                     <-- Skills atômicas (planning-with-files, notas-atomicas, etc.)
 ├── .opencode/                      <-- Configurações e comandos do OpenCode CLI
 │   └── commands/                   <-- Slash commands (/pwf, /pwf-status)
-├── config/                         <-- Configurações centralizadas (MCP, hooks, linters)
+├── .planning/                      <-- Planos persistentes (planning-with-files)
+├── config/                         <-- Hub de configurações centralizadas (MCP, hooks, linters)
 ├── docker/                         <-- Stack de IA local em container (Ollama + Open-WebUI)
 ├── docs/                           <-- Documentação técnica de arquitetura, perfis e runbooks
 │   ├── arquitetura/                <-- Decisões de design (ADRs) e matrizes de substituição
@@ -48,7 +49,8 @@ archimedes-v2/
 ├── dotfiles/                       <-- Configurações gerenciadas pelo Chezmoi (SSH, aliases)
 ├── scripts/                        <-- Scripts utilitários limpos e auditados (shellcheck, shfmt)
 │   ├── backup.sh                   <-- Wrapper operacional para restic
-│   └── lint.sh                     <-- Validação completa (lychee + shellcheck + gitleaks)
+│   ├── lint.sh                     <-- Validação completa (lychee + shellcheck + shfmt + gitleaks)
+│   └── setup.sh                    <-- Configuração inicial do ambiente
 ├── Brewfile                        <-- Gerenciamento declarativo de pacotes via Homebrew Bundle
 ├── opencode.json                   <-- Configuração do OpenCode CLI com ferramentas permitidas
 ├── .editorconfig                   <-- Padrão de charset e indentação
@@ -105,7 +107,7 @@ lychee --offline .
 gitleaks detect --source . --verbose --no-banner
 
 # 3. Criar snapshot instantâneo com deduplicação:
-restic backup . --repo ~/backups/restic-vault --password-file ~/.config/restic/password
+restic backup . --repo ~/backups/restic-vault --password-file ~/.config/restic/password --exclude-file .resticignore --tag archimedes-v2
 ```
 
 ---

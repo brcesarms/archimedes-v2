@@ -1,6 +1,6 @@
 {
   "model": "hermes3:8b",
-  "benchmark": "agenico-opencode",
+  "benchmark": "agentico-opencode",
   "data": "2026-09-09",
   "context": 24576,
   "capabilities": ["completion", "tools"],

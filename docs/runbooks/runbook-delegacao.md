@@ -2,8 +2,8 @@
 title: "Runbook — Delegação ao Executor (opencode run --auto)"
 tipo: delegacao
 frequencia: diaria
-script: guia-ia-local/scripts/linux/delegar-executor.sh
-logs: guia-ia-local/cerebrum/logs/
+script: opencode run --auto
+logs: .planning/logs/
 tags:
   - runbook
   - executor
@@ -13,6 +13,9 @@ status: pronto
 ---
 
 # 🤖 Runbook — Delegação ao Executor (opencode run --auto)
+
+> [!CAUTION]
+> **⚠️ LEGADO V1** — Este runbook contém procedimentos do Archimedes V1 (`archimedes-vault`) que foram substituídos no V2. Scripts referenciados podem não existir. Consulte `scripts/backup.sh`, `scripts/lint.sh` e `scripts/setup.sh` para os procedimentos atualizados.
 
 > 🚨 **PARA O EXECUTOR — siga APENAS os passos abaixo. Não invente. Não pule. Não edite scripts.**
 
@@ -25,13 +28,13 @@ Delega a execução das rotinas ao modelo local via `opencode run --auto` (headl
 ### Rotina diária (backup + limpeza + saúde + monitoramento)
 
 ```bash
-~/archimedes-vault/guia-ia-local/scripts/linux/delegar-executor.sh
+opencode run --auto
 ```
 
 ### Auditoria semanal (links + órfãs + MOCs + backup semanal)
 
 ```bash
-~/archimedes-vault/guia-ia-local/scripts/linux/delegar-executor.sh auditoria
+./scripts/lint.sh
 ```
 
 **LEIA a saída inteira.** A execução bem-sucedida termina com:
@@ -45,7 +48,7 @@ Delega a execução das rotinas ao modelo local via `opencode run --auto` (headl
 
 - [ ] Saída termina com `🎯 Delegação ... concluída com sucesso! ✅`
 - [ ] Nenhuma mensagem `❌` nem `#falha` no final
-- [ ] Log criado em `guia-ia-local/cerebrum/logs/delegacao-*.log`
+- [ ] Log criado em `.planning/logs/delegacao-*.log`
 
 ## 🆘 Tratamento de Erros
 
@@ -61,6 +64,7 @@ Delega a execução das rotinas ao modelo local via `opencode run --auto` (headl
 
 ## 🔗 Fontes
 
-- 🐚 Script: [`delegar-executor.sh`](./runbook-delegacao.md)
-- 📄 Prompts: [`prompts/prompt-executor-diario.md`](./runbook-saude-sistema.md) · [`prompts/prompt-executor-auditoria.md`](./runbook-auditoria-cofre.md)
-- 📝 Template: [`template-runbook.md`](./README.md)
+- 💾 Backup: [`backup.sh`](../../scripts/backup.sh)
+- 🩺 Saúde: [`runbook-saude-sistema.md`](./runbook-saude-sistema.md)
+- 🏥 Auditoria: [`runbook-auditoria-cofre.md`](./runbook-auditoria-cofre.md)
+- 📝 Template: [`README.md`](./README.md)

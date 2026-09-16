@@ -10,8 +10,8 @@
 | Máquina | Perfil | Uso Principal | Modelo Principal |
 |---------|--------|---------------|------------------|
 | 🚀 **Alienware Aurora 16"** | [`alienware.md`](./alienware.md) | Desenvolvimento pesado, Docker, testes | `qwen3-coder:30b` |
-| 🧠 **GEEKOM A7 MAX** | [`geekom.md`](./geekom.md) | **IA Local Principal** (J.A.R.V.I.S. Executor) | `qwen3-coder:30b` |
-| 💻 **ACER Aspire** | [`acer-paula.md`](./acer-paula.md) | Leve (modelos leves, backup, revisão) | `gpt-oss:20b` |
+| 🧠 **GEEKOM A7 MAX** | [`geekom.md`](./geekom.md) | **IA Local Principal** (Archimedes V2 — Ollama + OpenCode) | `qwen3-coder:30b` |
+| 💻 **ACER Aspire** | [`acer-paula.md`](./acer-paula.md) | Leve (modelos leves, backup, revisão) | `qwen2.5-coder:7b` |
 
 ---
 
@@ -29,7 +29,7 @@ neofetch
 ### 2. Ler o perfil correspondente
 ```bash
 # Exemplo para GEEKOM
-cat ~/archimedes-vault/guia-ia-local/perfis/geekom.md
+cat ~/archimedes-v2/docs/perfis/geekom.md
 ```
 
 ### 3. Aplicar configurações
@@ -46,7 +46,7 @@ cat ~/archimedes-vault/guia-ia-local/perfis/geekom.md
 | **GPU** | RTX 5060 (8GB) | Radeon 780M | UHD Graphics |
 | **RAM** | 32GB | 64GB | 12GB |
 | **Armazenamento** | 1TB NVMe | 1TB NVMe | 512GB NVMe |
-| **Ollama pesado** | ✅ (18GB+ modelos) | ✅ (18GB+ modelos) | ❌ (máx 12GB) |
+| **Ollama pesado** | ✅ (18GB+ modelos) | ✅ (18GB+ modelos via offload) | ❌ (máx ~4.5GB) |
 | **Docker pesado** | ✅ (32GB RAM) | ✅ (16GB RAM) | ⚠️ (limitado) |
 | **IA Principal** | ❌ (testes) | ✅ (Executor) | ❌ (leve) |
 
@@ -56,11 +56,9 @@ cat ~/archimedes-vault/guia-ia-local/perfis/geekom.md
 
 | Script | Alienware | GEEKOM | ACER |
 |--------|-----------|--------|------|
-| `backup-cofre.sh` | ✅ | ✅ | ✅ |
-| `saude-sistema-executor.sh` | ✅ | ✅ | ✅ |
-| `sync-cofre.sh` | ✅ | ✅ | ✅ |
-| `manutencao-diaria-executor.sh` | ⚠️ (raro) | ✅ | ❌ |
-| `backup-semanal-executor.sh` | ✅ | ✅ | ✅ |
+| `scripts/backup.sh` (restic) | ✅ | ✅ | ✅ |
+| `scripts/lint.sh` (esteira) | ✅ | ✅ | ✅ |
+| `scripts/setup.sh` | ✅ | ✅ | ⚠️ (raro) |
 
 ---
 
@@ -76,7 +74,7 @@ cat ~/archimedes-vault/guia-ia-local/perfis/geekom.md
 | Problema | Solução |
 |----------|---------|
 | **Ollama não responde** | `systemctl --user restart ollama` |
-| **Runbook falha** | Verificar `cerebrum/logs/estado-falhas.md` |
+| **Runbook falha** | Verificar `.planning/` e `findings.md` do plano ativo |
 
 ### ACER
 | Problema | Solução |
@@ -91,10 +89,10 @@ cat ~/archimedes-vault/guia-ia-local/perfis/geekom.md
 - 🚀 [`alienware.md`](./alienware.md)
 - 🧠 [`geekom.md`](./geekom.md)
 - 💻 [`acer-paula.md`](./acer-paula.md)
-- 📖 [`guia-ia-local/README.md`](../../README.md)
-- 🧠 [`cerebrum/README.md`](../runbooks/README.md)
+- 📖 [README raiz do cofre](../../README.md)
+- 🧠 [Runbooks do cofre](../runbooks/README.md)
 
 ---
 
 *Doc mantido por 🏛️ Archimedes*  
-*Versão: 2.0.0 — Perfis por Máquina (archimedes-vault)*
+*Versão: 2.0.0 — Perfis por Máquina (archimedes-v2)*

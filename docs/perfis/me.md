@@ -85,7 +85,7 @@
 > **O que faço:** administro redes (Mikrotik/Ubiquiti), dou suporte técnico e mantenho infraestrutura em órgãos públicos e provedores de internet.
 > **Especialidades:** redes sem fio, roteamento, Linux e Windows.
 >
-> 💡 Complexidades de contexto: quando precisar saber quem sou, minhas qualificações ou experiências, **releia este arquivo** (`guia-ia-local/ME.md`).
+> 💡 Complexidades de contexto: quando precisar saber quem sou, minhas qualificações ou experiências, **releia este arquivo** (`docs/perfis/me.md`).
 
 ---
 

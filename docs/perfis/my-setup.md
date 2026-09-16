@@ -48,7 +48,7 @@ A minha **central de comando** focada em **IA Local** e **OpenCode CLI**. A máq
 
 > 💡 **Destaque para a IA:** É nesta máquina que a IA local (Ollama + OpenCode) roda de forma nativa.
 >
-> 🏛️ **Migração do Cofre:** O Archimedes Vault (segundo cérebro) mora **nesta máquina** (`~/archimedes-vault`)! Acesso SSH: `ssh geekom` (usuário `brn`, IP `10.0.0.3`, chave ed25519 da ACER).
+> 🏛️ **Migração do Cofre:** O Archimedes V2 (segundo cérebro) mora **nesta máquina** (`~/archimedes-v2`)! Acesso SSH: `ssh geekom` (usuário `brn`, IP `10.0.0.3`, chave ed25519 da ACER).
 
 ---
 
@@ -68,13 +68,13 @@ Plataforma Intel Tiger Lake rodando sistema **Linux**, perfeita para estudos por
 ## 📌 Resumo para a IA
 
 > **Máquinas principais do Bruno:**
-> 1. 🚀 [**Alienware Aurora 16"**](././alienware.md) — notebook de alto desempenho (dev + emulação de redes)
-> 2. 🖥️ [**GEEKOM A7 MAX (AI)**](././geekom.md) — central de IA Local (Ollama + OpenCode) 🧠
-> 3. 💻 [**ACER Aspire da Paula**](././acer-paula.md) — laptop portátil de estudos (Linux)
+> 1. 🚀 [**Alienware Aurora 16"**](./alienware.md) — notebook de alto desempenho (dev + emulação de redes)
+> 2. 🖥️ [**GEEKOM A7 MAX (AI)**](./geekom.md) — central de IA Local (Ollama + OpenCode) 🧠
+> 3. 💻 [**ACER Aspire da Paula**](./acer-paula.md) — laptop portátil de estudos (Linux)
 >
 > 💡 Cada máquina tem um **perfil detalhado** com specs, stack e comandos — clique no nome acima.
 >
-> 💡 Complexidades de contexto: quando precisar saber sobre o setup/hardware do Bruno, **releia este arquivo** (`guia-ia-local/MY-SETUP.md`).
+> 💡 Complexidades de contexto: quando precisar saber sobre o setup/hardware do Bruno, **releia este arquivo** (`docs/perfis/my-setup.md`).
 
 ---
 

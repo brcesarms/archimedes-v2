@@ -1,5 +1,8 @@
 # 🖥️ Runbook: Máquina Nova — Bootstrap do Archimedes (< 2 min)
 
+> [!CAUTION]
+> **⚠️ LEGADO V1** — Este runbook contém procedimentos do Archimedes V1 (`archimedes-vault`) que foram substituídos no V2. Scripts referenciados podem não existir. Consulte `scripts/backup.sh`, `scripts/lint.sh` e `scripts/setup.sh` para os procedimentos atualizados.
+
 > **Objetivo:** após formatar qualquer máquina (ACER com Omarchy, GEEKOM, etc.), subir o cofre e voltar ao trabalho em **menos de 2 minutos**.
 > **Pré-requisito:** token GitHub (PAT) salvo no **Bitwarden** e ISO baixada.
 
@@ -55,14 +58,14 @@ sudo apt update && sudo apt install -y git curl
 gh auth login          # escolha: GitHub.com → HTTPS → Login with token
 ```
 
-### 2.3. Clone + bootstrap (40s)
+### 2.3. Clone + setup (40s)
 
 ```bash
-gh repo clone brcesarms/archimedes-vault ~/archimedes-vault -- --recurse-submodules
-cd ~/archimedes-vault && ./bootstrap.sh
+git clone git@github.com:brcesarms/archimedes-v2.git ~/archimedes-v2
+cd ~/archimedes-v2 && ./scripts/setup.sh
 ```
 
-> ⏱️ **Meta total:** ~2 min com internet boa. O `bootstrap.sh` instala deps, ssh config, OpenCode, dotfiles e valida o cofre.
+> ⏱️ **Meta total:** ~2 min com internet boa. O `setup.sh` instala deps via Brewfile (brew bundle), aplica dotfiles via Chezmoi e valida o cofre.
 
 ---
 
@@ -70,17 +73,17 @@ cd ~/archimedes-vault && ./bootstrap.sh
 
 | Check | Comando | Esperado |
 | :--- | :--- | :--- |
-| Cofre íntegro | `ls ~/archimedes-vault && git -C ~/archimedes-vault status` | Árvore + clean |
+| Cofre íntegro | `ls ~/archimedes-v2 && git -C ~/archimedes-v2 status` | Árvore + clean |
 | Estudos pessoais (opcional) | `ls ~/wikisidian && git -C ~/wikisidian/t.i status` | `t.i` e `concurseiro` OK |
-| OpenCode | `opencode --version` ou `agy` | Versão listada |
+| OpenCode | `opencode --version` | Versão listada |
 | SSH remoto | `ssh laptop-brn 'echo ok'` | `ok` |
-| Chat | `cd ~/archimedes-vault && agy` | 🏛️ Archimedes online |
+| Chat | `cd ~/archimedes-v2 && opencode` | 🏛️ Archimedes online |
 
 ---
 
 ## 4️⃣ Pós-bootstrap (opcional, quando quiser)
 
-- **IA local / Docker:** `cd ~/archimedes-vault/guia-ia-local && ./install.sh --full`
+- **IA local / Docker:** `cd ~/archimedes-v2/docker && docker compose up -d`
 - **Restaurar chave SSH:** cole a chave privada do Bitwarden em `~/.ssh/id_ed25519` (chmod 600) ou gere nova
 
 ---
@@ -93,14 +96,14 @@ cd ~/archimedes-vault && ./bootstrap.sh
 | Submódulos não clonados | `git submodule update --init --recursive` |
 | `bootstrap.sh` acusa submódulo ausente indevidamente | `.git` de submódulo é arquivo pointer — a validação usa `-e` (bug já corrigido) |
 | Teclado Bluetooth não funciona no LUKS | Usar teclado do laptop (embutido) ou USB/dongle 2.4GHz |
-| Distro não reconhecida no install.sh | Adicionar ID ao case em `guia-ia-local/install.sh` / `bootstrap.sh` |
+| Distro não reconhecida | Verificar pré-requisitos do `setup.sh` (Brewfile) |
 
 ---
 
 ## 🔗 Fontes
 
-- 🏛️ Script: [`bootstrap.sh`](./README.md)
-- 🐚 Dotfiles: [`dotfiles/`](./README.md)
-- 🔌 Convenção SSH: [`.opencode/convencoes/convencoes-ssh.md`](./bancada-instrucoes.md)
-- 🌿 Convenção Git: [`.opencode/convencoes/convencoes-git.md`](./runbook-git-sync.md)
+- 🏛️ Setup: [`setup.sh`](../../scripts/setup.sh)
+- 🐚 Dotfiles: [`README.md`](../../dotfiles/README.md)
+- 🔌 SSH: [`bancada-instrucoes.md`](./bancada-instrucoes.md)
+- 🌿 Git: [`runbook-git-sync.md`](./runbook-git-sync.md)
 - 🖥️ Omarchy: https://omarchy.org

@@ -143,7 +143,8 @@ for s in \
     ".claude/skills/planning-with-files" \
     "${HOME:-}/.claude/skills/planning-with-files" \
     ".agents/skills/planning-with-files" \
-    "${HOME:-}/.agents/skills/planning-with-files"
+    "${HOME:-}/.agents/skills/planning-with-files" \
+    "${HOME:-}/archimedes-v2/.agents/skills/planning-with-files"
 do
     [ -n "${s}" ] && [ -d "${s}" ] && { info "install surface present: ${s}"; FOUND_SURFACE=1; }
 done
