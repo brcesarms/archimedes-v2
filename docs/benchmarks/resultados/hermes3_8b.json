@@ -1,0 +1,21 @@
+{
+  "model": "hermes3:8b",
+  "benchmark": "agenico-opencode",
+  "data": "2026-09-09",
+  "context": 24576,
+  "capabilities": ["completion", "tools"],
+  "velocidade_pura_tok_s": 18.1,
+  "alocacao_gb": 7.8,
+  "processador": "100% GPU",
+  "tarefas": {
+    "1_estrutura_pastas_nota": {"status": "falha", "tempo_s": 45, "arquivos": 0, "observacao": "alucinou tool call com caminho placeholder /path/to/your/README.md"},
+    "2_script_bash_executar": {"status": "falha", "tempo_s": 195, "arquivos": 0, "observacao": "chamadas bash confusas, nada persistiu"},
+    "3_listar_modelos_resumo": {"status": "parcial", "tempo_s": 56, "arquivos": 1, "observacao": "criou models.md vazio (0 bytes)"},
+    "4_python_fatorial_testes": {"status": "sucesso", "tempo_s": 58, "arquivos": 1, "observacao": "codigo correto, escreveu e executou"},
+    "5_info_sistema": {"status": "falha", "tempo_s": 55, "arquivos": 0, "observacao": "alucinou mkdir /path/to"}
+  },
+  "tarefas_ok": 1,
+  "tarefas_parciais": 1,
+  "tarefas_falhas": 3,
+  "veredicto": "funciona mas tool calling instavel; nao recomendado para OpenCode agêntico"
+}

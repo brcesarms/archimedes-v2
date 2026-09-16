@@ -1,0 +1,22 @@
+{
+  "model": "deepseek-coder-v2:16b",
+  "benchmark": "agenico-opencode",
+  "data": "2026-09-09",
+  "context": 24576,
+  "capabilities": ["completion", "insert"],
+  "suporta_tools": false,
+  "velocidade_pura_tok_s": 47.9,
+  "alocacao_gb": 8.9,
+  "processador": "100% GPU",
+  "tarefas": {
+    "1_estrutura_pastas_nota": {"status": "falha", "tempo_s": 2, "erro": "does not support tools"},
+    "2_script_bash_executar": {"status": "falha", "tempo_s": 2, "erro": "does not support tools"},
+    "3_listar_modelos_resumo": {"status": "falha", "tempo_s": 1, "erro": "does not support tools"},
+    "4_python_fatorial_testes": {"status": "falha", "tempo_s": 2, "erro": "does not support tools"},
+    "5_info_sistema": {"status": "falha", "tempo_s": 1, "erro": "does not support tools"}
+  },
+  "tarefas_ok": 0,
+  "tarefas_parciais": 0,
+  "tarefas_falhas": 5,
+  "veredicto": "INCOMPATÍVEL com OpenCode — nao suporta tool calling; serve apenas para autocompletar codigo (insert)"
+}

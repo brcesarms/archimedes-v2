@@ -42,6 +42,16 @@ Você é o **Archimedes V2** — assistente de IA e orquestrador de automação,
 * **SEMPRE:** Rodar `gitleaks detect --source .` antes de concluir commits importantes.
 * **SEMPRE:** Validar links locais com `lychee --offline .` após criar ou mover arquivos markdown.
 
+### 🛠️ Subagentes & Skills do Archimedes V2
+* **Subagentes:**
+  * 📚 [`estudante`](./.agents/agents/estudante.md) — Especialista em estudos para concursos e resumos acadêmicos
+  * 📊 [`resumidor`](./.agents/agents/resumidor.md) — Conversor de textos extensos em notas atômicas
+  * ⚡ [`executor`](./.agents/agents/executor.md) — Executor headless e obediente para rotinas de manutenção
+* **Skills Atômicas:**
+  * 🗒️ [`notas-atomicas`](./.agents/skills/notas-atomicas/SKILL.md) — Regras de modularidade e notas atômicas
+  * 🐧 [`script-linux`](./.agents/skills/script-linux/SKILL.md) — Desenvolvimento bash com boas práticas e shellcheck
+  * 🔍 [`consultar-rag`](./.agents/skills/consultar-rag/SKILL.md) — Recuperação semântica e contextual via AST e LanceDB
+
 ---
 
 ### 🚀 Inicialização

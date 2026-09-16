@@ -32,17 +32,22 @@ O **Archimedes V2** é a evolução arquitetural do ecossistema de T.I. do Bruno
 
 ```text
 archimedes-v2/
-├── .agents/                        <-- Skills e configurações dos agentes de IA
-│   └── skills/                     <-- Skills modulares V2 baseadas nas novas ferramentas
+├── .agents/                        <-- Agentes e skills modulares
+│   ├── agents/                     <-- Subagentes (estudante, resumidor, executor)
+│   └── skills/                     <-- Skills atômicas (notas-atomicas, script-linux, consultar-rag)
 ├── config/                         <-- Configurações centralizadas (MCP, hooks, linters)
-├── docs/                           <-- Documentação de arquitetura, perfis e runbooks
+├── docker/                         <-- Stack de IA local em container (Ollama + Open-WebUI)
+├── docs/                           <-- Documentação técnica de arquitetura, perfis e runbooks
 │   ├── arquitetura/                <-- Decisões de design (ADRs) e matrizes de substituição
+│   ├── benchmarks/                 <-- Histórico empírico de modelos e hardware (GEEKOM/Alienware)
 │   ├── perfis/                     <-- Perfis de hardware do ecossistema
 │   └── runbooks/                   <-- Procedimentos operacionais padrão (SOP)
-├── scripts/                        <-- Wrappers limpos e auditados com shellcheck
+├── dotfiles/                       <-- Configurações gerenciadas pelo Chezmoi (SSH, aliases)
+├── scripts/                        <-- Scripts utilitários limpos e auditados (shellcheck, shfmt)
 │   ├── backup.sh                   <-- Wrapper operacional para restic
-│   ├── lint.sh                     <-- Validação completa (lychee + shellcheck + gitleaks)
-│   └── deploy-bancada.py           <-- Automações declarativas com pyinfra
+│   └── lint.sh                     <-- Validação completa (lychee + shellcheck + gitleaks)
+├── Brewfile                        <-- Gerenciamento declarativo de pacotes via Homebrew Bundle
+├── opencode.json                   <-- Configuração do OpenCode CLI com ferramentas permitidas
 ├── .editorconfig                   <-- Padrão de charset e indentação
 ├── .gitignore                      <-- Bloqueio rigoroso de credenciais e caches
 ├── .lychee.toml                    <-- Configuração oficial do link checker em Rust

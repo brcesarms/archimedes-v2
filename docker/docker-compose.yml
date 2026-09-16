@@ -1,0 +1,61 @@
+# ============================================================
+# 🐳 Docker Compose do Archimedes V2 - Stack de IA Local
+# ============================================================
+# Padrão de Indústria: Ollama (runtime) + Open-WebUI (interface web)
+# Compatível com: Docker Compose v2.20+
+#
+# Uso:
+#   cd docker
+#   docker compose up -d          # Iniciar serviços
+#   docker compose down           # Parar serviços
+#   docker compose logs -f        # Acompanhar logs
+# ============================================================
+
+services:
+  # 🦙 Ollama - Runtime e Servidor de Inferência de Modelos de IA
+  ollama:
+    image: ollama/ollama:latest
+    container_name: archimedes-ollama
+    restart: unless-stopped
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama-data:/root/.ollama
+    environment:
+      - OLLAMA_HOST=0.0.0.0:11434
+      - OLLAMA_KEEP_ALIVE=2h
+    # ⚠️ Descomente para GPU NVIDIA (ex: Alienware com GeForce RTX):
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: all
+    #           capabilities: [gpu]
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:11434/api/tags"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # 🌐 Open-WebUI - Interface Web Amigável Padrão de Indústria para LLMs
+  open-webui:
+    image: ghcr.io/open-webui/open-webui:main
+    container_name: archimedes-open-webui
+    restart: unless-stopped
+    ports:
+      - "3000:8080"
+    volumes:
+      - open-webui-data:/app/backend/data
+    environment:
+      - OLLAMA_BASE_URL=http://ollama:11434
+      - WEBUI_SECRET_KEY=***REMOVED***
+    depends_on:
+      ollama:
+        condition: service_healthy
+
+volumes:
+  ollama-data:
+    name: archimedes-ollama-data
+  open-webui-data:
+    name: archimedes-open-webui-data
