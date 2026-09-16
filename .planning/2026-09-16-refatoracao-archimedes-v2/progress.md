@@ -3,14 +3,18 @@
 ## Session: 2026-09-16
 
 ### Current Status
-- **Phase:** 6 - Validação Final (COMPLETA ✅)
-- **Started:** 2026-09-16
-- **Plano concluído em:** 2026-09-16
+- **Phase 7 COMPLETA ✅ — Memória Longa (claude-mem) e servidor Ollama**
+- **Started:** 2026-09-16 · **Concluído:** 2026-09-16
 
-### Results
-- ✅ lint.sh completo: lychee 102 OK / 0 errors, shellcheck 100%, shfmt aplicado, gitleaks no leaks
-- ✅ Commit `ef5f79c` (45 arquivos, +704/−205) pushado para `main`
-- ✅ Refatoração Archimedes V2 100% concluída
+### Phase 7 Actions
+- ✅ LXC 104 criado no Proxmox (10.0.0.4): 8vCPU/12GB/132GB, privilegiado, GPU AMD ROCm 7.2, Ubuntu 24.04
+- ✅ Ollama v0.34.1 instalado e validado (http://10.0.0.4:11434, /v1 OpenAI-compatible)
+- ✅ Modelo qwen3:4b baixado (~2.6GB) e testado via chat
+- ✅ claude-mem 13.25.1 instalado (npx, plugin OpenCode registrado)
+- ✅ Provider host observer: proxy TCP 127.0.0.1:37777 → 10.0.0.4:11434 (mini-proxy Python em /tmp/opencode/, substituir por socat quando houver sudo)
+- ✅ Worker ativo (porta 37700), SQLite + Chroma em ~/.claude-mem
+- ✅ Via de compressão validada (chat qwen3:4b via proxy)
+- ✅ docs/perfis/geekom.md e dot_ssh/config atualizados; commit 99056d5 pushado
 
 ### Actions Taken
 - Fase 1 completa: auditoria dos 4 domínios consolidada em findings.md
