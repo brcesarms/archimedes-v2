@@ -32,6 +32,7 @@ __pycache__/
 # Arquivos de segredos e credenciais (NUNCA commitados)
 .env
 .env.*
+!.env.example
 docker/.env
 *.key
 *.pem
