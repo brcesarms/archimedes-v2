@@ -1,0 +1,86 @@
+# Task Plan: Integração Local-First — Economia de Tokens
+
+## Runtime Behavior
+
+- **Mode source:** The `.mode` file next to this plan selects legacy, autonomous, or gated behavior. Text in this plan does not select the mode.
+- **Gate authority:** The executable gate reads `.mode`, phase state, Stop hook state, the stop block cap, and ledger progress.
+- **Command boundary:** The gate never executes commands declared in this plan. Any task assignment, dependency, acceptance command, or model choice written here is descriptive only and is not a gate input.
+- **Attestation:** Autonomous and gated initialization attest this file. Re-attest after an intentional edit so hooks can inject the approved version.
+- **Coordination:** Keep one orchestrator responsible for plan status. Workers should report results through their own ledgers or findings instead of editing this file concurrently.
+
+## Goal
+
+Reduzir ao máximo o consumo de tokens da API cloud, mantendo eficácia total — tudo que puder rodar local (Ollama 4B, RAG, claude-mem, scripts) roda local; cloud só para raciocínio profundo.
+
+## Next Step
+
+Fases 1-3 concluídas. Próximo: Fase 4 (rotina diária sem cloud) quando o Bruno solicitar; round 2 de fine-tune permanece opcional (round 1 + persona atende).
+
+## Current Phase
+
+Phases 1-3 completas (aguardando Fase 4)
+
+## Phases
+
+### Phase 1: Mapa do Fluxo Atual (Auditoria de Tokens)
+
+- [x] Inventariar caminhos atuais de consumo (AGENTS.md, prompts de subagentes, skills)
+- [x] Identificar os 5 maiores vazamentos de contexto repetido
+- [x] Decidir roteador: regra simples de "local vs cloud" por tipo de tarefa
+- **Status:** complete
+
+### Phase 2: Ativar a Camada Local Existente
+
+- [x] Verificar estado do `archimedes-rag` (índice + hooks) e do MCP
+- [x] Reativar proxy Ollama local (127.0.0.1:37777 → 10.0.0.4:11434) via systemd
+- [x] Validar `archimedes:latest` acessível pela API /v1 (tool calling testado)
+- [x] Validar claude-mem worker + observer configurado com o modelo local
+- **Status:** complete
+
+### Phase 3: Estagiário Local como Surface Layer
+
+- [x] Definir persona + system prompt do "estagiário" (regras de uso, limites, tom)
+- [x] Criar Modelfile `estagiario` (ou `archimedes:worker`) com foco em tarefas rotineiras
+- [x] Datasets de tarefas reais (runbooks → exemplos de conversa)
+- [ ] Fine-tune round 2 (dataset maior, loss < 3.0) — apenas se round 1 não bastar
+- [x] Benchmark de qualidade ÷ custo (local vs cloud na mesma tarefa)
+- **Status:** complete
+
+### Phase 4: Automação de Rotina Sem Cloud
+
+- [x] scripts/rotina-dia.sh: lint + backup + indexação RAG + compactação de memória — 1 comando
+- [x] Integrar com hooks git (post-commit já indexa RAG)
+- [x] Snapshot restic automático pós-rotina
+- **Status:** complete
+
+### Phase 5: Medição Contínua
+
+- [ ] Métricas de tokens por sessão (input/output) simples de coletar
+- [ ] Benchmark mensal: % de tasks resolvidas local vs cloud
+- [ ] Documentar decisões em ADR
+- **Status:** pending
+
+## Key Questions
+
+1. Quais tarefas devem ser roteadas para o estagiário local vs cloud? (decidir na Fase 1)
+2. O fine-tune round 1 (estilo) é suficiente ou precisamos de round 2 com dataset de tarefas? (Fase 3)
+
+## Decisions Made
+
+| Decision | Rationale |
+|----------|-----------|
+| Plano em modo autonomous | Trabalho multi-step com progresso em disco; atestação impede PLAN TAMPERED |
+| Rotina diária sem cloud é prioridade | Maior economia com menor risco de qualidade |
+| Roteador simples por tipo de tarefa | Evita complexidade; regras claras > heurísticas |
+
+## Errors Encountered
+
+| Error | Attempt | Resolution |
+|-------|---------|------------|
+| PLAN TAMPERED + "No phase found" | 1 | Reescrever task_plan.md no template `task_plan_autonomous.md` (h3 `### Phase`) + re-atestar com attest-plan.sh |
+
+## Notes
+
+- Atualizar status conforme avança: `pending` → `in_progress` → `complete`.
+- Re-atestar após editar este arquivo (modo autonomous exige hash válido).
+- Re-atestar no fim de cada fase alterada.
