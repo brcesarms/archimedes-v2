@@ -14,14 +14,22 @@ Reduzir ao máximo o consumo de tokens da API cloud, mantendo eficácia total �
 
 ## Next Step
 
-Todas as fases (1-5) concluídas. O plano local-first está completo e commitado (0c24a59). Opcionais: monitorar estagiário em arquitetura; fine-tune round 2 só se alucinação.
+#️⃣ Trabalho adicional: Fase 6 (diretiva de delegação) criada após conclusão — completar e commit.
 
 ## Current Phase
 
-Todas as fases completas — plano concluído
+Phase 6: Diretiva de Delegação Permanente
 
 ## Status
 
+- **Status:** complete
+
+## Phases
+
+### Phase 6: Diretiva de Delegação Permanente (trabalho adicional)
+
+- [x] Registrar política local-first no AGENTS.md (delegar ao estagiário sempre que possível)
+- [x] Atualizar progress.md com a diretiva e o commit
 - **Status:** complete
 
 ## Phases

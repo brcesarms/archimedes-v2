@@ -2,6 +2,14 @@
 
 ## Session: 2026-09-17
 
+### Fase 6 — Diretiva de Delegação Permanente (trabalho adicional pós-conclusão)
+
+- **Status:** complete
+- Bruno instruiu: **"sempre que você ver uma tarefa que dá para o estagiário fazer, delegue a ele!"**
+- ✅ AGENTS.md atualizado: nova seção "🧑‍💻 Política de Delegação Local-First (DIRETRIZ PERMANENTE DO BRUNO)" — estagiário → subagentes → cloud
+- ✅ Escalada documentada: estagiário (R$ 0) → subagentes → Archimedes cloud (tokens)
+- Commit: (desta fase)
+
 ### Fases 1-3: Integração Local-First COMPLETA
 
 - **Status:** complete (Fases 1, 2, 3)
