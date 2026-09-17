@@ -56,6 +56,21 @@
   - Runbook publicado: `runbooks/migracao-geekom-alienware.md` + link no README (`linux-toolbox-tui 2060994`).
   - `gitleaks detect`: no leaks; `lychee --offline`: 0 erros.
 
+### Phase 7 (pós-fechamento): Auditoria exaustiva do HOME — "nada ficou para trás"
+
+- **Status:** complete
+- Motivação: o 1º relatório era escopo-do-plano e deixou itens do HOME fora; Bruno cobrou auditoria real (*"não acredito que vc estava deixando tudo isso para trás"*).
+- **Audit #1 (dados):** comparação VM 1837 × AW 1820 arquivos → 18 ausentes: `docker/.env.example` (bug do `.gitignore`), 12× `.pytest_cache/*` (irrelevante), runbook (AW atrás), `.ssh/*.bak` (backups locais).
+- **Audit #2 (`.config/.gemini/.local/bin`):** 2737 ausentes → **2725 = estado interno do `agy-cli`** (não portável, análogo ao `~/.opencode`); **12 reais**.
+- Ações tomadas (gaps reais):
+  - Migrados: `~/.config/btop/btop.conf`, `~/.config/enchant/pt_BR.{dic,exc}`.
+  - Migrados do agente `agy`: `~/.gemini/config/hooks.json` (claude-mem via `bun`, paths idênticos) e `~/.gemini/antigravity/mcp_config.json` — adaptado: `claude-mem` de node/linuxbrew → `/home/brn/.bun/bin/bun`.
+  - **Estagiário restaurado no AW:** `~/.local/bin/ollama-proxy.py` + `~/.config/systemd/user/ollama-proxy.service` (37777 → `10.0.0.4:11434`), `enable --now` → **active** e `/api/tags` HTTP OK.
+  - Correção de infra: `.gitignore` `!.env.example` (linha 35) + `git add docker/.env.example`.
+  - Sincronização: `archimedes-v2 d11acc8→325873d`; `linux-toolbox-tui ac73802→2060994` (runbook presente).
+- **Skipped (intencional, documentado):** `.gemini/antigravity-cli/**` (estado/binário local), `~/.config/monitors.xml` (hardware-específico da VM), `~/.config/ibus/bus/*` (sockets runtime), `~/.local/bin/gh` (já instalado via apt), `*.old`/`*.bak`.
+- Commits: `archimedes-v2 325873d`.
+
 ## Test Results
 
 | Test | Input | Expected | Actual | Status |
@@ -68,6 +83,10 @@
 | container→host | curl dentro do container | HTTP 200 | HTTP 200 | ✅ |
 | gitleaks | `detect --source .` | no leaks | no leaks | ✅ |
 | lychee | `--offline .` | 0 errors | 0 errors (21 OK) | ✅ |
+| estagiário AW | `systemctl --user is-active ollama-proxy` + curl 37777 | active + HTTP OK | active + `/api/tags` OK | ✅ |
+| agy mcp_config | `python3 -m json.tool` + deps | JSON válido + deps presentes | válido; venv/mcp-server/claude-mem OK | ✅ |
+| agy hooks | bun em `/home/brn/.bun/bin/bun` | executável | `bun 1.4.2` OK | ✅ |
+| paridade dados | `comm -23` VM vs AW (fora agy-cli) | 0 gaps reais | 12 → todos resolvidos/skipped | ✅ |
 
 ## Error Log
 
@@ -77,13 +96,15 @@
 | Phase 5 | SyntaxError no `python3 -c` via ssh | 1 | trocar para heredoc `ssh alienware bash -s` |
 | Phase 5 | `Missing session ID` no MCP | 1 | capturar header `mcp-session-id` do `initialize` |
 | Phase 5 | `git pull` abortado (mcp_config local) | 1 | `git checkout --` do arquivo (idêntico ao commit) |
+| Phase 7 | `ssh alienware bash -lc '<multi>'` → "erro de sintaxe" | 1 | usar sempre heredoc `ssh alienware bash -s <<'REMOTE'` |
+| Phase 7 | `.gitignore` linha 34 `.env.*` ignorava `docker/.env.example` | 1 | adicionar `!.env.example` |
 
 ## 5-Question Reboot Check
 
 | Question | Answer |
 |----------|--------|
-| Where am I? | Phase 6 — complete (plano fechado) |
-| Where am I going? | Concluído; pendência externa: login interativo do `agy` |
-| What's the goal? | Consolidar todo o Archimedes V2 no Alienware |
+| Where am I? | Phase 7 — complete (auditoria exaustiva do HOME fechada) |
+| Where am I going? | Concluído; pendência externa única: login interativo do `agy` (keyring/Google) |
+| What's the goal? | Consolidar todo o Archimedes V2 no Alienware, sem deixar nada para trás |
 | What have I learned? | Ver findings.md |
 | What have I done? | Migração completa + runbook + commits/push |
