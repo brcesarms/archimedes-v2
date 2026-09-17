@@ -1,8 +1,8 @@
 # 🧑‍💻 Estagiário Archimedes — Camada Local de Tarefas Rotineiras
 
 > **Objetivo:** responder FAQs, runbooks e diagnósticos simples **sem custo de cloud** — o "estagiário" do Archimedes V2.
-> **Data:** 2026-09-17 (atualização: promoção 8B) · **Base:** `qwen3:8b` (Q4_K_M) · **Derivado:** `estagiario` via Modelfile
-> **Fallback:** `estagiario4b` (antigo, base `archimedes:latest` fine-tuned 4B)
+> **Data:** 2026-09-17 (atualização: 8B único) · **Base:** `qwen3:8b` (Q4_K_M) · **Derivado:** `estagiario` via Modelfile
+> **Nota:** estagiário 4B (`estagiario4b`) **removido** por decisão do Bruno (2026-09-17) — confiança > velocidade.
 
 ---
 
@@ -21,14 +21,12 @@
 ## 🔧 Como foi criado
 
 ```bash
-# v1 (2026-09-17 08:5x): derivado do fine-tune 4B — alucinava números/preços
 # v2 (2026-09-17 10:2x): PROMOVIDO para qwen3:8b (Q4_K_M, 5.2GB) — sem alucinação
 ollama create estagiario -f /root/Modelfile-estagiario-8b
-# fallback (v1 preservado):
-ollama cp estagiario:latest estagiario4b:latest   # feito antes do upgrade
+# v1 estagiário 4B REMOVIDO (decisão Bruno 2026-09-17): estagiario4b deleted
 ```
 
-Arquivos versionados: [`Modelfile-estagiario`](./Modelfile-estagiario) (4B/fallback) e [`Modelfile-estagiario-8b`](./Modelfile-estagiario-8b) (8B/produção)
+Arquivo versionado: [`Modelfile-estagiario-8b`](./Modelfile-estagiario-8b) (8B/produção — único estagiário; `Modelfile-estagiario` 4B mantido apenas como referência histórica)
 
 ## 🚀 Uso (via proxy local)
 
@@ -60,6 +58,7 @@ Proxy systemd: `ollama-proxy.service` (127.0.0.1:37777 → 10.0.0.4:11434, timeo
 3. **Não substitui Archimedes cloud** em refatoração, planejamento multi-step, pesquisa.
 4. Números/versões exatas: anti-alucinação no system prompt, mas **Archimedes confere** cifras críticas.
 5. Tool calling: o `/v1` do Ollama injeta reasoning no Qwen3 — se precisar tool calling com o 8B, usar `/v1` com `think:false` **via request** (testado, mas o template custom do Modelfile já elimina o reasoning no `/api/chat`).
+6. ⚠️ **4B permanente no cofre:** `archimedes:latest` (2.5GB) **NÃO foi removido** — é o motor do `claude-mem` via `/v1` (o 8B no `/v1` retorna reasoning vazio). O estagiário de produção é 100% 8B; o 4B sobrevive apenas como worker de memória.
 
 ## 📊 Fonte de dados
 

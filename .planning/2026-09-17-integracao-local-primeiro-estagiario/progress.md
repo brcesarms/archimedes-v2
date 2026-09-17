@@ -2,6 +2,16 @@
 
 ## Session: 2026-09-17
 
+### Fase 8 — Remoção do Estagiário 4B (decisão Bruno)
+
+- **Status:** complete
+- Bruno (resposta honesta ao "qual você quer?"): **8B é o único estagiário** ✅
+- ✅ `ollama rm estagiario4b` no LXC 104 — fallback 4B eliminado (2.5GB liberados)
+- ✅ ESTAGIARIO.md atualizado: sem fallback; Modelfile-estagiario (4B) só como referência histórica
+- ✅ Fluxo de delegação: SEMPRE `estagiario` = Qwen3-8B via `/api/chat`
+- 🔒 **mantido no cofre:** `archimedes:latest` (4B) NÃO foi removido — é o motor do claude-mem via `/v1` (8B no `/v1` retorna reasoning vazio). O 4B survive apenas como worker de memória, não como estagiário
+- Commit: (desta fase)
+
 ### Fase 7 — Upgrade do Estagiário para Qwen3-8B
 
 - **Status:** complete
