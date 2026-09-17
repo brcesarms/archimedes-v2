@@ -80,6 +80,7 @@ Phase 6: Diretiva de Delegação Permanente
 - [x] Corrigir proxy timeout (CONNECT=5s, STREAM=300s) — cold start 6.3GB
 - [x] Promover `estagiario` → 8B; preservar `estagiario4b` fallback
 - [x] Trocar endpoint de delegação p/ `/api/chat` no AGENTS.md + ESTAGIARIO.md
+- **Status:** complete
 
 ## Key Questions
 
