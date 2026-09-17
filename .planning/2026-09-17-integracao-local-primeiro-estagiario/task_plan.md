@@ -14,11 +14,15 @@ Reduzir ao máximo o consumo de tokens da API cloud, mantendo eficácia total �
 
 ## Next Step
 
-Fases 1-3 concluídas. Próximo: Fase 4 (rotina diária sem cloud) quando o Bruno solicitar; round 2 de fine-tune permanece opcional (round 1 + persona atende).
+Todas as fases (1-5) concluídas. O plano local-first está completo e commitado (0c24a59). Opcionais: monitorar estagiário em arquitetura; fine-tune round 2 só se alucinação.
 
 ## Current Phase
 
-Phases 1-3 completas (aguardando Fase 4)
+Todas as fases completas — plano concluído
+
+## Status
+
+- **Status:** complete
 
 ## Phases
 
@@ -55,10 +59,10 @@ Phases 1-3 completas (aguardando Fase 4)
 
 ### Phase 5: Medição Contínua
 
-- [ ] Métricas de tokens por sessão (input/output) simples de coletar
-- [ ] Benchmark mensal: % de tasks resolvidas local vs cloud
-- [ ] Documentar decisões em ADR
-- **Status:** pending
+- [x] Métricas de tokens por sessão (input/output) simples de coletar
+- [x] Benchmark mensal: % de tasks resolvidas local vs cloud
+- [x] Documentar decisões em ADR
+- **Status:** complete
 
 ## Key Questions
 

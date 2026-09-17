@@ -40,6 +40,8 @@ docker/.env
 id_rsa*
 id_ed25519*
 *token*
+!scripts/metricas-tokens.sh
+!docs/arquitetura/adr-002-local-first-tokens.md
 password*
 
 # Temporários e logs

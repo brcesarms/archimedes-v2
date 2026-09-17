@@ -308,3 +308,30 @@ Resultado: `inference compute id=0 library=ROCm compute=gfx1100 name="AMD Radeon
 
 ---
 _Histórico manual — adicione novas execuções aqui (não sobrescreve)._
+## 📊 Execução 2026-09-17 · Integração Local-First (Fases 1–4)
+
+**Contexto:** Estratégia de economia de tokens — camada local ativa (proxy Ollama systemd, RAG LanceDB, claude-mem), estagiário local como surface layer, rotina diária sem cloud.
+
+**Infra ativada:**
+- Proxy `127.0.0.1:37777 → 10.0.0.4:11434` via `ollama-proxy.service` (systemd user)
+- `archimedes-rag` reindexado: 49 arquivos, 93 chunks (LanceDB)
+- `claude-mem` worker (PID, porta 37700) com provider `archimedes:latest` (100% local)
+- Modelo `estagiario` criado no Ollama (`FROM archimedes:latest`, persona júnior, ctx 8K)
+
+**Benchmark estagiário local (`estagiario`, tool calling ✅):**
+
+| Teste | Tempo | Tokens | Custo |
+|-------|:---:|:---:|:---:|
+| "pct list?" | **3,6 s** | 421 | R$ 0 |
+| "restic saudável?" | **6,9 s** | ~250 | R$ 0 |
+| "O que é MikroTik?" | **~5 s** | ~300 | R$ 0 |
+| Arquitetura complexa | 45-180 s | ~585 | ⚠️ aceito (deve delegar) |
+
+**Rotina sem cloud (`./scripts/rotina-dia.sh`):** lint (lychee 114 OK, shellcheck, shfmt, gitleaks) + RAG + restic snapshot `aaf83d48` — custo R$ 0.
+
+**Medição de tokens (OpenCode DB, sessões reais):** totais de 10 sessões recentes = `input 6.803.192` · `output 1.753.738` · custo `0.0000` (provider local).
+
+**Ferramentas novas:** `scripts/metricas-tokens.sh` (leitura SQLite do OpenCode) · `scripts/rotina-dia.sh` (1 comando local).
+
+---
+_Registrado em 2026-09-17 · Commit `0c24a59`_
