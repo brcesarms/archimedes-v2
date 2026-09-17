@@ -11,7 +11,7 @@ Host laptop-brn
 
 Host geekom
     HostName 10.0.0.3
-    User brn
+    User root
     IdentityFile ~/.ssh/id_ed25519
     IdentitiesOnly yes
 

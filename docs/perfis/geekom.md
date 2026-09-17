@@ -29,7 +29,7 @@
 | **IP** | `10.0.0.4/24` (estático, gateway `10.0.0.1`, DNS `10.0.0.1`) |
 | **Endpoint** | `http://10.0.0.4:11434` (API) · `http://10.0.0.4:11434/v1` (OpenAI-compatível) |
 | **Recursos** | 8 vCPU · 12 GB RAM · 132 GB disco (LVM-thin) |
-| **Tipo** | Privilegiado · GPU AMD iGPU 780M ativa (ROCm, benchmark 2026-09-16) · SSH com senha |
+| **Tipo** | Privilegiado · GPU AMD iGPU 780M ativa (ROCm, benchmark 2026-09-16) · SSH por chave ed25519 |
 | **SO** | Ubuntu 24.04 LTS · Ollama **v0.34.1** |
 | **Acesso host** | `pct exec 104 -- bash` (no Proxmox) · SSH: `ssh pve-ollama` |
 
@@ -119,7 +119,7 @@
 | **Modelo não carrega** | `curl -X POST http://10.0.0.4:11434/api/pull -d '{"name":"qwen3-coder:30b"}'` |
 | **GPU não ativa (size_vram=0)** | No LXC: `systemctl cat ollama` → conferir `OLLAMA_IGPU_ENABLE=1` e `HSA_OVERRIDE_GFX_VERSION=11.0.0`; log: `journalctl -u ollama \| grep -i "rocblas\|dropping"`. Editou? `systemctl daemon-reload && systemctl restart ollama` |
 | **LXC 104 parado** | `pct start 104` (host Proxmox) |
-| **SSH ao LXC negado** | A chave pública ainda não foi instalada — `ssh-copy-id root@10.0.0.4` com a senha definida na criação |
+| **SSH ao LXC negado** | Chave pública instalada (2026-09-16 via `pct exec`); se trocar a máquina do Bruno, re-autorizar: `ssh root@10.0.0.3 "pct exec 104 -- sh -c 'mkdir -p /root/.ssh; cat >> /root/.ssh/authorized_keys'"` |
 | **OpenCode falha** | `opencode login` (reautenticar) |
 | **Runbook falha** | Verificar `.planning/` e `findings.md` do plano ativo |
 

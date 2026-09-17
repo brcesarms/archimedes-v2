@@ -79,3 +79,10 @@
 - ✅ Benchmark (qwen3:4b): CPU 19.3 → GPU 26.8 tok/s @4096; 16.2 → 26.7 @65536; prompt eval 93→293 tok/s (3x); TTFT 4.3s→1.5s; concorrência ~27 tok/s c/u; tool calling real ✅
 - ✅ Docs atualizados: BENCHMARKS.md (seção LXC 104), HISTORICO.md (execução 2026-09-16), geekom.md (fix GPU, monitoramento, troubleshooting)
 - ✅ Acesso remoto usado: SSH `root@10.0.0.3` (Proxmox host) + `pct exec 104`
+
+### Dotfile Sync (pós-Fase 8)
+- ✅ ~/.ssh/config real sincronizado com dotfiles/dot_ssh/config (backup: config.bak-2026-09-16)
+- ✅ BUG corrigido: host geekom usava User brn (Permission denied) → User root (validado: proxmox OK)
+- ✅ Chave ed25519 do Bruno instalada no LXC 104 via pct exec (ssh pve-ollama sem senha, ollama 0.34.1 active)
+- ✅ Hosts offline confirmados (esperado): alienware 10.0.0.2, laptop-brn 10.0.0.5, pve-vm 10.0.0.10, pve-win11 10.0.0.217
+- ✅ geekom.md atualizado: SSH por chave + re-autorização documentada
