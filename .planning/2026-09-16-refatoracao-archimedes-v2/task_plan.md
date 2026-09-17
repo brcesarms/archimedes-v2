@@ -83,6 +83,16 @@ Todas as fases concluídas. Próximos passos sugeridos: integrar `archimedes:lat
 
 > ⚠️ **Desvio do plano:** QLoRA 4-bit abandonado — bitsandbytes na Radeon 780M causa GPU Hang (ROCm 6.4 vs 6.3). Solução final: **LoRA fp16 + `AMD_SERIALIZE_KERNEL=3`**.
 
+### Phase 10: Ciclo 2 — Dataset Ampliado (reduzir alucinação)
+**Status:** in_progress
+- [ ] Mapear corpus do cofre (docs/runbooks/scripts/AGENTS) para extração
+- [ ] Criar gerador de Q&A fiel aos trechos (LLM local, sem inventar fatos)
+- [ ] Gerar e validar dataset v2 (300+ exemplos, dedup, formato ShareGPT)
+- [ ] Treinar Ciclo 2 (LoRA fp16, mais steps, `max_seq` maior)
+- [ ] Merge + GGUF Q4_K_M + deploy `archimedes:v2`
+- [ ] Avaliar estilo + teste factual (base vs v1 vs v2) e benchmark
+- [ ] Documentar e commit
+
 ## Decisions Made
 | Decision | Rationale |
 |----------|-----------|

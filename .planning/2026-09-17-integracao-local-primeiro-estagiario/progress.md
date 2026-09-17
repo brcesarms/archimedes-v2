@@ -12,6 +12,18 @@
 - 🔒 **mantido no cofre:** `archimedes:latest` (4B) NÃO foi removido — é o motor do claude-mem via `/v1` (8B no `/v1` retorna reasoning vazio). O 4B survive apenas como worker de memória, não como estagiário
 - Commit: (desta fase)
 
+### Fase 8b — Eliminação TOTAL do 4B (archimedes + qwen3:4b) e proxy /v1→/api
+
+- **Status:** complete
+- Bruno: "quero, elimine o 4b" → eliminar também `archimedes` e `qwen3:4b`
+- ✅ `archimedes` recriado como 8B (Modelfile-archimedes-8b, persona Archimedes, temp 0.3)
+- ✅ Proxy `ollama-proxy.py` evoluído: HTTP-aware; converte `/v1/chat/completions` → `/api/chat` (Qwen3 no /v1 injeta reasoning); resposta convertida de volta p/ formato OpenAI
+- 🐛 **Bug descoberto:** `options.num_predict` faz Qwen3-8B retornar content vazio; `max_tokens` na raiz funciona → proxy mapeia max_tokens→raiz
+- 🐛 **Bug descoberto 2:** cold start/swap de modelos 8B na GPU (6.3GB) causa respostas vazias intermitentes → `keep_alive: 30m` no aquecimento
+- ✅ `ollama rm qwen3:4b` — lista final: `estagiario`, `archimedes`, `qwen3:8b` (TODOS 8B)
+- ✅ Validações: delegação FAQ ✅, claude-mem /v1 (archimedes 8B) ✅, worker ativo ✅, scripts sem refs a 4B ✅
+- Commit: (desta fase)
+
 ### Fase 7 — Upgrade do Estagiário para Qwen3-8B
 
 - **Status:** complete

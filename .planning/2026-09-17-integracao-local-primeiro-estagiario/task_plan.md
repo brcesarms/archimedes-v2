@@ -82,6 +82,15 @@ Phase 6: Diretiva de Delegação Permanente
 - [x] Trocar endpoint de delegação p/ `/api/chat` no AGENTS.md + ESTAGIARIO.md
 - **Status:** complete
 
+### Phase 9: Eliminação Total do 4B + Proxy /v1→/api (trabalho adicional Bruno)
+
+- [x] Recriar `archimedes` como 8B (claude-mem continua usando /v1)
+- [x] Evoluir proxy p/ HTTP-aware: /v1/chat/completions → /api/chat + conversão resposta OpenAI
+- [x] Corrigir quirk `num_predict` (Qwen3/\/api retorna vazio) → mapear max_tokens na raiz
+- [x] Remover `qwen3:4b`; lista final 100% 8B (estagiario, archimedes, qwen3:8b)
+- [x] Validar delegação FAQ + claude-mem /v1 + worker + scripts
+- **Status:** complete
+
 ## Key Questions
 
 1. Quais tarefas devem ser roteadas para o estagiário local vs cloud? (decidir na Fase 1)

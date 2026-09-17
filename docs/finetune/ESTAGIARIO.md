@@ -58,7 +58,7 @@ Proxy systemd: `ollama-proxy.service` (127.0.0.1:37777 → 10.0.0.4:11434, timeo
 3. **Não substitui Archimedes cloud** em refatoração, planejamento multi-step, pesquisa.
 4. Números/versões exatas: anti-alucinação no system prompt, mas **Archimedes confere** cifras críticas.
 5. Tool calling: o `/v1` do Ollama injeta reasoning no Qwen3 — se precisar tool calling com o 8B, usar `/v1` com `think:false` **via request** (testado, mas o template custom do Modelfile já elimina o reasoning no `/api/chat`).
-6. ⚠️ **4B permanente no cofre:** `archimedes:latest` (2.5GB) **NÃO foi removido** — é o motor do `claude-mem` via `/v1` (o 8B no `/v1` retorna reasoning vazio). O estagiário de produção é 100% 8B; o 4B sobrevive apenas como worker de memória.
+6. ✅ **Zero 4B no cofre (2026-09-17):** `archimedes` também foi para 8B (segue sendo o modelo do claude-mem — o proxy converte `/v1`→`/api/chat`). `qwen3:4b` removido. Todo modelo local agora é 8B.
 
 ## 📊 Fonte de dados
 
