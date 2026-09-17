@@ -96,7 +96,7 @@ done
 
 # ── 4. Validar runbooks ───────────────────────────────────────
 log "⏳ [4/7] Validando runbooks..."
-ROTINAS_DIR="$COFRE_DIR/docs/cerebrum/rotinas"
+ROTINAS_DIR="$COFRE_DIR/docs/runbooks"
 RUNBOOKS_ESSENCIAIS=(
   "runbook-backup-limpeza.md"
   "runbook-git-sync.md"
