@@ -9,7 +9,7 @@
 - Actions taken:
   - Commitadas as pendências do vault (4 skills modificadas + `.lychee.toml` / `.resticignore` / `restic-vault.sh` untracked) → commit `86c1e05` + push (histórico remoto íntegro = backup).
   - Gerado tarball de segurança `~/backups/archimedes-vault-2026-09-17.tar.gz` (1,1 MB, 101 `.md`, com `.git`, sem node_modules/.venv).
-  - Confirmado `archimedes-v2` limpo e sincronizado com origin em `57c643d`.
+  - Confirmado `archimedes` limpo e sincronizado com origin em `57c643d`.
 - Files created/modified:
   - `~/backups/archimedes-vault-2026-09-17.tar.gz`
 
@@ -32,14 +32,14 @@
 
 - **Status:** complete
 - Actions taken:
-  - Passada 1 (60 arquivos): `archimedes-vault/<path>` → `archimedes-v2/<path>`; `.opencode/skills` → `.agents/skills`.
-  - Passada 2 (12 arquivos operacionais): `brcesarms/archimedes-vault` → `…-v2`, `~/backups/archimedes-vault` → `…-v2`, `archimedes-vault_<stamp>` → `archimedes-v2_<stamp>`.
+  - Passada 1 (60 arquivos): `archimedes-vault/<path>` → `archimedes/<path>`; `.opencode/skills` → `.agents/skills`.
+  - Passada 2 (12 arquivos operacionais): `brcesarms/archimedes-vault` → `…-v2`, `~/backups/archimedes-vault` → `…-v2`, `archimedes-vault_<stamp>` → `archimedes_<stamp>`.
   - Passada 3 (56 arquivos): `guia-ia-local/<sub>` → novo path (`scripts/`, `docs/notas/`, `docs/cerebrum/`, `docs/instintos/`, `dotfiles/`, `docs/guia-ia-local/`).
-  - `dotfiles/dot_bashrc`: `COFRE_DIR=$HOME/archimedes-v2`, `ALIASES_FILE=…/dotfiles/dot_aliases`, `PROMPT_FILE=…/dotfiles/dot_prompt`, título "Status do Archimedes V2".
+  - `dotfiles/dot_bashrc`: `COFRE_DIR=$HOME/archimedes`, `ALIASES_FILE=…/dotfiles/dot_aliases`, `PROMPT_FILE=…/dotfiles/dot_prompt`, título "Status do Archimedes".
   - `dotfiles/dot_aliases`: merge V2+legado (V2 vence nos conflitos; adicionados `bancada`, `ollama-*`, `oc`, docker, `tree`, `duh`, `topcpu/topmem`, `git-*`, `find-*`); removidos `dot_aliases.vault-legado` e `README.vault-legado.md` (merge no `README.md`).
   - `docs/cerebrum/{estrutura-cofre.md,README.md}` e `.agents/skills/organizar-cofre/SKILL.md`: árvore reescrita para a estrutura V2 consolidada.
   - `docs/cerebrum/logs/.gitkeep` criado (scripts escrevem logs aí).
-  - `.agents/skills/atualizar-ssh/SKILL.md`: clone do repo corrigido para `archimedes-v2`.
+  - `.agents/skills/atualizar-ssh/SKILL.md`: clone do repo corrigido para `archimedes`.
   - Lint: `backup-logs.sh` (SC2088 til), `validar-teia.sh`/`validar-runbooks.sh` (variáveis mortas), `benchmark-moe.sh` (5× SC2155).
   - Preservados intencionalmente: menções "LEGADO V1 (`archimedes-vault`)" nos runbooks do V2 e relatórios históricos datados (`docs/notas/audit-*`, `licoes-*`, `MOC-*`).
 - Files created/modified:
@@ -50,10 +50,10 @@
 - **Status:** complete
 - Actions taken:
   - Backup: `~/.bashrc.bak-2026-09-17` e `~/.bash_aliases.bak-2026-09-17` em ambas as máquinas.
-  - `~/.bashrc` (VM e AW): source trocado de `~/archimedes-vault/guia-ia-local/dotfiles/.bashrc` para `~/archimedes-v2/dotfiles/dot_bashrc`.
+  - `~/.bashrc` (VM e AW): source trocado de `~/archimedes-vault/guia-ia-local/dotfiles/.bashrc` para `~/archimedes/dotfiles/dot_bashrc`.
   - `~/.bash_aliases` (VM e AW): substituído pelo `dotfiles/dot_aliases` do V2 (aliases legados que apontavam ao vault eliminados).
   - AW: `git pull --ff-only` para `d6282e6` antes de aplicar.
-  - Smoke test (shell **interativo**, pois o `.bashrc` do Ubuntu retorna cedo em shell não-interativo): `COFRE=/home/brn/archimedes-v2`, `cofre` = function, `cofre-status` = "Status do Archimedes V2" com **22 skills**; `v2`/`git-cofre` = alias.
+  - Smoke test (shell **interativo**, pois o `.bashrc` do Ubuntu retorna cedo em shell não-interativo): `COFRE=/home/brn/archimedes`, `cofre` = function, `cofre-status` = "Status do Archimedes" com **22 skills**; `v2`/`git-cofre` = alias.
 - Files created/modified:
   - `~/.bashrc`, `~/.bash_aliases` (VM + AW) + backups `.bak-2026-09-17`
 
@@ -74,7 +74,7 @@
   - **53 links relativos corrigidos** por script (`/tmp/opencode/linkfix.py`) → lychee **0 erros**.
   - `scripts/lint.sh` canônico: **4/4 verde** (lychee 269 OK, shellcheck 0, shfmt aplicado, gitleaks no leaks).
   - `shfmt -i 2 -ci -bn -w` aplicado em todos os scripts (23 divergentes padronizados).
-  - RAG: `archimedes-v2` reindexado (138 arquivos / 278 chunks); índice `archimedes-vault` **removido** na VM e no AW.
+  - RAG: `archimedes` reindexado (138 arquivos / 278 chunks); índice `archimedes-vault` **removido** na VM e no AW.
   - **Descoberta crítica:** `benchmark-modelos.sh` era conteúdo único não migrado (o skip de `benchmarks/*` o omitiu, e o `docs/benchmarks/BENCHMARKS.md` do V2 o referenciava). Migrado para `scripts/benchmark-modelos.sh` com paths ajustados para `docs/benchmarks/`.
   - Paridade por md5 + mapa de destino: **166 arquivos do vault → 0 perdidos** (só resta um JSON que é duplicata com grafia corrigida no V2).
 - Files created/modified:
@@ -97,7 +97,7 @@
   - Verify pré-remoção no AW: as 4 skills modificadas + 3 untracked tinham **md5 idênticos** aos da VM → nada exclusivo no AW.
   - Tarball de segurança replicado para o AW (`~/backups/archimedes-vault-2026-09-17.tar.gz`).
   - `rm -rf ~/archimedes-vault` na VM (92 MB) e no AW.
-  - Verificação final: HOME contém apenas `archimedes-v2` em ambas; `cofre-status` OK (171 `.md`, 22 skills).
+  - Verificação final: HOME contém apenas `archimedes` em ambas; `cofre-status` OK (171 `.md`, 22 skills).
 - Files created/modified:
   - Removido: `~/archimedes-vault` (VM + AW)
 
@@ -118,7 +118,7 @@
 | Runtime VM+AW | `bash -ic 'cofre-status'` | 22 skills, COFRE=v2 | OK em ambos | ✅ |
 | Paridade vault→v2 | mapa de destino + md5 | 0 perdidos | 0 (só 1 JSON duplicata) | ✅ |
 | Paridade VM↔AW (vault) | md5 de 7 arquivos | idênticos | idênticos | ✅ |
-| HOME único | `ls ~` em VM e AW | só `archimedes-v2` | só `archimedes-v2` | ✅ |
+| HOME único | `ls ~` em VM e AW | só `archimedes` | só `archimedes` | ✅ |
 
 ## Error Log
 
@@ -136,6 +136,6 @@
 |----------|--------|
 | Where am I? | ✅ CONCLUÍDO — todas as 8 fases completas |
 | Where am I going? | Nada pendente; consolidação encerrada |
-| What's the goal? | Repo único `archimedes-v2`, sem duplicação e sem perda de informação |
+| What's the goal? | Repo único `archimedes`, sem duplicação e sem perda de informação |
 | What have I learned? | Ver `findings.md` |
 | What have I done? | As 8 fases: backup, migração (124 arquivos), paths+links, runtime, docs, validação 4/4, push + archive, remoção do vault |

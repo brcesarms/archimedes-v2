@@ -1,7 +1,7 @@
 # 🧠 GEEKOM A7 MAX — Perfil de Máquina
 
 > **Máquina:** GEEKOM A7 MAX (Ryzen 9 7940HS / 64GB RAM)  
-> **Uso principal:** **IA Local Principal** (Archimedes V2 — Ollama em LXC + OpenCode)  
+> **Uso principal:** **IA Local Principal** (Archimedes — Ollama em LXC + OpenCode)  
 > **Responsável:** Bruno César Medeiros Siqueira  
 > **Data:** 2026-09-16  
 > **Referência:** [`my-setup.md`](./my-setup.md)
@@ -56,7 +56,7 @@
 
 ## 🎛️ Fine-Tuning Local — pipeline validado
 
-> PoC concluído em 2026-09-16: LoRA do Qwen3-4B no **estilo Archimedes V2** (emojis, pt-BR, tabelas) rodando no LXC 104.
+> PoC concluído em 2026-09-16: LoRA do Qwen3-4B no **estilo Archimedes** (emojis, pt-BR, tabelas) rodando no LXC 104.
 > Documentação completa: [`docs/finetune/`](../finetune/README.md).
 
 | Etapa | Ferramenta | Saída |

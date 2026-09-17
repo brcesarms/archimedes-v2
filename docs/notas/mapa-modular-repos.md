@@ -11,7 +11,7 @@ Cada projeto possui **um papel bem delimitado e autónomo**, trabalhando em sine
 
 | Pilar / Repositório | Papel | Motor Principal | Dono de |
 | :--- | :--- | :--- | :--- |
-| 🏛️ [`archimedes-v2`](https://github.com/brcesarms/archimedes-v2) | **Estratégia & Governança** | Markdown + Git + OpenCode | 19 Skills operacionais · 13 Convenções modulares · Notas atômicas · Perfis de hardware |
+| 🏛️ [`archimedes`](https://github.com/brcesarms/archimedes) | **Estratégia & Governança** | Markdown + Git + OpenCode | 19 Skills operacionais · 13 Convenções modulares · Notas atômicas · Perfis de hardware |
 | 🔍 [`archimedes-rag`](https://github.com/brcesarms/archimedes-rag) | **Memória Semântica de Longo Prazo** | Python + LanceDB + AST | Chunking cirúrgico de código · CLI `rag` · Hooks git pós-commit · Busca vetorial semântica |
 | 🩺 [`archimedes-doctor`](https://github.com/brcesarms/archimedes-doctor) | **Controle de Qualidade & Auto-Cura** | Python + Pytest + RAG | CLI `doctor` · Suite de testes automatizados · Loop de auto-cura (self-healing) de código |
 | ⚙️ [`archimedes-operator`](https://github.com/brcesarms/archimedes-operator) | **Braços Mecânicos (Execução Unificada)** | Python + PowerShell + Bash | CLI `operator` · Menu TUI interativo · Bancada (inventário + manifesto) · Backups · Win11 Setup |
@@ -22,7 +22,7 @@ Cada projeto possui **um papel bem delimitado e autónomo**, trabalhando em sine
 
 ```text
 ┌────────────────────────────────────────────────────────┐
-│ 🏛️ archimedes-v2 (Estratégia & Governança)          │
+│ 🏛️ archimedes (Estratégia & Governança)          │
 │    AGENTS.md · 19 Skills · 13 Convenções               │
 └──────────────────────────┬─────────────────────────────┘
                            │ orquestra e consulta

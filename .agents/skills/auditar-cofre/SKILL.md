@@ -16,9 +16,9 @@ Realize esta auditoria quando solicitado. Ela verifica a saúde do vault e gera 
 Usar o **validador Python** (skill [`validar-links-md`](../validar-links-md/SKILL.md)) — mais preciso que grep:
 
 ```bash
-cd ~/archimedes-v2/scripts/python
+cd ~/archimedes/scripts/python
 source .venv/bin/activate
-python3 validar_links.py ~/archimedes-v2 --raiz ~/archimedes-v2
+python3 validar_links.py ~/archimedes --raiz ~/archimedes
 ```
 
 - ❌ links quebrados reais → corrigir (ver lições na skill `validar-links-md`)

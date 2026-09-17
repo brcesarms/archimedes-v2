@@ -1,5 +1,5 @@
 # ============================================================
-# 🐳 Docker Compose do Archimedes V2 - Stack de IA Local
+# 🐳 Docker Compose do Archimedes - Stack de IA Local
 # ============================================================
 # Padrão de Indústria: Ollama (runtime) + Open-WebUI (interface web)
 # + archimedes (agente opencode containerizado)
@@ -21,7 +21,7 @@ services:
     ports:
       - "4096:4096"        # backend headless do opencode (TUI remota via attach)
     volumes:
-      - ..:/work           # projeto archimedes-v2 montado como workspace
+      - ..:/work           # projeto archimedes montado como workspace
       - archimedes-config:/root/.config/opencode
       - archimedes-data:/root/.local/share/opencode
       - ./archimedes/opencode.json:/root/.config/opencode/opencode.json:ro  # MCP RAG (versionado)

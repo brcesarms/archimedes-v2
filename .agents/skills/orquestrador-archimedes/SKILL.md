@@ -222,14 +222,14 @@ wc -l /home/brn/projetos/archimedes-operator/manifests/MANIFESTO_<CLIENTE>_*.md
 
 | Alvo | Path EXATO |
 |---|---|
-| Scripts Linux | `/home/brn/archimedes-v2/scripts/linux/` |
-| Scripts Python | `/home/brn/archimedes-v2/scripts/python/` |
-| Scripts Windows | `/home/brn/archimedes-v2/scripts/windows/` |
+| Scripts Linux | `/home/brn/archimedes/scripts/linux/` |
+| Scripts Python | `/home/brn/archimedes/scripts/python/` |
+| Scripts Windows | `/home/brn/archimedes/scripts/windows/` |
 
 ### Script de apoio (use este, não invente outro)
 
 ```bash
-bash /home/brn/archimedes-v2/.agents/skills/orquestrador-archimedes/scripts/verificar-saida.sh
+bash /home/brn/archimedes/.agents/skills/orquestrador-archimedes/scripts/verificar-saida.sh
 ```
 
 ### Relatório

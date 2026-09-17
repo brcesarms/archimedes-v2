@@ -13,11 +13,11 @@
 # ============================================================
 set -euo pipefail
 
-COFRE_DIR="${COFRE_DIR:-$HOME/archimedes-v2}"
+COFRE_DIR="${COFRE_DIR:-$HOME/archimedes}"
 LOG_DIR="$COFRE_DIR/docs/cerebrum/logs"
 TMP_DIR="/tmp/opencode"
 REMOTE_HOST="geekom"
-REMOTE_LOG_DIR="/home/brn/archimedes-v2/docs/cerebrum/logs"
+REMOTE_LOG_DIR="/home/brn/archimedes/docs/cerebrum/logs"
 STAMP="$(date +%Y-%m-%d_%H%M%S)"
 ARCHIVE="$LOG_DIR/logs-backup-$STAMP.tar.gz"
 

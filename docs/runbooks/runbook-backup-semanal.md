@@ -25,7 +25,7 @@ Rotina semanal que (1) cria snapshot local do cofre e (2) publica commits locais
 
 ## ⚙️ Comandos (copiar/colar exatos)
 
-1. Abra o terminal na raiz do cofre (`~/archimedes-v2`) e execute **exatamente** este comando:
+1. Abra o terminal na raiz do cofre (`~/archimedes`) e execute **exatamente** este comando:
 
    ```bash
    ./scripts/backup.sh && git add -A && git commit -m "chore(backup): snapshot semanal" && git push origin main

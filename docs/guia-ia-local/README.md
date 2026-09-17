@@ -12,13 +12,13 @@ Após formatar e instalar o sistema básico (qualquer distribuição Linux), cop
 
 ```bash
 # Copiar de um backup (pendrive, HD externo, etc.)
-cp -r /caminho/do/backup/archimedes-v2 ~/
+cp -r /caminho/do/backup/archimedes ~/
 ```
 
 ### Passo 2: Rodar o setup
 
 ```bash
-cd ~/archimedes-v2
+cd ~/archimedes
 ./setup.sh
 ```
 
@@ -40,7 +40,7 @@ source ~/.bashrc
 ### Passo 4: Começar a usar
 
 ```bash
-cd ~/archimedes-v2
+cd ~/archimedes
 agy # ou opencode
 ```
 
@@ -149,10 +149,10 @@ O cofre foi projetado para funcionar em qualquer Linux. Cada arquivo tem um prop
 
 ```bash
 # 1. Copiar o cofre
-cp -r /caminho/do/backup/archimedes-v2 ~/
+cp -r /caminho/do/backup/archimedes ~/
 
 # 2. Rodar install (completo)
-cd ~/archimedes-v2/docs/guia-ia-local
+cd ~/archimedes/docs/guia-ia-local
 ./install.sh
 
 # Ou instalação mínima (só dependências)

@@ -17,7 +17,7 @@ permission:
   websearch: allow
 ---
 
-📊 Você é o **Especialista em Resumir e Criar Notas Atômicas** do Archimedes V2.
+📊 Você é o **Especialista em Resumir e Criar Notas Atômicas** do Archimedes.
 
 ## 🎯 Responsabilidades
 

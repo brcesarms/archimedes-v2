@@ -8,7 +8,7 @@
 
 ```text
 /home/brn/
-├── archimedes-v2/       <-- 🏛️ Cofre Obsidian (Governança, Regras, 19 Skills) — NÃO MEXER
+├── archimedes/       <-- 🏛️ Cofre Obsidian (Governança, Regras, 19 Skills) — NÃO MEXER
 ├── projetos/               <-- 📂 PASTA CENTRAL DE PROJETOS
 │   ├── archimedes-operator/    <-- 👷‍♂️ Braço Mecânico (Bancada, Backup Robocopy e Setup Win11)
 │   ├── archimedes-rag/         <-- 🔍 Memória Semântica Local (LanceDB + AST)
@@ -23,7 +23,7 @@
 | :--- | :--- |
 | **Localização** | Todo novo projeto/repo clonado ou criado → `~/projetos/<nome>/` |
 | **Nome da pasta** | `kebab-case`, minúsculo, sem acento (ex: `archimedes-operator`) |
-| **Vault é sagrado** | `~/archimedes-v2` NÃO move — caminhos absolutos fixos (AGENTS.md, opencode, submódulos) |
+| **Vault é sagrado** | `~/archimedes` NÃO move — caminhos absolutos fixos (AGENTS.md, opencode, submódulos) |
 | **Novo repo GitHub** | Criar pasta em `~/projetos/`, clonar/nascer lá, push direto |
 | **Migrações** | Sempre solicitar aprovação antes de mover pastas existentes |
 | **🔗 Interligação entre repos** | Repositórios **NUNCA são silos**: documentação que afete outro projeto DEVE ser referenciada cruzadamente (guia de preparação no `archimedes-backup` ↔ vault/skills ↔ archimedes-operator). Ao criar/editar doc, procure onde ela deveria ser linkada nos demais repos. |
@@ -52,7 +52,7 @@ git clone git@github.com:brcesarms/<novo-projeto>.git
 
 ## ⚠️ Exceções
 
-- `~/archimedes-v2` → **NUNCA** mover (muitas referências absolutas).
+- `~/archimedes` → **NUNCA** mover (muitas referências absolutas).
 - `~/obsidian-cofre-v1` → cofre legado; movido para `~/projetos/` apenas se o usuário solicitar explicitamente.
 - Ferramentas pessoais (`.opencode`, `.config`, `.local`) → NUNCA em projetos.
 

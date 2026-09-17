@@ -92,7 +92,7 @@ echo 'export PATH="$HOME/.opencode/bin:$PATH"' >> "$HOME/.bashrc"
 - ✅ `docker-compose.yml` que usa `docker compose` precisa do plugin v2 (`docker-compose-v2` no apt)
 
 ### 11. 💾 Caminhos configuráveis
-- ⚠️ **NUNCA** hardcodar `$HOME/archimedes-v2` quando o script tem variável configurável (ex: `COFRE_DIR`)
+- ⚠️ **NUNCA** hardcodar `$HOME/archimedes` quando o script tem variável configurável (ex: `COFRE_DIR`)
 - ✅ Usar a variável real no heredoc/conteúdo gerado
 
 ### 12. ⚡ Verificação automática em massa

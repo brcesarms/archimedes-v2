@@ -25,7 +25,7 @@
 
 ```bash
 # ❌ ERRADO - valida da raiz
-cd ~/archimedes-v2
+cd ~/archimedes
 grep -oP '\]\(\K[^)]+' nota.md
 
 # ✅ CORRETO - valida do diretório do arquivo

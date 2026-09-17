@@ -10,7 +10,7 @@
 
 ### 1. Acessar o Cofre
 ```bash
-cd ~/archimedes-v2
+cd ~/archimedes
 ```
 
 ### 2. Abrir no Obsidian (Editor de Notas)
@@ -54,25 +54,25 @@ cd ~/wikisidian/concurseiro && git pull
 
 ### Atualizar o Cofre
 ```bash
-cd ~/archimedes-v2
+cd ~/archimedes
 git pull origin main
 ```
 
 ### Criar Backup Manual
 ```bash
-cd ~/archimedes-v2/scripts/linux
+cd ~/archimedes/scripts/linux
 ./backup-cofre.sh
 ```
 
 ### Verificar Saúde do Sistema
 ```bash
-cd ~/archimedes-v2
+cd ~/archimedes
 agy # ou opencode run --auto
 ```
 
 ### Ver Logs de Última Execução
 ```bash
-cat ~/archimedes-v2/docs/cerebrum/logs/saude-sistema-*.log | tail -20
+cat ~/archimedes/docs/cerebrum/logs/saude-sistema-*.log | tail -20
 ```
 
 ---
@@ -81,8 +81,8 @@ cat ~/archimedes-v2/docs/cerebrum/logs/saude-sistema-*.log | tail -20
 
 | Métrica | Onde Ver |
 |---------|----------|
-| Último backup | `~/backups/archimedes-v2/` |
-| Última execução | `~/archimedes-v2/docs/cerebrum/logs/` |
+| Último backup | `~/backups/archimedes/` |
+| Última execução | `~/archimedes/docs/cerebrum/logs/` |
 | Modelos instalados | `ollama ps` |
 | Uso de CPU/RAM | `htop` |
 
@@ -120,9 +120,9 @@ cat ~/archimedes-v2/docs/cerebrum/logs/saude-sistema-*.log | tail -20
 | Tarefa | Comando |
 |--------|---------|
 | Atualizar submódulos | `git submodule update --remote --merge` |
-| Limpar logs antigos | `find ~/archimedes-v2/docs/cerebrum/logs/ -name "*.log" -mtime +14 -delete` |
+| Limpar logs antigos | `find ~/archimedes/docs/cerebrum/logs/ -name "*.log" -mtime +14 -delete` |
 | Verificar espaço em disco | `df -h /` |
-| Validar scripts | `cd ~/archimedes-v2/scripts/linux && ./verificar-scripts.sh` |
+| Validar scripts | `cd ~/archimedes/scripts/linux && ./verificar-scripts.sh` |
 
 ---
 
@@ -155,7 +155,7 @@ cat ~/archimedes-v2/docs/cerebrum/logs/saude-sistema-*.log | tail -20
 |------|------|
 | **Dúvida de uso** | Ver `~/wikisidian/t.i/` (notas de TI) ou `~/wikisidian/concurseiro/` (estudos) |
 | **Erro no sistema** | Ver `guia-ia-local/cerebrum/logs/` |
-| **Sugestão de melhoria** | Criar issue no GitHub (`brcesarms/archimedes-v2`) |
+| **Sugestão de melhoria** | Criar issue no GitHub (`brcesarms/archimedes`) |
 
 ---
 

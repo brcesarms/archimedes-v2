@@ -1,4 +1,4 @@
-# 📋 Runbooks & Manuais Operacionais — Archimedes V2
+# 📋 Runbooks & Manuais Operacionais — Archimedes
 
 Índice central de Procedimentos Operacionais Padrão (SOP), manuais de bancada e automação de máquinas do ecossistema.
 

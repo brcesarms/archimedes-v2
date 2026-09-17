@@ -1,8 +1,8 @@
-# 🏛️ Archimedes V2 — Ecossistema de Automação & Infraestrutura de T.I.
+# 🏛️ Archimedes — Ecossistema de Automação & Infraestrutura de T.I.
 
 > *"Dê-me uma alavanca e um ponto de apoio, e moverei o mundo."* — Arquimedes de Siracusa
 
-O **Archimedes V2** é a evolução arquitetural do ecossistema de T.I. do Bruno César Medeiros Siqueira. Ele marca a transição definitiva da fase *artesanal* (onde tudo era programado na mão em scripts caseiros) para a **Alavancagem Técnica** — orquestrando as soluções open-source mais consolidadas, maduras e bem avaliadas do mundo (+100.000 ⭐ somadas).
+O **Archimedes** é a evolução arquitetural do ecossistema de T.I. do Bruno César Medeiros Siqueira. Ele marca a transição definitiva da fase *artesanal* (onde tudo era programado na mão em scripts caseiros) para a **Alavancagem Técnica** — orquestrando as soluções open-source mais consolidadas, maduras e bem avaliadas do mundo (+100.000 ⭐ somadas).
 
 ---
 
@@ -29,12 +29,12 @@ O **Archimedes V2** é a evolução arquitetural do ecossistema de T.I. do Bruno
 
 ---
 
-## 📁 Estrutura do Repositório (`archimedes-v2`)
+## 📁 Estrutura do Repositório (`archimedes`)
 
 > 📌 **Repositório único (17/09/2026):** o antigo `archimedes-vault` foi absorvido aqui e está **arquivado** no GitHub. Todo o conhecimento, skills, scripts e dotfiles agora vivem neste repositório.
 
 ```text
-archimedes-v2/
+archimedes/
 ├── .agents/                        <-- Agentes e skills modulares
 │   ├── agents/                     <-- Subagentes (estudante, resumidor, executor)
 │   └── skills/                     <-- Skills atômicas (22: planning-with-files, consultar-rag, ...)
@@ -76,7 +76,7 @@ archimedes-v2/
 
 ## 📊 Benchmark & Performance: V1 (Artesanal) vs. V2 (Padrão de Indústria)
 
-A transição para o **Archimedes V2** representou um salto de produtividade técnica e eficiência orçamentária:
+A transição para o **Archimedes** representou um salto de produtividade técnica e eficiência orçamentária:
 
 ### 💰 Economia de Tokens por Sessão Agêntica (17x Mais Econômico)
 
@@ -118,7 +118,7 @@ lychee --offline .
 gitleaks detect --source . --verbose --no-banner
 
 # 3. Criar snapshot instantâneo com deduplicação:
-restic backup . --repo ~/backups/restic-vault --password-file ~/.config/restic/password --exclude-file .resticignore --tag archimedes-v2
+restic backup . --repo ~/backups/restic-vault --password-file ~/.config/restic/password --exclude-file .resticignore --tag archimedes
 ```
 
 ---

@@ -17,7 +17,7 @@
 # ============================================================
 set -euo pipefail
 
-COFRE_DIR="${COFRE_DIR:-$HOME/archimedes-v2}"
+COFRE_DIR="${COFRE_DIR:-$HOME/archimedes}"
 LOG_DIR="$COFRE_DIR/docs/cerebrum/logs"
 OUT_FILE="$LOG_DIR/estado-falhas.md"
 STAMP="$(date +%Y-%m-%d_%H%M%S)"

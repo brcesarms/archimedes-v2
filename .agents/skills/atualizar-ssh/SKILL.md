@@ -49,14 +49,14 @@ metadata:
 ### Passo 1 — Inspecionar o remoto
 
 ```bash
-ssh laptop-brn 'ls -la ~/archimedes-v2'
-ssh laptop-brn 'ls -lh ~/archimedes-v2/AGENTS.md ~/archimedes-v2/opencode.json'
+ssh laptop-brn 'ls -la ~/archimedes'
+ssh laptop-brn 'ls -lh ~/archimedes/AGENTS.md ~/archimedes/opencode.json'
 ```
 
 ### Passo 2 — Comparar com o local
 
 ```bash
-ls -lh ~/archimedes-v2/AGENTS.md ~/archimedes-v2/opencode.json
+ls -lh ~/archimedes/AGENTS.md ~/archimedes/opencode.json
 ```
 
 > Se os tamanhos forem iguais e o objetivo for "atualizar sempre", prosseguir mesmo assim (scp sobrescreve).
@@ -64,11 +64,11 @@ ls -lh ~/archimedes-v2/AGENTS.md ~/archimedes-v2/opencode.json
 ### Passo 3 — Transferir (UM comando por vez!)
 
 ```bash
-scp ~/archimedes-v2/AGENTS.md laptop-brn:~/archimedes-v2/AGENTS.md
+scp ~/archimedes/AGENTS.md laptop-brn:~/archimedes/AGENTS.md
 ```
 
 ```bash
-scp ~/archimedes-v2/opencode.json laptop-brn:~/archimedes-v2/opencode.json
+scp ~/archimedes/opencode.json laptop-brn:~/archimedes/opencode.json
 ```
 
 > ⚠️ **NUNCA** usar comandos compostos (`scp a && scp b` ou `ssh ... > /tmp/x; diff ...`) — não casam com os padrões de permissão e travam.
@@ -76,11 +76,11 @@ scp ~/archimedes-v2/opencode.json laptop-brn:~/archimedes-v2/opencode.json
 ### Passo 4 — Verificar integridade (obrigatório!)
 
 ```bash
-sha256sum ~/archimedes-v2/AGENTS.md ~/archimedes-v2/opencode.json
+sha256sum ~/archimedes/AGENTS.md ~/archimedes/opencode.json
 ```
 
 ```bash
-ssh laptop-brn 'sha256sum ~/archimedes-v2/AGENTS.md ~/archimedes-v2/opencode.json'
+ssh laptop-brn 'sha256sum ~/archimedes/AGENTS.md ~/archimedes/opencode.json'
 ```
 
 > ✅ **Sucesso = checksums IDÊNTICOS** nas duas máquinas. Se divergirem → reportar `#falha` e parar.
@@ -103,22 +103,22 @@ Resumo com: origem → destino, tamanhos antes/depois, checksums e conclusão. S
 
 ```bash
 # 1. Backup dos arquivos únicos/locais do cofre antigo
-ssh laptop-brn 'mkdir -p ~/archimedes-v2-antigo && cp ~/archimedes-v2/perfis/alienware.md ~/archimedes-v2-antigo/ 2>/dev/null; cp -r ~/archimedes-v2/.obsidian ~/archimedes-v2-antigo/ 2>/dev/null; cp -r ~/archimedes-v2/.hermes ~/archimedes-v2-antigo/ 2>/dev/null; cp ~/archimedes-v2/config.yaml ~/archimedes-v2-antigo/ 2>/dev/null'
+ssh laptop-brn 'mkdir -p ~/archimedes-antigo && cp ~/archimedes/perfis/alienware.md ~/archimedes-antigo/ 2>/dev/null; cp -r ~/archimedes/.obsidian ~/archimedes-antigo/ 2>/dev/null; cp -r ~/archimedes/.hermes ~/archimedes-antigo/ 2>/dev/null; cp ~/archimedes/config.yaml ~/archimedes-antigo/ 2>/dev/null'
 
 # 2. Clone para pasta NOVA (nunca sobre a antiga)
-ssh laptop-brn 'git clone git@github.com:brcesarms/archimedes-v2.git ~/archimedes-v2-novo'
+ssh laptop-brn 'git clone git@github.com:brcesarms/archimedes.git ~/archimedes-novo'
 
 # 3. Submódulos — se o --recurse-submodules falhar, usar fallback:
-ssh laptop-brn 'cd ~/archimedes-v2-novo && git submodule update --init --recursive'
+ssh laptop-brn 'cd ~/archimedes-novo && git submodule update --init --recursive'
 
 # 4. Verificar o clone novo ANTES de trocar
-ssh laptop-brn 'ls ~/archimedes-v2-novo && git -C ~/archimedes-v2-novo log --oneline -3'
+ssh laptop-brn 'ls ~/archimedes-novo && git -C ~/archimedes-novo log --oneline -3'
 
 # 5. Troca segura (apenas se passo 4 confirmou)
-ssh laptop-brn 'mv ~/archimedes-v2 ~/archimedes-v2-antigo && mv ~/archimedes-v2-novo ~/archimedes-v2'
+ssh laptop-brn 'mv ~/archimedes ~/archimedes-antigo && mv ~/archimedes-novo ~/archimedes'
 
 # 6. Verificação final
-ssh laptop-brn 'ls ~/archimedes-v2 && git -C ~/archimedes-v2 submodule status'
+ssh laptop-brn 'ls ~/archimedes && git -C ~/archimedes submodule status'
 ```
 
 > ⚠️ **Regras do clone:**

@@ -152,4 +152,4 @@ export OLLAMA_NUM_GPUS=1
 ---
 
 *Perfil mantido por 🏛️ Archimedes*  
-*Versão: 2.0.0 — Alienware Aurora 16" (archimedes-v2)*
+*Versão: 2.0.0 — Alienware Aurora 16" (archimedes)*

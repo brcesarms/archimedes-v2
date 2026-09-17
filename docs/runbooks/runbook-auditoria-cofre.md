@@ -24,9 +24,9 @@ status: pronto
 Auditoria semanal de saúde do **sistema do cofre** (raiz + `docs/` + `.agents/`): detecta links quebrados, notas órfãs e propõe novos MOCs. Mantém o cofre consistente e conectado. Você executa os **4 passos mecânicos** abaixo e gera o relatório.
 
 > ⚠️ **ESCOPO IMPORTANTE:** NÃO auditar os estudos pessoais (`~/wikisidian/` — conteúdo privado, fora do repositório, geram muito ruído de links relativos/planejados). Focar **somente** no sistema:
-> - `~/archimedes-v2/*.md` (raiz)
-> - `~/archimedes-v2/docs/**`
-> - `~/archimedes-v2/.agents/**`
+> - `~/archimedes/*.md` (raiz)
+> - `~/archimedes/docs/**`
+> - `~/archimedes/.agents/**`
 
 ## ⚙️ Passos (executar na ordem)
 
@@ -35,7 +35,7 @@ Auditoria semanal de saúde do **sistema do cofre** (raiz + `docs/` + `.agents/`
 Execute **exatamente** este comando (já exclui submódulos e ignora âncoras):
 
 ```bash
-grep -rEn --include="*.md" '\[[^]]*\]\([^)#]*\)' ~/archimedes-v2 --exclude-dir=.git --exclude-dir=.planning -h | grep -oP '\]\(\K[^)#]+' | sort -u
+grep -rEn --include="*.md" '\[[^]]*\]\([^)#]*\)' ~/archimedes --exclude-dir=.git --exclude-dir=.planning -h | grep -oP '\]\(\K[^)#]+' | sort -u
 ```
 
 **VALIDE cada caminho listado:** considere apenas links que sejam **relativos ao cofre ou ao sistema**. Ignore:
@@ -51,7 +51,7 @@ Um link só é **quebrado de verdade** se o destino **deveria existir** e **não
 Liste os arquivos do sistema e identifique os que **não recebem nenhum `[link](...)`** de outras notas do sistema:
 
 ```bash
-find ~/archimedes-v2/docs ~/archimedes-v2/.agents -name "*.md" -not -path "*/node_modules/*" | sort
+find ~/archimedes/docs ~/archimedes/.agents -name "*.md" -not -path "*/node_modules/*" | sort
 ```
 
 > 💡 Dica: cruze os nomes de arquivo com a lista de links da saída do Passo 1. Uma nota **não recebe backlink** se seu caminho nunca aparece como destino de outro `.md` do sistema. Se houver dúvida, anote como **candidata a órfã** (o Cérebro valida depois).
@@ -61,7 +61,7 @@ find ~/archimedes-v2/docs ~/archimedes-v2/.agents -name "*.md" -not -path "*/nod
 Execute e conte a frequência de tags no frontmatter (só do sistema):
 
 ```bash
-grep -rEn --include="*.md" '^  - [a-z-]+$|^tags:' ~/archimedes-v2/docs ~/archimedes-v2/.agents --exclude-dir=.git
+grep -rEn --include="*.md" '^  - [a-z-]+$|^tags:' ~/archimedes/docs ~/archimedes/.agents --exclude-dir=.git
 ```
 
 **VALIDE:** se uma tag tiver **mais de 7 notas** do sistema e ainda **não existir MOC** para ela → anotar sugestão de MOC.

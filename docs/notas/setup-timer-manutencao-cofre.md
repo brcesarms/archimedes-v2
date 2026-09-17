@@ -36,7 +36,7 @@ After=network.target
 
 [Service]
 Type=oneshot
-ExecStart=/var/home/brn/archimedes-v2/scripts/linux/manutencao-diaria-executor.sh
+ExecStart=/var/home/brn/archimedes/scripts/linux/manutencao-diaria-executor.sh
 ```
 
 ### `manutencao-cofre.timer`
@@ -73,13 +73,13 @@ systemctl --user enable --now manutencao-cofre.timer
 ```bash
 systemctl --user list-timers manutencao*        # ver próximo disparo
 systemctl --user status manutencao-cofre.service # status=0/SUCCESS
-cat ~/archimedes-v2/docs/cerebrum/logs/manutencao-*.log
+cat ~/archimedes/docs/cerebrum/logs/manutencao-*.log
 ```
 
 ## 🪵 Logs
 
 - Toda execução grava `docs/cerebrum/logs/manutencao-<STAMP>.log`
-- Backup em `~/backups/archimedes-v2/` (rotação mantém as 7 últimas)
+- Backup em `~/backups/archimedes/` (rotação mantém as 7 últimas)
 
 ---
 

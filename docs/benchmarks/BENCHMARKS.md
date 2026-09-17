@@ -1,4 +1,4 @@
-# 🧪 Benchmarks de Modelos — Archimedes V2
+# 🧪 Benchmarks de Modelos — Archimedes
 
 > Principais métricas dos modelos disponíveis na GEEKOM.
 > Executado em: 06/09/2026 09:26:10 · Ollama 0.33.3
@@ -24,7 +24,7 @@
 
 ## 🎛️ Modelo Fine-Tuned `archimedes:latest` (estilo do cofre) [2026-09-16]
 
-> Qwen3-4B-Instruct-2507 + LoRA treinado no estilo Archimedes V2 · GGUF Q4_K_M · 2.5 GB.
+> Qwen3-4B-Instruct-2507 + LoRA treinado no estilo Archimedes · GGUF Q4_K_M · 2.5 GB.
 > Pipeline completo em [`docs/finetune/`](../finetune/README.md). Mesma máquina, prompt 65 chars · 256 tokens · temp 0.2.
 
 | Métrica | `qwen3:4b` (base) | `archimedes` (fine-tuned) | Δ |

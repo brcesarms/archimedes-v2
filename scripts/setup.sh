@@ -1,6 +1,6 @@
 #!/bin/bash
 # ==============================================================================
-# 🚀 setup.sh — Setup Rápido do Archimedes V2 (< 1 min)
+# 🚀 setup.sh — Setup Rápido do Archimedes (< 1 min)
 # ==============================================================================
 # Substitui o antigo bootstrap artesanal de 260 linhas por ferramentas de ponta:
 #   1. Homebrew Bundle (Brewfile) -> Instala todas as ferramentas consolidadas
@@ -53,8 +53,8 @@ chezmoi apply --backup --source "${ROOT_DIR}/dotfiles"
 echo "==> ✅ [2/3] Dotfiles e SSH configurados (backup em ~/.local/share/chezmoi)!"
 
 echo ""
-echo "🩺 3/3: Validando esteira Archimedes V2..."
+echo "🩺 3/3: Validando esteira Archimedes..."
 bash "${ROOT_DIR}/scripts/lint.sh"
 
 echo ""
-echo "✨ Ambiente Archimedes V2 configurado com sucesso!"
+echo "✨ Ambiente Archimedes configurado com sucesso!"

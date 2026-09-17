@@ -13,7 +13,7 @@
 # ============================================================
 set -euo pipefail
 
-COFRE_DIR="${COFRE_DIR:-$HOME/archimedes-v2}"
+COFRE_DIR="${COFRE_DIR:-$HOME/archimedes}"
 ROTINAS_DIR="$COFRE_DIR/docs/cerebrum/rotinas"
 LOG_DIR="$COFRE_DIR/docs/cerebrum/logs"
 RUNBOOK="${1:-all}"

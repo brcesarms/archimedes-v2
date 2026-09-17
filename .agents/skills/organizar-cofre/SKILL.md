@@ -7,14 +7,14 @@ metadata:
   workflow: gestao
 ---
 
-# 🗂️ Organizar o Archimedes V2
+# 🗂️ Organizar o Archimedes
 
 Mantenha a estrutura do cofre organizada e padronizada.
 
 ## 📁 Estrutura padrão do cofre
 
 ```
-archimedes-v2/                 # repo: brcesarms/archimedes-v2 (repo único desde 17/09)
+archimedes/                 # repo: brcesarms/archimedes (repo único desde 17/09)
 ├── AGENTS.md                  # Regras e governança da IA (NÃO mover)
 ├── opencode.json              # Config da CLI (NÃO mover)
 ├── README.md                  # Documentação principal (NÃO mover)

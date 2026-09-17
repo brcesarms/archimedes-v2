@@ -35,7 +35,7 @@
 ### 🧱 Fluxo de trabalho diário
 
 1. **Editar na ACER** → `jarv-sync --push` (leva alterações ao GEEKOM)
-2. **Commitar no GEEKOM**: `ssh geekom && cd ~/archimedes-v2 && git add -A && git commit -m "feat: ..."`
+2. **Commitar no GEEKOM**: `ssh geekom && cd ~/archimedes && git add -A && git commit -m "feat: ..."`
 3. **Atualizar a ACER** com os commits → `jarv-sync` (pull)
 
 ### 🛡️ O que o script exclui automaticamente

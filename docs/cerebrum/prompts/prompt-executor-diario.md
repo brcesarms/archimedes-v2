@@ -22,21 +22,21 @@ Você tem permissão total (modo `--auto`). Use a ferramenta **bash** para execu
 ### Etapa 1 — Backup + limpeza diária
 Execute exatamente:
 ```bash
-bash ~/archimedes-v2/scripts/linux/manutencao-diaria-executor.sh
+bash ~/archimedes/scripts/linux/manutencao-diaria-executor.sh
 ```
 Verifique que a saída termina com: `🎯 Manutenção diária concluída com sucesso`.
 
 ### Etapa 2 — Saúde do sistema
 Execute exatamente:
 ```bash
-bash ~/archimedes-v2/scripts/linux/saude-sistema-executor.sh
+bash ~/archimedes/scripts/linux/saude-sistema-executor.sh
 ```
 Verifique que a saída termina com: `🎯 Saúde do sistema coletada — revisar log`.
 
 ### Etapa 3 — Monitoramento
 Execute exatamente:
 ```bash
-bash ~/archimedes-v2/scripts/linux/monitorar-executor.sh
+bash ~/archimedes/scripts/linux/monitorar-executor.sh
 ```
 Verifique que a saída contém: `✅ Monitoramento concluído`.
 

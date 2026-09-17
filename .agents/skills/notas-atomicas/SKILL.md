@@ -7,7 +7,7 @@ metadata:
   workflow: notas
 ---
 
-# 🗒️ Notas Atômicas do Archimedes V2
+# 🗒️ Notas Atômicas do Archimedes
 
 Este cofre segue regras estritas de clareza, modularidade e rastreabilidade na escrita de notas técnicas.
 

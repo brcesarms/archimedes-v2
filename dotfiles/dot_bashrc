@@ -42,7 +42,7 @@ if command -v ollama &>/dev/null; then
 fi
 
 # 🏛️ Configurações do Cofre
-COFRE_DIR="${COFRE_DIR:-$HOME/archimedes-v2}"
+COFRE_DIR="${COFRE_DIR:-$HOME/archimedes}"
 if [ -d "$COFRE_DIR" ]; then
     export COFRE="$COFRE_DIR"
 fi
@@ -51,14 +51,14 @@ fi
 
 # Entrar no cofre rapidamente
 cofre() {
-    cd "${COFRE_DIR:-$HOME/archimedes-v2}"
+    cd "${COFRE_DIR:-$HOME/archimedes}"
 }
 
 # Ver status do cofre
 cofre-status() {
-    local target="${COFRE_DIR:-$HOME/archimedes-v2}"
+    local target="${COFRE_DIR:-$HOME/archimedes}"
     local wiki="$HOME/wikisidian"
-    echo "🏛️ Status do Archimedes V2:"
+    echo "🏛️ Status do Archimedes:"
     echo "  📁 Arquivos Markdown: $(find "$target" -name "*.md" 2>/dev/null | wc -l)"
     echo "  📚 Concurseiro (wikisidian): $(find "$wiki/concurseiro" -name "*.md" 2>/dev/null | wc -l)"
     echo "  💻 T.I. (wikisidian): $(find "$wiki/t.i" -name "*.md" 2>/dev/null | wc -l)"

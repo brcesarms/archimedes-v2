@@ -44,7 +44,7 @@
 
 ### Inventário Alienware (via SSH 10.0.0.208)
 
-- **Não tem** linux-toolbox-tui, não tem archimedes-v2, não tem ~/projetos
+- **Não tem** linux-toolbox-tui, não tem archimedes, não tem ~/projetos
 - **Tem**: ~/.hermes (config mínima), docker, linuxbrew, cua-driver
 - Ubuntu 24.04.5 x86_64 · `~/linux-toolbox-tui` ausente (vamos clonar)
 

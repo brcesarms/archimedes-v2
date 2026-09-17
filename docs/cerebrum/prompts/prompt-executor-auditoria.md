@@ -29,7 +29,7 @@ Você tem permissão total (modo `--auto`). Use as ferramentas **bash** e **Read
 ### Etapa 2 — Backup semanal + push
 Execute exatamente:
 ```bash
-bash ~/archimedes-v2/scripts/linux/backup-semanal-executor.sh
+bash ~/archimedes/scripts/linux/backup-semanal-executor.sh
 ```
 Verifique que a saída termina com: `🎯 Backup semanal concluído com sucesso`.
 

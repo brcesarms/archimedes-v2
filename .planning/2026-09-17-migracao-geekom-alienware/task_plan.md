@@ -2,7 +2,7 @@
 
 ## Goal
 
-Consolidar **tudo** o que vive no `10.0.0.10` (VM no Proxmox GEEKOM) dentro do **Alienware** — cofre `archimedes-v2`, RAG (`archimedes-rag` + índice), projetos, vault, wikisidian, backups e configs de agente — deixando o Alienware como máquina única do Archimedes V2.
+Consolidar **tudo** o que vive no `10.0.0.10` (VM no Proxmox GEEKOM) dentro do **Alienware** — cofre `archimedes`, RAG (`archimedes-rag` + índice), projetos, vault, wikisidian, backups e configs de agente — deixando o Alienware como máquina única do Archimedes.
 
 ## Runtime Behavior
 
@@ -21,7 +21,7 @@ Concluído — 6/6 fases
 
 ## Phases
 
-### Phase 1: Sincronizar cofre archimedes-v2 no Alienware
+### Phase 1: Sincronizar cofre archimedes no Alienware
 
 - [x] Salvar/discardar edições locais do docker no Alienware (idênticas ao repo)
 - [x] `git pull --ff-only` até o HEAD de origem

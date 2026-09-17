@@ -1,6 +1,6 @@
 # 🧑‍💻 Estagiário Archimedes — Camada Local de Tarefas Rotineiras
 
-> **Objetivo:** responder FAQs, runbooks e diagnósticos simples **sem custo de cloud** — o "estagiário" do Archimedes V2.
+> **Objetivo:** responder FAQs, runbooks e diagnósticos simples **sem custo de cloud** — o "estagiário" do Archimedes.
 > **Data:** 2026-09-17 (atualização: 8B único) · **Base:** `qwen3:8b` (Q4_K_M) · **Derivado:** `estagiario` via Modelfile
 > **Nota:** estagiário 4B (`estagiario4b`) **removido** por decisão do Bruno (2026-09-17) — confiança > velocidade.
 

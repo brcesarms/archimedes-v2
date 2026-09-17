@@ -1,4 +1,4 @@
-# 🐳 Stack Docker de IA Local — Archimedes V2
+# 🐳 Stack Docker de IA Local — Archimedes
 
 Stack padronizada para execução de Large Language Models (LLMs) locais e interface de chat de ponta.
 

@@ -185,7 +185,7 @@ flowchart TD
 pkill -f opencode
 
 # Limpar logs (exclui tudo com mais de 14 dias)
-find ~/archimedes-v2/docs/cerebrum/logs/ -name "*.log" -mtime +14 -delete
+find ~/archimedes/docs/cerebrum/logs/ -name "*.log" -mtime +14 -delete
 
 # Reiniciar
 opencode run --auto
@@ -215,4 +215,4 @@ opencode run --auto
 ---
 
 *Doc mantido por 🏛️ Archimedes*  
-*Versão: 2.0.0 — Guia do Sistema Cérebro & Executor (archimedes-v2)*
+*Versão: 2.0.0 — Guia do Sistema Cérebro & Executor (archimedes)*

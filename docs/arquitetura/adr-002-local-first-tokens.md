@@ -2,11 +2,11 @@
 
 - **Data:** 2026-09-17
 - **Status:** Aceita (implementada nas Fases 1-4, plan `2026-09-17-integracao-local-primeiro-estagiario`)
-- **Autor:** Archimedes V2 + Bruno César
+- **Autor:** Archimedes + Bruno César
 
 ## Contexto
 
-O Archimedes V2 opera como agente de IA no OpenCode com provider cloud. Cada
+O Archimedes opera como agente de IA no OpenCode com provider cloud. Cada
 sessão consome tokens de entrada/saída. Grande parte das tarefas é rotineira
 (FAQ de infra, runbooks, diagnósticos simples, resumos), não exigindo
 raciocínio profundo. O hardware local (GEEKOM A7 MAX + LXC 104 com GPU ROCm)

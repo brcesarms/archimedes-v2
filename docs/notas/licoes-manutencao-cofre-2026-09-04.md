@@ -26,7 +26,7 @@ Nesta sessão executamos: varredura de scripts (ShellCheck), criação de skills
 - `utils/backups/` fica **dentro** do cofre
 - Cada `tar` do cofre inteiro incluía os backups anteriores **dentro dele**
 - 🔴 Inflação observada: 105K → 11M → **31M** (efeito bola de neve)
-- ✅ Correção: `--exclude='archimedes-v2/docs/guia-ia-local/utils/backups/*.tar.gz'` + `--exclude='archimedes-vault/.opencode/node_modules'`
+- ✅ Correção: `--exclude='archimedes/docs/guia-ia-local/utils/backups/*.tar.gz'` + `--exclude='archimedes-vault/.opencode/node_modules'`
 - 📍 Resultado: backup limpo de **124K** (99,6% menor)
 - 📍 Consequência: lição documentada na skill [`backup-cofre`](../../.agents/skills/backup-cofre/SKILL.md)
 

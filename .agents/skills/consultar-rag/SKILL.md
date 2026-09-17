@@ -11,7 +11,7 @@ metadata:
 
 ## Memória Semântica Local com Chunking AST e LanceDB
 
-O Archimedes V2 utiliza o [`archimedes-rag`](https://github.com/brcesarms/archimedes-rag) para indexar projetos de código via AST e executar buscas semânticas vetoriais ultra-rápidas no LanceDB local, economizando até 95% de tokens de contexto.
+O Archimedes utiliza o [`archimedes-rag`](https://github.com/brcesarms/archimedes-rag) para indexar projetos de código via AST e executar buscas semânticas vetoriais ultra-rápidas no LanceDB local, economizando até 95% de tokens de contexto.
 
 ## 📂 Localização do Motor
 
@@ -36,7 +36,7 @@ O Archimedes V2 utiliza o [`archimedes-rag`](https://github.com/brcesarms/archim
 
 3. **Reindexar Manualmente um Projeto:**
    ```bash
-   rag index /home/brn/archimedes-v2
+   rag index /home/brn/archimedes
    ```
 
 4. **Verificar Status e Chunks do Projeto Atual:**

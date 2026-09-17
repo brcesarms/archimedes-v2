@@ -1,13 +1,13 @@
-# 🏛️ Aliases Oficiais — Archimedes V2
+# 🏛️ Aliases Oficiais — Archimedes
 # ==============================================================================
 # Usa $HOME em vez de caminhos hardcoded (portabilidade entre máquinas)
 # Carregado automaticamente pelo dot_bashrc.
 
-# 🏛️ Archimedes V2
-alias v2='cd "$HOME/archimedes-v2"'
-alias v2-lint='"$HOME/archimedes-v2/scripts/lint.sh"'
-alias v2-backup='"$HOME/archimedes-v2/scripts/backup.sh"'
-alias v2-setup='"$HOME/archimedes-v2/scripts/setup.sh"'
+# 🏛️ Archimedes
+alias cofre='cd "$HOME/archimedes"'
+alias archimedes='cd "$HOME/archimedes"'
+alias archimedes-lint='"$HOME/archimedes/scripts/lint.sh"'
+alias archimedes-backup='"$HOME/archimedes/scripts/backup.sh"'
 
 # 🏗️ Projeto Bancada
 alias bancada='~/projetos/archimedes-operator/.venv/bin/python3 ~/projetos/archimedes-operator/scripts/python/menu.py'
@@ -20,7 +20,7 @@ alias ollama-pull='ollama pull'
 alias ollama-rm='ollama rm'
 
 # 🤖 AGY & Hermes (Interface Principal)
-alias agy-v2='cd "$HOME/archimedes-v2" && agy'
+alias agy-archimedes='cd "$HOME/archimedes" && agy'
 alias hermes-cli='~/.local/bin/hermes'
 alias hermes-run='~/.local/bin/estagiario-alienware'
 
@@ -63,14 +63,14 @@ alias bashrc='vim ~/.bashrc'
 alias reload='source ~/.bashrc && echo "✅ Bashrc recarregado!"'
 
 # 🏛️ Git no cofre
-alias git-cofre='cd "$HOME/archimedes-v2" && git'
+alias git-cofre='cd "$HOME/archimedes" && git'
 alias git-status='git status'
 alias git-pull='git pull'
 alias git-push='git push'
 
 # 🔍 Busca
 alias find-md='find . -name "*.md"'
-alias find-skill='find "$HOME/archimedes-v2/.agents/skills" -name "SKILL.md"'
+alias find-skill='find "$HOME/archimedes/.agents/skills" -name "SKILL.md"'
 
 # 🔍 Ferramentas V2
 alias ly='lychee --offline .'

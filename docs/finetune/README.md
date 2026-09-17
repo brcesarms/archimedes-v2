@@ -1,6 +1,6 @@
 # 🎛️ Fine-Tuning Archimedes — Qwen3-4B no estilo do cofre
 
-> **Objetivo:** criar um modelo local que fala no **estilo Archimedes V2** (pt-BR, emojis, tabelas, tom técnico do cofre), servido pelo Ollama no LXC 104.
+> **Objetivo:** criar um modelo local que fala no **estilo Archimedes** (pt-BR, emojis, tabelas, tom técnico do cofre), servido pelo Ollama no LXC 104.
 > **Data:** 2026-09-16 · **Base:** `Qwen/Qwen3-4B-Instruct-2507` · **Método:** LoRA (fp16) + merge + GGUF Q4_K_M
 
 ---

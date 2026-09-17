@@ -28,7 +28,7 @@ Use this file as the chronological record of work performed, files changed, vali
   - `initialize` → 200 OK, session id `9fae8a04...`, capabilities tools OK
   - `notifications/initialized` → OK
   - `tools/list` → 2 tools: `search_codebase_rag`, `index_codebase_rag` ✅
-  - `tools/call search_codebase_rag` (project_dir=/home/brn/archimedes-v2) → retornou chunks semânticos reais ✅
+  - `tools/call search_codebase_rag` (project_dir=/home/brn/archimedes) → retornou chunks semânticos reais ✅
   - `tools/call index_codebase_rag` (project_dir=/home/brn/projetos/archimedes-rag) → "5 arquivos e 28 chunks vetoriais" ✅
 - **systemd:** `~/.config/systemd/user/archimedes-rag-mcp.service` — Type=simple, ExecStart com `--transport streamable-http --host 0.0.0.0 --port 8765 --path /mcp`, Restart=on-failure, ProtectSystem=full, PrivateTmp. `enabled` + `active (running)` desde 14:27:37.
 - **Verificação de escuta:** `ss -tlnp` → `0.0.0.0:8765` (python pid 2280) ✅
@@ -93,7 +93,7 @@ Record each validation command or scenario, its expected result, and the observe
 | shellcheck | `shellcheck .../planning-with-files/scripts/*.sh` | exit 0 | exit 0 (avisos upstream) | ✅ |
 | MCP initialize | `curl POST :8765/mcp` | 200 + session id | 200 OK, session `9fae8a04...`, tools caps | ✅ |
 | MCP tools/list | curl após initialized | 2 tools | search_codebase_rag + index_codebase_rag | ✅ |
-| MCP search | tools/call search (archimedes-v2, top_k 2) | chunks semânticos | Retornou fontes reais (servidor-arquivos-proxmox, matriz-de-substituicao) | ✅ |
+| MCP search | tools/call search (archimedes, top_k 2) | chunks semânticos | Retornou fontes reais (servidor-arquivos-proxmox, matriz-de-substituicao) | ✅ |
 | MCP index | tools/call index (archimedes-rag) | reindexação OK | "5 arquivos e 28 chunks vetoriais" | ✅ |
 | systemd | `systemctl --user status archimedes-rag-mcp` | active | active (running) desde 14:27:37, bind 0.0.0.0:8765 | ✅ |
 | porta | `ss -tlnp \| grep 8765` | LISTEN | LISTEN 0.0.0.0:8765 | ✅ |

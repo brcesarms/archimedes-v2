@@ -1,4 +1,4 @@
-# 🧪 Benchmarks de Modelos de IA Local — Archimedes V2
+# 🧪 Benchmarks de Modelos de IA Local — Archimedes
 
 Esta pasta armazena o histórico empírico e os relatórios de benchmarks dos modelos de Inteligência Artificial testados no hardware local (notadamente a máquina de inferência GEEKOM A7 MAX e Alienware).
 

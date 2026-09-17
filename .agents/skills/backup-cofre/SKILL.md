@@ -30,16 +30,16 @@ Utiliza o **`restic`**, o padrão da indústria para backups atômicos, deduplic
 
 ```bash
 # Criar snapshot manual:
-~/archimedes-v2/scripts/linux/restic-vault.sh backup manual
+~/archimedes/scripts/linux/restic-vault.sh backup manual
 
 # Listar todos os snapshots existentes com datas e tamanhos:
-~/archimedes-v2/scripts/linux/restic-vault.sh list
+~/archimedes/scripts/linux/restic-vault.sh list
 
 # Verificar integridade criptográfica dos dados:
-~/archimedes-v2/scripts/linux/restic-vault.sh check
+~/archimedes/scripts/linux/restic-vault.sh check
 
 # Aplicar política de retenção (mantém 7 diários, 4 semanais, 6 mensais):
-~/archimedes-v2/scripts/linux/restic-vault.sh prune
+~/archimedes/scripts/linux/restic-vault.sh prune
 ```
 
 ### 3. Snapshot Legado via tar.gz (Fallback)
@@ -47,14 +47,14 @@ Utiliza o **`restic`**, o padrão da indústria para backups atômicos, deduplic
 Criar um arquivo tar.gz compactado com a data no nome. **O destino é FORA do cofre** (`$HOME/backups/`) para evitar backup aninhado:
 
 ```bash
-BACKUP_BASE="$HOME/backups/archimedes-v2"
+BACKUP_BASE="$HOME/backups/archimedes"
 mkdir -p "$BACKUP_BASE"
 STAMP="$(date +%Y-%m-%d_%H%M%S)"
-tar -czf "$BACKUP_BASE/archimedes-v2_$STAMP.tar.gz" \
-    --exclude='archimedes-v2/docs/guia-ia-local/utils/backups/*.tar.gz' \
-    --exclude='archimedes-v2/.opencode/node_modules' \
-    --exclude='archimedes-v2/.git' \
-    -C "$HOME" archimedes-v2
+tar -czf "$BACKUP_BASE/archimedes_$STAMP.tar.gz" \
+    --exclude='archimedes/docs/guia-ia-local/utils/backups/*.tar.gz' \
+    --exclude='archimedes/.opencode/node_modules' \
+    --exclude='archimedes/.git' \
+    -C "$HOME" archimedes
 ```
 
 > 💡 Também exclui `node_modules` (62M de dependência npm recuperável) — nunca deve pesar no backup do conteúdo.
@@ -64,13 +64,13 @@ tar -czf "$BACKUP_BASE/archimedes-v2_$STAMP.tar.gz" \
 Sempre conferir se o backup está íntegro antes de dar como concluído:
 
 ```bash
-tar -tzf "$BACKUP_BASE/archimedes-v2_$STAMP.tar.gz" > /dev/null && echo "✅ Backup íntegro"
-ls -lh "$BACKUP_BASE/archimedes-v2_$STAMP.tar.gz"
+tar -tzf "$BACKUP_BASE/archimedes_$STAMP.tar.gz" > /dev/null && echo "✅ Backup íntegro"
+ls -lh "$BACKUP_BASE/archimedes_$STAMP.tar.gz"
 ```
 
 > ✅ Confirmação extra de que nada foi aninhado:
 > ```bash
-> [ "$(tar -tzf "$BACKUP_BASE/archimedes-v2_$STAMP.tar.gz" | grep -c 'backups/.*tar.gz')" -eq 0 ] && echo "✅ Sem backups aninhados"
+> [ "$(tar -tzf "$BACKUP_BASE/archimedes_$STAMP.tar.gz" | grep -c 'backups/.*tar.gz')" -eq 0 ] && echo "✅ Sem backups aninhados"
 > ```
 
 ### 5. Rotação (opcional)
@@ -83,7 +83,7 @@ ls -lh "$BACKUP_BASE/archimedes-v2_$STAMP.tar.gz"
 ### 1. Localizar o backup
 
 ```bash
-ls -lh "$HOME/backups/archimedes-v2/"*.tar.gz
+ls -lh "$HOME/backups/archimedes/"*.tar.gz
 ```
 
 ### 2. Restaurar
@@ -92,7 +92,7 @@ ls -lh "$HOME/backups/archimedes-v2/"*.tar.gz
 
 ```bash
 # Restaurar a partir de um backup específico
-tar -xzf "$HOME/backups/archimedes-v2/archimedes-v2_<DATA>.tar.gz" -C "$HOME"
+tar -xzf "$HOME/backups/archimedes/archimedes_<DATA>.tar.gz" -C "$HOME"
 ```
 
 ### 3. Verificar
@@ -103,8 +103,8 @@ tar -xzf "$HOME/backups/archimedes-v2/archimedes-v2_<DATA>.tar.gz" -C "$HOME"
 ## 📌 Regras
 
 - 🔬 **Nunca** apagar backups sem perguntar
-- 📁 Backups ficam em `$HOME/backups/archimedes-v2/` (FORA do cofre)
-- 🏷️ Nome sempre com data/hora (`archimedes-v2_YYYY-MM-DD_HHMMSS.tar.gz`)
+- 📁 Backups ficam em `$HOME/backups/archimedes/` (FORA do cofre)
+- 🏷️ Nome sempre com data/hora (`archimedes_YYYY-MM-DD_HHMMSS.tar.gz`)
 - ✅ Verificar integridade do backup após criar e após restaurar
 
 ---

@@ -21,7 +21,7 @@ O projeto é **modular** — 3 repos separados:
 
 | Caminho | Repo | Acesso |
 |---------|------|--------|
-| `~/archimedes-v2` (raiz) | `brcesarms/archimedes-v2` | 🌐 público |
+| `~/archimedes` (raiz) | `brcesarms/archimedes` | 🌐 público |
 | `~/wikisidian/t.i` (estudos pessoais) | `brcesarms/t.i` | 🌐 público |
 | `~/wikisidian/concurseiro` (estudos pessoais) | `brcesarms/concurseiro` | 🔒 privado |
 
@@ -50,7 +50,7 @@ git commit -m "feat: nova nota de linux"
 git push
 ```
 
-> ⚠️ Os estudos pessoais são **repos independentes** de `~/archimedes-v2` — não existe mais ponteiro de submódulo para atualizar na raiz.
+> ⚠️ Os estudos pessoais são **repos independentes** de `~/archimedes` — não existe mais ponteiro de submódulo para atualizar na raiz.
 
 ## 🐙 API GitHub (via curl)
 

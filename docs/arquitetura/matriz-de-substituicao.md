@@ -1,4 +1,4 @@
-# 🗺️ Matriz de Substituição — Archimedes V1 ➔ Archimedes V2
+# 🗺️ Matriz de Substituição — Archimedes V1 ➔ Archimedes
 
 > Documento de Arquitetura que define a transição do trabalho "na unha" (V1) para a orquestração de padrões consolidados da indústria (V2).
 

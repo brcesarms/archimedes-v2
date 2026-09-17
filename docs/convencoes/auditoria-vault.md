@@ -23,7 +23,7 @@ done
 
 ```bash
 # ❌ ERRADO: valida da raiz do cofre (links de notas em subpastas quebram por engano)
-cd ~/archimedes-v2
+cd ~/archimedes
 grep -oP '\]\(\K[^)]+' notas/nota.md | while read -r dest; do
     [ -e "$dest" ] && echo "✅" || echo "❌"   # todos quebram se $dest começa com ../ 
 done

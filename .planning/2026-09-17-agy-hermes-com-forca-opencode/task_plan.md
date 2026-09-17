@@ -2,7 +2,7 @@
 
 ## Goal
 
-Dar ao Google Antigravity CLI (`agy`) **e** ao Hermes Agent (estagiário do Alienware) a MESMA força que o opencode tem no Archimedes V2: skills (notas-atomicas, script-linux, consultar-rag, planning-with-files), subagentes (estudante, resumidor, executor), persona/regras do Archimedes e acesso ao RAG semântico (archimedes-rag MCP).
+Dar ao Google Antigravity CLI (`agy`) **e** ao Hermes Agent (estagiário do Alienware) a MESMA força que o opencode tem no Archimedes: skills (notas-atomicas, script-linux, consultar-rag, planning-with-files), subagentes (estudante, resumidor, executor), persona/regras do Archimedes e acesso ao RAG semântico (archimedes-rag MCP).
 
 ## Descoberta-Chave (Design)
 

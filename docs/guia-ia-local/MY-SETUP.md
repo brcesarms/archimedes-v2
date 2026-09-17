@@ -48,7 +48,7 @@ A minha **central de comando** focada em **IA Local** e **OpenCode CLI**. A máq
 
 > 💡 **Destaque para a IA:** É nesta máquina que a IA local (Ollama + OpenCode) roda de forma nativa.
 >
-> 🏛️ **Migração do Cofre:** O Archimedes Vault (segundo cérebro) mora **nesta máquina** (`~/archimedes-v2`)! Acesso SSH: `ssh geekom` (usuário `brn`, IP `10.0.0.3`, chave ed25519 da ACER).
+> 🏛️ **Migração do Cofre:** O Archimedes Vault (segundo cérebro) mora **nesta máquina** (`~/archimedes`)! Acesso SSH: `ssh geekom` (usuário `brn`, IP `10.0.0.3`, chave ed25519 da ACER).
 
 ---
 

@@ -21,7 +21,7 @@ Notas atômicas nunca ficam isoladas — conecte-as com notas correlatas e índi
 Comando útil:
 ```bash
 # Listar todos os links markdown
-grep -rEn '\[[^]]*\]\([^)]*\)' ~/archimedes-v2 --include="*.md"
+grep -rEn '\[[^]]*\]\([^)]*\)' ~/archimedes --include="*.md"
 ```
 
 ### 2. Conectar notas correlatas

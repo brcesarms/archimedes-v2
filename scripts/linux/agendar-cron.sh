@@ -13,7 +13,7 @@
 # ============================================================
 set -euo pipefail
 
-COFRE_DIR="${COFRE_DIR:-$HOME/archimedes-v2}"
+COFRE_DIR="${COFRE_DIR:-$HOME/archimedes}"
 SYSTEMD_DIR="$COFRE_DIR/docs/cerebrum/systemd"
 USER_SYSTEMD="$HOME/.config/systemd/user"
 

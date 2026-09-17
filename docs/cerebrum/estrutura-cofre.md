@@ -9,14 +9,14 @@ tags:
 status: ativo
 ---
 
-# 🗂️ Estrutura do Archimedes V2 (Sistema Cérebro & Executor)
+# 🗂️ Estrutura do Archimedes (Sistema Cérebro & Executor)
 
 > Árvore lógica do repositório único. O conhecimento reside em `docs/`, os scripts em `scripts/`, os dotfiles em `dotfiles/` e as skills/agentes em `.agents/`. Os estudos pessoais (`t.i/`, `concurseiro/`) ficam **fora do repositório**, em `~/wikisidian/`.
 
 ## 🌳 Árvore de Diretórios
 
 ```
-archimedes-v2/
+archimedes/
 ├── AGENTS.md                    # 🏛️ Manual de governança, regras e identidade
 ├── opencode.json                # ⚙️ Configurações da CLI
 ├── README.md                    # 📖 Documentação principal

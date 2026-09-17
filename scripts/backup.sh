@@ -1,12 +1,12 @@
 #!/bin/bash
 # ==============================================================================
-# 🔄 backup.sh — Backup com Restic no Archimedes V2
+# 🔄 backup.sh — Backup com Restic no Archimedes
 # ==============================================================================
 # Cria snapshot atômico e deduplicado do cofre usando Restic (padrão de
 # indústria). Exige: restic, `~/.config/restic/password` e `.resticignore`.
 #
 # Uso:
-#   ./scripts/backup.sh                    # Snapshot padrão (tag archimedes-v2)
+#   ./scripts/backup.sh                    # Snapshot padrão (tag archimedes)
 #   RESTIC_REPOSITORY=/tmp/teste ./scripts/backup.sh   # Repo alternativo
 # ==============================================================================
 set -euo pipefail
@@ -56,6 +56,6 @@ restic backup "$TARGET_DIR" \
   --repo "$REPO_DIR" \
   --password-file "$PASS_FILE" \
   --exclude-file "$RESTICIGNORE" \
-  --tag "archimedes-v2"
+  --tag "archimedes"
 
 echo "==> ✅ [2/2] Snapshot concluído e deduplicado com sucesso!"

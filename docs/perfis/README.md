@@ -10,7 +10,7 @@
 | Máquina | Perfil | Uso Principal | Modelo Principal |
 |---------|--------|---------------|------------------|
 | 🚀 **Alienware Aurora 16"** | [`alienware.md`](./alienware.md) | Desenvolvimento pesado, Docker, testes | `qwen3-coder:30b` |
-| 🧠 **GEEKOM A7 MAX** | [`geekom.md`](./geekom.md) | **IA Local Principal** (Archimedes V2 — Ollama + OpenCode) | `qwen3-coder:30b` |
+| 🧠 **GEEKOM A7 MAX** | [`geekom.md`](./geekom.md) | **IA Local Principal** (Archimedes — Ollama + OpenCode) | `qwen3-coder:30b` |
 | 💻 **ACER Aspire** | [`acer-paula.md`](./acer-paula.md) | Leve (modelos leves, backup, revisão) | `qwen2.5-coder:7b` |
 
 ---
@@ -29,7 +29,7 @@ neofetch
 ### 2. Ler o perfil correspondente
 ```bash
 # Exemplo para GEEKOM
-cat ~/archimedes-v2/docs/perfis/geekom.md
+cat ~/archimedes/docs/perfis/geekom.md
 ```
 
 ### 3. Aplicar configurações
@@ -95,4 +95,4 @@ cat ~/archimedes-v2/docs/perfis/geekom.md
 ---
 
 *Doc mantido por 🏛️ Archimedes*  
-*Versão: 2.0.0 — Perfis por Máquina (archimedes-v2)*
+*Versão: 2.0.0 — Perfis por Máquina (archimedes)*

@@ -8,7 +8,7 @@ set -euo pipefail
 # Compatível com: Ubuntu, Linux Mint, Pop!_OS, Fedora, Omarchy, Arch, Manjaro
 #
 # Uso:
-#   cd ~/archimedes-v2/docs/guia-ia-local
+#   cd ~/archimedes/docs/guia-ia-local
 #   ./install.sh
 #
 # Opções:
@@ -19,7 +19,7 @@ set -euo pipefail
 #   --help       Mostra esta ajuda
 # ============================================================
 
-COFRE_DIR="${COFRE_DIR:-$HOME/archimedes-v2}"
+COFRE_DIR="${COFRE_DIR:-$HOME/archimedes}"
 
 # 🎨 Cores
 RED='\033[0;31m'
@@ -297,11 +297,11 @@ echo -e "🔄 ${YELLOW}Recarregue o terminal:${NC}"
 echo -e "  ${CYAN}source ~/.bashrc${NC}"
 echo ""
 echo -e "🚀 ${YELLOW}Para começar:${NC}"
-echo -e "  ${CYAN}cd ~/archimedes-v2${NC}"
+echo -e "  ${CYAN}cd ~/archimedes${NC}"
 echo -e "  ${CYAN}agy${NC}  # ou opencode"
 echo ""
 echo -e "🚀  ${YELLOW}Em máquina recém-formatada, rode primero o bootstrap:${NC}"
-echo -e "  ${CYAN}cd ~/archimedes-v2 && ./bootstrap.sh${NC}"
+echo -e "  ${CYAN}cd ~/archimedes && ./bootstrap.sh${NC}"
 echo ""
 echo -e "🔄 ${YELLOW}Trocar de modelo (aliases prontos):${NC}"
 echo -e "  ${CYAN}usar-coder${NC}   → Qwen 2.5 Coder 7B (16k)   [usar-coder-v1.1.sh]"

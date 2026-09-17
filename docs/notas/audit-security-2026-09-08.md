@@ -85,7 +85,7 @@ find scripts -name "*.sh" -exec ls -la {} \; | awk '{print $1, $NF}'
 |---------|---------|--------|
 | `set -euo pipefail` | `saude-sistema-executor.sh`, `backup-cofre.sh` | ✅ 2/2 scripts principais |
 | Variáveis de ambiente | `$COFRE_DIR`, `$HOME` | ✅ |
-| Caminhos absolutos | `$HOME/archimedes-v2` | ✅ |
+| Caminhos absolutos | `$HOME/archimedes` | ✅ |
 | Validação de diretório | `if [ ! -d "$COFRE_DIR" ]; then exit 1; fi` | ✅ |
 | Logs seguros | `tee -a "$LOG_FILE"` (sem expor senhas) | ✅ |
 

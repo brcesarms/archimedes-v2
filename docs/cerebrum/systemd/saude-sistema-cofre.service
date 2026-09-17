@@ -4,4 +4,4 @@ After=network.target
 
 [Service]
 Type=oneshot
-ExecStart=%h/archimedes-v2/scripts/linux/saude-sistema-executor.sh
+ExecStart=%h/archimedes/scripts/linux/saude-sistema-executor.sh

@@ -1,6 +1,6 @@
 #!/bin/bash
 # ==============================================================================
-# 🩺 lint.sh — Esteira de Qualidade e Segurança do Archimedes V2
+# 🩺 lint.sh — Esteira de Qualidade e Segurança do Archimedes
 # ==============================================================================
 # Executa:
 #   1. lychee (validação de links markdown em Rust)
@@ -49,4 +49,4 @@ gitleaks detect --source . --no-banner
 echo "==> ✅ [4/4] Repositório 100% blindado!"
 
 echo ""
-echo "✨ Todos os testes da esteira Archimedes V2 passaram com sucesso!"
+echo "✨ Todos os testes da esteira Archimedes passaram com sucesso!"

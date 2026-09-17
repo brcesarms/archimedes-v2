@@ -61,8 +61,8 @@ gh auth login          # escolha: GitHub.com → HTTPS → Login with token
 ### 2.3. Clone + setup (40s)
 
 ```bash
-git clone git@github.com:brcesarms/archimedes-v2.git ~/archimedes-v2
-cd ~/archimedes-v2 && ./scripts/setup.sh
+git clone git@github.com:brcesarms/archimedes.git ~/archimedes
+cd ~/archimedes && ./scripts/setup.sh
 ```
 
 > ⏱️ **Meta total:** ~2 min com internet boa. O `setup.sh` instala deps via Brewfile (brew bundle), aplica dotfiles via Chezmoi e valida o cofre.
@@ -73,17 +73,17 @@ cd ~/archimedes-v2 && ./scripts/setup.sh
 
 | Check | Comando | Esperado |
 | :--- | :--- | :--- |
-| Cofre íntegro | `ls ~/archimedes-v2 && git -C ~/archimedes-v2 status` | Árvore + clean |
+| Cofre íntegro | `ls ~/archimedes && git -C ~/archimedes status` | Árvore + clean |
 | Estudos pessoais (opcional) | `ls ~/wikisidian && git -C ~/wikisidian/t.i status` | `t.i` e `concurseiro` OK |
 | OpenCode | `opencode --version` | Versão listada |
 | SSH remoto | `ssh laptop-brn 'echo ok'` | `ok` |
-| Chat | `cd ~/archimedes-v2 && opencode` | 🏛️ Archimedes online |
+| Chat | `cd ~/archimedes && opencode` | 🏛️ Archimedes online |
 
 ---
 
 ## 4️⃣ Pós-bootstrap (opcional, quando quiser)
 
-- **IA local / Docker:** `cd ~/archimedes-v2/docker && docker compose up -d`
+- **IA local / Docker:** `cd ~/archimedes/docker && docker compose up -d`
 - **Restaurar chave SSH:** cole a chave privada do Bitwarden em `~/.ssh/id_ed25519` (chmod 600) ou gere nova
 
 ---

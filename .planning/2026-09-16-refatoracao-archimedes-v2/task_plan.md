@@ -1,7 +1,7 @@
-# 🏛️ Refatoração Archimedes V2
+# 🏛️ Refatoração Archimedes
 
 ## Goal
-Refatorar o cofre `archimedes-v2` para máxima robustez, consistência e eficiência. Eliminar erros, melhorar scripts, documentação e configurações.
+Refatorar o cofre `archimedes` para máxima robustez, consistência e eficiência. Eliminar erros, melhorar scripts, documentação e configurações.
 
 ## Next Step
 Todas as fases concluídas. Próximos passos sugeridos: integrar `archimedes:latest` como observer/voz local do claude-mem e avaliar novo ciclo de fine-tune com dataset maior.

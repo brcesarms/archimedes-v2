@@ -13,7 +13,7 @@
 # ============================================================
 set -euo pipefail
 
-OPENCODE_JSON="${1:-$HOME/archimedes-v2/opencode.json}"
+OPENCODE_JSON="${1:-$HOME/archimedes/opencode.json}"
 
 log() { echo "$*"; }
 

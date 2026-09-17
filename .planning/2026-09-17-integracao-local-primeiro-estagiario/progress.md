@@ -56,7 +56,7 @@
 - ✅ Roteador definido: RAG local → estagiário local → subagentes → Archimedes cloud (escalada por complexidade)
 
 ### Fase 2 — Ativar Camada Local
-- ✅ `rag index /home/brn/archimedes-v2` → **49 arquivos, 93 chunks** (archimedes-v2 ainda não indexado)
+- ✅ `rag index /home/brn/archimedes` → **49 arquivos, 93 chunks** (archimedes ainda não indexado)
 - ✅ Proxy Ollama persistente: `~/.local/bin/ollama-proxy.py` + `~/.config/systemd/user/ollama-proxy.service` (127.0.0.1:37777 → 10.0.0.4:11434), enable --now, **ativo**
 - ✅ `archimedes:latest` validado via /v1 chat (estilo ✅) e **tool calling nativo ✅** (listar_modelos)
 - ✅ claude-mem worker: `npx claude-mem start` → **PID 8231, porta 37700 running**
@@ -89,7 +89,7 @@
 | Test | Input | Expected | Actual | Status |
 |------|-------|----------|--------|--------|
 | Proxy systemd | systemctl status | active running | ✅ active (PID 8105) | ✅ |
-| Ollama via proxy /v1 | curl chat | resposta estilo | ✅ "Archimedes V2 = (...) 🏛️" | ✅ |
+| Ollama via proxy /v1 | curl chat | resposta estilo | ✅ "Archimedes = (...) 🏛️" | ✅ |
 | Tool calling /v1 | curl tools | tool_calls | ✅ `listar_modelos {}` | ✅ |
 | claude-mem worker | npx claude-mem status | running | ✅ PID 8231, porta 37700 | ✅ |
 | RAG index | rag index . | chunks | ✅ 49 arquivos, 93 chunks | ✅ |
@@ -177,7 +177,7 @@ Runbooks publicados: commits `14c67cf` (inicial hermes3) e `260b2bd` (benchmark 
 | stdin/pipe (`free -h`) | 7,5s | ✅ correto |
 
 Instalado em `~/.local/bin/estagiario-alienware` (symlink). lint.sh 100% limpo.
-Commits: archimedes-v2 `4d77179` · linux-toolbox-tui `1b4d4dc`.
+Commits: archimedes `4d77179` · linux-toolbox-tui `1b4d4dc`.
 
 ### Fallback cloud (17/09/2026) — decisão: SEM fallback por enquanto
 

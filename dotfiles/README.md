@@ -1,6 +1,6 @@
-# 🔌 Dotfiles — Archimedes V2 (Gerenciado via Chezmoi)
+# 🔌 Dotfiles — Archimedes (Gerenciado via Chezmoi)
 
-Os dotfiles do Archimedes V2 são gerenciados pelo [**`chezmoi`**](https://github.com/twpayne/chezmoi) (+16.000 ⭐), o padrão da indústria para gerenciamento seguro e versionado de configurações de usuário.
+Os dotfiles do Archimedes são gerenciados pelo [**`chezmoi`**](https://github.com/twpayne/chezmoi) (+16.000 ⭐), o padrão da indústria para gerenciamento seguro e versionado de configurações de usuário.
 
 > Configurações de shell e ambiente versionadas para **sobreviver a formatação**. Copiadas para `~` pelo `bootstrap.sh` ou pelo `chezmoi apply`.
 
@@ -11,7 +11,7 @@ Os dotfiles do Archimedes V2 são gerenciados pelo [**`chezmoi`**](https://githu
 | Arquivo | Destino | Para que serve | Contém segredo? |
 | :--- | :--- | :--- | :---: |
 | `dot_bashrc` | `~/.bashrc` | Shell principal: PATH, histórico, funções `cofre`/`cofre-status` | ❌ Não |
-| `dot_aliases` | `~/.bash_aliases` | Aliases do Archimedes V2 (v2, docker, ollama, lychee…) | ❌ Não |
+| `dot_aliases` | `~/.bash_aliases` | Aliases do Archimedes (v2, docker, ollama, lychee…) | ❌ Não |
 | `dot_prompt` | *(source)* | Prompt Jarvis customizado (PS1) | ❌ Não |
 | `dot_ssh/config` | `~/.ssh/config` | Template de aliases de hosts SSH | ❌ Não |
 | `README.md` | *(este arquivo)* | Documentação da pasta | ❌ Não |
@@ -30,18 +30,18 @@ Os dotfiles do Archimedes V2 são gerenciados pelo [**`chezmoi`**](https://githu
 
 2. **Aplicar os dotfiles do repositório:**
    ```bash
-   chezmoi apply --source "$HOME/archimedes-v2/dotfiles"
+   chezmoi apply --source "$HOME/archimedes/dotfiles"
    ```
 
 3. **Verificar diferenças antes de aplicar (dry-run):**
    ```bash
-   chezmoi diff --source "$HOME/archimedes-v2/dotfiles"
+   chezmoi diff --source "$HOME/archimedes/dotfiles"
    ```
 
 ### Alternativa rápida (sem chezmoi)
 
 ```bash
-cd ~/archimedes-v2 && ./scripts/bootstrap.sh
+cd ~/archimedes && ./scripts/bootstrap.sh
 
 # Manual — copiar o SSH config
 cp dotfiles/dot_ssh/config ~/.ssh/config

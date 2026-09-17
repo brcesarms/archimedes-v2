@@ -208,7 +208,7 @@ fi
 
 ```bash
 # Criar log com timestamp
-LOG_FILE="~/archimedes-v2/docs/cerebrum/logs/runbook-$(date +%Y-%m-%d_%H%M%S).log"
+LOG_FILE="~/archimedes/docs/cerebrum/logs/runbook-$(date +%Y-%m-%d_%H%M%S).log"
 
 # Escrever no log
 echo "===== 🎯 Início da execução — $(date) =====" > "$LOG_FILE"

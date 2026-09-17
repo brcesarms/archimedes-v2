@@ -59,19 +59,19 @@ Se o comando **não casa com nenhum padrão `allow`**, ele cai no `ask` genéric
 
 ```bash
 # ❌ Rejeitado (não casa com "find * -maxdepth *"):
-find ~/archimedes-v2 -type f \( -name ".env" -o -name "*.key" \) -not -path "*/.git/*"
+find ~/archimedes -type f \( -name ".env" -o -name "*.key" \) -not -path "*/.git/*"
 
 # ✅ Adaptado (casa com allow), mesma intenção:
-find ~/archimedes-v2 -maxdepth 3 -name "*.key" \
+find ~/archimedes -maxdepth 3 -name "*.key" \
   -o -maxdepth 3 -name ".env"
 ```
 
 ```bash
 # ❌ Rejeitado (mkdir é ask em run mode):
-mkdir -p ~/archimedes-v2/scripts
+mkdir -p ~/archimedes/scripts
 
 # ✅ Correto — o diretório JÁ EXISTE, verificar com ls:
-ls -la ~/archimedes-v2/scripts/
+ls -la ~/archimedes/scripts/
 ```
 
 ## 🏁 Conclusão

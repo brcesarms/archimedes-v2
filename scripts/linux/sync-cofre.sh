@@ -22,7 +22,7 @@ set -euo pipefail
 
 REMOTE_HOST="geekom"
 # shellcheck disable=SC2088 # intencional: ~ expande no shell remoto do rsync
-REMOTE_DIR='~/archimedes-v2/'
+REMOTE_DIR='~/archimedes/'
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 LOCAL_DIR="$(cd "${SCRIPT_DIR}/../../.." && pwd)/"
 

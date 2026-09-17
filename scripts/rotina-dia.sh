@@ -1,6 +1,6 @@
 #!/bin/bash
 # ==============================================================================
-# 🌅 rotina-dia.sh — Rotina Diária do Archimedes V2 (100% Local, $0)
+# 🌅 rotina-dia.sh — Rotina Diária do Archimedes (100% Local, $0)
 # ==============================================================================
 # Um comando para: LINT + RAG + BACKUP + SAÚDE LOCAL — sem gastar 1 token de
 # cloud. Orquestra a camada local-first:

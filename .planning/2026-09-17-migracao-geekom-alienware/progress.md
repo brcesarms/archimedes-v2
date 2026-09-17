@@ -2,14 +2,14 @@
 
 ## Session: 2026-09-17
 
-### Phase 1: Sincronizar cofre archimedes-v2 no Alienware
+### Phase 1: Sincronizar cofre archimedes no Alienware
 
 - **Status:** complete
 - Actions taken:
   - Backup de `docker/docker-compose.yml`, `docker/archimedes/Dockerfile` e `docker/.env` em `/tmp/migracao-backup/`.
   - Confirmado Dockerfile idêntico ao do repo (md5 `1c31af1b…`); descartadas edições locais do compose e do Dockerfile untracked.
   - `git fetch` (HTTPS OK) → `git pull --ff-only` `77bb85d..84b12bd`.
-- Files modified: `~/archimedes-v2` (Alienware) → HEAD `84b12bd`, working tree limpo, `docker/.env` preservado.
+- Files modified: `~/archimedes` (Alienware) → HEAD `84b12bd`, working tree limpo, `docker/.env` preservado.
 
 ### Phase 2: Migrar archimedes-rag + systemd na 8765
 
@@ -44,7 +44,7 @@
   - `mcp_config.json` do bundle `archimedes-agent` portabilizado para `127.0.0.1` (repo + plugin instalado).
   - opencode (container): `extra_hosts: host-gateway` + `docker/archimedes/opencode.json` versionado montado read-only; container recriado.
   - Consolidação: clone antigo `~/linux-toolbox-tui` removido; canônico = `~/projetos/linux-toolbox-tui` (remote → HTTPS).
-- Commits: `archimedes-v2 d11acc8`; `linux-toolbox-tui ac73802`.
+- Commits: `archimedes d11acc8`; `linux-toolbox-tui ac73802`.
 
 ### Phase 6: Validação, documentação e commit
 
@@ -67,9 +67,9 @@
   - Migrados do agente `agy`: `~/.gemini/config/hooks.json` (claude-mem via `bun`, paths idênticos) e `~/.gemini/antigravity/mcp_config.json` — adaptado: `claude-mem` de node/linuxbrew → `/home/brn/.bun/bin/bun`.
   - **Estagiário restaurado no AW:** `~/.local/bin/ollama-proxy.py` + `~/.config/systemd/user/ollama-proxy.service` (37777 → `10.0.0.4:11434`), `enable --now` → **active** e `/api/tags` HTTP OK.
   - Correção de infra: `.gitignore` `!.env.example` (linha 35) + `git add docker/.env.example`.
-  - Sincronização: `archimedes-v2 d11acc8→325873d`; `linux-toolbox-tui ac73802→2060994` (runbook presente).
+  - Sincronização: `archimedes d11acc8→325873d`; `linux-toolbox-tui ac73802→2060994` (runbook presente).
 - **Skipped (intencional, documentado):** `.gemini/antigravity-cli/**` (estado/binário local), `~/.config/monitors.xml` (hardware-específico da VM), `~/.config/ibus/bus/*` (sockets runtime), `~/.local/bin/gh` (já instalado via apt), `*.old`/`*.bak`.
-- Commits: `archimedes-v2 325873d`.
+- Commits: `archimedes 325873d`.
 
 ## Test Results
 
@@ -105,6 +105,6 @@
 |----------|--------|
 | Where am I? | Phase 7 — complete (auditoria exaustiva do HOME fechada) |
 | Where am I going? | Concluído; pendência externa única: login interativo do `agy` (keyring/Google) |
-| What's the goal? | Consolidar todo o Archimedes V2 no Alienware, sem deixar nada para trás |
+| What's the goal? | Consolidar todo o Archimedes no Alienware, sem deixar nada para trás |
 | What have I learned? | Ver findings.md |
 | What have I done? | Migração completa + runbook + commits/push |

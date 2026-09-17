@@ -25,7 +25,7 @@ Rotina diária que (1) faz backup offline do cofre e (2) remove temporários reg
 
 ## ⚙️ Comandos (copiar/colar exatos)
 
-1. Abra o terminal na raiz do cofre (`~/archimedes-v2`) e execute **exatamente** este comando:
+1. Abra o terminal na raiz do cofre (`~/archimedes`) e execute **exatamente** este comando:
 
    ```bash
    ./scripts/backup.sh

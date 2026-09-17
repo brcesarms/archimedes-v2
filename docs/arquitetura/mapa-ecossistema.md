@@ -1,6 +1,6 @@
 # 🗺️ Mapa Modular do Ecossistema Archimedes — Pilares Autônomos
 
-> Criação: 2026-09-12 · Atualização: 2026-09-16 (Archimedes V2) · Status: 🟢 Ativo · Tipo: Arquitetura
+> Criação: 2026-09-12 · Atualização: 2026-09-16 (Archimedes) · Status: 🟢 Ativo · Tipo: Arquitetura
 
 ## 🎯 Objetivo
 
@@ -13,7 +13,7 @@ Cada projeto possui **um papel bem delimitado e autônomo**, trabalhando em sine
 
 | Pilar / Repositório | Papel | Motor Principal | Dono de |
 | :--- | :--- | :--- | :--- |
-| 🏛️ [`archimedes-v2`](https://github.com/brcesarms/archimedes-v2) | **Estratégia & Governança V2** | Padrões de Indústria (`restic`, `lychee`, `pyinfra`, `gitleaks`) | Governança, runbooks de infraestrutura, perfis de hardware, dotfiles (Chezmoi) |
+| 🏛️ [`archimedes`](https://github.com/brcesarms/archimedes) | **Estratégia & Governança V2** | Padrões de Indústria (`restic`, `lychee`, `pyinfra`, `gitleaks`) | Governança, runbooks de infraestrutura, perfis de hardware, dotfiles (Chezmoi) |
 | 🔍 [`archimedes-rag`](https://github.com/brcesarms/archimedes-rag) | **Memória Semântica de Código** | Python + LanceDB + AST | Fatiamento cirúrgico de código, CLI `rag`, hooks git pós-commit, busca vetorial |
 | 🩺 [`archimedes-doctor`](https://github.com/brcesarms/archimedes-doctor) | **Qualidade & Auto-Cura (Self-Healing)** | Python + Pytest + RAG | CLI `doctor`, suíte de testes unitários automatizados, loop de auto-cura |
 | ⚙️ [`archimedes-operator`](https://github.com/brcesarms/archimedes-operator) | **Braços Mecânicos (Execução Unificada)** | Python + PowerShell + Bash | CLI `operator`, bancada técnica de T.I. (inventário, manifesto, backup robocopy) |
@@ -26,7 +26,7 @@ Cada projeto possui **um papel bem delimitado e autônomo**, trabalhando em sine
 
 ```text
 ┌────────────────────────────────────────────────────────┐
-│ 🏛️ archimedes-v2 (Estratégia, Governança & Ferramentas)│
+│ 🏛️ archimedes (Estratégia, Governança & Ferramentas)│
 │    AGENTS.md · planning-with-files · runbooks · perfis  │
 └──────────────────────────┬─────────────────────────────┘
                            │ orquestra e consulta

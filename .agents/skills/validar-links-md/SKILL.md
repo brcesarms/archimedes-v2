@@ -29,13 +29,13 @@ lychee --offline docs/notas/
 ### Método 2: Script Python (Legado / Fallback)
 1. **Ativar venv**:
    ```bash
-   cd ~/archimedes-v2/scripts/python
+   cd ~/archimedes/scripts/python
    source .venv/bin/activate
    ```
 
 2. **Rodar o validador**:
    ```bash
-   python3 validar_links.py ~/archimedes-v2 --raiz ~/archimedes-v2
+   python3 validar_links.py ~/archimedes --raiz ~/archimedes
    ```
 
 3. **Interpretar o relatório**:

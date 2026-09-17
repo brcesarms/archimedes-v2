@@ -17,7 +17,7 @@
 set -euo pipefail
 
 # 🎯 Localizar o cofre (configurável via COFRE_DIR)
-COFRE_DIR="${COFRE_DIR:-$HOME/archimedes-v2}"
+COFRE_DIR="${COFRE_DIR:-$HOME/archimedes}"
 
 # 🔍 Localizar o shellcheck (PATH ou ~/.local/bin)
 SHELLCHECK_BIN="$(command -v shellcheck || command -v "$HOME/.local/bin/shellcheck" || true)"

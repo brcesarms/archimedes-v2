@@ -16,7 +16,7 @@
 set -euo pipefail
 
 # 🎯 Configurações
-COFRE_DIR="${COFRE_DIR:-$HOME/archimedes-v2}"
+COFRE_DIR="${COFRE_DIR:-$HOME/archimedes}"
 LOG_DIR="$COFRE_DIR/docs/cerebrum/logs"
 DAYS_TO_KEEP=14
 

@@ -1,6 +1,6 @@
 #!/bin/bash
 # ==============================================================================
-# 📊 metricas-tokens.sh — Medição de Tokens por Sessão do Archimedes V2
+# 📊 metricas-tokens.sh — Medição de Tokens por Sessão do Archimedes
 # ==============================================================================
 # Lê o banco de sessões do OpenCode (SQLite) e reporta consumo de tokens por
 # sessão/projeto, separando input/output. Base para o benchmark contínuo da

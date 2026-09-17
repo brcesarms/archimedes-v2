@@ -66,10 +66,10 @@ opencode run --help  # mostra comandos disponíveis
 
 ```bash
 # Clonar cofre (com submódulos)
-git clone --recurse-submodules https://github.com/brcesarms/archimedes-v2.git ~/archimedes-v2
+git clone --recurse-submodules https://github.com/brcesarms/archimedes.git ~/archimedes
 
 # Acessar e rodar setup
-cd ~/archimedes-v2
+cd ~/archimedes
 ./setup.sh
 
 # Recarregar terminal
@@ -78,7 +78,7 @@ source ~/.bashrc  # ou source ~/.zshrc, etc.
 
 **Verificação:**
 ```bash
-cd ~/archimedes-v2
+cd ~/archimedes
 ls -la  # deve ver AGENTS.md, guia-ia-local/, README.md
 ls ~/wikisidian  # estudos pessoais (t.i/ e concurseiro/) fora do repositório público
 ```
@@ -110,7 +110,7 @@ ollama ps  # deve mostrar:
 opencode run --auto
 
 # Verificar logs
-cat ~/archimedes-v2/docs/cerebrum/logs/saude-sistema-*.log | tail -20
+cat ~/archimedes/docs/cerebrum/logs/saude-sistema-*.log | tail -20
 ```
 
 **Sucesso:** Sem erros, com logs gerados.

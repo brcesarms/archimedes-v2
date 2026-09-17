@@ -1,4 +1,4 @@
-# 🗂️ config/ — Configurações Centralizadas do Archimedes V2
+# 🗂️ config/ — Configurações Centralizadas do Archimedes
 
 > ⚠️ **Status:** Em planejamento — diretório de destino futuro para configurações
 > centralizadas (MCP servers, hooks, linters) que hoje vivem na raiz ou nos
@@ -7,7 +7,7 @@
 ## 🎯 Objetivo
 
 Centralizar configurações compartilhadas e substituíveis do ecossistema
-Archimedes V2, seguindo o padrão de indústria *"config as code"*.
+Archimedes, seguindo o padrão de indústria *"config as code"*.
 
 ## 📦 Configurações atuais e seus donos
 

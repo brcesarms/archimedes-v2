@@ -1,4 +1,4 @@
-# 🔍 Findings — Refatoração Archimedes V2
+# 🔍 Findings — Refatoração Archimedes
 
 ## Data: 2026-09-16
 
@@ -113,10 +113,10 @@
 - 🟡 — Sem suporte a iGPU AMD/ROCm (GEEKOM)
 
 ### dotfiles/
-- 🟠 **dot_aliases** — Caminhos hardcoded `/home/brn/archimedes-v2` (anti-portabilidade)
+- 🟠 **dot_aliases** — Caminhos hardcoded `/home/brn/archimedes` (anti-portabilidade)
 - 🟠 **dot_ssh/config** — Omite nós Proxmox: VM `10.0.0.10`, Win11 `10.0.0.217`, CT `10.0.0.4`
 - 🟡 — Falta alias `v2-setup`
-- 🟠 **README.md** — Instruções com caminho hardcoded `/home/brn/archimedes-v2/dotfiles`
+- 🟠 **README.md** — Instruções com caminho hardcoded `/home/brn/archimedes/dotfiles`
 
 ### config/
 - 🔴 — Diretório **100% VAZIO** apesar de documentado no README.md

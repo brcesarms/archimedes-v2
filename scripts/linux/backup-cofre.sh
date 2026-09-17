@@ -25,10 +25,10 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 COFRE_DIR="${COFRE_DIR:-$(cd "${SCRIPT_DIR}/../../.." && pwd)}"
 COFRE_NAME="$(basename "$COFRE_DIR")"
 PARENT_DIR="$(dirname "$COFRE_DIR")"
-BACKUP_BASE="${BACKUP_BASE:-$HOME/backups/archimedes-v2}"
+BACKUP_BASE="${BACKUP_BASE:-$HOME/backups/archimedes}"
 KEEP=7 # 🔁 quantas cópias manter (rotação)
 STAMP="$(date +%Y-%m-%d_%H%M%S)"
-ARCHIVE="$BACKUP_BASE/archimedes-v2_$STAMP.tar.gz"
+ARCHIVE="$BACKUP_BASE/archimedes_$STAMP.tar.gz"
 
 # 🚨 Verificações iniciais
 if [ ! -d "$COFRE_DIR" ]; then
@@ -60,11 +60,11 @@ else
 fi
 
 # 🔄 Rotação: mantém as K cópias mais recentes
-COUNT="$(find "$BACKUP_BASE" -maxdepth 1 -name 'archimedes-v2_*.tar.gz' | wc -l)"
+COUNT="$(find "$BACKUP_BASE" -maxdepth 1 -name 'archimedes_*.tar.gz' | wc -l)"
 if [ "$COUNT" -gt "$KEEP" ]; then
   REMOVE=$((COUNT - KEEP))
   echo "🗑️ Rotação: removendo $REMOVE backup(s) antigo(s)..."
-  find "$BACKUP_BASE" -maxdepth 1 -name 'archimedes-v2_*.tar.gz' \
+  find "$BACKUP_BASE" -maxdepth 1 -name 'archimedes_*.tar.gz' \
     -printf '%T@ %p\n' | sort -n | head -n "$REMOVE" | cut -d' ' -f2- \
     | xargs rm -f
 fi

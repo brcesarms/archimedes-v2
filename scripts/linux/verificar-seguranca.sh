@@ -16,7 +16,7 @@
 # ============================================================
 set -euo pipefail
 
-COFRE_DIR="${COFRE_DIR:-$HOME/archimedes-v2}"
+COFRE_DIR="${COFRE_DIR:-$HOME/archimedes}"
 SCRIPTS_DIR="$COFRE_DIR/scripts"
 
 log() { echo "$*"; }

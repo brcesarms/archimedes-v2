@@ -5,8 +5,8 @@ set -euo pipefail
 # 🏛️ Bootstrap do Archimedes — Recupera o ambiente em ~2 min
 # ============================================================
 # Rode APÓS clonar o cofre em máquina nova (pós-formatação):
-#   gh repo clone brcesarms/archimedes-v2 ~/archimedes-v2 -- --recurse-submodules
-#   cd ~/archimedes-v2 && ./bootstrap.sh
+#   gh repo clone brcesarms/archimedes ~/archimedes -- --recurse-submodules
+#   cd ~/archimedes && ./bootstrap.sh
 #
 # Compatível com: Ubuntu/Mint/Pop (apt) e Arch/Manjaro/Omarchy (pacman)
 #
@@ -255,11 +255,11 @@ if [ "$FAIL" -eq 1 ]; then
   echo -e "⚠️  Corrija as pendências acima antes de começar."
 fi
 echo -e "🚀 Para começar:"
-echo -e "  ${CYAN}cd ~/archimedes-v2${NC}"
+echo -e "  ${CYAN}cd ~/archimedes${NC}"
 echo -e "  ${CYAN}source ~/.bashrc  # ou abra novo terminal${NC}"
 echo -e "  ${CYAN}agy${NC}  (ou opencode)"
 echo ""
 echo -e "🛠️  Instalação completa (modelos/Ollama/Docker) quando quiser:"
-echo -e "  ${CYAN}cd ~/archimedes-v2/docs/guia-ia-local && ./install.sh --full${NC}"
+echo -e "  ${CYAN}cd ~/archimedes/docs/guia-ia-local && ./install.sh --full${NC}"
 echo ""
 echo -e "🔑 Se a chave SSH foi restaurada, teste: ${CYAN}ssh laptop-brn 'echo ok'${NC}"

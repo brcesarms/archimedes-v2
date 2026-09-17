@@ -91,7 +91,7 @@
 - **Problema 2 (portabilidade):** o modelo criou script apontando para `$HOME/...` (FORA do cofre) — viola a regra "tudo dentro do cofre".
 - **Soluções:**
   - Para teste headless: usar `opencode run --auto` (aprova permissões; "dangerous" — usar só em tarefa controlada). Nunca interpretar exit 0 sem verificar o arquivo/logs.
-  - Portabilidade: NUNCA criar/rodar nada fora de `~/archimedes-v2`; testes vivem em `docs/guia-ia-local/tests/`.
+  - Portabilidade: NUNCA criar/rodar nada fora de `~/archimedes`; testes vivem em `docs/guia-ia-local/tests/`.
 - **Status:** ✅ Documentado + corrigido (`benchmark-moe.sh` agora salva dentro do cofre)
 
 ---

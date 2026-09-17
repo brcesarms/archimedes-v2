@@ -114,10 +114,10 @@ opencode login  # use seu token
 
 ```bash
 # Clonar cofre (com submódulos)
-git clone --recurse-submodules https://github.com/brcesarms/archimedes-vault.git ~/archimedes-v2
+git clone --recurse-submodules https://github.com/brcesarms/archimedes-vault.git ~/archimedes
 
 # Rodar setup
-cd ~/archimedes-v2/docs/guia-ia-local
+cd ~/archimedes/docs/guia-ia-local
 ./install.sh --dotfiles
 
 # Recarregar terminal
@@ -211,7 +211,7 @@ set -euo pipefail
 # ============================================================
 set -euo pipefail
 
-COFRE_DIR="${COFRE_DIR:-$HOME/archimedes-v2}"
+COFRE_DIR="${COFRE_DIR:-$HOME/archimedes}"
 LOG_DIR="$COFRE_DIR/docs/cerebrum/logs"
 DAYS_TO_KEEP=14
 
@@ -225,7 +225,7 @@ echo "✅ [logs-rotator] Limpeza concluída."
 
 ```bash
 # Adicionar ao crontab
-0 3 * * * "$HOME/archimedes-v2/scripts/linux/logs-rotator.sh"
+0 3 * * * "$HOME/archimedes/scripts/linux/logs-rotator.sh"
 ```
 
 ---

@@ -25,7 +25,7 @@ Mantém a ACER (máquina local) sincronizada com o GEEKOM (cofre principal). Exe
 
 ## ⚙️ Comandos (copiar/colar exatos)
 
-1. Abra o terminal na raiz do cofre (`~/archimedes-v2`) e execute **exatamente** estes comandos:
+1. Abra o terminal na raiz do cofre (`~/archimedes`) e execute **exatamente** estes comandos:
 
    ```bash
    git pull --rebase origin main

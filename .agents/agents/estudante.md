@@ -17,7 +17,7 @@ permission:
   websearch: allow
 ---
 
-📚 Você é o **Especialista em Estudos para Concursos** do Archimedes V2.
+📚 Você é o **Especialista em Estudos para Concursos** do Archimedes.
 
 ## 🎯 Responsabilidades
 

@@ -1,8 +1,8 @@
-# Task Plan: Consolidação `archimedes-vault` → `archimedes-v2` (repo único)
+# Task Plan: Consolidação `archimedes-vault` → `archimedes` (repo único)
 
 ## Goal
 
-Mover **todo** o conteúdo único do repositório `archimedes-vault` para `archimedes-v2` (seguindo a estrutura do V2), corrigir todas as referências de runtime, eliminar as duplicatas e **remover o vault** — deixando o Alienware (e a VM) com **um único repositório Archimedes**, sem perda de informação.
+Mover **todo** o conteúdo único do repositório `archimedes-vault` para `archimedes` (seguindo a estrutura do V2), corrigir todas as referências de runtime, eliminar as duplicatas e **remover o vault** — deixando o Alienware (e a VM) com **um único repositório Archimedes**, sem perda de informação.
 
 ## Next Step
 
@@ -19,7 +19,7 @@ Phase 8
 - [x] Commitar as 4 skills modificadas + `.lychee.toml` / `.resticignore` / `restic-vault.sh` (untracked) no vault
 - [x] `git push` do vault (garantir remoto íntegro = backup do histórico)
 - [x] Gerar `~/backups/archimedes-vault-<data>.tar.gz` (com `.git`, sem node_modules/.venv)
-- [x] Confirmar `archimedes-v2` limpo e sincronizado com origin
+- [x] Confirmar `archimedes` limpo e sincronizado com origin
 - **Status:** complete
 
 ### Phase 2: Migração estrutural (conteúdo único → estrutura do V2)
@@ -38,16 +38,16 @@ Phase 8
 
 ### Phase 3: Correção de paths internos
 
-- [x] `docs/cerebrum/systemd/*.service` → `%h/archimedes-vault/guia-ia-local/` ⇒ `%h/archimedes-v2/`
-- [x] `dotfiles/dot_bashrc` → `COFRE_DIR=$HOME/archimedes-v2`, skills em `.agents/skills`
+- [x] `docs/cerebrum/systemd/*.service` → `%h/archimedes-vault/guia-ia-local/` ⇒ `%h/archimedes/`
+- [x] `dotfiles/dot_bashrc` → `COFRE_DIR=$HOME/archimedes`, skills em `.agents/skills`
 - [x] `dotfiles/dot_aliases` → fundir aliases úteis do vault (`bancada`, `ollama-*`, `oc`, docker) com V2 vence nos conflitos
 - [x] Atualizar referências `archimedes-vault` dentro de skills/docs migrados
 - **Status:** complete
 
 ### Phase 4: Runtime do sistema (VM + Alienware)
 
-- [x] `~/.bashrc`: source de `~/archimedes-v2/dotfiles/dot_bashrc`
-- [x] `~/.bash_aliases`: `cofre`/`cofre-status`/`git-cofre` ⇒ `archimedes-v2`
+- [x] `~/.bashrc`: source de `~/archimedes/dotfiles/dot_bashrc`
+- [x] `~/.bash_aliases`: `cofre`/`cofre-status`/`git-cofre` ⇒ `archimedes`
 - [x] Repetir na VM **e** no AW (paths idênticos)
 - **Status:** complete
 
@@ -62,7 +62,7 @@ Phase 8
 - [x] `shellcheck -S warning` nos scripts movidos
 - [x] `lychee --offline .` (0 erros)
 - [x] `gitleaks detect` (no leaks)
-- [x] Reindexar RAG (`archimedes-v2`) e remover índice do vault
+- [x] Reindexar RAG (`archimedes`) e remover índice do vault
 - [x] Smoke test: funções/aliases `cofre`/`cofre-status` funcionam (shell interativo)
 - **Status:** complete
 
@@ -75,7 +75,7 @@ Phase 8
 ### Phase 8: Remoção do vault
 
 - [x] `rm -rf ~/archimedes-vault` na VM e no AW (após confirmação de paridade)
-- [x] Verificação final: home com apenas `archimedes-v2`
+- [x] Verificação final: home com apenas `archimedes`
 - **Status:** complete
 
 ## Key Questions
