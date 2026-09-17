@@ -26,14 +26,14 @@ COFRE_DIR="${COFRE_DIR:-$(cd "${SCRIPT_DIR}/../../.." && pwd)}"
 COFRE_NAME="$(basename "$COFRE_DIR")"
 PARENT_DIR="$(dirname "$COFRE_DIR")"
 BACKUP_BASE="${BACKUP_BASE:-$HOME/backups/archimedes-v2}"
-KEEP=7                      # 🔁 quantas cópias manter (rotação)
+KEEP=7 # 🔁 quantas cópias manter (rotação)
 STAMP="$(date +%Y-%m-%d_%H%M%S)"
 ARCHIVE="$BACKUP_BASE/archimedes-v2_$STAMP.tar.gz"
 
 # 🚨 Verificações iniciais
 if [ ! -d "$COFRE_DIR" ]; then
-    echo "❌ Erro: diretório do cofre não encontrado: $COFRE_DIR"
-    exit 1
+  echo "❌ Erro: diretório do cofre não encontrado: $COFRE_DIR"
+  exit 1
 fi
 
 mkdir -p "$BACKUP_BASE"
@@ -42,31 +42,31 @@ echo "🔍 Criando snapshot de $COFRE_DIR ..."
 
 # 💾 Compacta o cofre (exclui lixo, caches e backups internos se existirem)
 tar -czf "$ARCHIVE" \
-    --exclude="$COFRE_NAME/docs/cerebrum/logs/*.log" \
-    --exclude="$COFRE_NAME/.git" \
-    --exclude="$COFRE_NAME/.opencode/node_modules" \
-    --exclude="$COFRE_NAME/.obsidian/workspace*" \
-    --exclude="$COFRE_NAME/.obsidian/cache" \
-    --exclude="*.bak" \
-    -C "$PARENT_DIR" "$COFRE_NAME"
+  --exclude="$COFRE_NAME/docs/cerebrum/logs/*.log" \
+  --exclude="$COFRE_NAME/.git" \
+  --exclude="$COFRE_NAME/.opencode/node_modules" \
+  --exclude="$COFRE_NAME/.obsidian/workspace*" \
+  --exclude="$COFRE_NAME/.obsidian/cache" \
+  --exclude="*.bak" \
+  -C "$PARENT_DIR" "$COFRE_NAME"
 
 # ✅ Verificação de integridade
-if tar -tzf "$ARCHIVE" > /dev/null 2>&1; then
-    echo "✅ Backup íntegro: $ARCHIVE"
-    echo "📦 Tamanho: $(du -h "$ARCHIVE" | cut -f1)"
+if tar -tzf "$ARCHIVE" >/dev/null 2>&1; then
+  echo "✅ Backup íntegro: $ARCHIVE"
+  echo "📦 Tamanho: $(du -h "$ARCHIVE" | cut -f1)"
 else
-    echo "❌ Backup corrompido ou incompleto: $ARCHIVE"
-    exit 1
+  echo "❌ Backup corrompido ou incompleto: $ARCHIVE"
+  exit 1
 fi
 
 # 🔄 Rotação: mantém as K cópias mais recentes
 COUNT="$(find "$BACKUP_BASE" -maxdepth 1 -name 'archimedes-v2_*.tar.gz' | wc -l)"
 if [ "$COUNT" -gt "$KEEP" ]; then
-    REMOVE=$((COUNT - KEEP))
-    echo "🗑️ Rotação: removendo $REMOVE backup(s) antigo(s)..."
-    find "$BACKUP_BASE" -maxdepth 1 -name 'archimedes-v2_*.tar.gz' \
-        -printf '%T@ %p\n' | sort -n | head -n "$REMOVE" | cut -d' ' -f2- \
-        | xargs rm -f
+  REMOVE=$((COUNT - KEEP))
+  echo "🗑️ Rotação: removendo $REMOVE backup(s) antigo(s)..."
+  find "$BACKUP_BASE" -maxdepth 1 -name 'archimedes-v2_*.tar.gz' \
+    -printf '%T@ %p\n' | sort -n | head -n "$REMOVE" | cut -d' ' -f2- \
+    | xargs rm -f
 fi
 
 echo "🎯 Backup concluído com sucesso!"

@@ -54,7 +54,7 @@ grep -o '\[[^]]*\]([^)]*)' "$arquivo" 2>/dev/null | grep -v 'http' | sed 's/.*(\
     echo "... (limite de 50 links atingido)"
     break
   fi
-  
+
   if [ -e "$dir/$link" ]; then
     echo "✅ [$count] $link"
   else

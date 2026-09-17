@@ -123,4 +123,4 @@
 - [Guia de modelos locais](../perfis/my-setup.md)
 
 ---
-_Gerado automaticamente por `benchmark-modelos.sh` — rode novamente para atualizar._
+_Gerado automaticamente por `scripts/benchmark-modelos.sh` — rode novamente para atualizar._

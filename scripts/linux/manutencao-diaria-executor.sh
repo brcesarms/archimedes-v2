@@ -27,8 +27,8 @@ log() { echo "$*" | tee -a "$LOG_FILE"; }
 
 # ── Pré-checagens ─────────────────────────────────────────────
 if [ ! -d "$COFRE_DIR" ]; then
-    echo "❌ ERRO: cofre não encontrado em $COFRE_DIR" >&2
-    exit 1
+  echo "❌ ERRO: cofre não encontrado em $COFRE_DIR" >&2
+  exit 1
 fi
 mkdir -p "$LOG_DIR"
 
@@ -37,14 +37,14 @@ log "===== 🧹 Manutenção diária — $STAMP ====="
 # ── 1. Backup (obrigatório; falha aborta a manutenção) ───────
 log "⏳ [1/4] Backup do cofre..."
 if [ -x "$BACKUP_SCRIPT" ]; then
-    if "$BACKUP_SCRIPT" >> "$LOG_FILE" 2>&1; then
-        log "✅ Backup concluído"
-    else
-        log "❌ Backup FALHOU — abortando manutenção (tag #falha)"
-        exit 1
-    fi
+  if "$BACKUP_SCRIPT" >>"$LOG_FILE" 2>&1; then
+    log "✅ Backup concluído"
+  else
+    log "❌ Backup FALHOU — abortando manutenção (tag #falha)"
+    exit 1
+  fi
 else
-    log "⚠️  Script de backup não encontrado: $BACKUP_SCRIPT (segue sem backup)"
+  log "⚠️  Script de backup não encontrado: $BACKUP_SCRIPT (segue sem backup)"
 fi
 
 # ── 2. Limpeza de temporários (sempre regeneráveis) ──────────

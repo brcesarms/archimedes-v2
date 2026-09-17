@@ -22,8 +22,8 @@ DAYS_TO_KEEP=14
 
 # 🚨 Verificações iniciais
 if [ ! -d "$LOG_DIR" ]; then
-    echo "⚠️  Alerta: diretório de logs não encontrado: $LOG_DIR"
-    exit 0  # Não é erro crítico, apenas aviso
+  echo "⚠️  Alerta: diretório de logs não encontrado: $LOG_DIR"
+  exit 0 # Não é erro crítico, apenas aviso
 fi
 
 echo "⏳ [logs-rotator] Iniciando limpeza de logs com mais de $DAYS_TO_KEEP dias..."
@@ -32,11 +32,11 @@ echo "⏳ [logs-rotator] Iniciando limpeza de logs com mais de $DAYS_TO_KEEP dia
 COUNT_OLD="$(find "$LOG_DIR" -name "*.log" -mtime +$DAYS_TO_KEEP 2>/dev/null | wc -l)"
 
 if [ "$COUNT_OLD" -gt 0 ]; then
-    echo "🗑️  [logs-rotator] Removendo $COUNT_OLD log(s) antigo(s)..."
-    find "$LOG_DIR" -name "*.log" -mtime +$DAYS_TO_KEEP -delete
-    echo "✅ [logs-rotator] Limpeza concluída: $COUNT_OLD arquivo(s) removido(s)"
+  echo "🗑️  [logs-rotator] Removendo $COUNT_OLD log(s) antigo(s)..."
+  find "$LOG_DIR" -name "*.log" -mtime +$DAYS_TO_KEEP -delete
+  echo "✅ [logs-rotator] Limpeza concluída: $COUNT_OLD arquivo(s) removido(s)"
 else
-    echo "✅ [logs-rotator] Nenhum log com mais de $DAYS_TO_KEEP dias encontrado."
+  echo "✅ [logs-rotator] Nenhum log com mais de $DAYS_TO_KEEP dias encontrado."
 fi
 
 # 📊 Relatório final
