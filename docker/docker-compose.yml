@@ -2,16 +2,35 @@
 # 🐳 Docker Compose do Archimedes V2 - Stack de IA Local
 # ============================================================
 # Padrão de Indústria: Ollama (runtime) + Open-WebUI (interface web)
+# + archimedes (agente opencode containerizado)
 # Compatível com: Docker Compose v2.20+
 #
 # Uso:
 #   cd docker
-#   docker compose up -d          # Iniciar serviços
-#   docker compose down           # Parar serviços
-#   docker compose logs -f        # Acompanhar logs
+#   docker compose up -d --build     # Iniciar serviços (build do archimedes)
+#   docker compose ps                # Verificar saúde
+#   docker compose logs -f archimedes # Acompanhar logs do agente
 # ============================================================
 
 services:
+  # 🏛️ ARCHIMEDES — Agente de IA containerizado (opencode headless)
+  archimedes:
+    build: ./archimedes
+    container_name: archimedes
+    restart: unless-stopped
+    ports:
+      - "4096:4096"        # backend headless do opencode (TUI remota via attach)
+    volumes:
+      - ..:/work           # projeto archimedes-v2 montado como workspace
+      - archimedes-config:/root/.config/opencode
+      - archimedes-data:/root/.local/share/opencode
+    environment:
+      - OLLAMA_HOST=http://ollama:11434
+    command: ["serve", "--port", "4096", "--hostname", "0.0.0.0"]
+    depends_on:
+      ollama:
+        condition: service_healthy
+
   # 🦙 Ollama - Runtime e Servidor de Inferência de Modelos de IA
   ollama:
     image: ollama/ollama:latest
@@ -24,14 +43,14 @@ services:
     environment:
       - OLLAMA_HOST=0.0.0.0:11434
       - OLLAMA_KEEP_ALIVE=2h
-    # ⚠️ Descomente para GPU NVIDIA (ex: Alienware com GeForce RTX):
-    # deploy:
-    #   resources:
-    #     reservations:
-    #       devices:
-    #         - driver: nvidia
-    #           count: all
-    #           capabilities: [gpu]
+    # 🎮 GPU NVIDIA (ex: Alienware com GeForce RTX 5060)
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:11434/api/tags"]
       interval: 30s
@@ -60,3 +79,7 @@ volumes:
     name: archimedes-ollama-data
   open-webui-data:
     name: archimedes-open-webui-data
+  archimedes-config:
+    name: archimedes-config
+  archimedes-data:
+    name: archimedes-data
