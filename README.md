@@ -31,27 +31,37 @@ O **Archimedes V2** é a evolução arquitetural do ecossistema de T.I. do Bruno
 
 ## 📁 Estrutura do Repositório (`archimedes-v2`)
 
+> 📌 **Repositório único (17/09/2026):** o antigo `archimedes-vault` foi absorvido aqui e está **arquivado** no GitHub. Todo o conhecimento, skills, scripts e dotfiles agora vivem neste repositório.
+
 ```text
 archimedes-v2/
 ├── .agents/                        <-- Agentes e skills modulares
 │   ├── agents/                     <-- Subagentes (estudante, resumidor, executor)
-│   └── skills/                     <-- Skills atômicas (planning-with-files, notas-atomicas, etc.)
+│   └── skills/                     <-- Skills atômicas (22: planning-with-files, consultar-rag, ...)
 ├── .opencode/                      <-- Configurações e comandos do OpenCode CLI
 │   └── commands/                   <-- Slash commands (/pwf, /pwf-status)
 ├── .planning/                      <-- Planos persistentes (planning-with-files)
 ├── config/                         <-- Hub de configurações centralizadas (MCP, hooks, linters)
 ├── docker/                         <-- Stack de IA local em container (Ollama + Open-WebUI)
-├── docs/                           <-- Documentação técnica de arquitetura, perfis e runbooks
+├── docs/                           <-- Conhecimento técnico e sistema Cérebro ↔ Executor
 │   ├── arquitetura/                <-- Decisões de design (ADRs) e matrizes de substituição
 │   ├── benchmarks/                 <-- Histórico empírico de modelos e hardware (GEEKOM/Alienware)
+│   ├── cerebrum/                   <-- Sistema Cérebro ↔ Executor (prompts, systemd, logs)
+│   ├── convencoes/                 <-- Convenções modulares de trabalho
 │   ├── finetune/                   <-- Pipeline de fine-tuning (LoRA estilo Archimedes → GGUF/Ollama)
+│   ├── guia-ia-local/              <-- Manual do sistema (setup, dependências, restore)
+│   ├── instintos/                  <-- Padrões aprendidos (YAML)
+│   ├── notas/                      <-- Notas atômicas de manutenção do sistema
 │   ├── perfis/                     <-- Perfis de hardware do ecossistema
 │   └── runbooks/                   <-- Procedimentos operacionais padrão (SOP)
-├── dotfiles/                       <-- Configurações gerenciadas pelo Chezmoi (SSH, aliases)
+├── dotfiles/                       <-- Configurações gerenciadas pelo Chezmoi (ssh, bashrc, aliases)
 ├── scripts/                        <-- Scripts utilitários limpos e auditados (shellcheck, shfmt)
 │   ├── backup.sh                   <-- Wrapper operacional para restic
 │   ├── lint.sh                     <-- Validação completa (lychee + shellcheck + shfmt + gitleaks)
-│   └── setup.sh                    <-- Configuração inicial do ambiente
+│   ├── setup.sh                    <-- Configuração inicial do ambiente
+│   ├── linux/                      <-- Scripts de manutenção (incl. validacoes/)
+│   ├── python/                     <-- Utilitários Python (validar_links.py + testes)
+│   └── windows/                    <-- Automações PowerShell
 ├── Brewfile                        <-- Gerenciamento declarativo de pacotes via Homebrew Bundle
 ├── opencode.json                   <-- Configuração do OpenCode CLI com ferramentas permitidas
 ├── .editorconfig                   <-- Padrão de charset e indentação

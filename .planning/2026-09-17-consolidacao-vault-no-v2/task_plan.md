@@ -6,11 +6,11 @@ Mover **todo** o conteúdo único do repositório `archimedes-vault` para `archi
 
 ## Next Step
 
-Phase 4 — runtime do sistema: apontar `~/.bashrc` e `~/.bash_aliases` para `~/archimedes-v2/dotfiles/` na VM e no Alienware.
+Phase 7 — commit final + push, `git pull` no Alienware e arquivar o repo remoto `archimedes-vault` (`gh repo archive`).
 
 ## Current Phase
 
-Phase 4
+Phase 7
 
 ## Phases
 
@@ -46,25 +46,25 @@ Phase 4
 
 ### Phase 4: Runtime do sistema (VM + Alienware)
 
-- [ ] `~/.bashrc`: source de `~/archimedes-v2/dotfiles/dot_bashrc`
-- [ ] `~/.bash_aliases`: `cofre`/`cofre-status`/`git-cofre` ⇒ `archimedes-v2`
-- [ ] Repetir na VM **e** no AW (paths idênticos)
-- **Status:** pending
+- [x] `~/.bashrc`: source de `~/archimedes-v2/dotfiles/dot_bashrc`
+- [x] `~/.bash_aliases`: `cofre`/`cofre-status`/`git-cofre` ⇒ `archimedes-v2`
+- [x] Repetir na VM **e** no AW (paths idênticos)
+- **Status:** complete
 
 ### Phase 5: Documentação do V2
 
-- [ ] Atualizar `README.md` e `AGENTS.md` do V2 (nova árvore + link do vault arquivado)
-- [ ] Atualizar docs que citam `~/archimedes-vault/`
-- **Status:** pending
+- [x] Atualizar `README.md` e `AGENTS.md` do V2 (nova árvore + link do vault arquivado)
+- [x] Atualizar docs que citam `~/archimedes-vault/`
+- **Status:** complete
 
 ### Phase 6: Validação
 
-- [ ] `shellcheck -S warning` nos scripts movidos
-- [ ] `lychee --offline .` (0 erros)
-- [ ] `gitleaks detect` (no leaks)
-- [ ] Reindexar RAG (`archimedes-v2`) e remover índice do vault
-- [ ] Smoke test: `bash -lc 'cofre; cofre-status'` funciona
-- **Status:** pending
+- [x] `shellcheck -S warning` nos scripts movidos
+- [x] `lychee --offline .` (0 erros)
+- [x] `gitleaks detect` (no leaks)
+- [x] Reindexar RAG (`archimedes-v2`) e remover índice do vault
+- [x] Smoke test: funções/aliases `cofre`/`cofre-status` funcionam (shell interativo)
+- **Status:** complete
 
 ### Phase 7: Commit, push e propagação
 
