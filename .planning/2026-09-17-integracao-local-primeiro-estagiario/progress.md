@@ -178,3 +178,14 @@ Runbooks publicados: commits `14c67cf` (inicial hermes3) e `260b2bd` (benchmark 
 
 Instalado em `~/.local/bin/estagiario-alienware` (symlink). lint.sh 100% limpo.
 Commits: archimedes-v2 `4d77179` · linux-toolbox-tui `1b4d4dc`.
+
+### Fallback cloud (17/09/2026) — decisão: SEM fallback por enquanto
+
+Investigação das opções de fallback do Hermes:
+
+| Opção | Teste | Resultado |
+|-------|-------|-----------|
+| `opencode-free` (keyless) | curl em https://opencode.ai/zen/v1 | ❌ HTTP 403 "free tier can only be used from within OpenCode" (testado com UA opencode/1.0.0) |
+| Nous Portal (plano Free) | doc oficial | ✅ viável (OAuth + conta) |
+
+Config apontado para opencode-free foi **removido** (não funciona). **Decisão do Bruno: operar sem fallback** — estagiário 100% Ollama/GPU. Documentado no runbook (tabela de alternativas: Nous Portal / Gemini / OpenRouter).
