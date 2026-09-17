@@ -1,0 +1,26 @@
+---
+id: exemplo-script-pipefail
+titulo: "Sempre usar set -euo pipefail em scripts bash"
+trigger: "quando criar ou editar um script .sh"
+action: "aplicar shebang + set -euo pipefail e validar com shellcheck antes de entregar"
+domain: "script-linux"
+confidence: 0.5
+scope: "vault"
+evidencia:
+  - "2026-09-13: Bruno pediu correção de shebang em script de rotina"
+  - "2026-09-13: mesmo erro apareceu em outro script .sh na mesma semana"
+status: "novo"
+criado_em: "2026-09-13"
+atualizado_em: "2026-09-13"
+skill_criada: ""
+---
+
+<!--
+COMO USAR ESTE MODELO:
+1. Copie este arquivo com um id curto em kebab-case (ex: script-backup-atomicos.yaml)
+2. Preencha trigger/action/domain/evidencia com observações REAIS
+3. Atualize confidence conforme a escala:
+   0.3 tentativo | 0.5 moderado | 0.7 forte (candidato) | 0.9 quase certo
+4. Deixe em ativos/ enquanto for vigente
+5. Quando virar skill: mova para promovidos/, preencha skill_criada, status: promovido
+-->

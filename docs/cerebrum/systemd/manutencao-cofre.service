@@ -1,0 +1,7 @@
+[Unit]
+Description=Manutencao diaria do Archimedes Vault (backup + limpeza temporarios)
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=%h/archimedes-v2/scripts/linux/manutencao-diaria-executor.sh

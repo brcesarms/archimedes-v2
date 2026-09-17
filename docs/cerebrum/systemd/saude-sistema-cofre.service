@@ -1,0 +1,7 @@
+[Unit]
+Description=Coleta saude do sistema (RAM, disco, Ollama, OpenCode)
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=%h/archimedes-v2/scripts/linux/saude-sistema-executor.sh

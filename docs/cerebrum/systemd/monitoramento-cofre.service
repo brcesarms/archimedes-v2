@@ -1,0 +1,7 @@
+[Unit]
+Description=Monitoramento das rotinas do Executor (estatisticas e alertas)
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=%h/archimedes-v2/scripts/linux/monitorar-executor.sh

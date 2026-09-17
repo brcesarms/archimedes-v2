@@ -6,43 +6,43 @@ Mover **todo** o conteúdo único do repositório `archimedes-vault` para `archi
 
 ## Next Step
 
-Phase 1 — backup e higiene: commitar pendências do vault, gerar tarball de segurança e push do repo remoto antes de qualquer remoção.
+Phase 4 — runtime do sistema: apontar `~/.bashrc` e `~/.bash_aliases` para `~/archimedes-v2/dotfiles/` na VM e no Alienware.
 
 ## Current Phase
 
-Phase 1
+Phase 4
 
 ## Phases
 
 ### Phase 1: Backup & Higiene (pré-requisito de segurança)
 
-- [ ] Commitar as 4 skills modificadas + `.lychee.toml` / `.resticignore` / `restic-vault.sh` (untracked) no vault
-- [ ] `git push` do vault (garantir remoto íntegro = backup do histórico)
-- [ ] Gerar `~/backups/archimedes-vault-<data>.tar.gz` (com `.git`, sem node_modules/.venv)
-- [ ] Confirmar `archimedes-v2` limpo e sincronizado com origin
-- **Status:** in_progress
+- [x] Commitar as 4 skills modificadas + `.lychee.toml` / `.resticignore` / `restic-vault.sh` (untracked) no vault
+- [x] `git push` do vault (garantir remoto íntegro = backup do histórico)
+- [x] Gerar `~/backups/archimedes-vault-<data>.tar.gz` (com `.git`, sem node_modules/.venv)
+- [x] Confirmar `archimedes-v2` limpo e sincronizado com origin
+- **Status:** complete
 
 ### Phase 2: Migração estrutural (conteúdo único → estrutura do V2)
 
-- [ ] `guia-ia-local/cerebrum/` (menos `rotinas/` e `logs/`) → `docs/cerebrum/`
-- [ ] `guia-ia-local/notas/` → `docs/notas/`
-- [ ] `guia-ia-local/instintos/` → `docs/instintos/`
-- [ ] `guia-ia-local/scripts/{linux,python,windows}` → `scripts/{linux,python,windows}/`
-- [ ] `guia-ia-local/dotfiles/` → `dotfiles/` (convenção `dot_*`)
-- [ ] `guia-ia-local/*.md` (ME, MY-SETUP, DEPENDENCIAS, IA-RESTORE, README-manual, README) → `docs/guia-ia-local/`
-- [ ] `.opencode/skills/*` (18 não duplicadas) → `.agents/skills/`
-- [ ] `.opencode/convencoes/*` (13) → `docs/convencoes/`
-- [ ] `bootstrap.sh` + `install.sh` → `scripts/`
-- [ ] **Skip (duplicatas; V2 vence):** `cerebrum/rotinas/*` (8), `benchmarks/*`, `perfis/*`, `docker/*`, `.opencode/agents/*`, `.opencode/commands/*`, `AGENTS.md`, `README.md`, `opencode.json`, `.editorconfig`, `.gitignore`, `.lychee.toml`, `.resticignore`, `cerebrum/logs/*`
-- **Status:** pending
+- [x] `guia-ia-local/cerebrum/` (menos `rotinas/` e `logs/`) → `docs/cerebrum/`
+- [x] `guia-ia-local/notas/` → `docs/notas/`
+- [x] `guia-ia-local/instintos/` → `docs/instintos/`
+- [x] `guia-ia-local/scripts/{linux,python,windows}` → `scripts/{linux,python,windows}/`
+- [x] `guia-ia-local/dotfiles/` → `dotfiles/` (convenção `dot_*`)
+- [x] `guia-ia-local/*.md` (ME, MY-SETUP, DEPENDENCIAS, IA-RESTORE, README-manual, README) → `docs/guia-ia-local/`
+- [x] `.opencode/skills/*` (18 não duplicadas) → `.agents/skills/`
+- [x] `.opencode/convencoes/*` (13) → `docs/convencoes/`
+- [x] `bootstrap.sh` + `install.sh` → `scripts/`
+- [x] **Skip (duplicatas; V2 vence):** `cerebrum/rotinas/*` (8), `benchmarks/*`, `perfis/*`, `docker/*`, `.opencode/agents/*`, `.opencode/commands/*`, `AGENTS.md`, `README.md`, `opencode.json`, `.editorconfig`, `.gitignore`, `.lychee.toml`, `.resticignore`, `cerebrum/logs/*`
+- **Status:** complete
 
 ### Phase 3: Correção de paths internos
 
-- [ ] `docs/cerebrum/systemd/*.service` → `%h/archimedes-vault/guia-ia-local/` ⇒ `%h/archimedes-v2/`
-- [ ] `dotfiles/dot_bashrc` → `COFRE_DIR=$HOME/archimedes-v2`, skills em `.agents/skills`
-- [ ] `dotfiles/dot_aliases` → fundir aliases úteis do vault (`bancada`, `ollama-*`, `oc`, docker) com V2 vence nos conflitos
-- [ ] Atualizar referências `archimedes-vault` dentro de skills/docs migrados
-- **Status:** pending
+- [x] `docs/cerebrum/systemd/*.service` → `%h/archimedes-vault/guia-ia-local/` ⇒ `%h/archimedes-v2/`
+- [x] `dotfiles/dot_bashrc` → `COFRE_DIR=$HOME/archimedes-v2`, skills em `.agents/skills`
+- [x] `dotfiles/dot_aliases` → fundir aliases úteis do vault (`bancada`, `ollama-*`, `oc`, docker) com V2 vence nos conflitos
+- [x] Atualizar referências `archimedes-vault` dentro de skills/docs migrados
+- **Status:** complete
 
 ### Phase 4: Runtime do sistema (VM + Alienware)
 

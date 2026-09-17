@@ -1,0 +1,18 @@
+---
+id: consolidar-skills-redundantes
+titulo: "Consolidar skills redundantes em uma skill unificada com anti-alucinação"
+trigger: "quando 2+ skills fazem sobreposição parcial (mesma funcionalidade, entradas ou saídas)"
+action: "analisar sobreposições, propor merge em skill unificada com modos (padrão/bancada/validar), embutir 6 camadas anti-alucinação (regra restritiva, caminhos absolutos, exemplos, verificação pós-ação, modo degraded, restrição de aliases) e deprecar as antigas como .deprecated"
+domain: "workflow"
+confidence: 0.9
+scope: "vault"
+evidencia:
+  - "2026-09-14: orquestrar-tarefa (81 linhas), bancada-execucao (156 linhas) e validar-scripts-cofre (29 linhas) tinham ~40% de sobreposição (progresso, validação, relatório)"
+  - "2026-09-14: unificação em orquestrador-archimedes (294 linhas) eliminou redundância e ganhou padrão de planejamento persistente (task_plan.md/findings.md/progress.md)"
+  - "2026-09-14: teste real com 18 scripts Linux validou o fluxo completo: caderno → execução → verificação → histórico"
+  - "2026-09-14: 3 skills deprecadas como .deprecated (backup preservado), 0 referências quebradas no vault"
+status: "promovido"
+criado_em: "2026-09-14"
+atualizado_em: "2026-09-14"
+skill_criada: "orquestrador-archimedes"
+---

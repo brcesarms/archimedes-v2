@@ -1,0 +1,16 @@
+---
+id: submódulo-git-é-arquivo-pointer
+titulo: "Submódulos Git: .git é ARQUIVO pointer, validar com -e (não -d)"
+trigger: "ao checar existência de submódulos em scripts bash (bootstrap.sh, validacoes, auditorias)"
+action: "usar [ -e dir/.git ] em vez de [ -d dir/.git ] — em git moderno o diretório é ocupado por um arquivo 'gitdir: ../.git/modules/<nome>'"
+domain: "git"
+confidence: 0.8
+scope: "vault"
+evidencia:
+  - "2026-09-13: bootstrap.sh acusava falso negativo — t.i/.git e concurseiro/.git existem, mas como ARQUIVO de 28-36 bytes apontando para .git/modules/"
+  - "2026-09-13: teste real na ACER flagrou o bug antes da formatação destrutiva (valor de validar na máquina real)"
+status: "candidato"
+criado_em: "2026-09-13"
+atualizado_em: "2026-09-13"
+skill_criada: ""
+---

@@ -1,0 +1,71 @@
+#!/bin/bash
+# ============================================================
+# 🎨 Prompt Customizado do Archimedes 🏛️
+# ============================================================
+# Visual elegante inspirado no Jarvis do Iron Man.
+# Adicione ao seu .bashrc ou use o .bashrc do cofre.
+# ============================================================
+
+# 🎨 Cores do prompt
+JARVIS_BLUE='\[\033[1;34m\]'
+JARVIS_GREEN='\[\033[1;32m\]'
+JARVIS_YELLOW='\[\033[1;33m\]'
+JARVIS_RED='\[\033[1;31m\]'
+JARVIS_CYAN='\[\033[1;36m\]'
+JARVIS_WHITE='\[\033[1;37m\]'
+JARVIS_GRAY='\[\033[0;37m\]'
+JARVIS_PURPLE='\[\033[1;35m\]'
+JARVIS_BOLD='\[\033[1m\]'
+JARVIS_RESET='\[\033[0m\]'
+
+# 📐 Formato do prompt
+# ┌─ 🦾 user@host ─ 📁 ~/path
+# └─ $ 
+set_jarvis_prompt() {
+    local EXIT=$?
+    
+    # Cor do símbolo baseado no último exit code
+    if [ $EXIT -eq 0 ]; then
+        PROMPT_SYMBOL="${JARVIS_GREEN}❯${JARVIS_RESET}"
+    else
+        PROMPT_SYMBOL="${JARVIS_RED}❯${JARVIS_RESET}"
+    fi
+
+    # Caminho abreviado
+    local DIRNAME
+    DIRNAME=$(pwd)
+    DIRNAME="${DIRNAME/$HOME/~}"
+    if [ ${#DIRNAME} -gt 30 ]; then
+        DIRNAME="...${DIRNAME: -27}"
+    fi
+
+    # Linha 1: contexto
+    PS1="\n"
+    PS1+="${JARVIS_BLUE}┌─${JARVIS_RESET} "
+    PS1+="${JARVIS_CYAN}🏛️${JARVIS_RESET} "
+    PS1+="${JARVIS_WHITE}\u${JARVIS_RESET}"
+    PS1+="${JARVIS_GRAY}@${JARVIS_RESET}"
+    PS1+="${JARVIS_WHITE}\h${JARVIS_RESET}"
+    PS1+="${JARVIS_BLUE} ─ ${JARVIS_RESET}"
+    PS1+="${JARVIS_YELLOW}📁${JARVIS_RESET} "
+    PS1+="${JARVIS_CYAN}${DIRNAME}${JARVIS_RESET}"
+    
+    # Branch git (se existir)
+    local GIT_BRANCH
+    GIT_BRANCH=$(git symbolic-ref --short HEAD 2>/dev/null)
+    if [ -n "$GIT_BRANCH" ]; then
+        PS1+="${JARVIS_BLUE} ─ ${JARVIS_RESET}"
+        PS1+="${JARVIS_PURPLE}🌿 ${GIT_BRANCH}${JARVIS_RESET}"
+    fi
+    
+    PS1+="\n"
+    
+    # Linha 2: símbolo
+    PS1+="${JARVIS_BLUE}└─${JARVIS_RESET} "
+    PS1+="${JARVIS_BOLD}"
+    PS1+="${PROMPT_SYMBOL}"
+    PS1+="${JARVIS_RESET} "
+}
+
+# Aplica o prompt
+PROMPT_COMMAND="set_jarvis_prompt"

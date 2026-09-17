@@ -1,0 +1,18 @@
+---
+id: acer-migra-para-omarchy
+titulo: "ACER migra de Ubuntu para Omarchy Linux (Arch-based) — decisão validada"
+trigger: "quando formatar a ACER ou configurar o fluxo de máquina nova para ela"
+action: "usar Omarchy 4.x (ISO oficial, Secure Boot/TPM off na BIOS), rodar bootstrap.sh do cofre após o clone, e lembrar que o install.sh já suporta pacman (arch/omarchy)"
+domain: "workflow"
+confidence: 0.7
+scope: "vault"
+evidencia:
+  - "2026-09-13: Bruno decidiu que ele usará a ACER e a Paula usará outro laptop — removendo a barreira de usabilidade do Hyprland para leigos"
+  - "2026-09-13: hardware da ACER validado (UEFI ok, 12GB RAM >= 8GB rec, x86_64)"
+  - "2026-09-13: bootstrap.sh criado suportando apt E pacman (Omarchy entre as distros)"
+  - "2026-09-13: Bruno optou por validar o Omarchy DIRETO na máquina real (sem VM) — risco aceito; bootstrap já testado no caminho apt na ACER"
+status: "candidato"
+criado_em: "2026-09-13"
+atualizado_em: "2026-09-13"
+skill_criada: ""
+---

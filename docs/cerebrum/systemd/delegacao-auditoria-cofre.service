@@ -1,0 +1,7 @@
+[Unit]
+Description=Delegacao semanal ao Executor via opencode (auditoria + backup)
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=%h/archimedes-v2/scripts/linux/delegar-executor.sh auditoria

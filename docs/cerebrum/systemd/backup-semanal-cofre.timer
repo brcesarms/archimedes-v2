@@ -1,0 +1,10 @@
+[Unit]
+Description=Dispara backup-semanal-cofre.service aos domingos as 04:00
+
+[Timer]
+OnCalendar=Sun *-*-* 04:00:00
+Persistent=true
+RandomizedDelaySec=300
+
+[Install]
+WantedBy=timers.target

@@ -1,6 +1,7 @@
 # 🏛️ Aliases Oficiais — Archimedes V2
 # ==============================================================================
 # Usa $HOME em vez de caminhos hardcoded (portabilidade entre máquinas)
+# Carregado automaticamente pelo dot_bashrc.
 
 # 🏛️ Archimedes V2
 alias v2='cd "$HOME/archimedes-v2"'
@@ -8,22 +9,72 @@ alias v2-lint='"$HOME/archimedes-v2/scripts/lint.sh"'
 alias v2-backup='"$HOME/archimedes-v2/scripts/backup.sh"'
 alias v2-setup='"$HOME/archimedes-v2/scripts/setup.sh"'
 
+# 🏗️ Projeto Bancada
+alias bancada='~/projetos/archimedes-operator/.venv/bin/python3 ~/projetos/archimedes-operator/scripts/python/menu.py'
+
+# 🦙 Ollama
+alias ollama-list='ollama list'
+alias ollama-ps='ollama ps'
+alias ollama-stop='ollama stop'
+alias ollama-pull='ollama pull'
+alias ollama-rm='ollama rm'
+
+# 🤖 OpenCode
+alias oc='opencode'
+alias oc-up='opencode update'
+
+# 🐳 Docker
+alias dps='docker ps'
+alias dpsa='docker ps -a'
+alias dex='docker exec -it'
+alias dlogs='docker logs -f'
+alias dprune='docker system prune -af'
+
 # 📁 Navegação rápida
 alias ..='cd ..'
 alias ...='cd ../..'
+alias ....='cd ../../..'
 alias ll='ls -lah'
 alias la='ls -A'
 alias l='ls -CF'
+alias tree='tree -C --dirsfirst'
 
 # 🐧 Comandos úteis Linux
 alias ports='ss -tulnp'
 alias myip='curl -s ifconfig.me'
 alias localip='hostname -I | awk "{print \$1}"'
 alias dfh='df -h'
+alias duh='du -sh *'
 alias freeh='free -h'
+alias topcpu='ps aux --sort=-%cpu | head -10'
+alias topmem='ps aux --sort=-%mem | head -10'
+
+# 🔒 Segurança
+alias please='sudo'
+
+# 📝 Edição rápida
+alias vimrc='vim ~/.vimrc'
+alias bashrc='vim ~/.bashrc'
+alias reload='source ~/.bashrc && echo "✅ Bashrc recarregado!"'
+
+# 🏛️ Git no cofre
+alias git-cofre='cd "$HOME/archimedes-v2" && git'
+alias git-status='git status'
+alias git-pull='git pull'
+alias git-push='git push'
+
+# 🔍 Busca
+alias find-md='find . -name "*.md"'
+alias find-skill='find "$HOME/archimedes-v2/.agents/skills" -name "SKILL.md"'
 
 # 🔍 Ferramentas V2
 alias ly='lychee --offline .'
 alias gl='gitleaks detect --source . --no-banner'
 alias sc='shellcheck -S warning'
 alias sf='shfmt -i 2 -ci -bn -w'
+
+# 🎨 Cores
+alias ip='ip -color=auto'
+alias diff='diff --color=auto'
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'

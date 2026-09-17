@@ -1,0 +1,93 @@
+#!/bin/bash
+# ============================================================
+# 🏛️ .bashrc do Archimedes - Configuração de Shell
+# ============================================================
+# Copie este arquivo para ~/.bashrc ou adicione ao seu existente.
+# Compatível com: Ubuntu, Linux Mint, Fedora, Omarchy, Arch
+# ============================================================
+
+# ⚙️ Histórico
+HISTSIZE=10000
+HISTFILESIZE=20000
+HISTCONTROL=ignoreboth:erasedups
+HISTTIMEFORMAT="%F %T  "
+
+# 🎨 Cores no terminal
+if [ -x /usr/bin/dircolors ]; then
+    eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    alias grep='grep --color=auto'
+    alias diff='diff --color=auto'
+fi
+
+# 📝 Editor padrão
+export EDITOR='vim'
+export VISUAL='vim'
+
+# 🌐 Locale
+export LANG=pt_BR.UTF-8
+export LC_ALL=pt_BR.UTF-8
+
+# 🚀 PATH customizado
+export PATH="$HOME/.local/bin:$HOME/.opencode/bin:$HOME/.cargo/bin:$PATH"
+
+# 🐳 Docker (se instalado)
+if command -v docker &>/dev/null; then
+    export DOCKER_BUILDKIT=1
+fi
+
+# 🦙 Ollama (se instalado)
+if command -v ollama &>/dev/null; then
+    export OLLAMA_HOST="127.0.0.1:11434"
+fi
+
+# 🏛️ Configurações do Cofre
+COFRE_DIR="${COFRE_DIR:-$HOME/archimedes-v2}"
+if [ -d "$COFRE_DIR" ]; then
+    export COFRE="$COFRE_DIR"
+fi
+
+# 🔧 Funções úteis
+
+# Entrar no cofre rapidamente
+cofre() {
+    cd "${COFRE_DIR:-$HOME/archimedes-v2}"
+}
+
+# Ver status do cofre
+cofre-status() {
+    local target="${COFRE_DIR:-$HOME/archimedes-v2}"
+    local wiki="$HOME/wikisidian"
+    echo "🏛️ Status do Archimedes V2:"
+    echo "  📁 Arquivos Markdown: $(find "$target" -name "*.md" 2>/dev/null | wc -l)"
+    echo "  📚 Concurseiro (wikisidian): $(find "$wiki/concurseiro" -name "*.md" 2>/dev/null | wc -l)"
+    echo "  💻 T.I. (wikisidian): $(find "$wiki/t.i" -name "*.md" 2>/dev/null | wc -l)"
+    echo "  🗒️  Skills: $(find "$target/.agents/skills" -name "SKILL.md" 2>/dev/null | wc -l)"
+}
+
+# Ver status do Ollama
+ollama-status() {
+    if curl -s http://127.0.0.1:11434/api/tags &>/dev/null; then
+        echo "🦙 Ollama: ONLINE"
+        echo "📦 Modelos:"
+        ollama list 2>/dev/null
+    else
+        echo "❌ Ollama: OFFLINE"
+    fi
+}
+
+# ============================================================
+# 📦 Aliases do cofre (carrega de .aliases se existir)
+# ============================================================
+ALIASES_FILE="$COFRE_DIR/dotfiles/dot_aliases"
+if [ -f "$ALIASES_FILE" ]; then
+    source "$ALIASES_FILE"
+fi
+
+# ============================================================
+# 🎨 Prompt customizado (carrega de .prompt se existir)
+# ============================================================
+PROMPT_FILE="$COFRE_DIR/dotfiles/dot_prompt"
+if [ -f "$PROMPT_FILE" ]; then
+    source "$PROMPT_FILE"
+fi
