@@ -2,6 +2,19 @@
 
 ## Session: 2026-09-17
 
+### Fase 7 — Upgrade do Estagiário para Qwen3-8B
+
+- **Status:** complete
+- Bruno pediu modelo melhor (4B alucinava preços: "Proxmox R$12k/mês") + autorizou aumentar VRAM/RAM do LXC
+- ✅ Benchmark Qwen3-8B: 5.2GB Q4, cabe nos 12GB, tok/s ~14 (v1) → 6.5 (com template custom); **sem alucinação** na pergunta Proxmox/ESXi
+- ✅ LXC 104: memory 12288 → **16384 MB** (`pct set 104 -memory 16384`); host tem 38GB livres
+- ✅ `docs/finetune/Modelfile-estagiario-8b`: FROM qwen3:8b, temp 0.4, ctx 8192, persona + regra anti-número inventado
+- ✅ Proxy corrigido: timeout CONNECT 5s / STREAM 300s (cold start do 8B levava +30s e o proxy morria com timeout=10)
+- ✅ `ollama create estagiario` agora é o 8B; `estagiario4b` preservado como fallback
+- ✅ Endpoint de delegação trocado de `/v1/chat/completions` p/ `/api/chat` (Qwen3 no `/v1` injeta reasoning e devolve content vazio) — atualizado em AGENTS.md e ESTAGIARIO.md
+- Teste final: `estagiario` via proxy respondeu Proxmox/ESXi com tabela correta (cold start ~97s, quente ~35s)
+- Escalada: claude-mem continua no `/v1` + `archimedes:latest` (4B) — sem mudança
+
 ### Fase 6 — Diretiva de Delegação Permanente (trabalho adicional pós-conclusão)
 
 - **Status:** complete

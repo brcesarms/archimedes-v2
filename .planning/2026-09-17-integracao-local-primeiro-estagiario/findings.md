@@ -43,3 +43,16 @@
 - `npx claude-mem start` sobe o worker; proxy 37777 precisa existir antes
 - bun ✅, uv ✅, plugin ✅ — apenas worker/proxy estão parados
 - SOCAT para proxy: `socat TCP-LISTEN:37777,fork,reuseaddr TCP:10.0.0.4:11434`
+## Benchmark Qwen3-8B como candidato a Estagiário (2026-09-17)
+
+| Modelo | Tamanho | RAM LXC | Tok/s | Alucinação | Veredicto |
+|--------|:---:|:---:|:---:|:---:|:---:|
+| Qwen3-4B (atual, fine-tuned) | 2.5GB | 12GB | 26.2 | 🔴 Preço: "Proxmox R$12k/mês" (inventou) | base |
+| **Qwen3-8B** (novo) | 5.2GB | **9.8GB @ GPU 100%** | **14.2** | 🟢 Sem alucinação (tabela correta) | 🏆 upgrade |
+
+- Contexto automático: 32768 (vs 8192 do estagiário atual)
+- `think:false` funciona → respostas diretas, sem verbose ✅
+- Cabe nos 12GB atuais, mas folga apertada (~2GB livres) → para promover: aumentar LXC p/ 16GB dá folga e permite modelos maiores
+- Host Proxmox: 38GB RAM livres → aumentar LXC é trivial
+- Ainda precisa de Modelfile com persona/doc do cofre p/ obter estilo (emoji, tom, tabelas) e fine-tune round 2 opcional
+- Backup em nuvem (restic) roda no 4B fine-tuned hoje — 8B é só para o estagiário de FAQ

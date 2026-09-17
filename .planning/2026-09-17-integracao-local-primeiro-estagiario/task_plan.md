@@ -72,6 +72,15 @@ Phase 6: Diretiva de Delegação Permanente
 - [x] Documentar decisões em ADR
 - **Status:** complete
 
+### Phase 7: Upgrade do Estagiário para Qwen3-8B (trabalho adicional Bruno)
+
+- [x] Testar Qwen3-8B (benchmark: 14.2 tok/s, sem alucinação de preço)
+- [x] Aumentar LXC 104 de 12GB → 16GB (autorizado)
+- [x] Criar Modelfile-estagiario-8b (persona do cofre + anti-alucinação)
+- [x] Corrigir proxy timeout (CONNECT=5s, STREAM=300s) — cold start 6.3GB
+- [x] Promover `estagiario` → 8B; preservar `estagiario4b` fallback
+- [x] Trocar endpoint de delegação p/ `/api/chat` no AGENTS.md + ESTAGIARIO.md
+
 ## Key Questions
 
 1. Quais tarefas devem ser roteadas para o estagiário local vs cloud? (decidir na Fase 1)
