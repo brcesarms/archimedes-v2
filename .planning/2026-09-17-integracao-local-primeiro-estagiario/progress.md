@@ -115,3 +115,53 @@
 | What's the goal? | Reduzir tokens de cloud mantendo eficácia |
 | What have I learned? | Infra local ativada: proxy, worker, estagiário — tudo R$ 0 |
 | What have I done? | Fases 1-3 full: auditoria + infra + estagiário validado |
+---
+
+## Fase 7 — Hermes Agent no Alienware (estagiário 2, GPU) — 17/09/2026
+
+| Item | Resultado |
+|------|-----------|
+| Modelo `hermes3:8b` + variante `hermes3-64k` (num_ctx 64000) | ✅ baixado/criado no Ollama do Alienware |
+| Hermes Agent v0.21.3 instalado (~/.hermes) | ✅ |
+| Fix 1: venv (`.venv` → symlink `venv`) | ✅ `ModuleNotFoundError: dotenv` resolvido |
+| Fix 2: `tools.tool_search.enabled: off` + `defer: []` | ✅ bridge que confundia o 8B desligado |
+| 2 runbooks publicados (linux-toolbox-tui) | ✅ commit `14c67cf` |
+| gitleaks + lychee | ✅ 0 leaks, 7 links OK |
+
+### Benchmark real do hermes3-64k (RTX 5060, 8GB)
+
+| Teste | Tools | Resultado | Tempo |
+|-------|-------|-----------|-------|
+| write_file (`/tmp/hermes-test.txt`) | `-t file` | ✅ arquivo criado de verdade | ~30s |
+| `docker ps` (listar containers) | `-t terminal` | ✅ lista correta | ~20s |
+| `free -h` (RAM livre) | todas | ✅ correto (18s) | 18s |
+| **1 comando EXATO sem ambiguidade** (`df -h / \| tail -1`) | `-t terminal` | ✅ **100% correto** (42G/54%) | 8,9s |
+| Médio multi-passo (disco + container RAM) | todas | ❌ alucinou cmd (`sails container`) e dados (487G) | 20s |
+| Médio multi-passo | `-t terminal` | ❌ alucinou comandos e dados | 5,9s |
+| Complexo 3 passos (containers+ollama+gpu) | `-t terminal` | ⚠️ resposta vaga, sem dados concretos | 11,5s |
+
+### Regra de uso do estagiário local (evidência)
+1. **SEMPRE restringir toolset** (`-t file` ou `-t terminal`) — com dezenas de tools o 8B se perde.
+2. **1 tarefa atômica por invocação, com comando explícito** → confiável (~9s).
+3. **Multi-step/ambíguo → delegar ao Archimedes cloud** (8B alucina comandos e dados).
+4. `--yolo` para auto-aprovar.
+
+### Veredito
+`hermes3-64k` (8B) = **estagiário júnior**: excelente em tarefa atômica e repetitiva bem definida; NÃO confiável em multi-step/precisão factual. Teto da GPU (8GB VRAM) é ~8-9B Q4 — hermes3:8b já é o topo da categoria local.
+
+### Decisão final: modelo do Hermes (17/09/2026)
+
+Bruno questionou se `qwen3:8b` não seria melhor que `hermes3:8b`. Benchmark comparativo (3 modelos, mesmos testes):
+
+| Teste | hermes3-64k | qwen3-64k (thinking) | ⭐ qwen3-nothink |
+|-------|-------------|----------------------|------------------|
+| write_file | ✅ ~30s | ✅ 31s | ✅ 8,8s |
+| 1 comando exato (df -h /) | ✅ 8,9s | ✅ 1m16s | ✅ 1,4s |
+| multi-passo (disco+RAM container) | ❌ alucinou (487G, `sails container`) | ✅ 1m5s | ✅ 13,6s |
+| complexo 3 passos | ⚠️ vago | ✅ 1m4s | ✅ 23,7s |
+
+**Bruno estava certo: qwen3 > hermes3 em confiabilidade.**
+**Descoberta:** thinking do Qwen3 custa ~5x tempo. `PARAMETER think false` não é aceito → injetado `/no_think` via TEMPLATE custom no Modelfile. Resultado: confiável + rápido.
+
+**Modelo padrão do Hermes: `qwen3-nothink`** (config.yaml atualizado).
+Runbooks publicados: commits `14c67cf` (inicial hermes3) e `260b2bd` (benchmark + qwen3-nothink).
