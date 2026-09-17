@@ -189,3 +189,13 @@ Investigação das opções de fallback do Hermes:
 | Nous Portal (plano Free) | doc oficial | ✅ viável (OAuth + conta) |
 
 Config apontado para opencode-free foi **removido** (não funciona). **Decisão do Bruno: operar sem fallback** — estagiário 100% Ollama/GPU. Documentado no runbook (tabela de alternativas: Nous Portal / Gemini / OpenRouter).
+
+### Google Antigravity CLI `agy` no Alienware (17/09/2026)
+
+- **Pedido:** "instale o agy no alienware"
+- ✅ Identificado: `agy` = Google Antigravity CLI (instalador oficial `https://antigravity.google/cli/install.sh`, ENDPOINT Cloud Run oficial)
+- ✅ Instalador inspecionado (239 linhas, ~/.local/bin, sem sudo/rm destrutivo, checksum verify)
+- ✅ Instalado via SSH (`ssh alienware` = 10.0.0.208): **agy 1.2.5** → `~/.local/bin/agy`
+- ✅ Instalador atualizou `~/.profile`; `~/.bashrc` (linha 121) já tinha `export PATH=.../local/bin`
+- ⏭️ **Pendência manual Bruno:** 1º login do `agy` é interativo (keyring + Google Sign-In no browser) — não automatizável
+- 📤 Runbook publicado: `linux-toolbox-tui/runbooks/agy-cli-google.md` + README link → commit `a1a1ba2` (push ✅)
