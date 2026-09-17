@@ -6,11 +6,11 @@ Mover **todo** o conteúdo único do repositório `archimedes-vault` para `archi
 
 ## Next Step
 
-Phase 7 — commit final + push, `git pull` no Alienware e arquivar o repo remoto `archimedes-vault` (`gh repo archive`).
+Phase 8 — remoção: `rm -rf ~/archimedes-vault` na VM e no AW (paridade 100% confirmada, tarball de segurança + repo remoto arquivado).
 
 ## Current Phase
 
-Phase 7
+Phase 8
 
 ## Phases
 
@@ -68,15 +68,15 @@ Phase 7
 
 ### Phase 7: Commit, push e propagação
 
-- [ ] Commit no V2 + push → `git pull` no Alienware
-- [ ] Arquivar repo remoto `archimedes-vault` no GitHub (`gh repo archive`)
-- **Status:** pending
+- [x] Commit no V2 + push → `git pull` no Alienware
+- [x] Arquivar repo remoto `archimedes-vault` no GitHub (`gh repo archive`)
+- **Status:** complete
 
 ### Phase 8: Remoção do vault
 
-- [ ] `rm -rf ~/archimedes-vault` na VM e no AW (após confirmação de paridade)
-- [ ] Verificação final: home com apenas `archimedes-v2`
-- **Status:** pending
+- [x] `rm -rf ~/archimedes-vault` na VM e no AW (após confirmação de paridade)
+- [x] Verificação final: home com apenas `archimedes-v2`
+- **Status:** complete
 
 ## Key Questions
 

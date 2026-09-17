@@ -80,6 +80,27 @@
 - Files created/modified:
   - `scripts/benchmark-modelos.sh` (novo), `docs/benchmarks/BENCHMARKS.md`, 23 scripts reformatados, 23 `.md` com links corrigidos
 
+### Phase 7: Commit, push e propagação
+
+- **Status:** complete
+- Actions taken:
+  - Commits no V2: `d22d3bc` (migração), `d6282e6` (docs), `6406a01` (benchmark-modelos + shfmt) → push `origin/main`.
+  - `git pull --ff-only` no Alienware após cada push.
+  - Repo remoto `brcesarms/archimedes-vault` **arquivado** (`gh repo archive --yes`) → `isArchived: true`.
+- Files created/modified:
+  - GitHub: `brcesarms/archimedes-vault` (arquivado)
+
+### Phase 8: Remoção do vault
+
+- **Status:** complete
+- Actions taken:
+  - Verify pré-remoção no AW: as 4 skills modificadas + 3 untracked tinham **md5 idênticos** aos da VM → nada exclusivo no AW.
+  - Tarball de segurança replicado para o AW (`~/backups/archimedes-vault-2026-09-17.tar.gz`).
+  - `rm -rf ~/archimedes-vault` na VM (92 MB) e no AW.
+  - Verificação final: HOME contém apenas `archimedes-v2` em ambas; `cofre-status` OK (171 `.md`, 22 skills).
+- Files created/modified:
+  - Removido: `~/archimedes-vault` (VM + AW)
+
 ## Test Results
 
 | Test | Input | Expected | Actual | Status |
@@ -96,6 +117,8 @@
 | RAG | `index_codebase_rag` | reindexado | 138 arquivos / 278 chunks | ✅ |
 | Runtime VM+AW | `bash -ic 'cofre-status'` | 22 skills, COFRE=v2 | OK em ambos | ✅ |
 | Paridade vault→v2 | mapa de destino + md5 | 0 perdidos | 0 (só 1 JSON duplicata) | ✅ |
+| Paridade VM↔AW (vault) | md5 de 7 arquivos | idênticos | idênticos | ✅ |
+| HOME único | `ls ~` em VM e AW | só `archimedes-v2` | só `archimedes-v2` | ✅ |
 
 ## Error Log
 
@@ -111,8 +134,8 @@
 
 | Question | Answer |
 |----------|--------|
-| Where am I? | Phase 8 (remoção do vault) — fases 1-7 completas |
-| Where am I going? | Phase 8: `rm -rf ~/archimedes-vault` (VM + AW) após paridade confirmada |
+| Where am I? | ✅ CONCLUÍDO — todas as 8 fases completas |
+| Where am I going? | Nada pendente; consolidação encerrada |
 | What's the goal? | Repo único `archimedes-v2`, sem duplicação e sem perda de informação |
 | What have I learned? | Ver `findings.md` |
-| What have I done? | Fases 1-7: backup, migração (124 arquivos), paths+links, runtime, docs, validação 4/4, push + archive do vault |
+| What have I done? | As 8 fases: backup, migração (124 arquivos), paths+links, runtime, docs, validação 4/4, push + archive, remoção do vault |
