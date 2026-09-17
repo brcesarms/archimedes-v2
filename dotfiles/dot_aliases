@@ -19,7 +19,12 @@ alias ollama-stop='ollama stop'
 alias ollama-pull='ollama pull'
 alias ollama-rm='ollama rm'
 
-# 🤖 OpenCode
+# 🤖 AGY & Hermes (Interface Principal)
+alias agy-v2='cd "$HOME/archimedes-v2" && agy'
+alias hermes-cli='~/.local/bin/hermes'
+alias hermes-run='~/.local/bin/estagiario-alienware'
+
+# 🤖 OpenCode (Secundário)
 alias oc='opencode'
 alias oc-up='opencode update'
 
