@@ -86,3 +86,27 @@
 - ✅ Chave ed25519 do Bruno instalada no LXC 104 via pct exec (ssh pve-ollama sem senha, ollama 0.34.1 active)
 - ✅ Hosts offline confirmados (esperado): alienware 10.0.0.2, laptop-brn 10.0.0.5, pve-vm 10.0.0.10, pve-win11 10.0.0.217
 - ✅ geekom.md atualizado: SSH por chave + re-autorização documentada
+
+### Phase 9 Actions (PoC Fine-Tuning — Modo Archimedes)
+- ✅ Dataset de estilo: 54 exemplos ShareGPT (~5.3k tokens) gerados do cofre (`dataset.jsonl`)
+- ✅ Ambiente: venv `/opt/finetune` (Python 3.12.3) + `torch 2.9.1+rocm6.3` no LXC 104
+- ✅ Fix crítico Triton: remover `triton` do PyPI e reinstalar `pytorch-triton-rocm==3.5.1` (senão `hipDrvLaunchKernelEx` falha)
+- ✅ Diagnóstico do **GPU Hang**: dmesg mostrou `MES failed to respond to msg=REMOVE_QUEUE` → timeout do MES, **não** falta de memória (VRAM/UMA no BIOS não resolve)
+- ✅ Combinação vencedora: **fp16 + `AMD_SERIALIZE_KERNEL=3` + `AMD_SERIALIZE_COPY=3`** (+ `HSA_OVERRIDE_GFX_VERSION=11.0.0`)
+- ✅ Treino completo: 60 steps, ~16 min, **loss 14.26 → 3.65** (`train_loss` 6.77)
+- ✅ Merge LoRA (CPU) → `archimedes-merged` (bf16, 8GB)
+- ✅ `llama.cpp` clonado + `llama-quantize` compilado → GGUF f16 → **Q4_K_M (2.4GB)**
+- ✅ `ollama create archimedes` → `archimedes:latest` (2.5GB) no LXC 104
+- ✅ Estilo validado: emojis (📋 🏛️ ✅), pt-BR e **tabelas markdown** (ex.: MikroTik × Ubiquiti)
+- ✅ Benchmark: 26.2 tok/s (base 26.8) · prompt eval 346 tok/s (+95%) · wall 7.9s (-38%)
+- ✅ Docs: `docs/finetune/README.md` + BENCHMARKS.md + HISTORICO.md + geekom.md
+
+### Test Results (Fase 9)
+| Test | Expected | Actual | Status |
+|------|----------|--------|--------|
+| Treino LoRA fp16 (60 steps) | sem GPU Hang | loss 14.26→3.65, 951.5s | ✅ |
+| Merge LoRA | modelo bf16 válido | `model.safetensors` 8.0GB | ✅ |
+| GGUF Q4_K_M | gerar quantizado | 2.4GB (4.95 BPW) | ✅ |
+| `ollama create` | modelo listado | `archimedes:latest` 2.5GB | ✅ |
+| Estilo Archimedes | emojis+tabelas+pt-BR | ✅ validado (2 prompts) | ✅ |
+| Velocidade vs base | sem regressão | 26.2 vs 26.8 tok/s (-2%) | ✅ |

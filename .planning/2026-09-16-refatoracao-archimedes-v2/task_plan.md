@@ -4,7 +4,7 @@
 Refatorar o cofre `archimedes-v2` para máxima robustez, consistência e eficiência. Eliminar erros, melhorar scripts, documentação e configurações.
 
 ## Next Step
-Benchmark do servidor Ollama LXC 104 (10.0.0.4) — velocidade pura, alocação GPU vs CPU, teste agêntico.
+Todas as fases concluídas. Próximos passos sugeridos: integrar `archimedes:latest` como observer/voz local do claude-mem e avaliar novo ciclo de fine-tune com dataset maior.
 
 ## Phases
 
@@ -69,15 +69,35 @@ Benchmark do servidor Ollama LXC 104 (10.0.0.4) — velocidade pura, alocação 
 - [x] Testar agêntico (tool calling ✅ get_capital)
 - [x] **Fix GPU aplicado no LXC** (OLLAMA_IGPU_ENABLE=1 + HSA_OVERRIDE_GFX_VERSION=11.0.0) — size_vram 0 → 3.17GB/12.23GB
 - [x] Documentar resultados em docs/benchmarks/ e docs/perfis/geekom.md
-- [ ] Commit e push
+- [x] Commit e push
+
+### Phase 9: PoC Fine-Tuning — Modo Archimedes (LoRA)
+**Status:** complete
+- [x] Preparar dataset de estilo (54 exemplos reais do cofre, formato ShareGPT)
+- [x] Instalar ambiente de treino no LXC 104 (PyTorch ROCm + PEFT)
+- [x] Treinar LoRA fp16 (Qwen3-4B, r=16, 60 steps) — loss 14.26→3.65
+- [x] Exportar adaptador → merge bf16 → GGUF Q4_K_M
+- [x] Carregar no Ollama LXC 104 (`archimedes:latest`) e validar estilo
+- [x] Benchmark comparativo base vs fine-tuned (26.2 vs 26.8 tok/s)
+- [x] Documentar (`docs/finetune/`) e commit
+
+> ⚠️ **Desvio do plano:** QLoRA 4-bit abandonado — bitsandbytes na Radeon 780M causa GPU Hang (ROCm 6.4 vs 6.3). Solução final: **LoRA fp16 + `AMD_SERIALIZE_KERNEL=3`**.
 
 ## Decisions Made
 | Decision | Rationale |
 |----------|-----------|
 | Usar subagentes paralelos para auditoria | Eficiência: cobrir 4 áreas simultaneamente |
 | Seguir planning-with-files | Persistência e rastreabilidade |
+| LoRA fp16 em vez de QLoRA 4-bit | bitsandbytes causa GPU Hang na 780M (binário ROCm 6.4 ≠ runtime 6.3) |
+| `AMD_SERIALIZE_KERNEL=3` obrigatório no treino | Sem serialização de kernels, o MES estoura timeout (GPU Hang) na gfx1103→gfx1100 |
+| Não aumentar VRAM/UMA no BIOS | O hang é timeout de fila do MES, não falta de memória |
+| Quantizar em Q4_K_M (2.4GB) | Equilíbrio ideal tamanho/velocidade para a iGPU |
 
 ## Errors Encountered
 | Error | Attempt | Resolution |
 |-------|---------|------------|
-| (nenhum ainda) | — | — |
+| GPU Hang no step 1 (Unsloth/bnb/bf16) | Unsloth+b nb 4-bit, PEFT+bnb, LoRA bf16 puro | `fp16=True` + `AMD_SERIALIZE_KERNEL=3` + `AMD_SERIALIZE_COPY=3` ✅ |
+| `hipDrvLaunchKernelEx` em libamdhip64.so | Triton 3.7.1 do PyPI sobre ROCm 3.5.1 | Reinstalar `pytorch-triton-rocm==3.5.1` sem deps ✅ |
+| `cannot import name 'ScalingType'` | torchao 0.18.0 × torch 2.9.1 | Remover torchao ✅ |
+| `model did not return a loss` | transformers 5.x | `LossTrainer` com cross-entropy deslocada ✅ |
+| `MES failed to respond to msg=REMOVE_QUEUE` | Aumentar VRAM (BIOS) | Não é memória — serialização de kernels resolveu ✅ |

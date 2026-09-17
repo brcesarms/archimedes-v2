@@ -22,6 +22,21 @@
 > 🧠 Concorrência (3×128 tok): ~27 tok/s por req — escalável na iGPU.
 > Detalhes no [HISTORICO.md](./HISTORICO.md).
 
+## 🎛️ Modelo Fine-Tuned `archimedes:latest` (estilo do cofre) [2026-09-16]
+
+> Qwen3-4B-Instruct-2507 + LoRA treinado no estilo Archimedes V2 · GGUF Q4_K_M · 2.5 GB.
+> Pipeline completo em [`docs/finetune/`](../finetune/README.md). Mesma máquina, prompt 65 chars · 256 tokens · temp 0.2.
+
+| Métrica | `qwen3:4b` (base) | `archimedes` (fine-tuned) | Δ |
+|---------|:---:|:---:|:---:|
+| ⚡ Velocidade | 26.8 tok/s | **26.2 tok/s** | -2% (sem regressão) |
+| 🔢 Prompt eval | 177.5 tok/s | **346.2 tok/s** | **+95%** |
+| 🧠 TTFT | 130 ms | 407 ms | +277 ms |
+| ⏱️ Wall time (256 tok) | 12.8 s | **7.9 s** | -38% |
+| 🎨 Estilo Archimedes | ❌ genérico | ✅ emojis + tabelas + pt-BR | ✅ |
+
+> 🏆 **Veredito:** o fine-tuned entrega o estilo do cofre **mantendo a velocidade** do base (ideal para a "voz" local do Archimedes). O TTFT maior é efeito do prompt de sistema mais longo.
+
 ## ⚙️ Parâmetros do teste
 
 - 🌐 URL Ollama: `http://127.0.0.1:11434`

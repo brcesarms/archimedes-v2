@@ -47,9 +47,28 @@
 |--------|---------|-----|------------|
 | `qwen3-coder:30b` | ~18GB | Principal (coding, infra) — roda em CPU/iGPU com offload | 🔴 Alta |
 | `qwen3:4b` | ~2.6GB | **LXC 104 — 100% GPU validado** (26.8 tok/s); observer do claude-mem | 🟢 Baixa |
+| `archimedes:latest` | ~2.5GB | **Fine-tuned local** (Qwen3-4B + LoRA estilo cofre) — voz do Archimedes | 🟢 Baixa |
 | `qwen2.5-coder:7b` | ~4.5GB | Testes rápidos e fallback | 🟢 Baixa |
 
 > 💡 **Nota:** Sem GPU dedicada, modelos >14B dependem de **offload CPU/RAM** (64GB tornam isso viável).
+
+---
+
+## 🎛️ Fine-Tuning Local — pipeline validado
+
+> PoC concluído em 2026-09-16: LoRA do Qwen3-4B no **estilo Archimedes V2** (emojis, pt-BR, tabelas) rodando no LXC 104.
+> Documentação completa: [`docs/finetune/`](../finetune/README.md).
+
+| Etapa | Ferramenta | Saída |
+|-------|-----------|-------|
+| 🧬 Treino LoRA (fp16) | `transformers` + `peft` (`/opt/finetune`) | `archimedes-lora-fp16/` (132 MB) |
+| 🔧 Merge (CPU) | `merge_lora.py` | `archimedes-merged/` (bf16, 8GB) |
+| 📦 GGUF | `llama.cpp` (`/opt/llama.cpp`) | `archimedes-q4km.gguf` (2.4 GB) |
+| 🦙 Deploy | `ollama create` | `archimedes:latest` |
+
+> ⚠️ **GPU Hang na 780M:** o treino **só** funciona com `AMD_SERIALIZE_KERNEL=3` + `AMD_SERIALIZE_COPY=3` (+ `HSA_OVERRIDE_GFX_VERSION=11.0.0`). **Não** usar bitsandbytes 4-bit (binário ROCm 6.4 × runtime 6.3 → hang). Aumentar VRAM/UMA no BIOS não resolve (é timeout do MES, não memória).
+>
+> 🧪 **Triton:** manter `pytorch-triton-rocm==3.5.1`; o `triton` do PyPI quebra o HIP (`hipDrvLaunchKernelEx`).
 
 ---
 
@@ -122,6 +141,7 @@
 | **SSH ao LXC negado** | Chave pública instalada (2026-09-16 via `pct exec`); se trocar a máquina do Bruno, re-autorizar: `ssh root@10.0.0.3 "pct exec 104 -- sh -c 'mkdir -p /root/.ssh; cat >> /root/.ssh/authorized_keys'"` |
 | **OpenCode falha** | `opencode login` (reautenticar) |
 | **Runbook falha** | Verificar `.planning/` e `findings.md` do plano ativo |
+| **GPU Hang ao treinar (780M)** | Usar `AMD_SERIALIZE_KERNEL=3` + `AMD_SERIALIZE_COPY=3` + `fp16`; **banir** bitsandbytes 4-bit. Ver [`docs/finetune/`](../finetune/README.md) |
 
 ---
 

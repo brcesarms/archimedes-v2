@@ -3,6 +3,30 @@
 > Registro permanente das execuções de benchmark para comparação ao longo do tempo.
 > O `BENCHMARKS.md` (snapshot atual) é sobrescrito pelo script — este arquivo preserva o histórico.
 
+## 🎛️ Execução 2026-09-16 · Fine-Tuning `archimedes:latest` (Qwen3-4B no estilo do cofre)
+
+**Contexto:** PoC de fine-tuning para dar "voz" local ao Archimedes V2. Base `Qwen/Qwen3-4B-Instruct-2507`, LoRA (r=16) sobre 54 exemplos de estilo extraídos do cofre, merge em bf16 e quantização GGUF Q4_K_M. Treinado no LXC 104 (GPU Radeon 780M, ROCm 6.3).
+
+**O grande obstáculo — GPU Hang:** Unsloth/bnb 4-bit, PEFT+bnb e até LoRA bf16 puro travavam no step 1 (`HW Exception by GPU node-1 ... GPU Hang`; dmesg `MES failed to respond to msg=REMOVE_QUEUE`). **Não era memória** (VRAM/UMA não resolve). Solução: **fp16 + `AMD_SERIALIZE_KERNEL=3` + `AMD_SERIALIZE_COPY=3`** (evita o timeout do MES na gfx1103→gfx1100). Detalhes em [`docs/finetune/`](../finetune/README.md).
+
+**Treino:** 60 steps · ~16 min · `train_loss` **6.77** (loss por step: 14.26 → **3.65**).
+
+**Benchmark (256 tokens, temp 0.2):**
+
+| Métrica | `qwen3:4b` (base) | `archimedes` (fine-tuned) | Δ |
+|---------|:---:|:---:|:---:|
+| ⚡ Velocidade | 26.8 tok/s | 26.2 tok/s | -2% |
+| 🔢 Prompt eval | 177.5 tok/s | **346.2 tok/s** | +95% |
+| 🧠 TTFT | 130 ms | 407 ms | +277 ms |
+| ⏱️ Wall time | 12.8 s | 7.9 s | -38% |
+| 🎨 Estilo Archimedes | ❌ | ✅ emojis + tabelas + pt-BR | ✅ |
+
+**Validação de estilo:** respostas com emojis (`📋 🏛️ ✅`), pt-BR técnico e **tabelas markdown** (ex.: comparação MikroTik × Ubiquiti) — padrão do cofre.
+
+**Ferramentas:** `llama.cpp` clonado em `/opt/llama.cpp` (build `llama-quantize`); artefatos em `/root/finetune/`.
+
+---
+
 ## 🧪 Execução 2026-09-16 · Servidor Ollama LXC 104 — `qwen3:4b` (GPU ROCm ativada!)
 
 **Contexto:** benchmark do novo **servidor Ollama dedicado** (`10.0.0.4:11434`, LXC 104 no Proxmox GEEKOM, Ubuntu 24.04, Ollama 0.34.1). Durante a medição inicial descobriu-se que o Ollama rodava **100% CPU** (`size_vram=0`). Diagnóstico via log: `dropping ROCm device — no rocblas support for gfx target gfx1103`. Correção aplicada no systemd do LXC:
