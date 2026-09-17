@@ -22,8 +22,8 @@ alias ollama-rm='ollama rm'
 # 🤖 AGY & Hermes (Interface Principal)
 alias agy='agy --dangerously-skip-permissions'
 alias agy-archimedes='cd "$HOME/archimedes" && agy --dangerously-skip-permissions'
-alias hermes-cli='~/.local/bin/hermes'
-alias hermes-run='~/.local/bin/estagiario-alienware'
+alias hermes-cli='hermes'
+alias hermes-run='hermes -t terminal'
 
 # 🤖 OpenCode (Secundário)
 alias oc='opencode'
