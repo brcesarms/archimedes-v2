@@ -3,6 +3,25 @@
 > Principais métricas dos modelos disponíveis na GEEKOM.
 > Executado em: 06/09/2026 09:26:10 · Ollama 0.33.3
 
+## 🖥️ Servidor Ollama LXC 104 (10.0.0.4) — `qwen3:4b` [2026-09-16]
+
+> Servidor dedicado no Proxmox GEEKOM (Ubuntu 24.04 · Ollama 0.34.1 · GPU AMD ROCm ativa).
+> Velocidade pura via Ollama API · prompt 173 chars · 256 tokens · temp 0.2.
+
+| Métrica | ctx 4096 | ctx 65536 |
+|---------|:---:|:---:|
+| ⚡ Velocidade | **26.8 tok/s** | **26.7 tok/s** |
+| 🔢 Prompt eval | 292.6 tok/s | 305.0 tok/s |
+| ⏱️ Wall time | 12.6s | 13.1s |
+| 🧠 TTFT (quente) | **1.5s** | — |
+| 💾 Alocação VRAM | **3.17 GB (100% GPU)** | **12.23 GB (100% GPU)** |
+| 🤖 Tool calling | ✅ real | ✅ real |
+
+> ⚙️ **Config GPU obrigatória** (`/etc/systemd/system/ollama.service`): `OLLAMA_IGPU_ENABLE=1` + `HSA_OVERRIDE_GFX_VERSION=11.0.0` (mapeia gfx1103 → gfx1100 suportado). Sem isso o Ollama descarta a iGPU e cai 100% CPU (~19 tok/s).
+>
+> 🧠 Concorrência (3×128 tok): ~27 tok/s por req — escalável na iGPU.
+> Detalhes no [HISTORICO.md](./HISTORICO.md).
+
 ## ⚙️ Parâmetros do teste
 
 - 🌐 URL Ollama: `http://127.0.0.1:11434`

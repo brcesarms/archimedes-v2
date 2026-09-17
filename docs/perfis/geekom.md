@@ -29,9 +29,13 @@
 | **IP** | `10.0.0.4/24` (estático, gateway `10.0.0.1`, DNS `10.0.0.1`) |
 | **Endpoint** | `http://10.0.0.4:11434` (API) · `http://10.0.0.4:11434/v1` (OpenAI-compatível) |
 | **Recursos** | 8 vCPU · 12 GB RAM · 132 GB disco (LVM-thin) |
-| **Tipo** | Privilegiado · GPU passthrough AMD (ROCm 7.2) · SSH com senha |
+| **Tipo** | Privilegiado · GPU AMD iGPU 780M ativa (ROCm, benchmark 2026-09-16) · SSH com senha |
 | **SO** | Ubuntu 24.04 LTS · Ollama **v0.34.1** |
 | **Acesso host** | `pct exec 104 -- bash` (no Proxmox) · SSH: `ssh pve-ollama` |
+
+> ⚙️ **GPU ROCm — fix obrigatório no systemd** (senão cai 100% CPU ~19 tok/s):
+> `Environment=OLLAMA_IGPU_ENABLE=1` + `Environment=HSA_OVERRIDE_GFX_VERSION=11.0.0`
+> (mapeia a iGPU `gfx1103` → `gfx1100` suportado pelo ROCm 7.2). Validado: 26.8 tok/s + 3x prompt eval.
 
 > 💡 **Conexão com o claude-mem:** o observer local usa um proxy TCP `127.0.0.1:37777 → 10.0.0.4:11434` (mini-proxy Python; substituir por socat quando houver sudo disponível).
 
@@ -42,8 +46,8 @@
 | Modelo | Tamanho | Uso | Prioridade |
 |--------|---------|-----|------------|
 | `qwen3-coder:30b` | ~18GB | Principal (coding, infra) — roda em CPU/iGPU com offload | 🔴 Alta |
+| `qwen3:4b` | ~2.6GB | **LXC 104 — 100% GPU validado** (26.8 tok/s); observer do claude-mem | 🟢 Baixa |
 | `qwen2.5-coder:7b` | ~4.5GB | Testes rápidos e fallback | 🟢 Baixa |
-| `qwen3:4b` | ~2.6GB | Já baixado; observer do claude-mem (compressão) | 🟢 Baixa |
 
 > 💡 **Nota:** Sem GPU dedicada, modelos >14B dependem de **offload CPU/RAM** (64GB tornam isso viável).
 
@@ -57,6 +61,7 @@
 | **RAM** | >80% | `free -h` |
 | **Disco** | >85% | `df -h` |
 | **Ollama** | Down | `curl -s http://10.0.0.4:11434/api/ps` (ou `pct exec 104 -- systemctl status ollama`) |
+| **GPU ativa** | `size_vram=0` | `curl -s http://10.0.0.4:11434/api/ps \| jq '.models[0].size_vram'` — se 0, conferir systemd do LXC |
 | **OpenCode** | Down | `pgrep -f opencode` |
 
 ---
@@ -112,6 +117,7 @@
 |----------|---------|
 | **Ollama não responde** | `pct exec 104 -- systemctl restart ollama` (host Proxmox) |
 | **Modelo não carrega** | `curl -X POST http://10.0.0.4:11434/api/pull -d '{"name":"qwen3-coder:30b"}'` |
+| **GPU não ativa (size_vram=0)** | No LXC: `systemctl cat ollama` → conferir `OLLAMA_IGPU_ENABLE=1` e `HSA_OVERRIDE_GFX_VERSION=11.0.0`; log: `journalctl -u ollama \| grep -i "rocblas\|dropping"`. Editou? `systemctl daemon-reload && systemctl restart ollama` |
 | **LXC 104 parado** | `pct start 104` (host Proxmox) |
 | **SSH ao LXC negado** | A chave pública ainda não foi instalada — `ssh-copy-id root@10.0.0.4` com a senha definida na criação |
 | **OpenCode falha** | `opencode login` (reautenticar) |

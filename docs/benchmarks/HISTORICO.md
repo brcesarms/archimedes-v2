@@ -3,6 +3,39 @@
 > Registro permanente das execuções de benchmark para comparação ao longo do tempo.
 > O `BENCHMARKS.md` (snapshot atual) é sobrescrito pelo script — este arquivo preserva o histórico.
 
+## 🧪 Execução 2026-09-16 · Servidor Ollama LXC 104 — `qwen3:4b` (GPU ROCm ativada!)
+
+**Contexto:** benchmark do novo **servidor Ollama dedicado** (`10.0.0.4:11434`, LXC 104 no Proxmox GEEKOM, Ubuntu 24.04, Ollama 0.34.1). Durante a medição inicial descobriu-se que o Ollama rodava **100% CPU** (`size_vram=0`). Diagnóstico via log: `dropping ROCm device — no rocblas support for gfx target gfx1103`. Correção aplicada no systemd do LXC:
+
+```ini
+Environment=OLLAMA_IGPU_ENABLE=1          # habilita iGPU (780M)
+Environment=HSA_OVERRIDE_GFX_VERSION=11.0.0  # mapeia gfx1103 → gfx1100 (suportado ROCm)
+```
+
+Resultado: `inference compute id=0 library=ROCm compute=gfx1100 name="AMD Radeon 780M Graphics" type=iGPU` — **GPU 100% ativa** (backup do unit: `ollama.service.bak-2026-09-16`).
+
+**Parâmetros:** prompt 173 chars · `num_predict: 256` · `temperature: 0.2` · modelo em GPU
+
+| Métrica | CPU (antes) | GPU ROCm (depois) | Δ |
+|---------|:---:|:---:|:---:|
+| ⚡ Velocidade @ctx 4096 | 19.3 tok/s | **26.8 tok/s** | +39% |
+| ⚡ Velocidade @ctx 65536 | 16.2 tok/s | **26.7 tok/s** | +65% |
+| 🔢 Prompt eval @4096 | 93.0 tok/s | **292.6 tok/s** | +215% |
+| 🔢 Prompt eval @65536 | 81.8 tok/s | **305.0 tok/s** | +273% |
+| 🧠 Concorrência (3× 128 tok) | ~19.8 tok/s c/u | **~27 tok/s c/u** | +36% |
+| ⏱️ TTFT (modelo quente) | 4325 ms | **1465 ms** | -66% |
+| 🔄 Load @ctx 65536 | 20.0 s | **3.4 s** | -82% |
+| 💾 Alocação VRAM | 0 (CPU) | **3.17 GB** (ctx 4096) / **12.23 GB** (ctx 65536) | ✅ |
+| 🤖 Tool calling | — | ✅ `get_capital({"pais":"Brazil"})` | ✅ |
+
+### 🎯 Conclusões
+
+- 🏆 **Fix GPU validado**: `HSA_OVERRIDE_GFX_VERSION=11.0.0` + `OLLAMA_IGPU_ENABLE=1` resolveram o descarte da iGPU gfx1103 (Radeon 780M) pelo ROCm 7.2.
+- ⚡ **Ganho principal é em prompt eval (3x)** — o contexto carrega muito mais rápido; ideal para uso agêntico.
+- 📈 No CPU o ctx 65536 **perdia 20%** de velocidade; na GPU a perda é ≈0 (26.8 → 26.7).
+- 🧠 Concorrência: 3 requisições paralelas mantêm ~27 tok/s cada — escalável na iGPU.
+- 🤖 `qwen3:4b` faz tool calling real (pensa + chama com JSON válido). Observação: o modo thinking consome muitos tokens antes da chamada — usar `num_predict` generoso.
+
 ## 🧪 Execução 2026-09-06 (tarde) · Validação Agêntica — `gemma4:26b` (Decisão Final)
 
 **Contexto:** validação em **uso real agêntico** (não apenas benchmark sintético) após definir a regra de boas práticas: iGPU de **16GB com sobra mínima de 5GB** (orçamento ~11GB) — nunca trabalhar no limite do hardware (evita trashing/offload/alucinações).

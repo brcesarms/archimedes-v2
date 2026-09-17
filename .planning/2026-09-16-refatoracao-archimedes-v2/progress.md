@@ -71,3 +71,11 @@
 | Error | Resolution |
 |-------|------------|
 | (nenhum encontrado) | — |
+
+### Phase 8 Actions (Benchmark Ollama LXC)
+- ✅ Descoberta: Ollama no LXC 104 rodava 100% CPU (size_vram=0) — env "Intel/SYCL" copiado e GPU gfx1103 descartada pelo ROCm
+- ✅ Fix aplicado no systemd do LXC: `OLLAMA_IGPU_ENABLE=1` + `HSA_OVERRIDE_GFX_VERSION=11.0.0` (gfx1103 → gfx1100)
+- ✅ GPU ativa: `inference compute library=ROCm compute=gfx1100 AMD Radeon 780M type=iGPU`
+- ✅ Benchmark (qwen3:4b): CPU 19.3 → GPU 26.8 tok/s @4096; 16.2 → 26.7 @65536; prompt eval 93→293 tok/s (3x); TTFT 4.3s→1.5s; concorrência ~27 tok/s c/u; tool calling real ✅
+- ✅ Docs atualizados: BENCHMARKS.md (seção LXC 104), HISTORICO.md (execução 2026-09-16), geekom.md (fix GPU, monitoramento, troubleshooting)
+- ✅ Acesso remoto usado: SSH `root@10.0.0.3` (Proxmox host) + `pct exec 104`

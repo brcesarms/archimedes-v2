@@ -4,7 +4,7 @@
 Refatorar o cofre `archimedes-v2` para máxima robustez, consistência e eficiência. Eliminar erros, melhorar scripts, documentação e configurações.
 
 ## Next Step
-Commit e push da refatoração completa.
+Benchmark do servidor Ollama LXC 104 (10.0.0.4) — velocidade pura, alocação GPU vs CPU, teste agêntico.
 
 ## Phases
 
@@ -60,6 +60,16 @@ Commit e push da refatoração completa.
 - [x] Integrar ao opencode (plugin registrado)
 - [x] Validar memória persistente (worker ativo, observer via Ollama local)
 - [x] Criar servidor Ollama no Proxmox (LXC 104, 10.0.0.4, qwen3:4b)
+
+### Phase 8: Benchmark Ollama LXC
+**Status:** complete
+- [x] Medir velocidade pura (tok/s, prompt eval, wall time) via API
+- [x] Verificar alocação GPU (size_vram) vs CPU no LXC
+- [x] Testar concorrência / latência (3× reqs paralelas, TTFT)
+- [x] Testar agêntico (tool calling ✅ get_capital)
+- [x] **Fix GPU aplicado no LXC** (OLLAMA_IGPU_ENABLE=1 + HSA_OVERRIDE_GFX_VERSION=11.0.0) — size_vram 0 → 3.17GB/12.23GB
+- [x] Documentar resultados em docs/benchmarks/ e docs/perfis/geekom.md
+- [ ] Commit e push
 
 ## Decisions Made
 | Decision | Rationale |
