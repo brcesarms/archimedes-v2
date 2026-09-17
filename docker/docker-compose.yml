@@ -52,10 +52,11 @@ services:
               count: all
               capabilities: [gpu]
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:11434/api/tags"]
+      test: ["CMD-SHELL", "bash -c 'exec 3<>/dev/tcp/127.0.0.1/11434 && printf \"GET /api/tags HTTP/1.1\\r\\nHost: localhost\\r\\nConnection: close\\r\\n\\r\\n\" >&3 && head -1 <&3 | grep -q 200'"]
       interval: 30s
       timeout: 10s
       retries: 3
+      start_period: 15s
 
   # 🌐 Open-WebUI - Interface Web Amigável Padrão de Indústria para LLMs
   open-webui:
