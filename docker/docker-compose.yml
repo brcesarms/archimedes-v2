@@ -24,8 +24,12 @@ services:
       - ..:/work           # projeto archimedes-v2 montado como workspace
       - archimedes-config:/root/.config/opencode
       - archimedes-data:/root/.local/share/opencode
+      - ./archimedes/opencode.json:/root/.config/opencode/opencode.json:ro  # MCP RAG (versionado)
     environment:
       - OLLAMA_HOST=http://ollama:11434
+    # 🔗 Acesso ao RAG systemd do HOST (streamable-http em 127.0.0.1:8765)
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     command: ["serve", "--port", "4096", "--hostname", "0.0.0.0"]
     depends_on:
       ollama:
