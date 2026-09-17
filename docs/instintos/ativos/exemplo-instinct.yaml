@@ -15,12 +15,10 @@ atualizado_em: "2026-09-13"
 skill_criada: ""
 ---
 
-<!--
-COMO USAR ESTE MODELO:
-1. Copie este arquivo com um id curto em kebab-case (ex: script-backup-atomicos.yaml)
-2. Preencha trigger/action/domain/evidencia com observações REAIS
-3. Atualize confidence conforme a escala:
-   0.3 tentativo | 0.5 moderado | 0.7 forte (candidato) | 0.9 quase certo
-4. Deixe em ativos/ enquanto for vigente
-5. Quando virar skill: mova para promovidos/, preencha skill_criada, status: promovido
--->
+# COMO USAR ESTE MODELO:
+# 1. Copie este arquivo com um id curto em kebab-case (ex: script-backup-atomicos.yaml)
+# 2. Preencha trigger/action/domain/evidencia com observações REAIS
+# 3. Atualize confidence conforme a escala:
+#    0.3 tentativo | 0.5 moderado | 0.7 forte (candidato) | 0.9 quase certo
+# 4. Deixe em ativos/ enquanto for vigente
+# 5. Quando virar skill: mova para promovidos/, preencha skill_criada, status: promovido

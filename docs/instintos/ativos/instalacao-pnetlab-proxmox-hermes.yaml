@@ -1,0 +1,15 @@
+---
+id: instalacao-pnetlab-proxmox-hermes
+titulo: "Instalação Autônoma do PNETLab no Proxmox VE pelo Hermes"
+trigger: "quando o usuário pedir para o Hermes instalar ou reinstalar a VM do PNETLab no Proxmox VE"
+action: "o Hermes executa diretamente via SSH no Proxmox VE o runbook publicado no GitHub (raw.githubusercontent.com/brcesarms/linux-toolbox-tui/main/runbooks/pnetlab-proxmox-setup.md) ou o script local install-pnetlab-proxmox.sh, extrai a imagem OVA, provisiona a VMID 100 com cpu host e adiciona o nó MikroTik CHR v7.13.4 no PNETLab"
+domain: "proxmox"
+confidence: 0.9
+scope: "infraestrutura"
+evidencia:
+  - "2026-09-17: VMID 100 criada e validada com sucesso no Proxmox VE (10.0.0.3) em 10.0.0.218, KVM ativo e nó MikroTik CHR configurado"
+status: "ativo"
+criado_em: "2026-09-17"
+atualizado_em: "2026-09-17"
+skill_criada: "pnetlab-proxmox-setup"
+---
