@@ -44,6 +44,7 @@ archimedes-v2/
 ├── docs/                           <-- Documentação técnica de arquitetura, perfis e runbooks
 │   ├── arquitetura/                <-- Decisões de design (ADRs) e matrizes de substituição
 │   ├── benchmarks/                 <-- Histórico empírico de modelos e hardware (GEEKOM/Alienware)
+│   ├── finetune/                   <-- Pipeline de fine-tuning (LoRA estilo Archimedes → GGUF/Ollama)
 │   ├── perfis/                     <-- Perfis de hardware do ecossistema
 │   └── runbooks/                   <-- Procedimentos operacionais padrão (SOP)
 ├── dotfiles/                       <-- Configurações gerenciadas pelo Chezmoi (SSH, aliases)
