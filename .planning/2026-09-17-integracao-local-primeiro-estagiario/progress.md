@@ -165,3 +165,16 @@ Bruno questionou se `qwen3:8b` não seria melhor que `hermes3:8b`. Benchmark com
 
 **Modelo padrão do Hermes: `qwen3-nothink`** (config.yaml atualizado).
 Runbooks publicados: commits `14c67cf` (inicial hermes3) e `260b2bd` (benchmark + qwen3-nothink).
+
+### Wrapper de delegação (17/09/2026)
+
+`scripts/estagiario-alienware.sh` — aplica toolset restrito + prompt anti-alucinação + `--yolo`, transporte do prompt via base64 (elimina escaping SSH → bash → hermes).
+
+| Teste | Tempo | Resultado |
+|-------|-------|-----------|
+| `-t terminal` (docker ps) | 10,2s | ✅ correto |
+| `-t file` (criar arquivo) | 8,1s | ✅ arquivo real |
+| stdin/pipe (`free -h`) | 7,5s | ✅ correto |
+
+Instalado em `~/.local/bin/estagiario-alienware` (symlink). lint.sh 100% limpo.
+Commits: archimedes-v2 `4d77179` · linux-toolbox-tui `1b4d4dc`.
