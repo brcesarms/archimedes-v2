@@ -1,7 +1,7 @@
 ---
 name: notas-atomicas
 description: Criação e edição de notas no estilo do Archimedes. Use quando for criar, editar ou organizar notas markdown neste cofre — aplica notas atômicas, emojis, links markdown relativos e seção de fontes. Dispara ao ouvir "criar nota", "anotar", "resumo", "to-do notes" e nomes como "nota atômica".
-compatibility: opencode
+compatibility: agy, hermes
 metadata:
   audience: ia-local
   workflow: notas

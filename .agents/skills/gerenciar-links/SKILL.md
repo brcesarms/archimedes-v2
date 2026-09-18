@@ -1,7 +1,7 @@
 ---
 name: gerenciar-links
 description: Gerenciamento de links entre notas do Archimedes. Use quando o usuário pedir "gerenciar links", "conectar notas", "corrigir links", "evitar notas órfãs", "revisar backlinks" ou quando notas estiverem isoladas. Cria conexões entre notas correlatas e corrige links quebrados.
-compatibility: opencode
+compatibility: agy, hermes
 metadata:
   audience: ia-local
   workflow: notas

@@ -1,7 +1,7 @@
 ---
 name: criar-moc
 description: Criação de Maps of Content (MOC), índices que agrupam e conectam notas de um mesmo assunto. Use quando o usuário pedir "criar MOC", "mapa de conteúdo", "índice do assunto" ou quando houver mais de 7 notas sobre o mesmo tema sem um índice para conectá-las.
-compatibility: opencode
+compatibility: agy, hermes
 metadata:
   audience: ia-local
   workflow: organização

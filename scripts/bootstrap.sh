@@ -234,7 +234,7 @@ for mod in t.i concurseiro; do
 done
 
 # Arquivos-chave
-for f in AGENTS.md opencode.json README.md docs/guia-ia-local/install.sh; do
+for f in AGENTS.md README.md docs/guia-ia-local/install.sh; do
   if [ -f "${COFRE_DIR}/${f}" ]; then
     success "Arquivo $f OK"
   else

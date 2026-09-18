@@ -29,7 +29,7 @@ export LANG=pt_BR.UTF-8
 export LC_ALL=pt_BR.UTF-8
 
 # 🚀 PATH customizado
-export PATH="$HOME/.local/bin:$HOME/.opencode/bin:$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
 
 # 🐳 Docker (se instalado)
 if command -v docker &>/dev/null; then

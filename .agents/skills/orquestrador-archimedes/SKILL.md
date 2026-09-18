@@ -1,7 +1,7 @@
 ---
 name: orquestrador-archimedes
 description: "Orquestração unificada de tarefas longas do Archimedes com plano persistente em disco (task_plan.md, findings.md, progress.md). Use quando o usuário pedir 'orquestrar', 'tarefa longa', 'planejar execução', 'caderno de tarefas', 'auditar vários arquivos', 'bancada', 'executar bancada', 'validar scripts' ou quando a tarefa envolver mais de 8 arquivos ou múltiplas etapas sequenciais. Modos: padrão (qualquer tarefa complexa), bancada (orquestrador Python externo) e validar (scripts do cofre)."
-compatibility: opencode
+compatibility: agy, hermes
 metadata:
   audience: ia-local
   workflow: automacao

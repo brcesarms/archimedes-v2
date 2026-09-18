@@ -1,7 +1,7 @@
 ---
 name: backup-cofre
 description: Backup e restauração do Archimedes Vault. Use quando o usuário pedir "fazer backup", "backup do cofre", "snapshot", "salvar cópia", "restaurar cofre" ou "recuperar backup". Cria snapshots datados com verificação de integridade e restaura o cofre a partir deles.
-compatibility: opencode
+compatibility: agy, hermes
 metadata:
   audience: ia-local
   workflow: gestao

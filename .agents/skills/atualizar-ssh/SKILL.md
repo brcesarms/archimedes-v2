@@ -1,7 +1,7 @@
 ---
 name: atualizar-ssh
 description: Atualização autônoma de arquivos em máquinas remotas via SSH/SCP. Use quando o usuário pedir "atualizar arquivos", "sincronizar arquivos", "enviar arquivo", "copiar para", "atualizar config remota", "atualizar o cofre no alienware" ou quando precisar transferir arquivos de configuração (AGENTS.md, opencode.json, scripts) para outro host. Aplica comandos atômicos com permissões allow e verificação de integridade.
-compatibility: opencode
+compatibility: agy, hermes
 metadata:
   audience: ia-local
   workflow: automacao

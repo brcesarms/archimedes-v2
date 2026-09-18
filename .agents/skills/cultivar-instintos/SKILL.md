@@ -1,7 +1,7 @@
 ---
 name: cultivar-instintos
 description: Gestão de instintos (micro-aprendizados atômicos com confidence score) do Archimedes. Use quando o usuário pedir "instinto", "cultivar instintos", "registrar padrão", "promover instinto", "prune de instintos", "instinct-status", "evoluir instinto" ou quando um padrão de tarefa se repetir e merecer virar skill. Cria/gerencia YAMLs em docs/instintos/ e promove para skills via learning-loop.
-compatibility: opencode
+compatibility: agy, hermes
 metadata:
   audience: ia-local
   workflow: aprendizado

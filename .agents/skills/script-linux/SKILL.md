@@ -1,7 +1,7 @@
 ---
 name: script-linux
 description: Criação de scripts bash para Linux no estilo das convenções do Archimedes. Use ao criar, editar ou revisar qualquer script .sh — aplica shebang, set flags, comentários descritivos, emojis nos logs, chmod +x e verificação de exit code. Dispara ao ouvir "criar script", "script bash", "automação", ".sh".
-compatibility: opencode
+compatibility: agy, hermes
 metadata:
   audience: ia-local
   workflow: scripts

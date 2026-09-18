@@ -1,7 +1,7 @@
 ---
 name: bancada-execucao
 description: Execução padronizada do fluxo de bancada via orquestrador Python. Use quando o usuário pedir "bancada", "executar bancada", "inventário de máquina", "backup forense", "preparar formatação", "rodar orquestrador bancada", "manifesto de cliente" ou quando precisar coletar inventário Windows, fazer backup robocopy ou gerar manifesto pré-formatação via SSH.
-compatibility: opencode
+compatibility: agy, hermes
 metadata:
   audience: ia-local
   workflow: automacao

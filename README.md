@@ -38,8 +38,6 @@ archimedes/
 ├── .agents/                        <-- Agentes e skills modulares
 │   ├── agents/                     <-- Subagentes (estudante, resumidor, executor)
 │   └── skills/                     <-- Skills atômicas (22: planning-with-files, consultar-rag, ...)
-├── .opencode/                      <-- Configurações e comandos do OpenCode CLI
-│   └── commands/                   <-- Slash commands (/pwf, /pwf-status)
 ├── .planning/                      <-- Planos persistentes (planning-with-files)
 ├── config/                         <-- Hub de configurações centralizadas (MCP, hooks, linters)
 ├── docker/                         <-- Stack de IA local em container (Ollama + Open-WebUI)
@@ -63,7 +61,6 @@ archimedes/
 │   ├── python/                     <-- Utilitários Python (validar_links.py + testes)
 │   └── windows/                    <-- Automações PowerShell
 ├── Brewfile                        <-- Gerenciamento declarativo de pacotes via Homebrew Bundle
-├── opencode.json                   <-- Configuração do OpenCode CLI com ferramentas permitidas
 ├── .editorconfig                   <-- Padrão de charset e indentação
 ├── .gitignore                      <-- Bloqueio rigoroso de credenciais e caches
 ├── .lychee.toml                    <-- Configuração oficial do link checker em Rust

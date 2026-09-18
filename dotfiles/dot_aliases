@@ -25,9 +25,6 @@ alias agy-archimedes='cd "$HOME/archimedes" && agy --dangerously-skip-permission
 alias hermes-cli='hermes'
 alias hermes-run='hermes -t terminal'
 
-# 🤖 OpenCode (Secundário)
-alias oc='opencode'
-alias oc-up='opencode update'
 
 # 🐳 Docker
 alias dps='docker ps'

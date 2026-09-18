@@ -1,7 +1,7 @@
 ---
 name: auditar-skills
 description: Auditoria das skills do Archimedes para identificar quais não estão sendo usadas e são candidatas a exclusão. Use ao ouvir "auditar skills", "quais skills não são usadas", "dieta de skills", "limpar skills", "skills inativas", "revisar skills", "skills mortas". Analisa referências cruzadas, links internos e gera relatório com recomendação de manter/excluir/mergear — nunca exclui sem confirmação explícita.
-compatibility: opencode
+compatibility: agy, hermes
 metadata:
   audience: ia-local
   workflow: skills

@@ -1,7 +1,7 @@
 ---
 name: consultar-rag
 description: Busca semântica local com chunking AST e LanceDB via archimedes-rag. Use quando o usuário pedir "buscar código", "achar função", "onde está implementado", "consultar rag" ou quando precisar de contexto cirúrgico de um projeto sem ler arquivos inteiros.
-compatibility: opencode
+compatibility: agy, hermes
 metadata:
   audience: ia-local
   workflow: rag

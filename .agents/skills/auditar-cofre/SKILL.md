@@ -1,7 +1,7 @@
 ---
 name: auditar-cofre
 description: Auditoria de saúde do Archimedes Vault (Vault Health Report). Use quando o usuário pedir "auditar cofre", "vault health", "saúde do cofre", "links quebrados", "notas órfãs" ou "propor MOC". Executa a checagem de 4 passos e gera um relatório em notas/vault-health-report.md.
-compatibility: opencode
+compatibility: agy, hermes
 metadata:
   audience: ia-local
   workflow: auditoria

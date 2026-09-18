@@ -1,7 +1,7 @@
 ---
 name: revisar-scripts
 description: Revisão de scripts bash do Archimedes para encontrar erros antes de entregar. Use ao revisar, auditar, refatorar ou procurar bugs em qualquer script .sh ou .ps1 — aplica varredura de sintaxe, shellcheck, distros, idempotência, healthcheck, referências e boas práticas. Dispara ao ouvir "revisar script", "procurar erros no script", "auditar script", "varredura de erros", "refatorar script".
-compatibility: opencode
+compatibility: agy, hermes
 metadata:
   audience: ia-local
   workflow: scripts
