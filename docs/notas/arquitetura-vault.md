@@ -52,7 +52,7 @@ Adotar a arquitetura do archimedes-operator **de forma seletiva**: camadas bem d
 
 ## 🔗 Fontes
 
-- [Decisão de Arquitetura Python/PowerShell](./decisao-arquitetura-python-powershell-2026-09-11.md)
+- [ADR-001: Arquitetura Python/PowerShell](../arquitetura/adr-001-python-powershell.md)
 - [Skill motor-remoto](../../.agents/skills/motor-remoto/SKILL.md)
 - [Skill validar-links-md](../../.agents/skills/validar-links-md/SKILL.md)
 - [Projeto bancada no GitHub](https://github.com/brcesarms/archimedes-operator)

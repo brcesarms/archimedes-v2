@@ -10,8 +10,6 @@
 - 🗺️ [Propostas de MOCs](./propostas-moc.md) — candidatos a Mapas de Conteúdo (concurso, Dart, português)
 - 🔄 [Padrões Detectados — Gestão Git/GitHub](./padroes-detectados.md) — registro de padrões repetidos no versionamento
 - 📦 [Archimedes Backup](./archimedes-backup.md) — histórico do módulo de backups (consolidado no archimedes-operator)
-- 🪟 [Archimedes After-Install Win11](./archimedes-win11-setup.md) — histórico do pós-instalação Win11 (consolidado no archimedes-operator)
-- 🗺️ [Mapa Modular do Ecossistema](./mapa-modular-repos.md) — arquitetura dos 4 pilares do ecossistema Archimedes
 
 ---
 

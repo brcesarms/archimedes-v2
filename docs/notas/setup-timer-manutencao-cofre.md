@@ -86,7 +86,7 @@ cat ~/archimedes/docs/cerebrum/logs/manutencao-*.log
 ## 🔗 Fontes
 
 - 🐚 Script do Executor: [`manutencao-diaria-executor.sh`](../../scripts/linux/manutencao-diaria-executor.sh)
-- 📋 Runbook: [`runbook-backup-limpeza.md`](../runbooks/runbook-backup-limpeza.md)
+- 💾 Script de backup V2: [`backup.sh`](../../scripts/backup.sh)
 - 🧠 Sistema: [`AGENTS.md`](../../AGENTS.md)
 - 🔌 Conveções SSH: [`.opencode/convencoes/convencoes-ssh.md`](../convencoes/convencoes-ssh.md)
 - 💾 Script de backup: [`backup-cofre.sh`](../../scripts/linux/backup-cofre.sh)

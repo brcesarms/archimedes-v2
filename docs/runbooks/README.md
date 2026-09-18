@@ -7,7 +7,7 @@
 ## 🛠️ Suporte, Bancada & Máquinas Windows
 * 📖 [**Instruções Completas de Bancada**](./bancada-instrucoes.md) — Fluxo completo de atendimento, inventário e backup forense Robocopy.
 * 🪟 [**Preparar Máquina Windows 11**](./preparar-maquina-windows.md) — Configuração rápida de SSH e firewall no Windows.
-* ⚡ [**Setup de Máquina Nova**](./runbook-maquina-nova.md) — Roteiro de pós-formatação e integração ao ecossistema.
+* ⚡ [**Bootstrap de Máquina Nova**](../../scripts/bootstrap.sh) — Script de pós-formatação e integração ao ecossistema.
 
 ---
 
@@ -17,8 +17,8 @@
 
 ---
 
-## 🔄 Rotinas de Manutenção do Ecossistema
-* 🔍 [**Auditoria do Cofre**](./runbook-auditoria-cofre.md) — Rotina de checagem de saúde e links.
-* 🌿 [**Sincronização Git**](./runbook-git-sync.md) — Convenções de commit e publicação segura.
-* 🩺 [**Saúde do Sistema**](./runbook-saude-sistema.md) — Monitoramento de serviços e rotinas diárias.
-* 💾 [**Limpeza e Backups**](./runbook-backup-limpeza.md) — Gestão de retenção e snapshots.
+## 🔄 Rotinas de Manutenção (V2)
+
+> Runbooks legados V1 foram removidos. As rotinas atuais são executadas pelos scripts em [`scripts/`](../../scripts/):
+> `lint.sh` (auditoria), `backup.sh` (snapshots restic), `rotina-dia.sh` (esteira diária).
+
