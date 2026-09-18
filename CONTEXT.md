@@ -16,6 +16,7 @@
   - Revertido e limpo o repositório `linux-toolbox-tui` (removido runbook do MikroTik).
   - Memorizadas as restrições e comportamentos do MikroTik hAP ac^3 (RouterOS v7 `device-mode: home`) na memória permanente do Hermes Agent.
   - Adicionado protocolo de **Session Bootstrap** (inicialização de sessão) e **Estado Vivo (`CONTEXT.md`)**.
+  - Removidas 3 skills descontinuadas (`bancada-execucao.deprecated`, `orquestrar-tarefa.deprecated`, `validar-scripts-cofre.deprecated`) absorvidas pelo Hermes Agent, mantendo 19 skills ativas.
 
 ---
 
