@@ -54,6 +54,23 @@ Sempre que o usuário solicitar uma nova demanda ou procedimento:
 
 ---
 
+### 🚀 4. TRATAMENTO DE INÍCIO DE SESSÃO (SESSION BOOTSTRAP)
+
+Sempre que uma nova conversa/sessão for iniciada no AGY CLI:
+1. **Auto-identificação:** Leia este arquivo [`AGENTS.md`](file:///home/brn/archimedes/AGENTS.md) e o estado vivo em [`CONTEXT.md`](file:///home/brn/archimedes/CONTEXT.md).
+2. **Sincronização com o Hermes Agent:** Execute uma consulta inicial ao **Hermes Agent** solicitando o resumo do estado atual do projeto, tarefas pendentes e memórias recentes da infraestrutura.
+3. **Confirmação:** Apresente um resumo curto de 2 a 3 linhas ao usuário confirmando que o contexto e as memórias do Hermes foram carregados antes de aguardar o primeiro comando.
+
+---
+
+### 📋 5. GERENCIAMENTO DE ESTADO VIVO (CONTEXT.md)
+
+Para evitar que o AGY perca o contexto entre sessões:
+* Mantenha o arquivo [`CONTEXT.md`](file:///home/brn/archimedes/CONTEXT.md) atualizado na raiz do projeto com **Objetivo Atual**, **Última Alteração** e **Próximos Passos**.
+* **Atualização Obrigatória:** Ao final de cada entrega relevante ou encerramento de tarefa, o AGY e o Hermes Agent devem atualizar o [`CONTEXT.md`](file:///home/brn/archimedes/CONTEXT.md).
+
+---
+
 ### 🌐 Princípio Arquitetural V2: Alavancagem Técnica
 * 🛑 **Regra Anti-Padrão:** NUNCA recriar scripts caseiros frágeis para funções onde já existem ferramentas consagradas da indústria.
 * ✅ **Regra da Boa Prática:** Sempre orquestrar o padrão ouro do mercado:
