@@ -118,7 +118,7 @@ Para evitar que o AGY perca o contexto entre sessões:
   * 🗒️ [`notas-atomicas`](./.agents/skills/notas-atomicas/SKILL.md) — Regras de modularidade e notas atômicas
   * 🐧 [`script-linux`](./.agents/skills/script-linux/SKILL.md) — Desenvolvimento bash com boas práticas e shellcheck
   * 🔍 [`consultar-rag`](./.agents/skills/consultar-rag/SKILL.md) — Recuperação semântica e contextual via AST e LanceDB
-  * 📁 Total de **22 skills** em [`.agents/skills/`](./.agents/skills/) — inclui `organizar-cofre`, `auditar-cofre`, `backup-cofre`, `cultivar-instintos`, `gerenciar-links`, `motor-remoto`, `validar-teia`, entre outras
+  * 📁 Total de **19 skills** em [`.agents/skills/`](./.agents/skills/) — inclui `organizar-cofre`, `auditar-cofre`, `backup-cofre`, `cultivar-instintos`, `gerenciar-links`, `motor-remoto`, `validar-teia`, entre outras
 
 > 📌 **Repositório único (17/09/2026):** o antigo `archimedes-vault` foi absorvido neste repositório e está arquivado no GitHub. Conhecimento em `docs/` (cerebrum, notas, instintos, convencoes, runbooks, guia-ia-local), scripts em `scripts/`, dotfiles em `dotfiles/`.
 
