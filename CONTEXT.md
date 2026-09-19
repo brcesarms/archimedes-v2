@@ -11,6 +11,10 @@
 ---
 
 ## 🕒 Últimas Alterações Realizadas
+- **2026-09-19 (Desligamento Seguro do Servidor Físico Proxmox VE):**
+  - Auditoria prévia em tempo real: verificado que todas as VMs (100, 101) e Containers (102, 103) estavam em status `stopped`.
+  - Executado o desligamento seguro do sistema operacional via `systemctl poweroff` no host `geekom` (`10.0.0.3`).
+  - Validação confirmada: host completamente offline (100% packet loss no ping).
 - **2026-09-19 (Desligamento Gracioso da VM 101 e CT 103 no Proxmox):**
   - Aplicada a postura proativa de correção técnica: identificado que o ID 103 é um Container LXC (`pct`) e não uma VM (`qm`), evitando erros de comando no Proxmox.
   - Executado o desligamento gracioso via host Proxmox (`geekom` / `10.0.0.3`):
