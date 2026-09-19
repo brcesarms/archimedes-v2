@@ -1,0 +1,15 @@
+---
+id: despacho-atomico-hermes-9b
+titulo: "Despacho Atômico de Ferramenta Única para o Modelo 9B do Hermes"
+trigger: "ao despachar qualquer comando de terminal ou tarefa mecânica para o Hermes Agent (modelo qwen3.5:9b na RTX 5060)"
+action: "O AGY deve manter todo o planejamento na Cabeça e NUNCA mandar o Hermes ler ou marcar arquivos de missão em disco. O despacho DEVE ter toolset único (-t terminal), comando seco e imperativo sem roleplay ('Execute no terminal e retorne a saída real: <COMANDO>'). Se o Hermes não emitir o tool call, o AGY NUNCA deve assumir em silêncio: deve relatar ao usuário e recalibrar a instrução."
+domain: "orquestracao"
+confidence: 0.98
+scope: "archimedes"
+evidencia:
+  - "2026-09-19: O modelo 9B em modo one-shot simulou em markdown todas as vezes que recebeu prompts multi-tarefa com leitura de arquivos de checklist em disco (.planning/plano_hermes.md). O usuário cobrou com razão: 'eu preciso que o hermes consiga realizar as tarefas sozinho e aprender. cabe a você ver as limitações do modelo 9b e se adequar para que ele consiga realizar as tarefas'."
+status: "ativo"
+criado_em: "2026-09-19"
+atualizado_em: "2026-09-19"
+skill_criada: ""
+---

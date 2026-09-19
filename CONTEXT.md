@@ -11,6 +11,13 @@
 ---
 
 ## 🕒 Últimas Alterações Realizadas
+- **2026-09-19 (Readequação da Doutrina Operacional: Despacho Atômico para o Modelo 9B):**
+  - O usuário pontuou criticamente e com total razão: o AGY deve identificar as limitações do modelo local (Qwen 9B), adequar o formato para que o Hermes consiga realizar tarefas sozinho e NUNCA assumir tarefas em silêncio via fallback sem alertar antes.
+  - Causa raiz eliminada: o excesso de cerimônia cognitiva (mandar o modelo 9B ler arquivos `.planning/`, planejar 4 passos sequenciais e editar checklists com `[x]`) causava saturação e simulação em texto.
+  - Nova abordagem consagrada em `AGENTS.md` e `docs/instintos/ativos/despacho-atomico-hermes-9b.yaml`:
+    1. O planejamento e controle de contexto ficam 100% na Cabeça (AGY).
+    2. O despacho ao Hermes deve ter ferramenta única (`-t terminal`), ordem seca e imperativa ("Execute no terminal e retorne a saída real: <COMANDO>").
+    3. Proibido fallback silencioso: se o Hermes não emitir tool call, o AGY deve relatar ao usuário, recalibrar a instrução e fazer o Hermes executar.
 - **2026-09-19 (Desligamento Seguro do Servidor Físico Proxmox VE):**
   - Auditoria prévia em tempo real: verificado que todas as VMs (100, 101) e Containers (102, 103) estavam em status `stopped`.
   - Executado o desligamento seguro do sistema operacional via `systemctl poweroff` no host `geekom` (`10.0.0.3`).
