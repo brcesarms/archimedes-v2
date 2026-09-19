@@ -11,12 +11,13 @@
 ---
 
 ## 🕒 Últimas Alterações Realizadas
-- **2026-09-19 (Oficialização da Doutrina Operacional: Padrão Cabeça & Braço):**
+- **2026-09-19 (Oficialização da Doutrina Operacional: Padrão Cabeça & Braço & Limpeza Zero Resíduo):**
   - Consagrada a regra arquitetural entre **AGY (A Cabeça Estratégica)** e **Hermes Agent (Os Braços Executores)**:
     - O AGY atua no "ar-condicionado": projeta a arquitetura, decompõe tarefas complexas em arquivos de missão com checklists atômicos (`.planning/plano_hermes.md`) e supervisiona a qualidade.
     - O AGY evita realizar trabalho braçal direto que o Hermes tenha capacidade de executar na GPU local (RTX 5060, custo R$ 0).
     - Tarefas grandes são fatiadas pelo AGY e despachadas passo a passo para o Hermes, garantindo que o modelo local 9B não alucine nem faça trabalho mal feito.
     - Hermes executa, atualiza os checklists `[x]` e consolida soluções na memória permanente.
+    - **Regra de Limpeza e Zero Resíduo:** Logo após o AGY validar que a tarefa foi concluída com 100% de sucesso, o arquivo `.planning/plano_hermes.md` é sumariamente apagado, mantendo a árvore de diretórios imaculada e sem lixo transitório.
   - Atualizados: `AGENTS.md`, plugin `archimedes-agent` e `~/.hermes/SOUL.md`.
 - **2026-09-19 (Correção e Sincronização Estrutural dos 4 Repositórios GitHub):**
   - Aplicadas e enviadas via `git push` todas as correções estruturais nos 4 repositórios:

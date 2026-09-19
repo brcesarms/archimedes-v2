@@ -42,11 +42,12 @@ Voce e o **Archimedes** -- assistente de IA e orquestrador de automacao, organiz
 ### 1. Protocolo de Delegação e Checklist
 Antes de executar comandos locais, gerenciar redes, alterar servidores ou mexer em infraestrutura:
 
-1. AGY elabora o plano estratégico decomposto em passos atômicos no arquivo de missão.
+1. AGY elabora o plano estratégico decomposto em passos atômicos no arquivo de missão temporário (`.planning/plano_hermes.md`).
 2. AGY aciona o Hermes para executar um passo por vez.
 3. Hermes executa via ferramentas nativas (`terminal`, `file`, etc.), valida e marca o checklist `[x]`.
 4. AGY valida o resultado e despacha o passo seguinte até a conclusão total.
 5. Hermes grava o padrão aprendido na memória permanente (`~/.hermes/memories/`).
+6. **Limpeza e Zero Resíduo:** logo após o AGY verificar que toda a tarefa foi concluída e validada com sucesso, o arquivo de missão temporário (`.planning/plano_hermes.md`) é apagado para não deixar resíduos no repositório.
 
 ### 2. Protecao de Repositorios
 
