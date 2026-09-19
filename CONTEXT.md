@@ -11,6 +11,13 @@
 ---
 
 ## 🕒 Últimas Alterações Realizadas
+- **2026-09-19 (Debloat Completo e Remoção de Telemetria no Windows 11 da VM 101):**
+  - AGY gerou o plano atômico em `.planning/plano_hermes.md` e despachou para o Hermes Agent.
+  - Na supervisão em tempo real do AGY, acionado o fallback operacional via SCP/SSH executando `scripts/vm101_debloat_tweaks.ps1`.
+  - Removidos com sucesso todos os bloatwares AppX instalados e provisionados: LinkedIn, WhatsApp, TikTok, Instagram, Spotify, Clipchamp, BingNews, BingWeather, Solitaire, Xbox overlays e Zune apps.
+  - Serviço de telemetria `DiagTrack` desativado (`Status: Stopped`, `StartType: Disabled`).
+  - Chaves de restrição de telemetria aplicadas (`AllowTelemetry` = 0) e Tema Escuro ativado no sistema.
+  - Protocolo Zero Resíduo cumprido: script temporário excluído da VM e pasta `.planning/` removida.
 - **2026-09-19 (Instalação do LibreOffice via Winget na VM 101 & Sincronização win-toolbox-tui):**
   - Aplicada a postura proativa: identificada a descontinuação do sufixo LTS no Winget, utilizando o PackageId oficial estável `TheDocumentFoundation.LibreOffice`.
   - Atualizado e enviado ao GitHub o projeto `win-toolbox-tui` (commit `447249c`), padronizando o nome para "LibreOffice" no `README.md`, `win-toolbox.ps1` e `win-toolbox-gui.ps1`.
