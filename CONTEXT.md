@@ -11,6 +11,13 @@
 ---
 
 ## 🕒 Últimas Alterações Realizadas
+- **2026-09-19 (Desligamento Gracioso da VM 101 e CT 103 no Proxmox):**
+  - Aplicada a postura proativa de correção técnica: identificado que o ID 103 é um Container LXC (`pct`) e não uma VM (`qm`), evitando erros de comando no Proxmox.
+  - Executado o desligamento gracioso via host Proxmox (`geekom` / `10.0.0.3`):
+    - `qm shutdown 101` (VM Windows 11 — desligamento ACPI via QEMU Guest Agent).
+    - `pct shutdown 103` (CT Servidor de Arquivos Debian 13).
+  - Validação confirmada via `qm status 101` e `pct status 103`: ambos com status `stopped`.
+  - Protocolo Zero Resíduo cumprido com a remoção da pasta `.planning/`.
 - **2026-09-19 (Configuração de Esquema de Energia para "Nunca" na VM 101):**
   - Aplicados comandos de `powercfg` para desativar completamente timeouts de inatividade no Windows 11 (AC e DC):
     - `VIDEOIDLE` = 0 (Monitor nunca desliga).
