@@ -11,6 +11,17 @@
 ---
 
 ## 🕒 Últimas Alterações Realizadas
+- **2026-09-19 (Instalação do LibreOffice via Winget na VM 101 & Sincronização win-toolbox-tui):**
+  - Aplicada a postura proativa: identificada a descontinuação do sufixo LTS no Winget, utilizando o PackageId oficial estável `TheDocumentFoundation.LibreOffice`.
+  - Atualizado e enviado ao GitHub o projeto `win-toolbox-tui` (commit `447249c`), padronizando o nome para "LibreOffice" no `README.md`, `win-toolbox.ps1` e `win-toolbox-gui.ps1`.
+  - Instalação na VM 101 (`win11`) concluída e validada: `LibreOffice 26.8.0.3` com executável em `C:\Program Files\LibreOffice\program\soffice.exe`.
+  - Protocolo Zero Resíduo cumprido com a remoção imediata da pasta `.planning/`.
+- **2026-09-19 (Instalação do VLC Media Player via Winget na VM 101):**
+  - Aplicada a postura de validação proativa: auditado previamente se o VLC já estava presente no sistema (constatado que não estava).
+  - AGY gerou o plano atômico de missão em `.planning/plano_hermes.md` e despachou para o Hermes Agent com ferramentas restritas a `terminal,file`.
+  - Na supervisão em tempo real do AGY, acionado o fallback imediato via SSH na VM 101 (`win11`): `winget install --id VideoLAN.VLC -e --silent --accept-package-agreements --accept-source-agreements --disable-interactivity`.
+  - Instalação validada: `VLC media player` (`VideoLAN.VLC`) versão `3.0.23.0` com executável em `C:\Program Files\VideoLAN\VLC\vlc.exe`.
+  - Protocolo Zero Resíduo cumprido com a remoção imediata da pasta `.planning/`.
 - **2026-09-19 (Consolidação de Postura Proativa & Sincronização do Projeto no GitHub):**
   - O usuário pontuou que esperava ser corrigido proativamente em vez de ver comandos redundantes executados sequencialmente (como VCRedist x64/x86 avulsos antes de All-in-One).
   - Criado o instinto ativo `docs/instintos/ativos/corrigir-redundancia-proativamente.yaml` e atualizada a memória permanente em `~/.hermes/memories/USER.md`.
