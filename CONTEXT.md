@@ -11,6 +11,15 @@
 ---
 
 ## 🕒 Últimas Alterações Realizadas
+- **2026-09-19 (Configuração de Esquema de Energia para "Nunca" na VM 101):**
+  - Aplicados comandos de `powercfg` para desativar completamente timeouts de inatividade no Windows 11 (AC e DC):
+    - `VIDEOIDLE` = 0 (Monitor nunca desliga).
+    - `STANDBYIDLE` = 0 (Sistema nunca entra em modo de suspensão).
+    - `HIBERNATEIDLE` = 0 (Sistema nunca hiberna).
+    - `powercfg -h off` (Hibernação desativada e arquivo `hiberfil.sys` removido para poupar espaço em disco na VM).
+    - `powercfg /SETACTIVE SCHEME_CURRENT` (Ativação imediata das diretivas no perfil atual).
+  - Validação executada: todos os índices confirmados em `0x00000000`.
+  - Protocolo Zero Resíduo cumprido com a remoção da pasta `.planning/`.
 - **2026-09-19 (Debloat Completo e Remoção de Telemetria no Windows 11 da VM 101):**
   - AGY gerou o plano atômico em `.planning/plano_hermes.md` e despachou para o Hermes Agent.
   - Na supervisão em tempo real do AGY, acionado o fallback operacional via SCP/SSH executando `scripts/vm101_debloat_tweaks.ps1`.
