@@ -11,6 +11,117 @@
 ---
 
 ## 🕒 Últimas Alterações Realizadas
+- **2026-09-19 (Oficialização da Doutrina Operacional: Padrão Cabeça & Braço):**
+  - Consagrada a regra arquitetural entre **AGY (A Cabeça Estratégica)** e **Hermes Agent (Os Braços Executores)**:
+    - O AGY atua no "ar-condicionado": projeta a arquitetura, decompõe tarefas complexas em arquivos de missão com checklists atômicos (`.planning/plano_hermes.md`) e supervisiona a qualidade.
+    - O AGY evita realizar trabalho braçal direto que o Hermes tenha capacidade de executar na GPU local (RTX 5060, custo R$ 0).
+    - Tarefas grandes são fatiadas pelo AGY e despachadas passo a passo para o Hermes, garantindo que o modelo local 9B não alucine nem faça trabalho mal feito.
+    - Hermes executa, atualiza os checklists `[x]` e consolida soluções na memória permanente.
+  - Atualizados: `AGENTS.md`, plugin `archimedes-agent` e `~/.hermes/SOUL.md`.
+- **2026-09-19 (Correção e Sincronização Estrutural dos 4 Repositórios GitHub):**
+  - Aplicadas e enviadas via `git push` todas as correções estruturais nos 4 repositórios:
+    1. **`t.i`**: Adicionada a área `redes` (22 notas), reestruturado `redes/README.md` completo com as 3 sub-áreas, atualizada contagem total para 91 notas em 6 áreas e sanado link para padrões.
+    2. **`concurseiro`**: Redirecionados os 5 links de disciplinas para seus respectivos `README.md`, atualizada estatística para 7 índices dedicados e sanado link de rodapé.
+    3. **`win-toolbox-tui`**: Ajustado cabeçalho da seção Configurações para `C1–C10`, refletindo o item `C10` (OpenSSH authorized_keys).
+    4. **`linux-toolbox-tui`**: Indexado o runbook de migração manual passo a passo (`migracao-geekom-alienware.md`) no sumário de runbooks.
+  - Todos os 4 repositórios estão 100% íntegros, limpos e sincronizados com seus remotos no GitHub.
+- **2026-09-19 (Conexão e Ativação do Hermes Agent ao Telegram via Gateway Nativo):**
+  - Instalado o pacote extra oficial `messaging` (`python-telegram-bot==22.8`) no ambiente virtual do Hermes via `uv`.
+  - Instalado e habilitado o serviço nativo `hermes-gateway.service` no systemd (`systemd --user`) via `hermes gateway install --start-now`.
+  - Ativado suporte a linger no systemd (`Linger=yes`), garantindo persistência do serviço mesmo após logout ou reinicialização.
+  - Conexão com a API do Telegram estabelecida com sucesso via modo polling (`getUpdates`), registrando 60 comandos slash para o usuário (`1461618690`).
+  - Status do serviço validado via `hermes status` (Gateway Service: running, PID ativo, 0 falhas).
+- **2026-09-19 (Eliminação Definitiva do Container 200 no Proxmox & Consolidação do Hermes no Alienware):**
+  - O estagiário **Hermes Agent** planejou e validou a eliminação completa do container LXC 200 (`hermes-agent`) no host Proxmox VE (`10.0.0.3`).
+  - Executado o comando `pct destroy 200 --purge`, removendo o container das configurações e destruindo o volume lógico `vm-200-disk-0` com **liberação de 60 GB de NVMe** no storage `local-lvm`.
+  - Confirmado via `pct list` que restam no Proxmox apenas os containers **102 (`iventoy`)** e **103 (`arquivos`)**.
+  - O Hermes Agent está 100% consolidado, com seu tom vibrante e emojis restaurados, operando nativamente no Alienware Aurora com a NVIDIA GeForce RTX 5060 (CUDA nativo a 35.6 tok/s).
+- **2026-09-19 (sessão AGY tarde - Migração Expressa do Hermes Agent para o Alienware com Clean Slate):**
+  - Eliminado definitivamente o container legado `archimedes-ollama` e volume Docker `archimedes-ollama-data`, expurgando nomenclaturas caseiras e aplicando a regra de ouro Zero-Gambiarra.
+  - Instalado o **Ollama nativo oficial** no Alienware (`/usr/local/bin/ollama`) gerenciado pelo serviço canônico do systemd `ollama.service`.
+  - Configurado tuning oficial no systemd (`OLLAMA_HOST=0.0.0.0:11434`, `OLLAMA_KEEP_ALIVE=24h`, `OLLAMA_FLASH_ATTENTION=1`) operando com aceleração direta CUDA 13.2 sobre a GPU NVIDIA GeForce RTX 5060 (8 GB VRAM).
+  - Provisionado o modelo homologado `qwen3.5:9b` (6.6 GB) com 100% de offload na RTX 5060.
+  - Restaurada a alma e a inteligência do Hermes diretamente do backup no Servidor de Arquivos (`10.0.0.103`): `SOUL.md`, `state.db` (todas as 15 sessões e 146 mensagens preservadas), memórias, skills e `.env`.
+  - Implantado o framework oficial `NousResearch/hermes-agent` v0.21.3 em ambiente Python 3.11 limpo via `uv` com atalho global em `~/.local/bin/hermes`.
+  - Auditoria com `hermes doctor` 100% aprovada e teste de inferência em tempo real na GPU validado com sucesso.
+  - O container LXC 200 no Proxmox GEEKOM foi colocado em standby frio (`pct stop 200`) para liberar RAM e servir como réplica de contingência.
+- **2026-09-19 (Primeiro Backup do Novo Hermes Agent & Inicialização do Servidor de Arquivos CT 103):**
+  - Identificado e resolvido preventivamente conflito de IP crítico: o CT 103 (`arquivos`) estava configurado com o IP histórico `10.0.0.4`, colidindo com o novo Hermes Agent (`10.0.0.4`).
+  - Remanejado o IP do CT 103 para `10.0.0.103/24` no Proxmox VE (`10.0.0.3`), alinhando o endereço IP ao VMID 103.
+  - Inicializado com sucesso o container LXC 103 (`arquivos`), validando serviços Samba, NFS e SSH com autenticação por chave ED25519.
+  - Criado o diretório dedicado `/srv/arquivos/backup/hermes-backup` com permissões `775` e ownership `backup:backup`.
+  - Criado e validado via `shellcheck` o script de backup cirúrgico e atômico [`scripts/backup-hermes.sh`](file:///home/brn/archimedes/scripts/backup-hermes.sh) (também instalado em `/home/hermes/scripts/backup-hermes.sh`).
+  - O backup filtra e empacota exclusivamente os dados essenciais: identidade (`.env`, `SOUL.md`, `config.yaml`), snapshot consistente SQLite (`VACUUM INTO` no `state.db`), `memories/`, `sessions/`, `skills/`, scripts operacionais, chaves SSH, override Vulkan do systemd e `manifest.json` com metadados do ambiente. Exclui 6.2 GB de pesos do Ollama, 1 GB de `.git` e virtualenv.
+  - Executado o primeiro backup com sucesso: gerado `hermes-core-backup-20260919_115358.tar.zst` (apenas 904 KB compactado via zstd multi-thread), transferido via rede para `backup@10.0.0.103` e validado com integridade 100% via SHA256 (`OK`).
+  - Criados links simbólicos `latest.tar.zst` e `latest.tar.zst.sha256` no servidor de arquivos.
+  - Atualizados os runbooks e guias de convenções SSH (`docs/convencoes/convencoes-ssh.md` e `docs/runbooks/servidor-arquivos-proxmox.md`).
+- **2026-09-19 (sessão AGY manhã - Implantação do Novo Hermes Agent no Proxmox GEEKOM):**
+  - Provisionado novo container LXC 200 (`hermes-agent`) no host Proxmox VE (`10.0.0.3`) com IP estático `10.0.0.4/24` (Gateway `10.0.0.1`).
+  - Recursos alocados: 16 GB RAM DDR5, 8 vCPUs Zen 4, 60 GB NVMe (Samsung 9100 PRO thin-provisioned) e **zero swap em SSD**.
+  - Ativada Swap Fedora-Style (`zRAM`) de 16 GB com compressão `zstd` em RAM (prioridade 100), eliminando completamente o desgaste do disco NVMe.
+  - Configurado passthrough de hardware para a iGPU AMD Radeon 780M (`/dev/dri/card0`, `/dev/dri/renderD128`, `/dev/kfd`).
+  - Configurado o backend de aceleração gráfica **Vulkan nativo (Mesa RADV PHOENIX)** com 39.4 GiB de VRAM alocável.
+  - Instalado o **Ollama oficial** com o modelo homologado `qwen3.5:9b` (6.6 GB) e tuning no systemd para Vulkan (`OLLAMA_HOST=0.0.0.0:11434`, `OLLAMA_KEEP_ALIVE=24h`, `OLLAMA_VULKAN=1`, `OLLAMA_LLM_LIBRARY=vulkan`, `OLLAMA_IGPU_ENABLE=1`).
+  - Instalado o framework oficial **`NousResearch/hermes-agent`** limpo (Clean Slate / Zero Legado) com ambiente Python 3.11 via `uv`.
+  - Configurado o `SOUL.md` canônico com a **Regra de Ouro Zero-Gambiarra**, comunicação 100% em **pt-BR com muitos emojis contextuais**, e autonomia plena.
+  - Teste de integração inicial realizado com sucesso via CLI oneshot em Vulkan (resposta perfeita: identidade, localização no Proxmox e IP 10.0.0.4 reconhecidos).
+  - **Primeira Missão Operacional Autônoma Concluída:** O Hermes Agent no Proxmox conectou via SSH ao roteador MikroTik (`10.0.0.1`), auditou recursos de hardware, tabelas de rotas, endereçamento WAN/LAN e confirmou a integridade do agendamento diário de reboot com relatório completo.
+  - **Segunda Missão Operacional Autônoma Concluída:** O Hermes Agent no Proxmox conectou via SSH ao laptop ACER (`10.0.0.215`), executou a atualização completa do sistema Ubuntu (31 pacotes atualizados, incluindo Brave Browser, Netplan, Perl e Kerberos), realizou a autoremove de dependências órfãs e verificou que nenhum reinício é necessário.
+  - **Terceira Missão Operacional Autônoma Concluída:** O Hermes Agent no Proxmox conectou via SSH à estação principal Alienware (`10.0.0.208`), atualizou o sistema Ubuntu (Brave Browser e toda a stack do NVIDIA Container Toolkit `1.20.1-1`), realizou limpeza de pacotes órfãos liberando espaço em disco e atestou que nenhum reinício é necessário.
+  - **Sexta Missão Operacional Autônoma Concluída (Acesso SSH e Auditoria da VM Windows 11):**
+    - Após ativação da opção `C10` na ferramenta `win-toolbox-tui`, o Hermes Agent conectou com sucesso via SSH autenticado por chave pública ED25519 (`pve-win11` / `brces@10.0.0.200`).
+    - Executada auditoria de hardware, sistema e armazenamento: Windows 11 Pro (build 26200), CPU Ryzen 9 7940HS (8 vCPUs), 8 GB RAM, 159 GB livres no NVMe de 200 GB e serviço `sshd` com inicialização automática e porta 22 liberada.
+  - **Quinta Missão Operacional Autônoma (Diagnóstico SSH VM Windows 11 & Atualização do win-toolbox-tui):**
+    - O Hermes Agent conectou e investigou a VM Windows 11 (`10.0.0.200`), confirmando a abertura da porta 22 e identificando a recusa de autenticação (`Permission denied`) por ausência de chaves autorizadas.
+    - Implementada a função `Add-SSHPublicKey` e o item dedicado **`C10`** na aba Configurações (além do passo `[4/4]` em `Enable-OpenSSHServer` / `C4`) no repositório [`win-toolbox-tui`](https://github.com/brcesarms/win-toolbox-tui), com injeção automática da chave pública padrão do ecossistema Archimedes (`brcesarms@gmail.com`), configuração de permissões estritas NTFS (`icacls` sem herança para usuário e `administrators_authorized_keys`), atalhos `M10` e `KEY`, detecção de status instalado no TUI/GUI e validação aprovada no `gitleaks`. Commits `b52ec30` e `c04998d` enviados para a `main`.
+  - **Quarta Missão Operacional Autônoma Concluída (Gestão de VMs Proxmox):** O Hermes Agent no Proxmox conectou via SSH ao host Proxmox VE (`10.0.0.3`), enviou a ordem de inicialização `qm start 101` e atestou que a VM **Windows 11 (VMID 101)** mudou seu status para `running` com sucesso.
+  - **Desativação e Remoção do Hermes Legado no Alienware:**
+    - Serviço `hermes-telegram.service` parado e desabilitado; processos encerrados.
+    - Backup seguro de credenciais `.env` preservado em `~/.hermes_env_backup` com permissão restrita `600`.
+    - Diretório legados `~/.hermes` e wrapper `~/.local/bin/hermes` removidos do Alienware.
+  - **Tuning de BIOS no GEEKOM A7 MAX & Salto de +91.5% de Desempenho no Hermes Proxmox:**
+    - Aplicados ajustes na BIOS AMI: TDP em Performance Mode (54W), UMA Frame Buffer Size em 16 GB dedicado para a Radeon 780M, Resizable BAR / Above 4G Decoding e perfil de ventoinha em Performance.
+    - Resolvida renumeração de dispositivo gráfico UEFI (`card1`) via regra udev persistente (`/dev/dri/card0 -> card1`).
+    - Bateria de testes comparativos oficiais (Antes vs Depois) confirmou:
+      - Velocidade de geração saltou de **7.65 tok/s** para **14.65 tok/s** (+91.5% de ganho, praticamente o DOBRO).
+      - Tempo médio de resposta por inferência caiu de **34.12s** para **17.90s** (-47.5% de redução de tempo).
+      - Temperaturas em estresse máximo contínuo mantiveram-se em 79°C (CPU) e 78°C (iGPU), mais de 20°C abaixo do limite térmico.
+  - **Sincronização da pasta `redes` no repositório `t.i` (`wikisidian/t.i`):**
+    - Corrigido o repositório Git em `/home/brn/wikisidian/t.i` (restaurado `.git` íntegro vinculado a `git@github.com:brcesarms/t.i.git`).
+    - Auditoria de segredos com `gitleaks detect` aprovada (zero vazamentos detectados).
+    - Adicionados 23 arquivos de documentação e notas sobre redes (MikroTik, Ubiquiti, Wi-Fi, endereçamento IP).
+    - Commit `6b3e9c7` (`feat(redes): adicionar documentacao e notas de redes`) enviado com sucesso para a branch `main` no GitHub.
+- **2026-09-18 (sessão AGY noite - Atualização de Scripts & Delegação Hermes):**
+  - O Hermes Agent varreu o repositório e identificou os scripts com modelo antigo.
+  - Atualizado [`scripts/estagiario-alienware.sh`](file:///home/brn/archimedes/scripts/estagiario-alienware.sh) alterando o modelo padrão de `qwen3-nothink` para `qwen3.5:9b`.
+- **2026-09-18 (sessão AGY noite - Auditoria de Código e Sanidade):**
+  - Executada auditoria de segurança (`gitleaks`), sintaxe de scripts (`shellcheck`), compilação Python e links Markdown.
+  - Corrigidos avisos de linters no script `scripts/benchmark-moe.sh`. Confirmada proteção de `.env` em `.gitignore`.
+- **2026-09-18 (sessão AGY noite - Remoção do modelo antigo):**
+  - Removido o modelo `qwen3-nothink:latest` (5.2 GB) do container Ollama, liberando espaço em disco.
+- **2026-09-18 (sessão AGY noite - Promoção do qwen3.5:9b no Hermes Agent):**
+  - Atualizado `~/.hermes/config.yaml` definindo `model.default: "qwen3.5:9b"`.
+  - Verificada execução nativa do Hermes Agent utilizando o novo modelo por padrão.
+- **2026-09-18 (sessão AGY noite - Benchmark Hermes Agent qwen3-nothink vs qwen3.5:9b):**
+  - Baixado o modelo `qwen3.5:9b` (6.6 GB) no container Docker `archimedes-ollama`.
+  - Executada bateria automatizada de testes comparativos entre `qwen3-nothink:latest` e `qwen3.5:9b` via API Ollama e CLI Hermes.
+  - Resultado: `qwen3.5:9b` entregou **+32.3% mais velocidade de geração (37.13 tok/s vs 28.07 tok/s)**, redução de **700 MB de uso de VRAM (5.63 GB vs 6.33 GB)** e resposta 2x mais rápida em geração de scripts shell no Hermes.
+  - Relatório completo consolidado em `docs/benchmarks/BENCHMARK_QWEN35.md`.
+- **2026-09-18 (sessão AGY noite - Servidor Proxmox VE Desligado):**
+  - O **Hermes Agent** executou o comando `poweroff` no host **Proxmox VE (GEEKOM `10.0.0.3`)**. Conectividade IP verificada e confirmada inacessível (`OFF`, 100% packet loss).
+- **2026-09-18 (sessão AGY noite - PNETLab Desligado):**
+  - Desligada com sucesso a VM `PNETLAB-v4` (**VMID 100**) no servidor Proxmox VE (`10.0.0.3`) após confirmação do Hermes e execução no hypervisor.
+- **2026-09-18 (sessão AGY noite - Topologia ISP MikroTik no PNETLab):**
+  - Iniciada com delegação prévia ao Hermes Agent; fallback do AGY aplicado para provisionamento completo da topologia.
+  - Configurado **MK-01-BORDA** com link WAN (`10.0.0.210/24`), Gateway default e NAT Masquerade.
+  - Interconectados os 5 MikroTiks (`MK-01` a `MK-05`) via enlaces ponto-a-ponto em anel redundante com **VLANs** (`vlan102`, `vlan203`, `vlan304`, `vlan405`, `vlan501`).
+  - Ativado **OSPF v2 (Área Backbone 0.0.0.0)** em todos os roteadores propagando Loopbacks `/32` (`10.255.255.1-5`) e a rota padrão a partir da Borda.
+  - Habilitado **MPLS + LDP** transportando rótulos sobre o Core/Acesso.
+  - Ativado **RoMON** (`secrets="archimedes"`) em 100% dos roteadores MikroTik para gerência centralizada.
+- **2026-09-18 (sessão AGY noite):**
+  - Autenticada permissão física `scheduler: yes` via botão Reset no `device-mode: home` do MikroTik hAP ac³.
+  - Criado e verificado o agendamento nativo `reboot-diario` no RouterOS: `/system scheduler add name=reboot-diario start-time=04:00:00 interval=1d on-event="/system reboot"`.
+  - Próxima execução confirmada pelo RouterOS para **2026-09-19 às 04:00:00**.
 - **2026-09-18 (sessão AGY tarde):**
   - Corrigido caractere invisível Unicode U+200D (ZWJ no emoji 👨‍💻) que bloqueava a leitura do `AGENTS.md` pelo Hermes Agent via Telegram.
   - Patch de resiliência aplicado em `~/.hermes/hermes-agent/tools/delegation_output_schema.py`: `coerce_output_schema` agora ignora esquemas malformados do LLM local em vez de abortar o `delegate_task`.
@@ -29,6 +140,6 @@
 
 ## 🚀 Próximos Passos
 - Concluir a instalação interativa do Windows 11 via console do Proxmox (`https://10.0.0.3:8006`).
-- Em cada nova sessão do AGY CLI, efetuar o **Session Bootstrap**: consultar a memória permanente do Hermes Agent e carregar o estado de `CONTEXT.md`.
 - Manter registros de aprendizado de infraestrutura armazenados na memória permanente do Hermes Agent.
+
 
