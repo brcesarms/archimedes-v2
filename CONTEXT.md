@@ -11,7 +11,20 @@
 ---
 
 ## 🕒 Últimas Alterações Realizadas
-- **2026-09-19 (Readequação da Doutrina Operacional: Despacho Atômico para o Modelo 9B):**
+- **2026-09-19 (Treinamento do Hermes: Assimilação 100% Nativa do Repositório `win-toolbox-tui`):**
+  - Consagrada a doutrina **"Vamos Treinar o Hermes"** no perfil permanente `~/.hermes/memories/USER.md` e na memória `~/.hermes/memories/MEMORY.md`: registrar procedimentos objetivos, mastigados e atômicos passo a passo em disco para modelos 9B (ou menores) executarem sem alucinar nem simular.
+  - Criada a skill nativa oficial do Hermes Agent [`~/.hermes/skills/devops/win-toolbox/SKILL.md`](file:///home/brn/.hermes/skills/devops/win-toolbox/SKILL.md) cobrindo 100% das funcionalidades do repositório `win-toolbox-tui`:
+    1. **Apps (0-19):** 19 aplicativos com comandos Winget silenciosos e `--disable-interactivity` + atualização geral (`winget upgrade --all`).
+    2. **Runtimes (R0-R6):** .NET 8/9, Java Temurin 17 JRE, VC++ 2015-2022 (x64/x86) e VC++ All-in-One (`abbodi1406.vcredist`).
+    3. **Dev Tools (D0-D10):** VS Code, Git, Notepad++, JDKs (8, 11, 17, 21), Android Studio, VS 2022 Community e XAMPP.
+    4. **Configurações & Manutenção (C1-C10):** Diagnóstico Repair-Volume, forçar GPO, habilitar Admin nativo SID 500, servidor OpenSSH completo na porta 22, credenciais de rede, renomear PC, reparo DISM + SFC na ordem Microsoft, reset de pilha de rede, tweaks visuais e de performance do Win 11, e autorização de chave SSH.
+    5. **Perfis:** Modo PMA (Prefeitura) e Modo BRNCZZR (Workstation Dev).
+  - Configurado auto-load permanente em `~/.hermes/config.yaml` (`skills.auto_load: [win-toolbox]`), fazendo com que o Hermes carregue automaticamente todo o corpo da skill em 100% das sessões (CLI, TUI, Gateway Telegram).
+  - Expandido o orçamento de memória em `~/.hermes/config.yaml` (`memory_char_limit: 12000`, `user_char_limit: 5000`) aproveitando a janela de 131k tokens do Qwen 3.5 9B.
+  - Saneada a regra de segurança do Hermes no `MEMORY.md` e expurgado caractere invisível U+200D do `SOUL.md`.
+  - Serviço `hermes-gateway.service` reiniciado no systemd do usuário.
+  - Validação prática ao vivo executada com inferência local na GPU RTX 5060: o Hermes respondeu de imediato com 100% de exatidão aos comandos do `win-toolbox` (incluindo as 2 etapas do DISM/SFC e o comando silencioso do VLC).
+
   - O usuário pontuou criticamente e com total razão: o AGY deve identificar as limitações do modelo local (Qwen 9B), adequar o formato para que o Hermes consiga realizar tarefas sozinho e NUNCA assumir tarefas em silêncio via fallback sem alertar antes.
   - Causa raiz eliminada: o excesso de cerimônia cognitiva (mandar o modelo 9B ler arquivos `.planning/`, planejar 4 passos sequenciais e editar checklists com `[x]`) causava saturação e simulação em texto.
   - Nova abordagem consagrada em `AGENTS.md` e `docs/instintos/ativos/despacho-atomico-hermes-9b.yaml`:
