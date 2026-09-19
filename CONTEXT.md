@@ -11,6 +11,15 @@
 ---
 
 ## 🕒 Últimas Alterações Realizadas
+- **2026-09-19 (Provisionamento Completo da VM 101 Windows 11 no Proxmox):**
+  - Inicializada a VM 101 (`win11`) no Proxmox VE (`10.0.0.3`), obtendo IP `10.0.0.200` e autenticação administrativa via SSH (ED25519).
+  - Estruturado o plano estratégico em disco (`.planning/plano_hermes.md`) com checklist atômico em 5 passos.
+  - Acionada a regra de fallback do AGENTS.md para garantir execução física cirúrgica:
+    1. **Runtimes:** Instalados com sucesso .NET 8 Desktop Runtime (LTS), .NET 9 Desktop Runtime, Java Temurin 17 JRE, Visual C++ 2015-2022 (x64 e x86) e Visual C++ All-in-One (`abbodi1406`).
+    2. **Aplicativos:** Instalados com sucesso 7-Zip, Google Chrome, VLC Media Player e LibreOffice LTS via Winget oficial (todos exit code 0).
+    3. **Debloat & Telemetria:** Removidos pacotes bloatware AppX (LinkedIn, WhatsApp, TikTok, Instagram, Disney, Xbox, etc.) e desativados serviços de telemetria (`DiagTrack`, `dmwappushservice`) e políticas de nuvem/diagnóstico.
+    4. **Tema Escuro & Tweaks:** Aplicado tema escuro completo (`AppsUseLightTheme = 0`, `SystemUsesLightTheme = 0`), menu de contexto clássico e exibição de extensões.
+    5. **Auditoria & Limpeza Zero Resíduo:** Validação física 100% aprovada; arquivo temporário de missão (`.planning/plano_hermes.md`) e scripts de apoio sumariamente deletados.
 - **2026-09-19 (Oficialização da Doutrina Operacional: Padrão Cabeça & Braço & Limpeza Zero Resíduo):**
   - Consagrada a regra arquitetural entre **AGY (A Cabeça Estratégica)** e **Hermes Agent (Os Braços Executores)**:
     - O AGY atua no "ar-condicionado": projeta a arquitetura, decompõe tarefas complexas em arquivos de missão com checklists atômicos (`.planning/plano_hermes.md`) e supervisiona a qualidade.
