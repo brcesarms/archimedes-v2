@@ -1,0 +1,67 @@
+{
+  "ollama_rounds": [
+    {
+      "teste": "Redes & Protocolos (OSPF vs BGP)",
+      "alienware": {
+        "gen_speed": 35.48277077292688,
+        "prompt_speed": 675.8900368291102,
+        "eval_count": 250,
+        "prompt_count": 49,
+        "total_time": 7.223811468000349,
+        "response": ""
+      },
+      "proxmox": {
+        "gen_speed": 8.958449136219167,
+        "prompt_speed": 82.52478690921095,
+        "eval_count": 250,
+        "prompt_count": 49,
+        "total_time": 28.871056831000715,
+        "response": ""
+      }
+    },
+    {
+      "teste": "Engenharia de Scripts Bash",
+      "alienware": {
+        "gen_speed": 35.37156055788025,
+        "prompt_speed": 565.5868670729466,
+        "eval_count": 250,
+        "prompt_count": 40,
+        "total_time": 7.213442197999939,
+        "response": ""
+      },
+      "proxmox": {
+        "gen_speed": 7.098452267664463,
+        "prompt_speed": 68.0751413410122,
+        "eval_count": 250,
+        "prompt_count": 40,
+        "total_time": 36.06688209599997,
+        "response": ""
+      }
+    },
+    {
+      "teste": "Troubleshooting Proxmox",
+      "alienware": {
+        "gen_speed": 35.57630555435782,
+        "prompt_speed": 537.4658565483624,
+        "eval_count": 250,
+        "prompt_count": 36,
+        "total_time": 7.167444306000107,
+        "response": ""
+      },
+      "proxmox": {
+        "gen_speed": 6.905236702261136,
+        "prompt_speed": 60.69158056048675,
+        "eval_count": 250,
+        "prompt_count": 36,
+        "total_time": 37.419179482999425,
+        "response": ""
+      }
+    }
+  ],
+  "hermes_cli": {
+    "alienware_time": 8.308178564000627,
+    "alienware_out": "Custom endpoint didn't answer after 3 attempts — it looks temporarily unavailable. Wait a minute and send /retry, or switch models with /model. To avoid this in future, add a backup provider with `hermes fallback add`.\n\nProvider said: HTTP 404: model 'qwen3-nothink' not found",
+    "proxmox_time": 30.633982372999526,
+    "proxmox_out": "Olá, Bruno! Sou seu assistente técnico virtual 🤖💻 — resolvo problemas na sua rede, gerencio servidores, crio automações e executo diagnósticos com agilidade ⚡🔧✅. Tejo prontos para manter sua infraestrutura de T.I. sempre estável e eficiente! 🚀📊✨"
+  }
+}

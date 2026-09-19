@@ -3,7 +3,7 @@
 # 🧑‍💻 estagiario-alienware.sh — Delegação Local-First ao Hermes Agent (Alienware)
 # ==============================================================================
 # Delega uma tarefa ATÔMICA ao Hermes Agent rodando 100% local (modelo
-# qwen3-nothink na GPU RTX 5060) dentro do Alienware, via SSH. Custo: R$ 0.
+# qwen3.5:9b na GPU RTX 5060) dentro do Alienware, via SSH. Custo: R$ 0.
 #
 # Aplica automaticamente as regras validadas por benchmark:
 #   1. Toolset restrito  — evita que o modelo 8B se perca entre dezenas de tools
@@ -12,7 +12,7 @@
 #
 # Pré-requisitos:
 #   - SSH sem senha para o Alienware (runbook ssh-bootstrap-ubuntu.md)
-#   - Hermes Agent + qwen3-nothink (runbook hermes-agent-alienware.md)
+#   - Hermes Agent + qwen3.5:9b (runbook hermes-agent-alienware.md)
 #
 # Uso:
 #   ./scripts/estagiario-alienware.sh "tarefa atômica aqui"
@@ -22,14 +22,14 @@
 #
 # Variáveis de ambiente:
 #   ESTAGIARIO_HOST     host SSH          (padrão: alienware)
-#   ESTAGIARIO_MODEL    modelo Ollama     (padrão: qwen3-nothink)
+#   ESTAGIARIO_MODEL    modelo Ollama     (padrão: qwen3.5:9b)
 #   ESTAGIARIO_TOOLSET  toolset restrito  (padrão: terminal)
 #   ESTAGIARIO_TIMEOUT  timeout em segs   (padrão: 300)
 # ==============================================================================
 set -euo pipefail
 
 HOST="${ESTAGIARIO_HOST:-alienware}"
-MODEL="${ESTAGIARIO_MODEL:-qwen3-nothink}"
+MODEL="${ESTAGIARIO_MODEL:-qwen3.5:9b}"
 TOOLSET="${ESTAGIARIO_TOOLSET:-terminal}"
 TIMEOUT="${ESTAGIARIO_TIMEOUT:-300}"
 
@@ -43,7 +43,7 @@ Uso:
 
 Opções:
   -t, --toolset <terminal|file>  Toolset restrito (padrão: terminal)
-  -m, --model <modelo>           Modelo Ollama (padrão: qwen3-nothink)
+  -m, --model <modelo>           Modelo Ollama (padrão: qwen3.5:9b)
   -h, --help                     Mostra esta ajuda
 
 Exemplos:

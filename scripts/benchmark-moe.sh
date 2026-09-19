@@ -78,7 +78,7 @@ benchmark_model() {
 
   # Contar tokens (aproximado: 1 token ≈ 4 caracteres)
   local char_count
-  char_count=$(echo "$response" | wc -c)
+  char_count=${#response}
   local token_count=$((char_count / 4))
 
   # Calcular tokens por segundo
@@ -158,7 +158,7 @@ generate_report() {
   if [ -f "$RESULTADOS_FILE" ]; then
     echo -e "${GREEN}Resultados salvos em: ${RESULTADOS_FILE}${NC}"
     echo ""
-    cat "$RESULTADOS_FILE" | jq -r '.'
+    jq -r '.' "$RESULTADOS_FILE"
   else
     log_warning "Nenhum resultado de benchmark encontrado"
   fi

@@ -1,10 +1,10 @@
-# 🗂️ Servidor de Arquivos — CT 103 no Proxmox (10.0.0.4)
+# 🗂️ Servidor de Arquivos — CT 103 no Proxmox (10.0.0.103)
 
-> **Data:** 2026-09-12 · **Status:** Ativo · **Tipo:** Nota técnica de infraestrutura
+> **Data:** 2026-09-12 · **Atualizado:** 2026-09-19 · **Status:** Ativo · **Tipo:** Nota técnica de infraestrutura
 
 ## 🎯 Resumo
 
-Servidor de arquivos dedicado criado como **container LXC (privileged) no Proxmox GEEKOM** (`10.0.0.3`) para servir **Samba (SMB) + NFS + SFTP** na rede local de Ariquemes. É o **destino central dos backups robocopy do archimedes-operator**.
+Servidor de arquivos dedicado criado como **container LXC (privileged) no Proxmox GEEKOM** (`10.0.0.3`) para servir **Samba (SMB) + NFS + SFTP** na rede local de Ariquemes. É o **destino central dos backups (Hermes Agent e robocopy do archimedes-operator)**.
 
 ---
 
@@ -13,7 +13,7 @@ Servidor de arquivos dedicado criado como **container LXC (privileged) no Proxmo
 | Recurso | Valor |
 | :--- | :--- |
 | **Container** | CT 103 (`arquivos`) — Debian 13 (Trixie) LXC privileged |
-| **IP** | `10.0.0.4/24` (gateway/DNS `10.0.0.1`) |
+| **IP** | `10.0.0.103/24` (gateway/DNS `10.0.0.1`) *(remanejado em 19/09 para liberar 10.0.0.4 ao Hermes)* |
 | **Recursos** | 2 vCPU · 2 GB RAM · 512 MB swap · **200 GB** disco (`local-lvm`) |
 | **Host Proxmox** | `10.0.0.3` (GEEKOM A7 MAX) — pve-manager 9.2.2 |
 | **Kernel do host** | 7.0.2-6-pve |
@@ -32,11 +32,11 @@ Servidor de arquivos dedicado criado como **container LXC (privileged) no Proxmo
 
 | Share SMB | Caminho | Uso |
 | :--- | :--- | :--- |
-| `\\10.0.0.4\backup` | `/srv/arquivos/backup` | 🎯 **Destino robocopy** (archimedes-operator) |
-| `\\10.0.0.4\arquivos` | `/srv/arquivos/documentos` | Documentos e uso geral |
+| `\\10.0.0.103\backup` | `/srv/arquivos/backup` | 🎯 **Destino backups** (Hermes e robocopy) |
+| `\\10.0.0.103\arquivos` | `/srv/arquivos/documentos` | Documentos e uso geral |
 
 **Prefixos de acesso:**
-- SMB: `\\10.0.0.4\backup` · NFS: `mount -t nfs 10.0.0.4:/srv/arquivos /mnt/...` · SFTP: `sftp backup@10.0.0.4`
+- SMB: `\\10.0.0.103\backup` · NFS: `mount -t nfs 10.0.0.103:/srv/arquivos /mnt/...` · SFTP: `sftp backup@10.0.0.103`
 
 ---
 

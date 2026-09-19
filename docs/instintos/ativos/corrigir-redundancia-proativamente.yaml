@@ -1,0 +1,15 @@
+---
+id: corrigir-redundancia-proativamente
+titulo: "Alertar e corrigir proativamente comandos e pacotes redundantes antes da execução"
+trigger: "quando o usuário solicitar instalações de pacotes ou comandos de infraestrutura que possuam sobreposição ou redundância com etapas já executadas ou pacotes mais abrangentes"
+action: "O AGY (A Cabeça) não deve executar às cegas: deve alertar e corrigir proativamente o usuário antes de disparar comandos redundantes, apontando a solução otimizada (ex: pacotes All-in-One vs avulsos, software já presente, scripts de lote)"
+domain: "orquestracao"
+confidence: 0.95
+scope: "archimedes"
+evidencia:
+  - "2026-09-19: usuário pediu instalação de VCRedist x64 e x86 avulsos seguidos por abbodi1406 (All-in-One); o AGY executou sequencialmente em vez de avisar previamente que o All-in-One já englobava tudo. O usuário pontuou: 'eu esperava que vc me corrigisse'."
+status: "ativo"
+criado_em: "2026-09-19"
+atualizado_em: "2026-09-19"
+skill_criada: ""
+---
