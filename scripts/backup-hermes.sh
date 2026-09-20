@@ -25,36 +25,37 @@ echo "🚀 [1/6] Preparando diretório de staging..."
 mkdir -p "${STAGE_DIR}/hermes_home" "${STAGE_DIR}/system"
 
 echo "🧠 [2/6] Exportando estado SQLite consistente (VACUUM INTO)..."
+HERMES_DIR="${HERMES_HOME:-$HOME/.hermes}"
 mkdir -p "${STAGE_DIR}/hermes_home/.hermes"
-if [ -f "/home/hermes/.hermes/state.db" ]; then
-    python3 -c "import sqlite3; con = sqlite3.connect('/home/hermes/.hermes/state.db'); con.execute(\"VACUUM INTO '${STAGE_DIR}/hermes_home/.hermes/state.db'\"); con.close()"
+if [ -f "${HERMES_DIR}/state.db" ]; then
+    python3 -c "import sqlite3; con = sqlite3.connect('${HERMES_DIR}/state.db'); con.execute(\"VACUUM INTO '${STAGE_DIR}/hermes_home/.hermes/state.db'\"); con.close()"
 fi
 
 echo "📁 [3/6] Coletando arquivos vitais do Hermes..."
 # Arquivos de identidade e configuração
 for f in .env SOUL.md config.yaml context_length_cache.yaml; do
-    if [ -f "/home/hermes/.hermes/$f" ]; then
-        cp -a "/home/hermes/.hermes/$f" "${STAGE_DIR}/hermes_home/.hermes/"
+    if [ -f "${HERMES_DIR}/$f" ]; then
+        cp -a "${HERMES_DIR}/$f" "${STAGE_DIR}/hermes_home/.hermes/"
     fi
 done
 
 # Pastas de dados e inteligência
 for d in skills memories sessions cron hooks backups; do
-    if [ -d "/home/hermes/.hermes/$d" ]; then
-        cp -a "/home/hermes/.hermes/$d" "${STAGE_DIR}/hermes_home/.hermes/"
+    if [ -d "${HERMES_DIR}/$d" ]; then
+        cp -a "${HERMES_DIR}/$d" "${STAGE_DIR}/hermes_home/.hermes/"
     fi
 done
 
 # Scripts operacionais e credenciais do usuário
-if [ -d "/home/hermes/scripts" ]; then
-    cp -a "/home/hermes/scripts" "${STAGE_DIR}/hermes_home/"
+if [ -d "$HOME/scripts" ]; then
+    cp -a "$HOME/scripts" "${STAGE_DIR}/hermes_home/"
 fi
-if [ -d "/home/hermes/.ssh" ]; then
-    cp -a "/home/hermes/.ssh" "${STAGE_DIR}/hermes_home/"
+if [ -d "$HOME/.ssh" ]; then
+    cp -a "$HOME/.ssh" "${STAGE_DIR}/hermes_home/"
 fi
 for f in .bashrc .profile; do
-    if [ -f "/home/hermes/$f" ]; then
-        cp -a "/home/hermes/$f" "${STAGE_DIR}/hermes_home/"
+    if [ -f "$HOME/$f" ]; then
+        cp -a "$HOME/$f" "${STAGE_DIR}/hermes_home/"
     fi
 done
 
@@ -95,7 +96,7 @@ manifest = {
     'kernel': platform.release(),
     'os': get_os(),
     'python_version': platform.python_version(),
-    'hermes_agent_commit': run('git -C /home/hermes/hermes-agent rev-parse HEAD 2>/dev/null || echo unknown'),
+    'hermes_agent_commit': run('git -C \"${HERMES_DIR}/hermes-agent\" rev-parse HEAD 2>/dev/null || echo unknown'),
     'ollama_version': run('ollama --version 2>/dev/null || echo unknown'),
     'ollama_models': run('ollama list 2>/dev/null || echo unknown')
 }

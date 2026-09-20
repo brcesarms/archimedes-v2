@@ -11,7 +11,19 @@
 ---
 
 ## 🕒 Últimas Alterações Realizadas
-- **2026-09-19 (Fase 3 Concluída: Treinamento Nativo da Skill `mikrotik-ops` no Hermes):**
+- **2026-09-19 (Fase 4 Concluída: Treinamento Nativo da Skill `backup-storage-ops` no Hermes):**
+  - Criada a skill nativa oficial [`~/.hermes/skills/devops/backup-storage-ops/SKILL.md`](file:///home/brn/.hermes/skills/devops/backup-storage-ops/SKILL.md) cobrindo 100% da gestão de backups e do Servidor de Arquivos CT 103 (`10.0.0.103` / `arquivos`):
+    1. **Rotina de Backup Atômico:** Execução via [`scripts/backup-hermes.sh`](file:///home/brn/archimedes/scripts/backup-hermes.sh), que realiza snapshot SQLite com `VACUUM INTO` do `state.db` (sem lock ou corrupção de concorrência), empacotamento seletivo de identidade e inteligência, geração de `manifest.json`, compressão multi-thread `zstd -19` e cálculo do hash SHA256.
+    2. **Transferência & Validação de Integridade:** Envio seguro via `scp` para `backup@10.0.0.103:/srv/arquivos/backup/hermes-backup/`, validação remota com `sha256sum -c` e atualização dos links simbólicos `latest.tar.zst` e `latest.tar.zst.sha256`.
+    3. **Auditoria do Servidor de Arquivos:** Comandos de inspeção remota para listagem de backups, integridade SHA256, checagem de espaço em disco (`df -h /srv/arquivos`) e inspeção de metadados.
+    4. **Manutenção de Compartilhamentos:** Status e reinício dos serviços Samba (`smbd`, `nmbd`) e NFS (`nfs-kernel-server`).
+    5. **Recuperação de Desastre (DR):** Procedimento canônico de download e extração consistente para `~/.hermes/`.
+  - Atualizado [`scripts/backup-hermes.sh`](file:///home/brn/archimedes/scripts/backup-hermes.sh) tornando os caminhos dinâmicos para suportar o Alienware (`$HOME/.hermes`).
+  - Ativado auto-load no [`~/.hermes/config.yaml`](file:///home/brn/.hermes/config.yaml) (`skills.auto_load: [win-toolbox, proxmox-ops, mikrotik-ops, backup-storage-ops]`).
+  - Gravada a síntese canônica na memória permanente [`~/.hermes/memories/MEMORY.md`](file:///home/brn/.hermes/memories/MEMORY.md).
+  - Reiniciado o serviço `hermes-gateway.service` no systemd do usuário.
+  - Teste de inferência do modelo local Qwen 9B validado na RTX 5060: o Hermes respondeu de imediato demonstrando o script exato `backup-hermes.sh`, destino CT 103 e validação criptográfica via `sha256sum -c`.
+
   - Criada a skill nativa oficial [`~/.hermes/skills/devops/mikrotik-ops/SKILL.md`](file:///home/brn/.hermes/skills/devops/mikrotik-ops/SKILL.md) cobrindo 100% da gestão de rede no roteador MikroTik hAP ac³ (`10.0.0.1`) rodando RouterOS v7:
     1. **Auditoria Geral & Saúde:** Recursos do sistema (`/system resource print`), relógio/NTP (`/system clock print`), saúde/voltagem (`/system health print`) e logs de erro.
     2. **Interfaces & Conectividade:** Status de portas físicas ethernet 1-5 (`/interface print`), tráfego RX/TX (`/interface print stats`) e velocidades negociadas (`/interface ethernet print`).
