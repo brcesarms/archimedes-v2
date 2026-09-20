@@ -11,6 +11,14 @@
 ---
 
 ## 🕒 Últimas Alterações Realizadas
+- **2026-09-19 (Bancada 100% Automatizada com Modelo 3B Como Padrão Oficial):**
+  - Homologado e ativado o modelo ultra-compacto **`qwen2.5:3b-hermes` (1.9 GB)** como modelo default no [`~/.hermes/config.yaml`](file:///home/brn/.hermes/config.yaml).
+  - Criado o modelo customizado no Ollama com `PARAMETER num_ctx 65536` para cumprir a janela de contexto mínima requerida pelo Hermes Agent.
+  - Configurado `model_overrides.custom."qwen2.5:3b-hermes"` com `supports_tools: true`, `context_window: 65536` e `supports_reasoning: false`.
+  - Redução drástica do consumo de VRAM na RTX 5060: de ~6.6 GB (com o 9B) para apenas **~2.1 GB a 3.4 GB** (liberando mais de 4.7 GB de VRAM para o sistema e desenvolvimento).
+  - Aceleração das chamadas de ferramentas: respostas atômicas executadas entre **2 e 6 segundos**.
+  - Validadas chamadas reais de ferramentas (`terminal`) via modelo 3B: ping de gateway, consulta SSH em tempo real ao MikroTik RouterOS v7 (`/system/resource/print`), telemetria de hardware (`nvidia-smi`) e inspeção de scripts de backup.
+  - Reiniciado o serviço `hermes-gateway.service` para operação contínua 24/7 com o modelo 3B.
 - **2026-09-19 (Fase 5 Concluída: Treinamento Nativo da Skill `linux-toolbox` & Consolidação Total da Bancada):**
   - Criada a skill nativa oficial [`~/.hermes/skills/devops/linux-toolbox/SKILL.md`](file:///home/brn/.hermes/skills/devops/linux-toolbox/SKILL.md) cobrindo 100% da gestão e manutenção de estações Linux (Alienware Aurora 16" e Laptop ACER Paula) baseadas no ecossistema `linux-toolbox-tui`:
     1. **Atualização & Higienização (0):** Sequência completa não-interativa `sudo apt update && sudo apt dist-upgrade -y && sudo apt autoremove --purge -y && sudo apt clean`.
