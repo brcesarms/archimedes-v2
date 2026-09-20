@@ -11,7 +11,20 @@
 ---
 
 ## 🕒 Últimas Alterações Realizadas
-- **2026-09-19 (Fase 2 Concluída: Treinamento Nativo da Skill `proxmox-ops` no Hermes):**
+- **2026-09-19 (Fase 3 Concluída: Treinamento Nativo da Skill `mikrotik-ops` no Hermes):**
+  - Criada a skill nativa oficial [`~/.hermes/skills/devops/mikrotik-ops/SKILL.md`](file:///home/brn/.hermes/skills/devops/mikrotik-ops/SKILL.md) cobrindo 100% da gestão de rede no roteador MikroTik hAP ac³ (`10.0.0.1`) rodando RouterOS v7:
+    1. **Auditoria Geral & Saúde:** Recursos do sistema (`/system resource print`), relógio/NTP (`/system clock print`), saúde/voltagem (`/system health print`) e logs de erro.
+    2. **Interfaces & Conectividade:** Status de portas físicas ethernet 1-5 (`/interface print`), tráfego RX/TX (`/interface print stats`) e velocidades negociadas (`/interface ethernet print`).
+    3. **Endereçamento IP, Clientes DHCP & DNS:** IPs locais (`10.0.0.1/24`), tabela de concessões ativas (`/ip dhcp-server lease print`) e configuração de servidores DNS (`/ip dns print`).
+    4. **Roteamento & Vizinhos:** Tabela de rotas IPv4 (`/ip route print`), descoberta MNDP (`/ip neighbor print`), adjacências OSPF de laboratório e teia RoMON (`/romon print`).
+    5. **Firewall & Conexões:** Regras de NAT Masquerade (`/ip firewall nat print`), regras de proteção de filtro e total de conexões ativas no conntrack.
+    6. **Rotinas de Backup do RouterOS:** Exportação de script legível (`/export compact file=backup-mikrotik`) e backup binário (`/system backup save`), com download via `scp`.
+    7. **Agendamentos:** Auditoria do agendamento diário de reinício preventivo (`reboot-diario` às 04:00 da manhã).
+  - Ativado auto-load no [`~/.hermes/config.yaml`](file:///home/brn/.hermes/config.yaml) (`skills.auto_load: [win-toolbox, proxmox-ops, mikrotik-ops]`).
+  - Gravada a síntese canônica na memória permanente [`~/.hermes/memories/MEMORY.md`](file:///home/brn/.hermes/memories/MEMORY.md).
+  - Reiniciado o serviço `hermes-gateway.service` no systemd do usuário.
+  - Teste de inferência do modelo local Qwen 9B validado na RTX 5060: o Hermes respondeu de imediato demonstrando os comandos exatos de concessão DHCP (`/ip dhcp-server lease print`) e de validação do agendamento `reboot-diario`.
+
   - Criada a skill nativa oficial [`~/.hermes/skills/devops/proxmox-ops/SKILL.md`](file:///home/brn/.hermes/skills/devops/proxmox-ops/SKILL.md) cobrindo 100% da gestão do hypervisor Proxmox VE (`10.0.0.3` / `geekom`):
     1. **Inventário Canônico:** VM 100 (`PNETLAB-v4`), VM 101 (`win11`), CT 102 (`iventoy`) e CT 103 (`arquivos`).
     2. **Comandos Atômicos:** Mapeamento estrito de comandos QEMU `qm` para VMs e LXC `pct` para Containers (reforçando a regra proativa de nunca confundir `qm` com `pct`).
