@@ -11,7 +11,17 @@
 ---
 
 ## 🕒 Últimas Alterações Realizadas
-- **2026-09-19 (Treinamento do Hermes: Assimilação 100% Nativa do Repositório `win-toolbox-tui`):**
+- **2026-09-19 (Fase 2 Concluída: Treinamento Nativo da Skill `proxmox-ops` no Hermes):**
+  - Criada a skill nativa oficial [`~/.hermes/skills/devops/proxmox-ops/SKILL.md`](file:///home/brn/.hermes/skills/devops/proxmox-ops/SKILL.md) cobrindo 100% da gestão do hypervisor Proxmox VE (`10.0.0.3` / `geekom`):
+    1. **Inventário Canônico:** VM 100 (`PNETLAB-v4`), VM 101 (`win11`), CT 102 (`iventoy`) e CT 103 (`arquivos`).
+    2. **Comandos Atômicos:** Mapeamento estrito de comandos QEMU `qm` para VMs e LXC `pct` para Containers (reforçando a regra proativa de nunca confundir `qm` com `pct`).
+    3. **Rotina Canônica de Desligamento em Cascata:** Ordem segura obrigatória: desligamento gracioso de VMs (`qm shutdown 101 && qm shutdown 100`), desligamento gracioso de Containers (`pct shutdown 103 && pct shutdown 102`) e desligamento seguro do host físico (`systemctl poweroff`).
+    4. **Diagnóstico & Recursos:** Comandos de auditoria para storages (`pvesm status`), zRAM (`zramctl`), disco NVMe (`df -h`) e sensores térmicos (`sensors`).
+  - Ativado auto-load no [`~/.hermes/config.yaml`](file:///home/brn/.hermes/config.yaml) (`skills.auto_load: [win-toolbox, proxmox-ops]`).
+  - Gravada a síntese canônica na memória permanente [`~/.hermes/memories/MEMORY.md`](file:///home/brn/.hermes/memories/MEMORY.md).
+  - Reiniciado o serviço `hermes-gateway.service` no systemd do usuário.
+  - Teste de inferência do modelo local Qwen 9B validado com 100% de sucesso na RTX 5060: o Hermes respondeu de imediato demonstrando a rota canônica de desligamento e os comandos atômicos exatos.
+
   - Consagrada a doutrina **"Vamos Treinar o Hermes"** no perfil permanente `~/.hermes/memories/USER.md` e na memória `~/.hermes/memories/MEMORY.md`: registrar procedimentos objetivos, mastigados e atômicos passo a passo em disco para modelos 9B (ou menores) executarem sem alucinar nem simular.
   - Criada a skill nativa oficial do Hermes Agent [`~/.hermes/skills/devops/win-toolbox/SKILL.md`](file:///home/brn/.hermes/skills/devops/win-toolbox/SKILL.md) cobrindo 100% das funcionalidades do repositório `win-toolbox-tui`:
     1. **Apps (0-19):** 19 aplicativos com comandos Winget silenciosos e `--disable-interactivity` + atualização geral (`winget upgrade --all`).
