@@ -11,7 +11,23 @@
 ---
 
 ## 🕒 Últimas Alterações Realizadas
-- **2026-09-19 (Fase 4 Concluída: Treinamento Nativo da Skill `backup-storage-ops` no Hermes):**
+- **2026-09-19 (Fase 5 Concluída: Treinamento Nativo da Skill `linux-toolbox` & Consolidação Total da Bancada):**
+  - Criada a skill nativa oficial [`~/.hermes/skills/devops/linux-toolbox/SKILL.md`](file:///home/brn/.hermes/skills/devops/linux-toolbox/SKILL.md) cobrindo 100% da gestão e manutenção de estações Linux (Alienware Aurora 16" e Laptop ACER Paula) baseadas no ecossistema `linux-toolbox-tui`:
+    1. **Atualização & Higienização (0):** Sequência completa não-interativa `sudo apt update && sudo apt dist-upgrade -y && sudo apt autoremove --purge -y && sudo apt clean`.
+    2. **Rede & Acesso Remoto (R1/R2):** Servidor OpenSSH na porta 22 e mDNS Avahi para acesso por `.local`.
+    3. **Apps & Monitoramento (A1/A2):** Brave Browser oficial e btop.
+    4. **Dev Tools (D1 a D8):** Pacote Base Dev (build-essential, git), Docker + Compose v2, Distrobox, Homebrew (Linuxbrew), VS Code (Flatpak), Obsidian (Flatpak), OpenCode CLI e Antigravity CLI.
+    5. **Config & Tweaks (C1 a C3):** JetBrainsMono Nerd Font com cache recarregado, Flatpak + Flathub e GNOME Tweaks com codecs restritos.
+    6. **Perfis Automatizados (P1):** Modo BRNCZZR (Workstation Dev completa em lote).
+    7. **Telemetria de Hardware & IA na RTX 5060:** `nvidia-smi` (temperatura, GPU load e VRAM), `systemctl status ollama`, `ollama ps` e status do `hermes-gateway`.
+    8. **Manutenção Remota:** Atualização automatizada do Laptop ACER (`laptop-brn` / `10.0.0.215`) via SSH.
+  - Ativado auto-load no [`~/.hermes/config.yaml`](file:///home/brn/.hermes/config.yaml) para todas as 5 skills da bancada:
+    `skills.auto_load: [win-toolbox, proxmox-ops, mikrotik-ops, backup-storage-ops, linux-toolbox]`.
+  - Gravada a síntese canônica na memória permanente [`~/.hermes/memories/MEMORY.md`](file:///home/brn/.hermes/memories/MEMORY.md).
+  - Reiniciado o serviço `hermes-gateway.service` no systemd do usuário.
+  - Teste de inferência do modelo local Qwen 9B validado na RTX 5060: o Hermes respondeu de imediato demonstrando o comando SSH de atualização remota do laptop ACER da Paula e a checagem da GPU NVIDIA com `nvidia-smi`.
+  - **CONSOLIDAÇÃO TOTAL DO PLANO:** Todas as 5 fases planejadas foram implementadas, validadas, integradas ao auto-load e commitadas sem qualquer gambiarra, respeitando a arquitetura nativa do Hermes Agent.
+
   - Criada a skill nativa oficial [`~/.hermes/skills/devops/backup-storage-ops/SKILL.md`](file:///home/brn/.hermes/skills/devops/backup-storage-ops/SKILL.md) cobrindo 100% da gestão de backups e do Servidor de Arquivos CT 103 (`10.0.0.103` / `arquivos`):
     1. **Rotina de Backup Atômico:** Execução via [`scripts/backup-hermes.sh`](file:///home/brn/archimedes/scripts/backup-hermes.sh), que realiza snapshot SQLite com `VACUUM INTO` do `state.db` (sem lock ou corrupção de concorrência), empacotamento seletivo de identidade e inteligência, geração de `manifest.json`, compressão multi-thread `zstd -19` e cálculo do hash SHA256.
     2. **Transferência & Validação de Integridade:** Envio seguro via `scp` para `backup@10.0.0.103:/srv/arquivos/backup/hermes-backup/`, validação remota com `sha256sum -c` e atualização dos links simbólicos `latest.tar.zst` e `latest.tar.zst.sha256`.
